@@ -163,6 +163,14 @@
 	. = ..()
 	icon_state = "t[rand(1,4)]"
 
+/obj/structure/flora/roguetree/palm
+	name = "exotic tree"
+	desc = "Native to this foreign isle, it's as if the leaves ARE the branches! How peculiar!"
+	icon = 'icons/roguetown/misc/foliagetall.dmi'
+	icon_state = "palm"
+	stump_type = /obj/structure/flora/roguetree/stump/burnt
+	pixel_x = -6
+
 /obj/structure/flora/roguetree/stump/burnt
 	name = "tree stump"
 	desc = "This stump is burnt. Maybe someone was trying to get coal the easy way."
