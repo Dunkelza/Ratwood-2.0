@@ -123,7 +123,7 @@
 					var/amt = R.payout_price * B.amount
 					SStreasury.economic_output += R.export_price * B.amount
 					if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-						say("No account found. Submit your fingers to a Meister for inspection.")
+						say("No account found. Submit your fingers to a Nervelock for inspection.")
 			continue
 		// Bloc to replace old vault mechanics
 		else if(istype(I,R.item_type))
@@ -153,7 +153,7 @@
 			else if(amt)
 				SStreasury.economic_output += true_value
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a Meister for inspection.")
+					say("No account found. Submit your fingers to a Nervelock for inspection.")
 			return
 
 /obj/structure/roguemachine/stockpile/attackby(obj/item/P, mob/user, params)

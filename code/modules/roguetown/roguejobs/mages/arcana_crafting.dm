@@ -214,7 +214,7 @@
 	name = "sylvan essence - (4 heartwood core, 1 gemerald)"
 	result = /obj/item/magic/fae/essence
 	reqs = list(/obj/item/magic/fae/core = 4,
-				/obj/item/roguegem/green= 1)
+				/obj/item/roguegem/blue = 1)
 	craftdiff = 5
 
 //elemenmtal conversions
@@ -244,7 +244,7 @@
 	name = "elemental relic - (4 elemental fragment, 1 topar)"
 	result = /obj/item/magic/elemental/relic
 	reqs = list(/obj/item/magic/elemental/fragment = 4,
-				/obj/item/roguegem/yellow = 1)
+				/obj/item/roguegem/diamond = 1)
 	craftdiff = 5
 
 //infernal conversions

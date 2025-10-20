@@ -185,6 +185,47 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
 
 /**
+	Wizard duke! We still want the court mage to be the most powerful wizard, 
+	but if a warrior duke can be about as strong as a Knight, then a wizard duke could probably afford to be as strong as a mage's associate. They'll get T3, no armor prof.
+*/
+/datum/advclass/lord/wizard
+	name = "Magocrat"
+	tutorial = "A good ruler is backed with force. You just happen to have a keen amount of mastery over the world's strongest forces: Magic. Of course, having to manage your realm has meant that you aren't as studied as the realm's greatest wizards- but your cunning sorcery is what has you sat upon the throne."
+	outfit = /datum/outfit/job/roguetown/lord/wizard
+	category_tags = list(CTAG_LORD)
+	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
+	subclass_stats = list(
+		STATKEY_LCK = 5,
+		STATKEY_INT = 5,
+		STATKEY_PER = 2,
+		STATKEY_SPD = 2,
+		STATKEY_WIL = 1,
+	)
+
+/datum/outfit/job/roguetown/lord/wizard/pre_equip(mob/living/carbon/human/H)
+	..()
+	l_hand = /obj/item/rogueweapon/lordscepter
+	r_hand = /obj/item/book/spellbook
+
+	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		H.mind?.adjust_spellpoints(27) //More than an Associate actually gets- but much like how the Warrior Duke gets a set of full blacksteel plate, I think we can give the mage duke a little something extra.
+
+
+/**
 	Inbred Lord subclass. A joke class, evolution of the Inbred Wastrel.
 	Literally the same stat line and skills line, but with one exception - 10 Fortune.
 	Why? Because it is funny, that's why. They also have heavy armor training.
@@ -221,6 +262,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+
 
 /datum/outfit/job/roguetown/lord/visuals/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -131,8 +131,18 @@
 
 	var/atom/movable/pullingg = L.pulling
 
+	// handle unknotting
+	if(ishuman(L))
+		var/mob/living/carbon/human/knot_haver = L
+		if(knot_haver.sexcon.knotted_status)
+			knot_haver.sexcon.knot_remove()
+
 	L.recent_travel = world.time
 	if(pullingg)
+		if(ishuman(pullingg)) // also check if pulled mob is knotted
+			var/mob/living/carbon/human/H = pullingg
+			if(H.sexcon.knotted_status)
+				H.sexcon.knot_remove()
 		pullingg.recent_travel = world.time
 		pullingg.forceMove(T.loc)
 
@@ -157,7 +167,6 @@
 		else
 			to_chat(L, "<b>It is a dead end.</b>")
 			return FALSE
-
 /obj/structure/fluff/traveltile/bandit
 	required_trait = TRAIT_BANDITCAMP
 /obj/structure/fluff/traveltile/vampire
@@ -176,4 +185,10 @@
 	appearance_flags = NONE
 	opacity = FALSE
 
+/obj/structure/fluff/traveltile/magicportal
+	desc = "flickering, warping magick"
+	name = "mysterious portal"
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "shitportal"
+	
 /obj/structure/fluff/traveltile/eventarea

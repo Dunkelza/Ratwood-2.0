@@ -4,7 +4,7 @@
 
 /obj/effect/proc_holder/spell/invoked/appraise
 	name = "Appraise"
-	desc = "Tells you how many mammons someone has on them and in the meister."
+	desc = "Tells you how many mammons someone has on them and in the nervelock."
 	overlay_state = "appraise"
 	releasedrain = 10
 	chargedrain = 0
@@ -34,7 +34,7 @@
 		var/mammonsonperson = get_mammons_in_atom(target)
 		var/mammonsinbank = SStreasury.bank_accounts[target]
 		var/totalvalue = mammonsinbank + mammonsonperson
-		to_chat(user, ("<font color='yellow'>[target] has [mammonsonperson] mammons on them, [mammonsinbank] in their meister, for a total of [totalvalue] mammons.</font>"))
+		to_chat(user, ("<font color='yellow'>[target] has [mammonsonperson] mammons on them, [mammonsinbank] in their nervelock, for a total of [totalvalue] mammons.</font>"))
 
 // T1 - Take value of item in hand, apply that as healing. Destroys item.
 

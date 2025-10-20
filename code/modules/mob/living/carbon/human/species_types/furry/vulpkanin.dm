@@ -110,6 +110,7 @@
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/eyeliner,
+		/datum/body_marking/wolf,
 		/datum/body_marking/plain,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,
@@ -142,6 +143,7 @@
 	)
 	languages = list(
 		/datum/language/common,
+		/datum/language/canilunzt
 	)
 
 /datum/species/vulpkanin/check_roundstart_eligible()

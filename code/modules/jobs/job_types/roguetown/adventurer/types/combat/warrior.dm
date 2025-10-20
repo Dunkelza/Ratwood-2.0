@@ -443,11 +443,6 @@
 	tutorial = "Fierce warrior women from distant lands, Amazons choose their armor based on their preferred fighting style - from light and agile to heavily protected."
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_HEAVYARMOR)
-	subclass_stats = list(
-		STATKEY_STR = 2,
-		STATKEY_WIL = 2,
-		STATKEY_CON = 1,
-	)
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	..()

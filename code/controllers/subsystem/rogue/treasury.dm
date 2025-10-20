@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(treasury)
 			else
 				// Check if the amount to be fined exceeds the player's account balance
 				if(abs(amt) > bank_accounts[X])
-					send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the account to complete the fine.", name = target_name)
+					send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the fine.", name = target_name)
 					return FALSE  // Return early if the player has insufficient funds
 				bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
 			found_account = TRUE
@@ -133,18 +133,18 @@ SUBSYSTEM_DEF(treasury)
 	if (amt > 0)
 		// Player received money
 		if(source)
-			send_ooc_note("<b>MEISTER:</b> You received [amt]m. ([source])", name = target_name)
+			send_ooc_note("<b>NERVELOCK:</b> You received [amt]m. ([source])", name = target_name)
 			log_to_steward("+[amt] from treasury to [target_name] ([source])")
 		else
-			send_ooc_note("<b>MEISTER:</b> You received [amt]m.", name = target_name)
+			send_ooc_note("<b>NERVELOCK:</b> You received [amt]m.", name = target_name)
 			log_to_steward("+[amt] from treasury to [target_name]")
 	else
 		// Player was fined
 		if(source)
-			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m. ([source])", name = target_name)
+			send_ooc_note("<b>NERVELOCK:</b> You were fined [amt]m. ([source])", name = target_name)
 			log_to_steward("[target_name] was fined [amt] ([source])")
 		else
-			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m.", name = target_name)
+			send_ooc_note("<b>NERVELOCK:</b> You were fined [amt]m.", name = target_name)
 			log_to_steward("[target_name] was fined [amt]")
 
 	return TRUE
@@ -187,10 +187,10 @@ SUBSYSTEM_DEF(treasury)
 	for(var/X in bank_accounts)
 		if(X == target)
 			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
-				send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
+				send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
 				return  // Return without processing the transaction
 			if(treasury_value < amt)  // Check if the amount exceeds the treasury balance
-				send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = target_name)
+				send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = target_name)
 				return  // Return early if the treasury balance is insufficient
 			bank_accounts[X] -= amt //The account accounts accountingly. Shame on you if you copy this, apple.
 			treasury_value -= amt

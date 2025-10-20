@@ -1,8 +1,12 @@
 /datum/advclass/mercenary/forlorn
 	name = "Forlorn Hope Mercenary"
-	tutorial = "The Order of the Forlorn Hope, a order formed off the back of a Ranesheni slave revolt. Drawing from all walks of life, this mercenary company now takes ranks from both purchased and liberated slaves. Coin is power, and power is the path to freedom."
+	tutorial = "The Order of the Forlorn Hope, a holy order founded in the name of Noc and the banishment of the rot. Now it is riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = list(
+		/datum/species/lupian, 
+		/datum/species/anthromorph, 
+		/datum/species/vulpkanin
+	)
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
 	min_pq = 2
 	cmode_music = 'sound/music/combat_blackstar.ogg'
@@ -34,7 +38,7 @@
 		/obj/item/rogueweapon/huntingknife,
 		/obj/item/roguekey/mercenary,
 		/obj/item/rogueweapon/scabbard/sheath
-		)
+	)
 	
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
@@ -49,6 +53,6 @@
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)	// This was arguably the OG shield + 1hand weapon merc. If this is too much, we can cut it back again.
+	H.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
 	H.merctype = 5

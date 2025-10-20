@@ -127,12 +127,14 @@
 		/datum/language/draconic,
 		/datum/language/celestial,
 		/datum/language/grenzelhoftian,
+		/datum/language/canilunzt,
 		/datum/language/kazengunese,
 		/datum/language/otavan,
 		/datum/language/etruscan,
 		/datum/language/gronnic,
 		/datum/language/aavnic,
-		/datum/language/abyssal
+		/datum/language/abyssal,
+		/datum/language/merar
 	)
 
 	var/list/choices = list()
@@ -370,3 +372,11 @@
 	name = "Mountable"
 	desc = "You have trained or been trained into a suitable mount. People may ride you as they would a saiga."
 	added_traits = list(TRAIT_PONYGIRL_RIDEABLE)
+
+/datum/virtue/utility/tolerant
+	name = "Tolerant"
+	desc = "Whether fostered through travel or care, you just don't see an issue with certain folks."
+	custom_text = "Prevents you from experiencing negative stress events when looking at select species."
+	added_traits = list(TRAIT_TOLERANT)
+
+

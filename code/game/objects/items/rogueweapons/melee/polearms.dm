@@ -160,12 +160,11 @@
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 1.3 // Adds up to be slightly stronger than an unenhanced ebeak strike.
-	chargetime = 6 // Meant to be stronger than a bash, but with a delay.
 
 /datum/intent/spear/thrust/lance
 	damfactor = 1.5 // Turns its base damage into 30 on the 2hand thrust. It keeps the spear thrust one handed.
 
-/datum/intent/lance/
+/datum/intent/lance
 	name = "lance"
 	icon_state = "inlance"
 	attack_verb = list("lances", "runs through", "skewers")
@@ -1019,7 +1018,8 @@
 	force_wielded = 20
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
 	icon_state = "quarterstaff"
-	max_integrity = 150
+	max_integrity = 150//-100.
+	intdamage_factor = 1.25//It's a ranged blunt no-pen thrust option as a spear sidegrade. How often do you see this?
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 	name = "iron quarterstaff"
@@ -1028,7 +1028,7 @@
 	force_wielded = 22
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
 	icon_state = "quarterstaff_iron"
-	max_integrity = 200
+	max_integrity = 200//-50.
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/steel
 	name = "steel quarterstaff"
@@ -1037,7 +1037,7 @@
 	force_wielded = 25
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
 	icon_state = "quarterstaff_steel"
-	max_integrity = 200
+	max_integrity = 225//-25.
 
 //The partizan is a peeling weapon, intended for rending.
 //It's horrible for one-handed use, has heavy balance and a higher strength requirement.
