@@ -438,7 +438,6 @@
 		return advj
 
 
-|
 
 /obj/item/steward/nervemaster_kit
     name = "Nerve Master Kit"
