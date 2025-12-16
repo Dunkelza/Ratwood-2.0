@@ -13,12 +13,10 @@
 	display_order = JDO_DUNGEONEER
 	advclass_cat_rolls = list(CTAG_DUNGEONEER = 2)
 
-	tutorial = "Sometimes at night you stare into the vacant room and feel the loneliness of your existence crawl into whatever remains of your loathsome soul. \
-				You will never know hunger, thirst or want for anything with the mammons you make: Just as you’ll never forget the sounds a saw makes cutting through the bone, what a drowning man will gurgle out between the blood and teeth strangling his breath. \
-				You fall under the garrison's command, obeying orders of the Sergeant, Knight Captain, Marshal, and the Crown. Tending to those awaiting condemning and dishing punishment are your specialties.."
+	tutorial = "CHANGE THIS!! something something WHIPS something something keeping the rabble in line something something sterin guiding hand"
 
 	announce_latejoin = FALSE
-	outfit = /datum/outfit/job/roguetown/dungeoneer
+	outfit = /datum/outfit/job/roguetown/slavemaster
 	give_bank_account = 25
 	min_pq = 0
 	max_pq = null
@@ -27,10 +25,10 @@
 	cmode_music = 'sound/music/combat_zybantine.ogg'
 	//allowed_maps = list("Desert Town")
 	job_subclasses = list(
-		/datum/advclass/dungeoneer
+		/datum/advclass/slavemaster
 	)
 
-/datum/job/roguetown/dungeoneer/New()
+/datum/job/roguetown/slavemaster/New()
 	. = ..()
 	peopleknowme = list()
 	for(var/X in GLOB.garrison_positions)
@@ -40,7 +38,7 @@
 	for(var/X in GLOB.courtier_positions)
 		peopleknowme += X
 
-/datum/job/roguetown/dungeoneer/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/slavemaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
@@ -51,10 +49,10 @@
 /datum/outfit/job/roguetown/slavemaster
 	job_bitflag = BITFLAG_GARRISON
 
-/datum/advclass/dungeoneer
-	name = "Dungeoneer"
+/datum/advclass/slavemaster
+	name = "Slavemaster"
 	tutorial = "Penance, filthy sense of sadism or a queer outlook on justice, something has led you to don the shunned mask and fulfill the whims of the Nobility. Their whims are your guidance, as you've no 'moral quandaries' to care for."
-	outfit = /datum/outfit/job/roguetown/dungeoneer/base
+	outfit = /datum/outfit/job/roguetown/slavemaster/base
 
 	category_tags = list(CTAG_DUNGEONEER)
 	subclass_stats = list(
@@ -80,7 +78,7 @@
 	)
 	adv_stat_ceiling = list(STAT_STRENGTH = 16, STAT_CONSTITUTION = 16, STAT_WILLPOWER = 16)
 
-/datum/outfit/job/roguetown/dungeoneer/base/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/slavemaster/base/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
@@ -106,10 +104,3 @@
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	//Torture victim is for inquisition - doesn't even work without a psicross anymore so maybe come up with a variant for him specifically?
-	switch(H.patron?.type)
-		if(/datum/patron/divine/necra)
-			head = /obj/item/clothing/head/roguetown/necrahood
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/necra
-		else
-			cloak = /obj/item/clothing/cloak/stabard/dungeon
-			head = /obj/item/clothing/head/roguetown/menacing
