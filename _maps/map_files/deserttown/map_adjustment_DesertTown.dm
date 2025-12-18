@@ -24,13 +24,13 @@
 		// /datum/job/roguetown/adventurer//Adventurers (Could rename which are 'foreigners but who cares)'
 		// /datum/job/roguetown/wretch,
 		// /datum/job/roguetown/bandit,
-		/datum/job/roguetown/pilgrim,
+		// /datum/job/roguetown/pilgrim, //well since they're foreigners... no need to change...
 		// /datum/job/roguetown/trader,
 		// /datum/job/roguetown/assassin,
 
-		/datum/job/roguetown/lord,
-		/datum/job/roguetown/knight,
-		/datum/job/roguetown/hand,
+		/datum/job/roguetown/lord,// sultan
+		/datum/job/roguetown/knight,// cataphract
+		/datum/job/roguetown/hand,// vizier
 		// /datum/job/roguetown/suitor,
 		// /datum/job/roguetown/steward,
 		// /datum/job/roguetown/consort,
@@ -39,23 +39,23 @@
 
 		//church. Fine as is
 
-		/datum/job/roguetown/butler,
-		/datum/job/roguetown/councillor,
-		/datum/job/roguetown/magician,
-		/datum/job/roguetown/jester, //are jesters really a desert thing?
+		/datum/job/roguetown/butler,// headslave
+		/datum/job/roguetown/councillor,// sheikh
+		/datum/job/roguetown/magician,// palace magician
+		/datum/job/roguetown/jester, //are jesters really a desert thing? Maybe ought to push people into playing slaves instead..?
 		// /datum/job/roguetown/physician,
 
-		/datum/job/roguetown/manorguard,
-		/datum/job/roguetown/bogguardsman,
-		/datum/job/roguetown/dungeoneer,
+		/datum/job/roguetown/manorguard,//  mamaluk
+		/datum/job/roguetown/guardsman,//  mamaluk
+		/datum/job/roguetown/bogguardsman,//  jannissary
+		/datum/job/roguetown/dungeoneer,// Slavemaster
 		// /datum/job/roguetown/sergeant,
 		// /datum/job/roguetown/squire,
-		// /datum/job/roguetown/guardsman,
-		/datum/job/roguetown/veteran,
+		// /datum/job/roguetown/veteran,
 
 		//trader (probably fine to keep as it is)
 
-		/datum/job/roguetown/crier,
+		/datum/job/roguetown/crier, //would be fun to integrate in with the arena? Reimplement when building is added
 		// /datum/job/roguetown/archivist,
 		// /datum/job/roguetown/barkeep,
 		// /datum/job/roguetown/guildmaster,
@@ -80,19 +80,18 @@
 
 		//mercenaries. Fine as is
 		
-		/datum/job/roguetown/servant,
+		/datum/job/roguetown/servant,//slave
 		// /datum/job/roguetown/apothecary,
 		// /datum/job/roguetown/churchling,
 		// /datum/job/roguetown/clerk,
 		// /datum/job/roguetown/wapprentice,
 		// /datum/job/roguetown/orphan,
-		/datum/job/roguetown/prince,
-		/datum/job/roguetown/shophand,
+		/datum/job/roguetown/prince,//dtprince
+		/datum/job/roguetown/shophand,//dtshophand
 		
 	)
 
 //list to blacklist for other maps (update as new replacements are added)
-		// /datum/job/roguetown/dtpilgrim,
 		// /datum/job/roguetown/dtvillager,
 
 		// /datum/job/roguetown/sultan,
