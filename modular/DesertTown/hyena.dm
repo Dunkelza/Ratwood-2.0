@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/hyena
-	icon = 'icons/roguetown/mob/monster/Hyena.dmi'
+	icon = 'modular/DesertTown/icons/Hyena.dmi'
 	name = "hyena"
 	desc = "Usually content to leave menfolk alone if well-fed, but something in the wilds turns them hungry, persistent, and vicious."
 	icon_state = "yeen"
