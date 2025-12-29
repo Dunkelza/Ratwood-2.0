@@ -12,7 +12,10 @@
 	outfit = /datum/outfit/job/roguetown/vizier
 	advclass_cat_rolls = list(CTAG_HAND = 20)
 	display_order = JDO_HAND
-	tutorial = "You owe everything to your liege. Once, you were just a humble friend- now you are one of the most important men within the realm itself. You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
+	tutorial = "You owe everything to your liege. Once, you were just a humble friend- now you are one of the most important men within the realm itself. \
+	You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction.\
+	 Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to.\
+	 ALSO (rewrite this) YOU MANAGE FINANCES TOO!!"
 	whitelist_req = TRUE
 	give_bank_account = 44
 	noble_income = 22
@@ -265,3 +268,22 @@
 	if(!.)
 		return
 	GLOB.court_agents += recruit.real_name
+
+
+
+//Could do a version of this for Vizier
+// GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
+// /mob/living/carbon/human/proc/adjust_taxes_vizier()
+// 	set name = "Adjust Taxes"
+// 	set category = "Stewardry"
+// 	if(stat)
+// 		return
+// 	var/lord = find_lord()
+// 	if(lord)
+// 		to_chat(src, span_warning("You cannot adjust taxes while the [SSticker.rulertype] is present in the realm. Ask your sultan."))
+// 		return
+// 	if(world.time < GLOB.steward_tax_cooldown + 600 SECONDS)
+// 		to_chat(src, span_warning("You must wait [round((GLOB.steward_tax_cooldown + 600 SECONDS - world.time)/600, 0.1)] minutes before adjusting taxes again! Think of the realm."))
+// 		return FALSE
+// 	var/datum/taxsetter/taxsetter = new("The Diligent Vizier Intervenes", "The Greedy Vizier Imposes")
+// 	taxsetter.ui_interact(src)

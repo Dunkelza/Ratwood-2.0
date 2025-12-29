@@ -434,3 +434,7 @@
 // 		held_items[Q]["PRICE"] = 100
 
 // 	update_icon()
+
+
+/obj/structure/fluff/walldeco/customflag/deserttown
+	name = "Al-Ashur flag"

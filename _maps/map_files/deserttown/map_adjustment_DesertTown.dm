@@ -16,7 +16,7 @@
 		/datum/job/roguetown/priest =  list(display_title = "High Priest", f_title = "High Priestess")
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building.."
+		/datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building!!!"
 	)
 	/// Jobs that this map won't use
 	blacklist = list(
@@ -32,7 +32,7 @@
 		/datum/job/roguetown/knight,// cataphract
 		/datum/job/roguetown/hand,// vizier
 		// /datum/job/roguetown/suitor,
-		// /datum/job/roguetown/steward,
+		/datum/job/roguetown/steward, //gonna try merging this role with Vizier
 		// /datum/job/roguetown/consort,
 		// /datum/job/roguetown/captain,
 		// /datum/job/roguetown/bailiff,
@@ -48,7 +48,7 @@
 		/datum/job/roguetown/manorguard,//  mamaluk
 		/datum/job/roguetown/guardsman,//  mamaluk
 		/datum/job/roguetown/bogguardsman,//  jannissary
-		/datum/job/roguetown/dungeoneer,// Slavemaster
+		/datum/job/roguetown/dungeoneer,// Slavemaster. Okay it's a bit different but it's nice to cut bloat y'know!
 		// /datum/job/roguetown/sergeant,
 		// /datum/job/roguetown/squire,
 		// /datum/job/roguetown/veteran,
@@ -63,7 +63,7 @@
 		// /datum/job/roguetown/merchant,
 		// /datum/job/roguetown/niteman,
 		// /datum/job/roguetown/tailor,
-		// /datum/job/roguetown/elder,
+		/datum/job/roguetown/elder,
 		
 		/datum/job/roguetown/villager,
 		// /datum/job/roguetown/farmer,
@@ -83,7 +83,7 @@
 		/datum/job/roguetown/servant,//slave
 		// /datum/job/roguetown/apothecary,
 		// /datum/job/roguetown/churchling,
-		// /datum/job/roguetown/clerk,
+		/datum/job/roguetown/clerk, //gonna try merging this with Sheikh
 		// /datum/job/roguetown/wapprentice,
 		// /datum/job/roguetown/orphan,
 		/datum/job/roguetown/prince,//dtprince
