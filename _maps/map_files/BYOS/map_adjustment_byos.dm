@@ -44,7 +44,13 @@
 		// /datum/job/roguetown/captain,
 		/datum/job/roguetown/marshal, //nyeah fuck you
 
-		//church. Fine as is
+		//church. 
+		/datum/job/roguetown/keeper,
+		// /datum/job/roguetown/monk,
+		// /datum/job/roguetown/templar,
+		// /datum/job/roguetown/priest,
+		// /datum/job/roguetown/martyr,
+		// /datum/job/roguetown/druid,
 
 		// /datum/job/roguetown/butler,
 		// /datum/job/roguetown/councillor,
