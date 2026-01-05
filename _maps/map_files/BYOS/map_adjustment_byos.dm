@@ -12,15 +12,22 @@
 		/datum/job/roguetown/adventurer = 69
 	)
 	title_adjust = list(
-		/datum/job/roguetown/lord = list(display_title = "Lord Castellan", f_title = "Lady Castellan")
+		/datum/job/roguetown/lord = list(display_title = "Viceroy", f_title = "Vicereine"),
+		/datum/job/roguetown/bandit = "Pirate",
+		/datum/job/roguetown/orphan = "Stowaway",
 	)
 	tutorial_adjust = list(
-		/datum/job/roguetown/lord = "The Gronnmen are coming."
+		/datum/job/roguetown/lord = "You have been sent by the queen to oversee the colony of New Kingsfield. CHANGE THIS LATER.",
+		/datum/job/roguetown/bandit = "CHANGE THIS LATER - Yarh har plunder!" ,
+		// "At some point in your lyfe, you'd fallen to the wrong side of the PIRATESHIP!. Whether by butchery or finesse, you're known throughout the SEVEN SEAS. \
+	Yet one of many faces in a tavern, hung up on a wall. A tale told by the locals. Now, you lyve in a PIRATES COVE with your fellows, to avoid an unpleasant end."
+		/datum/job/roguetown/orphan = "CHANGE THIS LATER!",
+
 	)
 	/// Jobs that this map won't use
 	blacklist = list(
 		
-		// /datum/job/roguetown/adventurer//Adventurers (Could rename which are 'foreigners but who cares)'
+		// /datum/job/roguetown/adventurer//Adventurers
 		// /datum/job/roguetown/wretch,
 		// /datum/job/roguetown/bandit,
 		/datum/job/roguetown/pilgrim,
