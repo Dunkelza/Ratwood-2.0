@@ -551,14 +551,14 @@
 		return advj
 
 
-
-/obj/item/steward/nervemaster_kit
-    name = "Nerve Master Kit"
-    desc = "A heavy crate containing the parts to assemble a Nerve Master with ease. How handy! (Right-Click to disassemble.)"
-    icon = 'icons/roguetown/misc/structure.dmi'
-    icon_state = "woodchest"
-    w_class = 4
-    color = "#5e0808"
+//old code for special byos steward items which I think I'll cut for now
+// /obj/item/steward/nervemaster_kit
+//     name = "Nerve Master Kit"
+//     desc = "A heavy crate containing the parts to assemble a Nerve Master with ease. How handy! (Right-Click to disassemble.)"
+//     icon = 'icons/roguetown/misc/structure.dmi'
+//     icon_state = "woodchest"
+//     w_class = 4
+//     color = "#5e0808"
 
 
 //okay I don't know if we even use the vault in apcode and it was throwing errors so probably doesn't matter
@@ -589,16 +589,16 @@
 //         to_chat(user, "<span class='notice'>You finish packing up the Nerve Master!</span>")
 //         del(src)
 
-/datum/crafting_recipe/roguetown/structure/scomm/byos
-	name = "SCOMM - (rat, iron ingot, cog; EXPERT)"
-	result = /obj/structure/roguemachine/scomm/byos
-	reqs = list(/obj/item/reagent_containers/food/snacks/smallrat = 1,
-				/obj/item/ingot/iron = 1,
-				/obj/item/roguegear/bronze = 1)
-	verbage = "engineers"
-	skillcraft = /datum/skill/craft/engineering
-	wallcraft = TRUE
-	craftdiff = 4
+// /datum/crafting_recipe/roguetown/structure/scomm/byos
+// 	name = "SCOMM - (rat, iron ingot, cog; EXPERT)"
+// 	result = /obj/structure/roguemachine/scomm/byos
+// 	reqs = list(/obj/item/reagent_containers/food/snacks/smallrat = 1,
+// 				/obj/item/ingot/iron = 1,
+// 				/obj/item/roguegear/bronze = 1)
+// 	verbage = "engineers"
+// 	skillcraft = /datum/skill/craft/engineering
+// 	wallcraft = TRUE
+// 	craftdiff = 4
 
 #undef TAB_MAIN
 #undef TAB_BANK
