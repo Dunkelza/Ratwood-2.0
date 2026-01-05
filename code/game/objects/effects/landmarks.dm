@@ -30,6 +30,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/list/jobspawn_override = list()
 	var/delete_after_roundstart = TRUE
 	var/used = FALSE
+	var/map = null
 
 /obj/effect/landmark/start/proc/after_round_start()
 	if(delete_after_roundstart)
@@ -43,6 +44,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 				GLOB.jobspawn_overrides[X] = list()
 			GLOB.jobspawn_overrides[X] += src
 	. = ..()
+	if(src.map && SSmapping && SSmapping.config && SSmapping.config.map_name != src.map)
+		qdel(src)
+		return
 	if(name != "start")
 		tag = "start*[name]"
 
