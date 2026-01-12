@@ -806,6 +806,10 @@
 	tavern_area = 1;
 	name = "tavern basement"
 	})
+"aBE" = (
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/citybrick/citybrick2,
+/area/rogue/indoors/deserttown/manor)
 "aBL" = (
 /mob/living/carbon/human/species/orc/npc/warlord,
 /turf/open/floor/rogue/twig,
@@ -4029,6 +4033,10 @@
 	},
 /turf/open/floor/rogue/darkpath,
 /area/rogue/indoors/deserttown)
+"czF" = (
+/obj/effect/landmark/start/dt/courtslave,
+/turf/open/floor/rogue/citybrick/citybrick1,
+/area/rogue/indoors/deserttown/garrison/cell/outdoor)
 "cAe" = (
 /obj/structure/stairs/desert,
 /turf/open/floor/rogue/citybrick/citybrick1,
@@ -20073,6 +20081,13 @@
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/outdoors/desert)
+"mCk" = (
+/obj/structure/fluff/statue/knight{
+	icon = 'modular/DesertTown/icons/alt/tallstructure.dmi'
+	},
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/citybrick/citybrick2,
+/area/rogue/indoors/deserttown/manor)
 "mCm" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -29976,6 +29991,10 @@
 	},
 /turf/open/floor/rogue/citybrick/citybrick1,
 /area/rogue/outdoors/deserttown)
+"snX" = (
+/obj/effect/landmark/start/dt/courtslave,
+/turf/open/floor/rogue/deserttile,
+/area/rogue/indoors/deserttown/garrison/cell)
 "sog" = (
 /obj/structure/fluff/wallclock,
 /turf/open/floor/rogue/woodturned,
@@ -345640,8 +345659,8 @@ cHm
 ayt
 aGz
 mEC
-cHm
-ayt
+aBE
+mCk
 cHm
 lhF
 sNf
@@ -352031,7 +352050,7 @@ bGz
 ttE
 xiy
 wAb
-veP
+czF
 veP
 iLv
 qzQ
@@ -352630,7 +352649,7 @@ wgb
 wgb
 hzD
 vev
-bGz
+snX
 sYI
 vev
 xiy
@@ -353239,7 +353258,7 @@ vev
 vev
 xiy
 veP
-veP
+czF
 veP
 xpE
 qzQ
