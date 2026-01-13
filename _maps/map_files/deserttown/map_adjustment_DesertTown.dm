@@ -15,9 +15,13 @@
 		/datum/job/roguetown/marshal = list(display_title = "Mayor"),
 		/datum/job/roguetown/priest =  list(display_title = "High Priest", f_title = "High Priestess"),
 		/datum/job/roguetown/captain = list(display_title = "Cataphract Captain"),
+		/datum/job/roguetown/physician = list(display_title = "Court Physician"),
 	)
 	tutorial_adjust = list(
 		/datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building!!!"
+		/datum/job/roguetown/physician = "You are a master physician, trusted by the Sultan themself to administer expert care to the Royal family, the court, \
+		its protectors and its subjects. While primarily a resident of the keep in the palace medical wing, you also have access \
+		 to the local clinic in the bazaar, where lesser licensed apothecaries ply their trade under your occasional passing tutelage.",
 	)
 	/// Jobs that this map won't use
 	blacklist = list(

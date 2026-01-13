@@ -7,7 +7,7 @@
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
 	cmode_music = 'sound/music/cmode/towner/combat_towner2.ogg'
-	category_tags = list(CTAG_TOWNER)
+	category_tags = list(CTAG_DTTOWNER)
 	subclass_languages = list(/datum/language/thievescant)
 	subclass_stats = list(
 		STATKEY_CON = 3,

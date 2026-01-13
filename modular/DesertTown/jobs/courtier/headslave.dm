@@ -29,7 +29,7 @@
 
 /datum/advclass/headslave
 	traits_applied = list(TRAIT_CICERONE, TRAIT_HOMESTEAD_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_ROYALSERVANT) // They have Expert Sewing
-	category_tags = list(CTAG_SENESCHAL)
+	// category_tags = list(CTAG_SENESCHAL)
 	name = "Head Slave"
 	tutorial = "While still expected to fill in for the duties of the household slaves as needed, you have styled yourself as a figure beyond them."
 	outfit = /datum/outfit/job/roguetown/headslave/headslave

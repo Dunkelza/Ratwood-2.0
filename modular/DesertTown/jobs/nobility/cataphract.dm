@@ -62,7 +62,7 @@
 	)
 
 /datum/advclass/cataphract/greatweapon
-	name = "Heavy Knight"
+	name = "Great-weapon warrior"
 	tutorial = "You've trained thoroughly and hit far harder than most - masterfully proficient in mighty swords, axes, maces or polearms."
 	outfit = /datum/outfit/job/roguetown/cataphract/greatweapon
 
@@ -148,7 +148,7 @@
 	)
 
 /datum/advclass/cataphract/shieldmaster
-	name = "Foot Knight"
+	name = "Shieldmaster"
 	tutorial = "You are accustomed to traditional foot-soldiery, masterfully proficient in swords, flails, or maces. \
 	Your fortitude and mastery with the versatile combination of a shield and weapon makes you a fearsome opponent to take down!"
 	outfit = /datum/outfit/job/roguetown/cataphract/shieldmaster

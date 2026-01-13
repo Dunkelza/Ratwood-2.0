@@ -114,7 +114,7 @@
 	H.set_blindness(0)
 
 /datum/advclass/janissary/footman
-	name = "footman"
+	name = "Footman"
 	tutorial = "You are well versed in the ways of handling a sword. \
 	You will stand in the front, and protect."
 	outfit = /datum/outfit/job/roguetown/janissary/footman

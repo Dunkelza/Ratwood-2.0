@@ -324,13 +324,18 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_PRISONER 		"CAT_PRISONER"
 
 
-#define CTAG_VIZIER			"CTAG_VIZIER"		// Hand class alt
+#define CTAG_VIZIER			"CAT_VIZIER"		// Hand class alt
+#define CTAG_SHEIKH			"CAT_SHEIKH"		// Hand class alt
 #define CTAG_SULTAN			"CAT_SULTAN"		// Lord alt
 #define CTAG_DTHEIR			"CAT_DTHEIR"		// Heir alt
 #define CTAG_CATAPHRACT		"CAT_CATAPHRACT"	// Knight alt
-#define CTAG_JANISSARY		"CTAG_JANISSARY"	// Warden (?) alt
-#define CTAG_MAMLUK			"CTAG_MAMLUK"		// Menatarms alt
+#define CTAG_JANISSARY		"CAT_JANISSARY"	// Warden (?) alt
+#define CTAG_MAMLUK			"CAT_MAMLUK"		// Menatarms alt
 #define CTAG_SLAVEMASTER	"CAT_SLAVEMASTER"
+#define CTAG_DTTOWNER		"CAT_DTTOWNER"
+#define CTAG_PSLAVE			"CAT_PSLAVE"
+#define CTAG_DTCOURTMAGE	"CTAG_DTCOURTMAGE"
+
 
 // List of mono-class categories. Only here for standardisation sake, but can be added on if desired.
 #define CTAG_DUNGEONEER		"CAT_DUNGEONEER"

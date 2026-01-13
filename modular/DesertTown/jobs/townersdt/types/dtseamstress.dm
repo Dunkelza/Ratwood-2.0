@@ -8,7 +8,7 @@
 	traits_applied = list(TRAIT_SEWING_EXPERT, TRAIT_SELF_SUSTENANCE)
 
 	traits_applied = list(TRAIT_DYES)
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM, CTAG_DTTOWNER)
 	subclass_stats = list(
 		STATKEY_SPD = 2,
 		STATKEY_INT = 3,

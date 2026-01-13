@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/dtdrunkard
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
 	
-	category_tags = list(CTAG_TOWNER)
+	category_tags = list(CTAG_DTTOWNER)
 	subclass_stats = list(
 		STATKEY_LCK = 2,
 		STATKEY_CON = 1,

@@ -8,7 +8,7 @@
 	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_SURVIVAL_EXPERT)
 	cmode_music = 'sound/music/cmode/towner/combat_towner2.ogg'
 
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM, CTAG_DTTOWNER)
 	subclass_stats = list(
 		STATKEY_PER = 3,
 		STATKEY_INT = 1,

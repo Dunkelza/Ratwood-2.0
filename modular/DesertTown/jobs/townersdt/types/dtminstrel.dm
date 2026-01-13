@@ -6,7 +6,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/dtminstrel
 	subclass_social_rank = SOCIAL_RANK_PEASANT
-	category_tags = list(CTAG_TOWNER)
+	category_tags = list(CTAG_DTTOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_GOODLOVER, TRAIT_HOMESTEAD_EXPERT)
 	subclass_stats = list(
 		STATKEY_SPD = 2,
