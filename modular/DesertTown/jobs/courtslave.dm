@@ -1,6 +1,6 @@
 /datum/job/roguetown/adventurer/courtslave
 	title = "Enslaved Adventurer"
-	flag = COURTSLAVE
+	flag = ADVENTURER
 	display_order = JDO_COURTAGENT
 	allowed_races = RACES_ALL_KINDS
 	total_positions = 3
