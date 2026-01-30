@@ -32,7 +32,7 @@
 
 //Makes you a little chilly
 /datum/particle_weather/snow_gentle/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(1,3))
+	L.adjust_bodytemperature(-rand(1,1.5))
 
 
 /datum/particle_weather/snow_storm
@@ -58,7 +58,7 @@
 
 //Makes you a lot little chilly
 /datum/particle_weather/snow_storm/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(10,25))
+	L.adjust_bodytemperature(-rand(5,10))
 
 /turf
 	var/turf_flags = TURF_EFFECT_AFFECTABLE

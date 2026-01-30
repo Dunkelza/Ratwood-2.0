@@ -19,7 +19,7 @@
 	name = "Dry Thunderstorm"
 	desc = "Lightning without rain, la la description."
 	particleEffectType = /particles/weather/static_spark
-	warning_message = span_danger("Dark clouds roll across the sky, echo's of thunder rumbling across the dry realm.")
+	warning_message = span_greenannounce("Dark clouds roll across the sky, echo's of thunder rumbling across the dry realm.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/drythunder)
 	indoor_weather_sounds = list(/datum/looping_sound/drythunder/indoors)

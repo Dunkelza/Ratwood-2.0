@@ -43,10 +43,7 @@
 			H.visible_message("<span class='info'>[H] warms [user.p_their()] hand over the fire.</span>")
 
 			if(do_after(H, 15, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-				to_chat(H, "<span class='warning'>HOT!</span>")
-				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays()
+				H.adjust_bodytemperature(75)
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 	else
@@ -150,6 +147,22 @@
 	no_refuel = TRUE
 	crossfire = FALSE
 	cookonme = TRUE
+	var/warmhands = TRUE
+
+/obj/machinery/light/rogue/wallfire/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!on || !warmhands)
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(istype(H))
+		H.visible_message("<span class='info'>[H] warms [user.p_their()] hand over the fire.</span>")
+
+		if(do_after(H, 15, target = src))
+			H.adjust_bodytemperature(75)
+	return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 /obj/machinery/light/rogue/wallfire/candle
 	name = "candles"
@@ -160,6 +173,7 @@
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
+	warmhands = FALSE
 
 /obj/machinery/light/rogue/wallfire/candle/off
 	name = "candles"

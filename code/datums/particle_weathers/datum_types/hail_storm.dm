@@ -18,7 +18,7 @@
 	name = "Hail"
 	desc = "Hailstorm"
 	particleEffectType = /particles/weather/hail
-	warning_message = span_danger("The upper air chills and freezes as clouds gather above.")
+	warning_message = span_greenannounce("The upper air chills and freezes as clouds gather above.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/hail)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_hail)
@@ -35,7 +35,7 @@
 	if(issimple(L))
 		return
 
-	L.adjust_bodytemperature(-rand(5, 15))
+	L.adjust_bodytemperature(-rand(5, 10))
 	var/armor_block = L.run_armor_check(BODY_ZONE_HEAD, "blunt", blade_dulling=BCLASS_BLUNT)
 	if(L.apply_damage(rand(5, 10), UNARMED_ATTACK, BODY_ZONE_HEAD, armor_block))
 		if(prob(25))

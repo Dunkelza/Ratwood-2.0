@@ -19,7 +19,7 @@
 	name = "Ashstorm"
 	desc = "firey-ash from a volcano"
 	particleEffectType = /particles/weather/ash
-	warning_message = span_danger("A thunderious cataclysm thunders in the distance and the skies grow unnaturally dark.")
+	warning_message = span_greenannounce("A thunderious cataclysm thunders in the distance and the skies grow unnaturally dark.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/ash)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_ash)
@@ -34,8 +34,8 @@
 /datum/particle_weather/ashstorm/weather_act(mob/living/L)
 	if(issimple(L))
 		return
-
-	L.adjust_bodytemperature(rand(30, 45))
+	if(L.bodytemperature < 600)	//Prevent endless temperature rise
+		L.adjust_bodytemperature(rand(5,15))
 	if(prob(25))
 		L.adjust_fire_stacks(1)
 		to_chat(L, span_danger("You're caught in a haze of burning, flammable ash!"))

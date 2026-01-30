@@ -19,7 +19,7 @@
 	name = "Fireflies"
 	desc = "Tiny glowing insects drift lazily through the air."
 	particleEffectType = /particles/weather/fireflies
-	warning_message = span_danger("Faint glows appear in the distance across the realm.")
+	warning_message = span_greenannounce("Faint glows appear in the distance across the realm.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list() // intentionally quiet
 

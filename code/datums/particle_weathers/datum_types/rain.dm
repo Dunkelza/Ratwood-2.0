@@ -18,7 +18,7 @@
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/rain
-	warning_message = span_danger("Grey clouds gather up above the realm, beholding the gift of life.")
+	warning_message = span_greenannounce("Grey clouds gather up above the realm, beholding the gift of life.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
@@ -34,7 +34,8 @@
 
 //Makes you a little chilly
 /datum/particle_weather/rain_gentle/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(1,3))
+	if(L.bodytemperature > BODYTEMP_COLD_LEVEL_ONE_MAX + 3)
+		L.adjust_bodytemperature(-rand(1,3))
 	L.adjust_fire_stacks(-100)
 	L.SoakMob(FULL_BODY)
 	wash_atom(L,CLEAN_WEAK)
@@ -95,7 +96,8 @@
 
 //Makes you a bit chilly
 /datum/particle_weather/rain_storm/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(3,5))
+	if(L.bodytemperature > BODYTEMP_COLD_LEVEL_ONE_MAX + 3)
+		L.adjust_bodytemperature(-rand(3,5))
 	L.adjust_fire_stacks(-100)
 	L.SoakMob(FULL_BODY)
 	wash_atom(L,CLEAN_STRONG)

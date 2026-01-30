@@ -30,7 +30,7 @@
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/leaves
-	warning_message = span_danger("Light winds blow in through the forests across the realm.")
+	warning_message = span_greenannounce("Light winds blow in through the forests across the realm.")
 	scale_vol_with_severity = TRUE
 
 	minSeverity = 1
@@ -45,7 +45,7 @@
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/leaves
-	warning_message = span_danger("Heavy winds blow in through the forests across the realm.")
+	warning_message = span_greenannounce("Heavy winds blow in through the forests across the realm.")
 	scale_vol_with_severity = TRUE
 
 	minSeverity = 4
