@@ -1035,6 +1035,52 @@
 		visible_message(span_warning("[src] spits out [mouth]."))
 		dropItemToGround(mouth, silent = FALSE)
 
+/mob/living/carbon/human/proc/cold_warn()
+	if(src.body_temperature >= BODYTEMP_COLD_LEVEL_ONE_MAX)
+		to_chat(src, span_danger("I feel so cold and numb, I can't stop shivering."))
+	else
+		to_chat(src, span_warning("Everything is cold."))
+	return
+/mob/living/carbon/human/proc/heat_warn()
+	if(src.body_temperature >= BODYTEMP_HEAT_LEVEL_ONE_MAX)
+		to_chat(src, span_danger("My lips feel cracked and dry, and it is unbearably hot."))
+	else
+		to_chat(src, span_warning("Sweat drips down my brow."))
+	return
+
+
+/mob/living/carbon/human/proc/apply_frostbite()
+	var/mob/living/carbon/human/H = src
+	if(H.body_temperature >= BODYTEMP_COLD_LEVEL_ONE_MAX)	//if not cold enough after timer, kill
+		return
+
+	var/def_zone = BODY_ZONE_CHEST
+	def_zone = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+	// Check if frostbite already exists on this bodypart
+	var/obj/item/bodypart/BP = H.get_bodypart(def_zone)
+	for(var/datum/wound/W in BP.wounds)
+		if(istype(W, /datum/wound/frostbite))
+			return
+	if(BP)
+		to_chat(H, span_userdanger("I feel pins and needles in [BP]!"))
+		BP.add_wound(/datum/wound/frostbite)
+		BP.update_disabled()
+
+/mob/living/carbon/human/proc/apply_heatstroke()
+	var/mob/living/carbon/human/H = src
+	if(H.body_temperature <= BODYTEMP_HEAT_LEVEL_ONE_MAX)	//if not hot enough after timer, kill
+		return
+
+	var/def_zone = BODY_ZONE_HEAD
+	var/obj/item/bodypart/BP = H.get_bodypart(def_zone)
+	for(var/datum/wound/W in BP.wounds)
+		if(istype(W, /datum/wound/heatstroke))
+			return
+	if(BP)
+		to_chat(H, span_userdanger("I feel pins and needles in [BP]!"))
+		BP.add_wound(/datum/wound/heatstroke)
+		BP.update_disabled()
+
 /*/mob/living/carbon/human/proc/update_heretic_commune()
 	if(HAS_TRAIT(src, TRAIT_COMMIE) || HAS_TRAIT(src, TRAIT_CABAL) || HAS_TRAIT(src, TRAIT_HORDE) || HAS_TRAIT(src, TRAIT_DEPRAVED))
 		verbs |= /mob/living/carbon/human/verb/commune

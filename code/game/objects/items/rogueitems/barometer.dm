@@ -3,7 +3,8 @@
 	desc = "a primitive instrument to track incoming weather"
 	icon_state = "barometer"
 	icon = 'icons/roguetown/items/misc.dmi'
-
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/barometer/Initialize()
 	. = ..()

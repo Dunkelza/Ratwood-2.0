@@ -464,9 +464,9 @@
 
 /datum/wound/heatstroke
 	name = "heatstroke"
-	check_name = span_warning("HEAD")
+	check_name = span_warning("HEATSTROKE")
 	severity = 0
-	crit_message = "The world is spinning!"
+	crit_message = ""
 	whp = null
 	woundpain = 0
 	mob_overlay = "cut"
@@ -486,3 +486,29 @@
 	var/mob/living/carbon/carbon_owner = owner
 	if(!carbon_owner.stat && prob(5))
 		carbon_owner.vomit(1, blood = TRUE, stun = TRUE)
+		to_chat(owner, span_warning("The world is spinning!"))
+
+/datum/wound/frostbite
+	name = "frostbite"
+	check_name = span_blue("FROSTBITE")
+	severity = 0
+	crit_message = ""
+	whp = null
+	woundpain = 0
+	mob_overlay = "cut"
+	can_sew = FALSE
+	can_cauterize = FALSE
+	critical = FALSE
+	sleep_healing = 0
+	bleed_rate = 0
+	clotting_threshold = 0
+	clotting_rate = 0
+	bypass_bloody_wound_check = TRUE
+
+/datum/wound/frostbite/on_life()
+	. = ..()
+	if(!iscarbon(owner))
+		return
+	var/mob/living/carbon/carbon_owner = owner
+	if(!carbon_owner.stat && prob(30))
+		carbon_owner.apply_damage(10, BURN)

@@ -2058,13 +2058,41 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	icon_state = "breath_m",
 	layer = MOB_LAYER + 0.1
 ))
+/datum/species/proc/heat_warn(mob/living/carbon/human/H)
+	if(hascall(H, /mob/living/carbon/human/proc/heat_warning_cooldown))
+		if(H.has_timer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warning_cooldown))))
+			return FALSE
+
+	addtimer(
+		CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warning_cooldown)),
+		10 SECONDS,
+		TIMER_UNIQUE
+	)
+	return TRUE
+
+
+/datum/species/proc/can_cold_warn(mob/living/carbon/human/H)
+	if(hascall(H, /mob/living/carbon/human/proc/cold_warning_cooldown))
+		if(H.has_timer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warning_cooldown))))
+			return FALSE
+
+	addtimer(
+		CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warning_cooldown)),
+		10 SECONDS,
+		TIMER_UNIQUE
+	)
+	return TRUE
 
 //This has been redesigned for new Temperature system. We have 5 temperature 'blocks' signifying Very Cold, Cold, Normal, Hot, and Very hot.
 //Homeostasis effect has been removed entirely, simplifying temperature. Tiles have set temperatures, and mobs will slowly move towards those temperatures when on those tiles.
-//Cold/heat protection are taken into effect in differing circumstances
+//Base temperature of tiles is 300, with some tiles like snow and sand having uniquely set higher and lower.
+//Temperature effects are adjusted up and down dependant on Time of Day, and map to account for climate.
+//Weather affects temperature of mobs independantly of handle_environment and does not touch turf temperatures.
+//Cold/heat protection are taken into effect in differing circumstances.
+//It takes 6.6 minutes to shift 100'points' of temperature by defacto, increased or reduced depending on situation and protection levels. A maximum of 9.9 and a minimum of 3.3.
 //When the environment is hot, we check if the players temp is above or below 'Normal', and apply protection to increase, or reduce the gradual shift to being hotter from exposure.
 //Functionally this does the same thing for when the environment is cold.
-//when in level 1 of cold, mobs will become hungrier faster. shiver occasionally.
+//When in level 1 of cold, mobs will become hungrier faster. shiver occasionally.
 //Level 2 of cold will shiver more frequently, provide movement slowdown, potentially con reduction and after 5 minutes of exposure to cold, frostbite wound will be applied if body temp still at level 2
 //When in level 1 of heat, mobs will become thirstier faster.
 //Level 2 of heat will cause reduction of WIL, half stamina regen and heatstroke will be applied if body temp still at level 2
@@ -2076,7 +2104,8 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(!cur_turf)
 		return
 	var/loc_temp = cur_turf.temperature
-	if(cur_turf.outdoor_effect || !cur_turf.outdoor_effect?.weatherproof)	//We check if our turf is outdoors before applying map/ToD modifiers
+
+	if(cur_turf.outdoor_effect)	//We check if our turf is outdoors before applying map/ToD modifiers
 		loc_temp += H.get_temp_modifier()	//Refer to human/statusprocs.dm, This lets us add modifier temperatures based on map and ToD relying on bitflags
 
 	if(!H.on_fire)
@@ -2090,7 +2119,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 				protection = (0.25 * H.get_cold_protection(loc_temp))
 			else
 				// Heating is BAD (we are hotter then norm)
-				protection = (-0.125 * (1 - H.get_heat_protection(loc_temp)))
+				protection = (-0.125 * (1 - H.get_heat_protection(loc_temp)))	//a maximum of 9.9 minutes of time to move 100 points of temp (one level)
 
 			var/step = 0.25 + (protection)
 			env_adjust = step
@@ -2102,7 +2131,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 				protection = (0.25 * H.get_heat_protection(loc_temp))
 			else
 				// Cooling is BAD (we are colder then norm)
-				protection = (-0.125 * (1 - H.get_cold_protection(loc_temp)))
+				protection = (-0.125 * (1 - H.get_cold_protection(loc_temp)))	//a maximum of 9.9 minutes of time to move 100 points of temp (one level)
 
 			var/step = 0.25 + (protection)
 			env_adjust = -step
@@ -2119,15 +2148,14 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(H.bodytemperature > BODYTEMP_NORMAL_MAX && !HAS_TRAIT(H, TRAIT_RESISTHEAT))	//either level one or level two heat
 		//Body temperature is too hot.
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
-		if(H.bodytemperature > BODYTEMP_HEAT_LEVEL_ONE_MAX)	//Level 2 heat- heavy thirst, con mod, impending heatstroke
-			if(prob(20))
-				to_chat(H,span_danger("My lips feel cracked and dry, and it is unbearably hot."))
-			//FIRE_STACKS Human damage taken from fire is determined here.
+		if(H.body_temperature >= BODYTEMP_HEAT_LEVEL_ONE_MAX)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warning_cooldown)),10 SECONDS,TIMER_UNIQUE)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_heatstroke)),2 MINUTES ,TIMER_UNIQUE | TIMER_STOPPABLE)
 
 		else	//level 1 heat
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warning_cooldown)),10 SECONDS,TIMER_UNIQUE)
 			H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
-			if(prob(20))
-				to_chat(H,span_warning("Sweat drips down my brow."))
+
 
 
 	else if(H.bodytemperature < BODYTEMP_NORMAL_MIN && !HAS_TRAIT(H, TRAIT_RESISTCOLD))	//either level one or level two cold
@@ -2135,16 +2163,15 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 			//FIRE_STACKS Human damage taken from fire is determined here.
 			if(prob(30))
 				H.emote(pick("shiver"))
-			if(prob(20))
-				to_chat(H,span_danger("I feel so cold and numb, I can't stop shivering."))
-			H.add_movespeed_modifier(MOVESPEED_ID_COLD, override = TRUE, multiplicative_slowdown = ((BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature) / COLD_SLOWDOWN_FACTOR), blacklisted_movetypes = FLOATING)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warning_cooldown)),10 SECONDS,TIMER_UNIQUE)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_frostbite)),2 MINUTES, TIMER_UNIQUE | TIMER_STOPPABLE)
+			H.add_movespeed_modifier(MOVESPEED_ID_COLD, override = TRUE, multiplicative_slowdown = ((BODYTEMP_COLD_LEVEL_ONE_MAX - H.bodytemperature) / COLD_SLOWDOWN_FACTOR), blacklisted_movetypes = FLOATING)
 
 		else	//level 1 cold
 			H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
 			if(prob(15))
 				H.emote(pick("shiver"))
-			if(prob(20))
-				to_chat(H,span_warning("I can see my breath."))
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warning_cooldown)),10 SECONDS,TIMER_UNIQUE)
 	else
 		H.clear_alert("temp")
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
