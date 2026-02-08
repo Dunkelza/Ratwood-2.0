@@ -1,7 +1,7 @@
-"aj" = (/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/lightpath,/area/rogue/outdoors/banditcamp/exterior)
-"ao" = (/obj/structure/mineral_door/wood/deadbolt{dir = 4},/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors/banditcamp)
+"aj" = (/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp/exterior)
+"ao" = (/obj/effect/decal/cobbleedge{dir = 1; icon_state = "borderfall"; pixel_y = 8},/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/dunes,/area/rogue/outdoors/banditcamp/exterior)
 "ap" = (/obj/structure/fluff/nest,/turf/open/floor/rogue/hay,/area/rogue/outdoors/banditcamp)
-"as" = (/obj/item/natural/rock,/turf/open/floor/rogue/dunes,/area/rogue/outdoors/banditcamp/exterior)
+"as" = (/obj/item/natural/rock,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp/exterior)
 "aK" = (/obj/structure/roguewindow,/obj/structure/drape/desert,/turf/open/floor/rogue/tile{icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'},/area/rogue/outdoors/banditcamp)
 "aQ" = (/obj/item/cushion/zybantine,/obj/effect/landmark/start/bandit,/turf/open/floor/carpet/purple,/area/rogue/outdoors/banditcamp)
 "aV" = (/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/powder/salt,/obj/structure/closet/crate/chest{lockid = "bandit"},/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/turf/open/floor/rogue/tile{icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'},/area/rogue/outdoors/banditcamp)
@@ -68,7 +68,7 @@
 "qL" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable"},/obj/item/roguecoin/silver/pile,/obj/item/roguecoin/gold/pile,/turf/open/floor/rogue/tile/harem2,/area/rogue/indoors/banditcamp/hoardmaster)
 "qQ" = (/turf/open/floor/rogue/hay,/area/rogue/outdoors/banditcamp)
 "ro" = (/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors/banditcamp/exterior)
-"ru" = (/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors/banditcamp/exterior)
+"ru" = (/obj/structure/fluff/grindwheel,/turf/open/floor/rogue/tile/brownbrick,/area/rogue/outdoors/banditcamp)
 "rM" = (/obj/structure/mineral_door/swing_door,/obj/structure/fluff/nest{pixel_x = -5; pixel_y = 5},/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors/banditcamp)
 "sa" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/flashlight/flare/torch/metal,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors/banditcamp)
 "sf" = (/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/banditcamp/hoardmaster)
@@ -98,7 +98,7 @@
 "xW" = (/obj/structure/curtain{color = "#ad885c"},/turf/open/floor/rogue/lightpath,/area/rogue/outdoors/desertdeep/safe)
 "xX" = (/obj/structure/stairs/desert{dir = 4},/obj/structure/fluff/railing/border,/turf/open/floor/rogue/dunes,/area/rogue/outdoors/banditcamp/exterior)
 "yv" = (/turf/closed/mineral/random/rogue/med,/area/rogue/outdoors/banditcamp)
-"yN" = (/obj/item/natural/stone,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors/banditcamp/exterior)
+"yN" = (/obj/item/natural/stone,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp/exterior)
 "yS" = (/turf/closed/mineral/random/rogue/high,/area/rogue/outdoors/banditcamp)
 "yU" = (/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors/desertdeep/safe)
 "zb" = (/obj/item/cushion/desert2,/obj/effect/landmark/start/bandit{dir = 8},/turf/open/floor/carpet/purple,/area/rogue/outdoors/banditcamp)
@@ -127,7 +127,7 @@
 "Do" = (/obj/structure/table/optable,/turf/open/floor/rogue/twig,/area/rogue/outdoors/banditcamp)
 "Dz" = (/turf/open/floor/rogue/carpet,/area/rogue/outdoors/banditcamp)
 "DK" = (/turf/open/floor/rogue/tile/harem1,/area/rogue/outdoors/banditcamp)
-"En" = (/obj/machinery/light/rogue/wallfire/candle/r,/turf/open/floor/rogue/lightpath,/area/rogue/outdoors/banditcamp/exterior)
+"En" = (/obj/machinery/light/rogue/wallfire/candle/r,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp/exterior)
 "Eo" = (/obj/item/cushion/desert1,/turf/open/floor/carpet/purple,/area/rogue/outdoors/banditcamp)
 "Eq" = (/obj/structure/fermentation_keg/sandpot/random,/turf/open/floor/rogue/tile/brownbrick,/area/rogue/outdoors/banditcamp)
 "Ex" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/tile{icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'},/area/rogue/outdoors/banditcamp)
@@ -151,7 +151,7 @@
 "Ik" = (/obj/structure/flora/roguegrass,/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors/desertdeep/safe)
 "IB" = (/obj/structure/arcyne_wall{desc = "A wall of pure arcyne force. Powerful covetous magic protects the dragon's hoard."; max_integrity = 9999; name = "Wall of Greed"},/turf/open/floor/rogue/tile/harem,/area/rogue/outdoors/banditcamp)
 "IK" = (/obj/structure/closet/crate/chest/gold,/obj/item/dildo/silver,/turf/open/floor/rogue/tile/harem2,/area/rogue/indoors/banditcamp/hoardmaster)
-"IP" = (/obj/item/natural/stone,/turf/open/floor/rogue/dunes,/area/rogue/outdoors/banditcamp/exterior)
+"IP" = (/obj/structure/flora/roguetree/palm{pixel_x = -22; pixel_y = 3},/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors/banditcamp/exterior)
 "Jj" = (/turf/closed/wall/mineral/rogue/tent,/area/rogue/outdoors/banditcamp)
 "Jo" = (/obj/structure/table/wood{icon_state = "longtable"},/obj/item/roguegem/amethyst,/turf/open/floor/rogue/tile/harem2,/area/rogue/indoors/banditcamp/hoardmaster)
 "Jr" = (/obj/structure/flora/roguegrass,/turf/open/floor/rogue/dirt/road/desert,/area/rogue/outdoors/banditcamp)
@@ -220,7 +220,7 @@
 "VA" = (/obj/structure/gate/bars/preopen{gid = "bandit"; name = "Abandoned Fort"; redstone_id = "bandit"},/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp)
 "VN" = (/obj/structure/bed/rogue/inn/wool,/obj/item/bedsheet/rogue/cloth,/turf/open/floor/rogue/twig,/area/rogue/outdoors/banditcamp)
 "VQ" = (/obj/structure/flora/roguegrass,/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors/banditcamp/exterior)
-"VT" = (/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/lightpath,/area/rogue/outdoors/banditcamp/exterior)
+"VT" = (/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors/banditcamp/exterior)
 "WI" = (/turf/open/floor/rogue/lightpath,/area/rogue/outdoors/desertdeep/safe)
 "Xk" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/desertdeep/safe)
 "XN" = (/obj/machinery/gear_painter,/turf/open/floor/rogue/tile/brownbrick,/area/rogue/outdoors/banditcamp)
@@ -237,42 +237,43 @@
 
 (1,1,1) = {"
 tStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStS
-tStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStStS
-tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySySGAtStStStStStStStStStStStStStStStS
-tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStStStStSxNxNxNxNtStSxNtStStStStS
-tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStStSxNxNxNxNoAoAxNxNxNxNxNtStStStS
+tStStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStStStStStStStStStStStStStStStStS
+tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySySGAtStStStSxNxNxNxNtStSxNtStStStStS
+tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStSxNxNxNxNoAoAxNxNxNxNxNtStStStS
 tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStStStSxNxNsfsfsfsfsfxNxNxNtStStStS
-tStStStSySySySySySySySySySySySySySySySySySySySySySySySySyvyvyvyvyvySySxNoAsfsfsfsfsfsfsfxNtStStStStS
-tStStStSySySySySySySySySySySySySySySySySySySySySySyvyvyvyvunOaPpyvyvySxNsfsfsfoAsfoAsfsfsfsftStStStS
-tStStStSySySySySySySySySySyvyvyvyvyvyvyvySySySySySyvsakDjmACPpjfyvyvySsfsfoAKYJoQEqLIKoAsfsftStStStS
-tStStStSySySySySySySySyvyvyvyvyvyvyvyvyvyvySySySySjmPpPpjmjmAXjmjmyvyvsfsfsfFMOEMGTQNXsfsfxNtStStStS
-tStStStStSySySySySyvyvyvyvyvyvHDHDHDyvyvyvyvjmjmjmjmBLwBIcPpPpjmjmjmjmtSsfuvJWFMFMMGFMoAsfxNtStStStS
-tStStStStSySySySySyvyvyvyvyvHDHDFWHDHDyvyvyvjmPbPbjmjmjmjmPpPpjmzdunjmjmjmjmwzIBIBIBwzwzxNxNtStStStS
-tStStStStStSySySySjmjmjmjmjmHDUmPpjmjmjmjmjmjmQSDKcqDKHwjmPpPpVxPpPpjmVePpjmFYPFvQPFGMwzxNxNtStStStS
-tStStStStStSySySySjmlFOaPpgKPpPpUdPpgKwBeaMljmEqDKDKDKHwjmPpPpjmPpACjmVePpjmPFDzDzDzPFwzxNtStStStStS
-tStStStStStSySySySjmPpPpPpvqPpPpPpPpvqPpczPpjmjmjmjmofjmjmjmUDjmjmjmjmjmJEjmfEDzDzDzGrwztStStStStStS
-tStStStStStStStStSjmMlczPpgKPpPpwBPpgKPpwBlFjmjljGExQBRkPpPpPpOaPpPpPpeaPpjmMoDzDzDzzkwztStStStStStS
-tStStStStStStStStSjmjmHMjmjmMjPpPpCijmHMjmjmjmQBQBQBQBQBPpNGaQLzaQigNGPpxzjmwzwzlLwzwzwztStStStStStS
-tStStStStStStStStSgJjmhTgRwIHMAXAXHMjmYzMMUJjmaVQBjeQBJvwBBDYWYVAzAOjwPpwBmnPpPpPpfdwztStStStStStStS
-tStStStStStStStStSgJjmhThTwIhTznznznroVQUJUJjmqjQBQBBzJvPpgklZmWmWkizbPpPpmnPpPpPpXNwztStStStStStStS
-tStStStStStStStSPLqewBhTyNznznznznMMroUJUJUJjmjmaKxvjmjmPpNGBDFEEocXNGwBEFjmwzhowzwzwztStStStStStStS
-tStStStStStStStSwBwBjmasjWwIznznzndbVQUJUJUJUJUJUJUJbrjmPpPpPpwBPpPpPpPpzWjmQxQBQBcGjmtStStStStStStS
-tStStStStStStStSUgwBjmznznwIMmKWznznsZVQUJUJUJUJUJsZVQZLlylyOJOJOJOJsFlyOJjmHwQBQBNIjmtStStStStStStS
-tStStStStStStStSwBPpjmznznwItNJPznznznroMMYzroaWMMdbroYyPpwBPpPpPpwBPpPpPpOgQBQBQBuQjmtStStStStStStS
-tStStStStStStStSkZwBjmjWznwIKLZnznjWznznpZrorohTVQpZhTjmPhwBwBwBPpPpPpPpwBjmjmjmjmjmjmtStStStStStStS
-tStStStSwBwBtSjmPpwBjmznEnwIznznxyxyxyznhThTznznznznznjmjmjmjmAXcajmjmjmjmjmtStStStStStStStStStStStS
-tStStStSugwBisAFPpPpjmjWznjWznznxyZrxyhThThTznjWznznznajznsVjWjWjWjWSPznrujWzfCtOsVNFotStStStStStStS
-tStStStSwBwBtSjmwBPpjmznznwIznznxyxyxyhThThThThThTjWznznznxXxbxbxbxbgvznznjWizOsOsJXtStStStStStStStS
-tStStStStStStSjmPpwBjmznznjWznznznhThThThThThThThThTznznznBoTPTPTPTPBoznznznzfOsOsVNKvtStStStStStStS
-tStStStStStSqGjmJYPpaojWznwIznTXznTChTOrznznhThTjWznznznjWhThThTjWznznjWznjWjmJjizlWtStStStStStStStS
-tStStStStSqGqGBsPpPpjmznznrujWwIjWwIjWwIjWwIjWwIjWwIznznznjWznwIjWwIznwIhTwIjmiQOsfrcAcAtStStStStStS
-tStStStStSqGqGjmwBPpjmjWznznznznznVTznVTznznznznznVTznznznznznVTznznjWhThTasCADoOsKycAzttStStStStStS
-tStStStSqGqGjmjmPpPpjmjmznjWznznjWznjWznznjWznznjWznznznznznznznznjWhTgRIPsttSHROsYfcAcAtStStStStStS
+tStStStSySySySySySySySySySySySySySySySySySySySySySySySySySySySySyStStSxNoAsfsfsfsfsfsfsfxNtStStStStS
+tStStStSySySySySySySySySySySySySySySySySySySySySySySySySyvyvyvyvyvySySxNsfsfsfuvsfuvsfsfsfsftStStStS
+tStStStSySySySySySySySySySySySySySySySySySySySySySyvyvyvyvunOaPpyvyvySsfsfuvKYJoQEqLIKuvsfsftStStStS
+tStStStSySySySySySySySySySyvyvyvyvyvyvyvySySySySySyvsakDjmACPpjfyvyvySsfsfsfFMOEMGTQNXsfsfxNtStStStS
+tStStStSySySySySySySySyvyvyvyvyvyvyvyvyvyvySySySySjmPpPpjmjmAXjmjmyvyvtSsfsfJWFMFMMGFMoAsfxNtStStStS
+tStStStStSySySySySyvyvyvyvyvyvHDHDHDyvyvyvyvjmjmjmjmBLwBIcPpPpjmjmjmjmtSsfuvwzIBIBIBwzwzxNxNtStStStS
+tStStStStSySySySySyvyvyvyvyvHDHDFWHDHDyvyvyvjmPbPbjmjmjmjmPpPpjmzdunjmjmjmjmFYPFvQPFGMwzxNxNtStStStS
+tStStStStStSySySySjmjmjmjmjmHDUmPpjmjmjmjmjmjmQSDKcqDKHwjmPpPpVxPpPpjmVePpjmPFDzDzDzPFwzxNtStStStStS
+tStStStStStSySySySjmlFOaPpgKPpPpUdPpgKwBeaMljmEqDKDKDKHwjmPpPpjmPpACjmVePpjmfEDzDzDzGrwztStStStStStS
+tStStStStStSySySySjmPpPpPpvqPpPpPpPpvqPpczPpjmjmjmjmofjmjmjmUDjmjmjmjmjmJEjmMoDzDzDzzkwztStStStStStS
+tStStStStStStStStSjmMlczPpgKPpPpwBPpgKPpwBlFjmjljGExQBRkPpPpPpOaPpPpPpeaPpjmwzwzlLwzwzwztStStStStStS
+tStStStStStStStStSjmjmHMjmjmMjPpPpCijmjmHMjmjmQBQBQBQBQBPpNGaQLzaQigNGPpxzjmPpPpPpfdwztStStStStStStS
+tStStStStStStStStSgJjmxyajwIHMAXAXHMjmYzIPUJjmaVQBjeQBJvwBBDYWYVAzAOjwPpwBmnPpPpPpruwztStStStStStStS
+tStStStStStStStStSgJjmxyxywIhTznznznroVQUJUJjmqjQBQBBzJvPpgklZmWmWkizbPpPpmnPpPpPpXNwztStStStStStStS
+tStStStStStStStSPLqewBxyyNznznznznMMroUJUJUJjmjmaKxvjmjmPpNGBDFEEocXNGwBEFjmwzhowzwzwztStStStStStStS
+tStStStStStStStSwBwBjmasxywIznznzndbVQUJUJUJUJUJUJUJbrjmPpPpPpwBPpPpPpPpzWjmQxQBQBcGjmtStStStStStStS
+tStStStStStStStSUgwBjmxyxywIMmKWznznsZVQUJUJUJUJUJsZVQZLlylyOJOJOJOJsFlyOJjmHwQBQBNIjmtStStStStStStS
+tStStStStStStStSwBPpjmxyxywItNJPznznznroMMYzroaWMMdbroYyPpwBPpPpPpwBPpPpPpOgQBQBQBuQjmtStStStStStStS
+tStStStStStStStSkZwBjmxyxywIKLZnznjWznznpZrorohTVQpZhTjmPhwBwBwBPpPpPpPpwBjmjmjmjmjmjmtStStStStStStS
+tStStStSwBwBtSjmPpwBwBxyEnwIznznxyxyxyznhThTznznznznznjmjmjmjmAXcajmjmjmjmjmtStStStStStStStStStStStS
+tStStStSugwBAFisPpPpjmxyxyjWznznxyZrxyhThThTznjWznznznznznsVjWjWjWjWSPznjWjWlWJjJjJjtStStStStStStStS
+tStStStSwBwBtSjmwBPpjmxyxywIznznxyxyxyhThThThTgRhTjWznznznxXxbxbxbxbgvznznjWzfCtOsVNFotStStStStStStS
+tStStStStStStSjmPpwBjmxyxyjWznznznhThThThThThThThThTznznznBoaoTPTPaoBoznznznizOsOsJXtStStStStStStStS
+tStStStStStSqGjmPpPpjmxyxywIznznznhThThTznznhThTjWznznznjWhThThTjWznznjWznjWzfOsOsVNKvtStStStStStStS
+tStStStStStSqGjmJYPpwBxyxyjWznTXznTChTOrznznhThTjWznznznjWhThThTjWznznjWznjWjmJjizlWtStStStStStStStS
+tStStStStSqGqGBsPpPpjmxyxywIjWwIjWwIjWwIjWwIjWwIjWwIznznznjWznwIjWwIjWwIjWwIjmiQOsfrcAcAtStStStStStS
+tStStStStSqGqGjmwBPpjmxyxyxyxyxyxyVTxyVTxyxyxyxyxyVTxyxyxyxyxyVTxyxyxyxyxyasCADoOsKycAzttStStStStStS
+tStStStSqGqGjmjmPpPpjmjmxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyajyNsttSHROsYfcAcAtStStStStStS
 tStStStSqGqGBswBPpPpwBjmjmjmkXrMjmoPLBjmkXLBjmJrRZngjmxyxyxyjmAXjmjmjmHsHsHslWNlNlNlNltStStStStStStS
-tStStStSqGqGjmPpPpwBPpjmjmjmqQqQjmqQapjmqQMFjmSjsEcTjmPpPpPpjmwBwBOaHsHsHsHsHsHsHsHsHstStStStStStStS
-tStStStSqGqGjmNMPpPpwBjmjmjmmzGljmGlRVjmRVGljmMungJrjmVAPpPpjmjrwBPpjmHsHsHsHsHsHsHsHstStStStStStStS
+tStStStSqGqGjmPpPpwBPpPpjmjmqQqQjmqQapjmqQMFjmSjsEcTjmPpPpPpjmwBwBOaHsHsHsHsHsHsHsHsHstStStStStStStS
+tStStStSqGqGjmNMPpPpwBPpjmjmmzGljmGlRVjmRVGljmMungJrjmVAPpPpjmjrwBPpjmHsHsHsHsHsHsHsHstStStStStStStS
 tStStStSqGZPBswBPpwBPpjmjmjmjmjmjmjmjmjmjmjmjmjmMujmjmKUKUKUjmjmPpjmjmjmHsHsHsHsHsHsHstStStStStStStS
-tStStStSZPqGjmBsjmjmBsjmqGqGqGqGjmjmjmqGqGlCqGjmjmjmdMWIWIWIdMjmBsjmlCqGHsHsHsHsHsHsHstStStStStStStS
+XkXkXktSZPqGjmBsjmjmBsjmqGqGqGqGjmjmjmqGqGlCqGjmjmjmdMWIWIWIdMjmBsjmlCqGHsHsHsHsHsHsHstStSXkXkXkXkXk
 XkXkXkXkqGqGqGqGqGqGqGqGqGZqqGqGqGqGqGqGqGqGqGqGqGqGzMWIWIWIWIqGqGqGqGqGwMwMwMwMwMwMwMXkXkXkXkXkXkXk
 XkXkXkqGqGqGlCqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGWIWIWIWIzMqGqGqGqGqGwMwMwMwMwMwMwMXkXkXkXkXkXkXk
 XkXkXkqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGqGzMWIWIWIWIzMqGqGqGqGqGqGwMwMwMwMwMwMXkXkXkXkXkXkXk
@@ -299,6 +300,5 @@ XkXkXkXkwMwMwMwMwMwMWIWIWIWIwMwMwMwMwMwMwMWIWIfkWIWIWIWIWIWIWIWIWIWIWIWIWIWIOYwM
 XkXkXkXkwMwMwMwMwMWIWIWIWIWIfkwMwMwMwMwMwMWIWIwMwMwMWIWIfkwMwMwMwMwMwMWIGkWIwMwMwMwMwMXkXkXkXkXkXkXk
 XkXkXkXkwMwMwMwMwMGkWIWIWIWIGkwMwMwMwMwMwMWIWIwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMXkXkXkXkXkXkXk
 XkXkXkXkwMwMwMwMwMwMKEKEKEwMwMwMwMwMwMwMwMcbcbwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMwMXkXkXkXkXkXkXk
-XkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXk
 XkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXkXk
 "}
