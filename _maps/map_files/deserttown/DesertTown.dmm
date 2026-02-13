@@ -17786,13 +17786,6 @@
 	icon_state = "tilegreeny"
 	},
 /area/rogue/indoors/deserttown/magician)
-"kbc" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/deserttown/manor/roofs)
 "kbe" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/wood,
@@ -469405,7 +469398,7 @@ gpu
 gpu
 gpu
 gpu
-kbc
+gpu
 gpu
 gpu
 gpu
