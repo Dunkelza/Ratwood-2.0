@@ -77,6 +77,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh) (LETHALSTONE EDIT: this no longer references anything but whether the masculine or feminine model is used)
 	var/pronouns = HE_HIM				// LETHALSTONE EDIT: character's pronouns (well duh)
+	var/voice_pack = "Default"
 	var/voice_type = VOICE_TYPE_MASC	// LETHALSTONE EDIT: the type of soundpack the mob should use
 	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
@@ -111,6 +112,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/shake = TRUE
 	var/sexable = FALSE
 	var/compliance_notifs = TRUE
+	var/restricted_species_pref = null
 	var/wildshape_name = TRUE
 	var/xenophobe_pref = 1
 
@@ -210,6 +212,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/exp = list()
 	var/list/menuoptions
 
+	var/datum/loadout_menu/loadout_menu
+
 	var/datum/migrant_pref/migrant
 	var/next_special_trait = null
 
@@ -225,6 +229,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/charflaw/vice3
 	var/datum/charflaw/vice4
 	var/datum/charflaw/vice5
+
+
+	var/setspouse = ""
+	var/gender_choice = ANY_GENDER
 
 	var/static/default_cmusic_type = /datum/combat_music/default
 	var/datum/combat_music/combat_music
@@ -512,9 +520,34 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			// LETHALSTONE EDIT BEGIN: add pronoun prefs
 			dat += "<b>Pronouns:</b> <a href='?_src_=prefs;preference=pronouns;task=input'>[pronouns]</a><BR>"
 			// LETHALSTONE EDIT END
+			if(!voice_pack)
+				voice_pack = "Default"
+			// LETHALSTONE EDIT BEGIN: add voice type prefs
+			dat += "<b>Voice Identity</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
+			// LETHALSTONE EDIT END
+			dat += "<b>Voice Pack</b>: <a href='?_src_=prefs;preference=voicepack;task=input'>[voice_pack]</a><BR>"
 
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			if(pref_species.use_titles)
+				var/display_title = selected_title ? selected_title : "None"
+				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[display_title]</a><BR>"
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
+			if(family != FAMILY_NONE)
+				var/spousename = "Preferred Spouse"
+				if(family == FAMILY_PARTIAL)
+					spousename = "Preferred Parent"
+				dat += "<b>[spousename]:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
+				if(family == FAMILY_NEWLYWED || family == FAMILY_FULL)
+					dat += "<b>Preferred Gender:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "Any Gender"]</a><BR>"
+					var/species_text
+					if(xenophobe_pref == 1)
+						species_text = "<font color='#FFA500'>Same Race</font>"
+					else if(xenophobe_pref == 2 && restricted_species_pref)
+						species_text = "<font color='#aa0202'>[restricted_species_pref] Only</font>"
+					else
+						species_text = "<font color='#1cb308'>Unrestricted</font>"
+					dat += "<b>Restrict Species:</b> <a href='?_src_=prefs;preference=species_choice'>[species_text]</a><BR>"
 			if(length(pref_species.custom_selection))
 				var/race_bonus_display
 				if(race_bonus)
@@ -525,9 +558,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Race Bonus:</b> <a href='?_src_=prefs;preference=race_bonus_select;task=input'>[race_bonus_display ? "[race_bonus_display]" : "None"]</a><BR>"
 			else
 				race_bonus = null
-			if(pref_species.use_titles)
-				var/display_title = selected_title ? selected_title : "None"
-				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[display_title]</a><BR>"
+				dat += "<BR>"
 
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
@@ -552,10 +583,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Taur Color:</b> <span style='border: 1px solid #161616; background-color: #[taur_color];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_color;task=input'>Change</a><BR>"
 				dat += "<b>Taur Markings:</b> <span style='border: 1px solid #161616; background-color: #[taur_markings];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_markings;task=input'>Change</a><BR>"
 				dat += "<b>Taur Tertiary:</b> <span style='border: 1px solid #161616; background-color: #[taur_tertiary];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_tertiary;task=input'>Change</a><BR>"
-
-			// LETHALSTONE EDIT BEGIN: add voice type prefs
-			dat += "<b>Voice Type</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
-			// LETHALSTONE EDIT END
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -1728,6 +1755,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								to_chat(user, "In a place as lethal as PSYDONIA, the elderly are all but marvels... or beneficiaries of the habitually privileged. (-1 STR, -2 SPE, -1 PER, -2 CON, +2 INT, +1 FOR)")
 						// LETHALSTONE EDIT END
 						ResetJobs()
+						family = FAMILY_NONE
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 
 				// LETHALSTONE EDIT: add pronouns
@@ -1745,6 +1773,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					if(voicetype_input)
 						voice_type = voicetype_input
 						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
+
+				if ("voicepack")
+					var/voicepack_input = tgui_input_list(user, "Choose your character's emote voice pack", "VOICE PACK", GLOB.voice_packs_list)
+					if(voicepack_input)
+						voice_pack = voicepack_input
+						if(voicepack_input != "Default")
+							to_chat(user, span_red("<font color='red'>Your character will now audibly emote with a [lowertext(voicepack_input)] affect.") + span_notice("<br>This will override your Voice Identity and Class-specific voice packs.</font>"))
+						else
+							to_chat(user, "<font color='red'>Your character will now audibly emote in accordance to their Voice Identity and any Racial / Class-specific voice packs.</font>")
 
 				if("taur_type")
 					var/list/species_taur_list = pref_species.get_taur_list()
@@ -2489,9 +2526,63 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					else
 						domhand = 1
 				if("family")
-					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
-					to_chat(user, "<font color='red'>[pick(loly)]</font>")
-					return
+					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, "EXPLAIN THIS TO ME")
+					if(age != AGE_ADULT)
+						famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "EXPLAIN THIS TO ME")
+					var/new_family = tgui_input_list(user, "SELECT YOUR HERO'S BOND", "BLOOD IS THICKER THAN WATER", famtree_options_list, family)
+					if(new_family == "EXPLAIN THIS TO ME")
+						to_chat(user, span_purple("\
+						--[FAMILY_NONE] will disable this feature.<br>\
+						--[FAMILY_PARTIAL] will assign you as a progeny of a local house based on your species. This feature will instead assign you as a aunt or uncle to a local family if your older than ADULT.<br>\
+						--[FAMILY_NEWLYWED] assigns you a spouse without adding you to a family. Setspouse will prioritize pairing you with another newlywed with the same name as your setspouse.<br>\
+						--[FAMILY_FULL] will attempt to assign you as matriarch or patriarch of one of the local houses of the kingdom/town. Setspouse will will prevent \
+						players with the setspouse = None from matching with you unless their name equals your setspouse."))
+
+					else if(new_family)
+						family = new_family
+						setspouse = null
+						gender_choice = ANY_GENDER
+						xenophobe_pref = 1
+				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
+				if("setspouse")
+					var/newspouse = tgui_input_text(user, "INPUT THE IDENTITY OF ANOTHER HERO", "TIL DEATH DO US PART")
+					if(newspouse)
+						setspouse = newspouse
+					else
+						setspouse = null
+				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
+				if("gender_choice")
+					// If pronouns are neutral, lock to ANY_GENDER
+					if(pronouns == THEY_THEM || pronouns == IT_ITS)
+						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
+						gender_choice = ANY_GENDER
+					else
+						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
+						var/new_gender_choice  = tgui_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, gender_choice)
+						if(new_gender_choice)
+							gender_choice = new_gender_choice
+				if("species_choice")
+					var/list/restriction_options = list("Unrestricted", "Same Race", "Select Specific Race")
+					if(family == FAMILY_FULL)
+						restriction_options -= "Unrestricted"
+					var/choice = tgui_input_list(user, "SELECT SPOUSE SPECIES RESTRICTION", "SPECIES RESTRICTION", restriction_options)
+					if(choice == "Unrestricted")
+						xenophobe_pref = 0
+						restricted_species_pref = null
+						to_chat(user, "Spouse species is unrestricted.")
+					else if(choice == "Same Race")
+						xenophobe_pref = 1
+						restricted_species_pref = null
+						to_chat(user, "Spouse species will be restricted to your race.")
+					else if(choice == "Select Specific Race")
+						var/list/available_races = list()
+						for(var/race_name in GLOB.roundstart_races)
+							available_races += race_name
+						var/selected_race = tgui_input_list(user, "SELECT ALLOWED SPOUSE RACE", "SPECIES SELECTION", available_races)
+						if(selected_race)
+							xenophobe_pref = 2
+							restricted_species_pref = selected_race
+							to_chat(user, "Spouse species will be restricted to [selected_race].")
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
@@ -2908,6 +2999,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.detail = detail
 	character.set_patron(selected_patron)
 	character.backpack = backpack
+
+	character.familytree_pref = family
+	character.gender_choice_pref = gender_choice
+	character.setspouse = setspouse
+	character.xenophobe = xenophobe_pref
+	character.restricted_species = restricted_species_pref
 
 	character.jumpsuit_style = jumpsuit_style
 

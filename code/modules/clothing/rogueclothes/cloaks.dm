@@ -1139,6 +1139,10 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 
+/obj/item/clothing/cloak/cape/inquisitor/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
 /obj/item/clothing/cloak/cape/rogue
 	name = "cape"
 	icon_state = "roguecape"
@@ -2135,3 +2139,10 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/cloak/half/duelistcape
+	name = "duelist cape"
+	desc = "A short cape favored by duelists."
+	icon_state = "duelistcape"
+	item_state = "duelistcape"
+	color = null
