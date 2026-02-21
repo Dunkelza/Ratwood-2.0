@@ -650,7 +650,17 @@
 			examination += "[m1] [IsSleeping() ? "asleep" : "unconscious"]."
 	else
 		examination += span_dead("[m1] dead.")
-
+	switch(bodytemperature)
+		if(0 to BODYTEMP_COLD_LEVEL_ONE_MAX)
+			examination += span_artery("<B>[m1] very cold</B>")
+		if(BODYTEMP_COLD_LEVEL_ONE_MAX to BODYTEMP_NORMAL_MIN)
+			examination += span_artery("<B>[m1] cold.</B>")
+		if(BODYTEMP_NORMAL_MIN to BODYTEMP_NORMAL_MAX)
+			examination += span_artery("<B>[m1] average temperature.</B>")
+		if(BODYTEMP_NORMAL_MAX to BODYTEMP_HEAT_LEVEL_ONE_MAX)
+			examination += span_artery("<B>[m1] hot.</B>")
+		if(BODYTEMP_HEAT_LEVEL_ONE_MAX to 600)
+			examination += span_artery("<B>[m1] very hot.</B>")
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			examination += span_artery("<B>[m1] extremely anemic.</B>")
