@@ -39441,7 +39441,8 @@
 "vrP" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
-	lockid = "inquisition;"locked=1;
+	lockid = "inquisition";
+	locked = 1;
 	name = "storage"
 	},
 /turf/open/floor/rogue/darkpath,
