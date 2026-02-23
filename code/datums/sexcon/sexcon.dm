@@ -360,8 +360,7 @@
 		else
 			splashed_type.refresh_cum()
 	after_ejaculation()
-	if(!oral)
-		after_intimate_climax()
+	after_intimate_climax(oral)
 
 /datum/status_effect/facial
 	id = "facial"
@@ -427,21 +426,22 @@
 	last_ejaculation_time = world.time
 	record_round_statistic(STATS_PLEASURES)
 
-/datum/sex_controller/proc/after_intimate_climax()
+/datum/sex_controller/proc/after_intimate_climax(oral)
 	if(user == target)
 		return
 	var/user_goodlover = HAS_TRAIT(user, TRAIT_GOODLOVER)
 	var/target_goodlover = HAS_TRAIT(target, TRAIT_GOODLOVER)
-	if(target_goodlover)
-		if(!user.mob_timers["cumtri"])
-			user.mob_timers["cumtri"] = world.time
-			user.adjust_triumphs(1)
-			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
-	if(user_goodlover)
-		if(!target.mob_timers["cumtri"])
-			target.mob_timers["cumtri"] = world.time
-			target.adjust_triumphs(1)
-			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
+	if(!oral)
+		if(target_goodlover)
+			if(!user.mob_timers["cumtri"])
+				user.mob_timers["cumtri"] = world.time
+				user.adjust_triumphs(1)
+				to_chat(user, span_love("Our loving is a true TRIUMPH!"))
+		if(user_goodlover)
+			if(!target.mob_timers["cumtri"])
+				target.mob_timers["cumtri"] = world.time
+				target.adjust_triumphs(1)
+				to_chat(target, span_love("Our loving is a true TRIUMPH!"))
 	var/user_beautiful = HAS_TRAIT(user, TRAIT_BEAUTIFUL)
 	var/user_ugly = HAS_TRAIT(user, TRAIT_UNSEEMLY) || HAS_TRAIT(user, TRAIT_DISFIGURED)
 	var/target_beautiful = HAS_TRAIT(target, TRAIT_BEAUTIFUL)
@@ -462,6 +462,8 @@
 			else
 				target.add_stress(/datum/stressevent/unseemly_made_love)
 			user.add_stress(/datum/stressevent/cummax)
+	if(!oral && force >= SEX_FORCE_HIGH && user.has_flaw(/datum/charflaw/addiction/sadist)) // force pain emote if top is a sadist
+		target.emote("paincrit", forced = TRUE)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)
