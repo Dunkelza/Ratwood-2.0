@@ -80,7 +80,7 @@
 	desc = "A helmet with too much style."
 	icon_state = "atgervi_raider"
 	item_state = "atgervi_raider"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head32x48.dmi'
 	max_integrity = 250
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACE|HIDEFACIALHAIR
@@ -366,7 +366,7 @@
 	name = "sultana's headdress"
 	desc = "Silky smooth Zybantine silk headress!"
 	icon = 'modular/DesertTown/icons/clothing/head.dmi'
-	mob_overlay_icon = 'modular/DesertTown/icons/clothing/onmob/head32x48.dmi'
+	mob_overlay_icon = 'modular/DesertTown/icons/clothing/onmob/head.dmi'
 	icon_state = "sultana"
 	item_state = "sultana"
 	dynamic_hair_suffix = "+generic"
@@ -473,7 +473,7 @@
 	name = "amir's hood"
 	desc = "A silky red hood as light as a feather, embroidened with gold patterns. Fit for a prince of Zybantine."
 	icon = 'modular/DesertTown/icons/clothing/head.dmi'
-	mob_overlay_icon = 'modular/DesertTown/icons/clothing/onmob/head32x48.dmi'
+	mob_overlay_icon = 'modular/DesertTown/icons/clothing/onmob/head.dmi'
 	icon_state = "dprince"
 	item_state = "dprince"
 	block2add = FOV_BEHIND
