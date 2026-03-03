@@ -1109,7 +1109,7 @@
 
 	var/datum/antagonist/werewolf/WWtop
 	var/datum/antagonist/werewolf/WWbottom
-	var/infection_probability = 100
+	var/infection_probability = 40
 	if(top.mind.has_antag_datum(/datum/antagonist/werewolf))
 		WWtop = top.mind.has_antag_datum(/datum/antagonist/werewolf/)
 	
@@ -1121,13 +1121,22 @@
 	
 	if(WWtop && WWtop.transformed && !WWbottom)
 		if(prob(infection_probability))
-			bottom.werewolf_infect_attempt()
-			return
+			var/answer = tgui_alert(top, "Infect your mate?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
+			if(!answer || answer == "Nae")
+				return
+			if(answer == "Yae")
+				bottom.werewolf_infect_attempt()
+		return
+
 
 	if(WWbottom && WWbottom.transformed && !WWtop)
 		if(prob(infection_probability))
-			top.werewolf_infect_attempt()
-			return
+			var/answer = tgui_alert(bottom, "Infect your mate?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
+			if(!answer || answer == "Nae")
+				return
+			if(answer == "Yae")
+				top.werewolf_infect_attempt()
+		return
 
 /datum/proc/deadite_sex_infect_attempt(mob/living/carbon/human/top, mob/living/carbon/human/bottom)
 	
@@ -1135,7 +1144,7 @@
 		return
 	var/datum/antagonist/zombie/ZMtop
 	var/datum/antagonist/zombie/ZMbottom
-	var/infection_probability = 100
+	var/infection_probability = 40
 	if(top.mind.has_antag_datum(/datum/antagonist/zombie))
 		ZMtop = top.mind.has_antag_datum(/datum/antagonist/zombie/)
 	
@@ -1147,13 +1156,21 @@
 	
 	if(ZMtop && !ZMbottom)
 		if(prob(infection_probability))
-			bottom.zaids_check()
-			return
+			var/answer = tgui_alert(top, "Spread HER curse?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
+			if(!answer || answer == "Nae")
+				return
+			if(answer == "Yae")
+				bottom.zaids_check()
+		return
 
 	if(ZMbottom && !ZMtop)
 		if(prob(infection_probability))
-			top.zaids_check()
-			return
+			var/answer = tgui_alert(bottom, "Spread HER curse?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
+			if(!answer || answer == "Nae")
+				return
+			if(answer == "Yae")
+				top.zaids_check()
+		return
 ///Making sure they're not any other antag or immune then applies zombie infection
 /mob/living/carbon/human/proc/zaids_check() 
 	if(!mind)
