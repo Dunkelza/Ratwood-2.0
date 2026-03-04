@@ -13766,7 +13766,7 @@
 "hlU" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
-	lockid = "fancyroomiii";
+	lockid = "fancyiii";
 	name = "Fancy Room III"
 	},
 /turf/open/floor/rogue/wood,
@@ -15719,7 +15719,7 @@
 /area/rogue/under/town/basement)
 "itw" = (
 /obj/structure/mineral_door/wood{
-	lockid = "fancyroomii";
+	lockid = "fancyii";
 	name = "Fancy Room II"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -20052,7 +20052,7 @@
 /area/rogue/indoors/deserttown/bath)
 "kCz" = (
 /obj/structure/mineral_door/wood{
-	lockid = "fancyroomi";
+	lockid = "fancyi";
 	name = "Fancy Room I"
 	},
 /turf/open/floor/rogue/herringbone,
