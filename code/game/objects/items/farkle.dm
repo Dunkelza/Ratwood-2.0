@@ -22,7 +22,7 @@
 // Each play is an associative list: ("name", "score", "dice")
 // where "dice" is a list of the face values consumed by that play.
 
-/proc/farkle_get_plays(list/dice_values)
+/proc/farkle_get_plays(list/dice_values) as list
 	var/list/plays = list()
 	if(!dice_values.len)
 		return plays
