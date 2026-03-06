@@ -1093,14 +1093,6 @@
 	var/postfix = "[sobject][saddition][hp]"
 
 	var/message = "has [what_done] [starget][postfix]"
-	// OVERWATCH: mirror combat logs into the Overwatch system so tickets
-	// can show both what harmed a player and what they harmed.
-	if(ismob(user) || ismob(target))
-		var/mob/living/attacker = ismob(user) ? user : null
-		var/mob/living/victim = ismob(target) ? target : null
-		// Pass 0 damage here; detailed damage amounts come from other sources
-		// where available. The action verb (what_done) is used as type.
-		overwatch_record_attack(attacker, victim, 0, what_done, istype(object, /obj/item) ? object : null)
 	user.log_message(message, LOG_ATTACK, color="red")
 
 	if(log_seen)

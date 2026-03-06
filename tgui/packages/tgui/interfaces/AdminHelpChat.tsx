@@ -172,7 +172,7 @@ export const AdminHelpChat = (props) => {
                             }}
                           />
                         ) : (
-                          <Box mt={0.5} style={{ wordWrap: 'break-word' }}>
+                          <Box mt={0.5} style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
                             {msg.message}
                           </Box>
                         )}
@@ -184,8 +184,6 @@ export const AdminHelpChat = (props) => {
               </Stack>
             </Section>
           </Stack.Item>
-
-          {/* OVERWATCH data is only shown in the admin ticket panel UI. */}
 
           <Stack.Item>
             <Section>

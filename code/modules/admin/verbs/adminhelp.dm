@@ -25,13 +25,29 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/active_tickets = list()
 	var/list/closed_tickets = list()
 	var/list/resolved_tickets = list()
-	
+
 	// Track selected ticket per user
 	var/list/selected_tickets = list()  // Maps ckey -> ticket_id
+
+	/// Ckeys of admins who have opted to hide their character name in ticket messages. Persisted to disk.
+	var/list/admin_hide_charname = list()
 
 	var/obj/effect/statclick/ticket_list/astatclick = new(null, null, AHELP_ACTIVE)
 	var/obj/effect/statclick/ticket_list/cstatclick = new(null, null, AHELP_CLOSED)
 	var/obj/effect/statclick/ticket_list/rstatclick = new(null, null, AHELP_RESOLVED)
+
+/datum/admin_help_tickets/New()
+	var/json_data = file2text("data/admin_hide_charname.json")
+	if(json_data)
+		var/list/loaded = safe_json_decode(json_data)
+		if(islist(loaded))
+			admin_hide_charname = loaded
+	. = ..()
+
+/datum/admin_help_tickets/proc/SaveHideCharname()
+	var/path = "data/admin_hide_charname.json"
+	fdel(path)
+	WRITE_FILE(path, json_encode(admin_hide_charname))
 
 /datum/admin_help_tickets/Destroy()
 	QDEL_LIST(active_tickets)
@@ -178,39 +194,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if(selected)
 			var/list/full_ticket = selected.ui_data(user)
 			full_ticket["initiator_connected"] = selected.initiator ? TRUE : FALSE
-			// OVERWATCH: attach combat data only for admins viewing the ticket panel
-			if(user.client?.holder)
-				full_ticket["overwatch"] = list()
-				full_ticket["overwatch"]["events"] = list()
-				var/list/player_events = GLOB.overwatch_events[selected.initiator_ckey]
-				if(player_events && length(player_events))
-					for(var/datum/overwatch_event/event in player_events)
-						var/list/event_data = list()
-						event_data["timestamp"] = event.get_timestamp_text()
-						event_data["location"] = event.get_location_text()
-						event_data["x"] = event.x_coord
-						event_data["y"] = event.y_coord
-						event_data["z"] = event.z_coord
-						event_data["type"] = event.event_type
-						if(istype(event, /datum/overwatch_event/attack))
-							var/datum/overwatch_event/attack/A = event
-							event_data["summary"] = "[A.attacker_name] attacked [A.victim_name]"
-							if(A.damage_amount && A.damage_amount > 0)
-								event_data["details"] = "[A.damage_amount] [A.damage_type] damage"
-							else
-								event_data["details"] = "[A.damage_type]"
-							if(A.weapon_name)
-								event_data["details"] += " with [A.weapon_name]"
-							event_data["attacker_loc"] = "\[[A.attacker_x],[A.attacker_y],[A.attacker_z]\]"
-							event_data["attacker_x"] = A.attacker_x
-							event_data["attacker_y"] = A.attacker_y
-							event_data["attacker_z"] = A.attacker_z
-						full_ticket["overwatch"]["events"] += list(event_data)
-				// Always expose the OVERWATCH block for admins so the panel
-				// can show even if there are currently no combat events.
-				full_ticket["overwatch"]["has_data"] = TRUE
 			data["selected_ticket"] = full_ticket
-	
+
+	// Whether this admin has opted to hide their character name in ticket messages
+	data["admin_hide_charname"] = (user.ckey in admin_hide_charname)
+
 	return data
 
 /datum/admin_help_tickets/ui_static_data(mob/user)
@@ -231,39 +219,54 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
 			if(!ticket)
 				return FALSE
-			
+
 			// Store the selected ticket for this user
 			selected_tickets[user.ckey] = ticket_id
 			return TRUE
-		
+
+		if("toggle_charname")
+			// Toggle whether this admin's character name is hidden in ticket messages.
+			if(user.ckey in admin_hide_charname)
+				admin_hide_charname -= user.ckey
+			else
+				admin_hide_charname += user.ckey
+			SaveHideCharname()
+			return TRUE
+
 		if("send_message")
 			var/ticket_id = params["ticket_id"]
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
 			if(!ticket || ticket.state != AHELP_ACTIVE)
 				return FALSE
-			
+
 			var/message = params["message"]
 			if(!message)
 				return FALSE
-			
-			message = sanitize(trim(message))
+
+			// Preserve newlines as <br> so they survive sanitization and render correctly in TGUI
+			message = sanitize_preserve_newlines(trim(message))
 			if(!message)
 				return FALSE
-			
+
+			// Use full key_name_admin normally; suppress the character name if the admin toggled it off
+			var/show_charname = !(user.ckey in admin_hide_charname)
+			var/admin_name = key_name_admin(user, show_charname)
+
 			// Admin is responding
-			ticket.AddInteraction("<font color='blue'>PM from [key_name_admin(user)]: [message]</font>")
-			
+			ticket.AddInteraction("<font color='blue'>PM from [admin_name]: [message]</font>")
+
 			// Send to player if connected
 			if(ticket.initiator)
 				to_chat(ticket.initiator, span_adminhelp("<b>Admin PM from-<font color='red'>[user.client.holder.fakekey ? user.client.holder.fakekey : user.key]</font></b>: <span class='linkify'>[message]</span>"))
 				SEND_SOUND(ticket.initiator, sound('sound/adminhelp.ogg'))
 				window_flash(ticket.initiator, ignorepref = TRUE)
-			
-			// Log it
-			log_admin_private("Ticket #[ticket.id]: [key_name(user)] -> [ticket.initiator_key_name]: [message]")
-			// Notify other admins in chat
-			message_admins(span_adminnotice("<font color='blue'>Ticket #[ticket.id] [ticket.TicketHref("Show Ticket")] - [key_name_admin(user)] replied to [ticket.initiator_key_name]: [message]</font>"))
-			
+
+			// Log with real name for accountability (strip <br> for log readability)
+			var/log_msg = replacetext(message, "<br>", "\n")
+			log_admin_private("Ticket #[ticket.id]: [key_name(user)] -> [ticket.initiator_key_name]: [log_msg]")
+			// Notify other admins in chat with real identity
+			message_admins(span_adminnotice("<font color='blue'>Ticket #[ticket.id] [ticket.TicketHref("Show Ticket")] - [key_name_admin(user)] replied to [ticket.initiator_key_name]: [log_msg]</font>"))
+
 			return TRUE
 		
 		if("jump_to", "observe", "pm")
@@ -335,43 +338,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			if(!ticket)
 				return FALSE
 			ticket.Retitle()
-			return TRUE
-		
-		if("overwatch_logs")
-			var/ticket_id = params["ticket_id"]
-			var/datum/admin_help/ticket = TicketByID(ticket_id)
-			if(!ticket)
-				return FALSE
-			var/mob/log_target = ticket.initiator ? ticket.initiator.mob : ticket.initiator_mob
-			if(!log_target)
-				return FALSE
-			show_individual_logging_panel(log_target)
-			return TRUE
-
-		if("overwatch_ping")
-			var/ckey = params["ckey"]
-			var/event_index = params["event_index"]
-			if(!ckey || !usr.client || isnull(event_index))
-				return FALSE
-
-			usr.client.overwatch_show_attack_event_from_ticket(ckey, event_index)
-			return TRUE
-
-		if("overwatch_teleport")
-			var/x = text2num(params["x"])
-			var/y = text2num(params["y"])
-			var/z = text2num(params["z"])
-			if(isnull(x) || isnull(y) || isnull(z) || !usr.client)
-				return FALSE
-
-			var/client/C = usr.client
-			if(!isobserver(usr))
-				if(!C.holder)
-					return FALSE
-				C.admin_ghost()
-				sleep(2)
-
-			C.jumptocoord(x, y, z)
 			return TRUE
 		
 		if("ticket_pp")
@@ -621,7 +587,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
+		// Store the admin's opening message as a full interaction so it's visible in the ticket panel
+		var/show_charname = !(usr?.ckey in GLOB.ahelp_tickets.admin_hide_charname)
+		AddInteraction("<font color='blue'>PM from [key_name_admin(usr, show_charname)]: [msg]</font>")
 		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
 	else
 		// Add a clean initial message for the player's view
@@ -925,6 +893,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		
 		// Strip ALL HTML tags - simple and robust approach
 		var/clean_text = rest
+		// Convert <br> tags to actual newlines before stripping other tags
+		clean_text = replacetext(clean_text, "<br>", "\n")
+		clean_text = replacetext(clean_text, "<br/>", "\n")
+		clean_text = replacetext(clean_text, "<br />", "\n")
 		// Keep stripping tags until none remain
 		var/max_iterations = 100 // Safety limit
 		var/iterations = 0
@@ -1028,9 +1000,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 		data["messages"] += list(msg_data)
 	
-	// (OVERWATCH data is now attached only in the admin ticket panel
-	// backend, not in the per-ticket chat UI.)
-	
 	return data
 
 /datum/admin_help/ui_act(action, list/params)
@@ -1046,27 +1015,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			var/message = params["message"]
 			if(!message)
 				return FALSE
-			
-			message = sanitize(trim(message))
+
+			// Preserve newlines as <br> so they survive sanitization and display correctly in TGUI
+			message = sanitize_preserve_newlines(trim(message))
 			if(!message)
 				return FALSE
-			
+
 			// Send the message
 			MessageNoRecipient(message, FALSE)
 			TimeoutVerb()
 			
 			return TRUE
 		
-		if("show_first_strike")
-			var/ckey = params["ckey"]
-			if(!ckey || !usr.client)
-				return FALSE
-			
-			// Call the overwatch proc to show first strike
-			usr.client.overwatch_show_first_strike_from_ticket(ckey)
-			
-			return TRUE
-
 		if("embed_media")
 			if(state != AHELP_ACTIVE)
 				return FALSE

@@ -22,26 +22,6 @@ type Message = {
   embed_url?: string;
 };
 
-type OverwatchEvent = {
-  timestamp: string;
-  location: string;
-  x?: number;
-  y?: number;
-  z?: number;
-  type: string;
-  summary: string;
-  details?: string;
-  attacker_loc?: string;
-  attacker_x?: number;
-  attacker_y?: number;
-  attacker_z?: number;
-};
-
-type OverwatchData = {
-  has_data: BooleanLike;
-  events: OverwatchEvent[];
-};
-
 type Ticket = {
   id: number;
   name: string;
@@ -57,6 +37,7 @@ type Data = {
   active_tickets: Ticket[];
   closed_tickets: Ticket[];
   resolved_tickets: Ticket[];
+  admin_hide_charname: BooleanLike;
   selected_ticket: {
     ticket_id: number;
     ticket_name: string;
@@ -69,7 +50,6 @@ type Data = {
     can_send: BooleanLike;
     is_admin: BooleanLike;
     initiator_connected: BooleanLike;
-    overwatch?: OverwatchData;
   } | null;
 };
 
@@ -80,12 +60,10 @@ export const AdminTicketPanel = (props) => {
     closed_tickets,
     resolved_tickets,
     selected_ticket,
+    admin_hide_charname,
   } = data;
 
   const [tabIndex, setTabIndex] = useState(0);
-  const [detailTab, setDetailTab] = useState<'conversation' | 'overwatch'>(
-    'conversation',
-  );
   const [inputText, setInputText] = useState('');
   const [showEmbedInput, setShowEmbedInput] = useState<
     'image' | 'video' | null
@@ -235,6 +213,7 @@ export const AdminTicketPanel = (props) => {
           {/* Right Panel - Ticket Details & Chat */}
           <Stack.Item grow>
             <Stack vertical fill>
+
               {selected_ticket ? (
                 <>
                   {/* Action Buttons */}
@@ -296,18 +275,6 @@ export const AdminTicketPanel = (props) => {
                               }
                             >
                               FLW
-                            </Button>
-                            <Button
-                              compact
-                              icon="book"
-                              tooltip="Logs - Open the round logs panel for this player."
-                              onClick={() =>
-                                act('overwatch_logs', {
-                                  ticket_id: selected_ticket.ticket_id,
-                                })
-                              }
-                            >
-                              Logs
                             </Button>
                             <Button
                               compact
@@ -503,31 +470,8 @@ export const AdminTicketPanel = (props) => {
                     </Section>
                   </Stack.Item>
 
-                  {/* Detail Tabs */}
-                  <Stack.Item>
-                    <Section>
-                      <Tabs>
-                        <Tabs.Tab
-                          selected={detailTab === 'conversation'}
-                          onClick={() => setDetailTab('conversation')}
-                        >
-                          Conversation
-                        </Tabs.Tab>
-                        {selected_ticket.is_admin && (
-                          <Tabs.Tab
-                            selected={detailTab === 'overwatch'}
-                            onClick={() => setDetailTab('overwatch')}
-                          >
-                            OVERWATCH
-                          </Tabs.Tab>
-                        )}
-                      </Tabs>
-                    </Section>
-                  </Stack.Item>
-
                   {/* Conversation view + input */}
-                  {detailTab === 'conversation' && (
-                    <>
+                  <>
                       <Stack.Item grow>
                         <Section fill scrollable title="Conversation">
                           <Stack vertical>
@@ -652,6 +596,18 @@ export const AdminTicketPanel = (props) => {
                                   onClick={handleSend}
                                 >
                                   Send
+                                </Button>
+                                <Button
+                                  icon="user-secret"
+                                  tooltip={
+                                    admin_hide_charname
+                                      ? 'Character name hidden — click to show it'
+                                      : 'Character name visible — click to hide it'
+                                  }
+                                  selected={!!admin_hide_charname}
+                                  onClick={() => act('toggle_charname')}
+                                >
+                                  {admin_hide_charname ? 'Anon' : 'Named'}
                                 </Button>
                                 <Button
                                   icon="image"
@@ -804,130 +760,7 @@ export const AdminTicketPanel = (props) => {
                         </Stack.Item>
                       )}
                     </>
-                  )}
 
-                  {/* OVERWATCH view */}
-                  {detailTab === 'overwatch' && selected_ticket.is_admin && (
-                    <Stack.Item grow>
-                      <Section
-                        fill
-                        scrollable
-                        title="OVERWATCH - Combat Events"
-                        buttons={
-                          <>
-                            <Button
-                              icon="book"
-                              onClick={() =>
-                                act('overwatch_logs', {
-                                  ticket_id: selected_ticket.ticket_id,
-                                })
-                              }
-                            >
-                              LOGS
-                            </Button>
-                          </>
-                        }
-                      >
-                        {!selected_ticket.overwatch ||
-                        selected_ticket.overwatch.events.length === 0 ? (
-                          <Box color="label" italic p={1}>
-                            No combat events recorded.
-                          </Box>
-                        ) : (
-                          <Stack vertical>
-                            {selected_ticket.overwatch.events.map(
-                              (event, index) => (
-                                <Stack.Item key={index}>
-                                  <Box
-                                    backgroundColor="rgba(200, 50, 50, 0.15)"
-                                    p={1}
-                                    mb={0.5}
-                                    style={{
-                                      borderLeft: '3px solid #c83232',
-                                    }}
-                                  >
-                                    <Stack>
-                                      <Stack.Item>
-                                        <Box
-                                          fontSize="0.85em"
-                                          color="label"
-                                        >
-                                          {event.timestamp}
-                                        </Box>
-                                      </Stack.Item>
-                                      <Stack.Item grow />
-                                      <Stack.Item>
-                                        {event.x && event.y && event.z ? (
-                                          <Box
-                                            fontSize="0.85em"
-                                            color="label"
-                                            style={{
-                                              cursor: 'pointer',
-                                              textDecoration: 'underline',
-                                            }}
-                                            onClick={() =>
-                                              act('overwatch_teleport', {
-                                                x: event.x,
-                                                y: event.y,
-                                                z: event.z,
-                                              })
-                                            }
-                                          >
-                                            {event.location}
-                                          </Box>
-                                        ) : (
-                                          <Box
-                                            fontSize="0.85em"
-                                            color="label"
-                                          >
-                                            {event.location}
-                                          </Box>
-                                        )}
-                                      </Stack.Item>
-                                      <Stack.Item>
-                                        <Button
-                                          compact
-                                          icon="crosshairs"
-                                          tooltip="Highlight where this event occurred (admin-only)."
-                                          onClick={() =>
-                                            act('overwatch_ping', {
-                                              ckey: selected_ticket.initiator_ckey,
-                                              event_index: index + 1,
-                                            })
-                                          }
-                                        />
-                                      </Stack.Item>
-                                    </Stack>
-                                    <Box mt={0.5} bold color="red">
-                                      {event.summary}
-                                    </Box>
-                                    {event.details && (
-                                      <Box
-                                        mt={0.3}
-                                        fontSize="0.9em"
-                                        color="average"
-                                      >
-                                        {event.details}
-                                      </Box>
-                                    )}
-                                    {event.attacker_loc && (
-                                      <Box
-                                        mt={0.3}
-                                        fontSize="0.85em"
-                                        color="label"
-                                      >
-                                        Attacker position: {event.attacker_loc}
-                                      </Box>
-                                    )}
-                                  </Box>
-                                </Stack.Item>
-                              ),
-                            )}
-                          </Stack>
-                        )}
-                      </Section>
-                    </Stack.Item>
-                  )}
 
                 </>
               ) : (

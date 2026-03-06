@@ -1,4 +1,4 @@
-//NOT using the existing /obj/machinery/door type, since that has some complications on its own, mainly based on its
+﻿//NOT using the existing /obj/machinery/door type, since that has some complications on its own, mainly based on its
 //machineryness
 
 /obj/structure/mineral_door
@@ -53,8 +53,6 @@
 	var/smashable = FALSE
 	/// Whether to grant a resident_key
 	var/grant_resident_key = FALSE
-	/// OVERWATCH: Recent interaction log for admins (right-click → OVERWATCH Log to view)
-	var/list/door_overwatch_log
 	var/resident_key_amount = 1
 	/// The type of a key the resident will get
 	var/resident_key_type
@@ -161,65 +159,6 @@
 			while(lockhash in GLOB.lockhashes)
 				lockhash = rand(1000,9999)
 			GLOB.lockhashes += lockhash
-
-// OVERWATCH: Log a player interaction to this door's local history.
-// Called whenever a player opens, closes, locks, unlocks, or lockpicks this door.
-/obj/structure/mineral_door/proc/overwatch_door_log_interaction(mob/user, action)
-	if(!user)
-		return
-	if(!door_overwatch_log)
-		door_overwatch_log = list()
-	var/ckey_part = user.client ? " ([user.client.ckey])" : ""
-	door_overwatch_log += "[time_stamp()] [action] by [user.real_name][ckey_part]"
-	// Keep only the most recent 25 entries to avoid unbounded memory growth.
-	while(door_overwatch_log.len > 25)
-		door_overwatch_log.Remove(door_overwatch_log[1])
-
-// OVERWATCH: Add "OVERWATCH Log" entry to the admin right-click VV dropdown.
-/obj/structure/mineral_door/vv_get_dropdown()
-	. = ..()
-	VV_DROPDOWN_OPTION("", "---")
-	VV_DROPDOWN_OPTION(VV_HK_OVERWATCH_DOOR_LOG, "OVERWATCH Log")
-
-// OVERWATCH: Right-click context menu client proc for admins — right-click a door → OVERWATCH Log.
-/client/proc/admin_view_door_overwatch_log(obj/structure/mineral_door/D in world)
-	set name = "OVERWATCH Log"
-	set category = null
-	if(!holder)
-		return
-	if(!D || QDELETED(D))
-		return
-	var/html = "<b>OVERWATCH — Door Interaction Log</b><br>"
-	html += "<b>Door:</b> [D.name] ([D.type])<br>"
-	if(D.loc)
-		html += "<b>Location:</b> [AREACOORD(D)]<br>"
-	html += "<b>State:</b> [D.door_opened ? "Open" : "Closed"][D.locked ? ", Locked" : ""]<br><br>"
-	if(!D.door_overwatch_log || !D.door_overwatch_log.len)
-		html += "<i>No interactions recorded for this door yet.</i>"
-	else
-		for(var/entry in D.door_overwatch_log)
-			html += "[entry]<br>"
-	var/datum/browser/popup = new(src, "overwatch_door_[REF(D)]", "OVERWATCH - [D.name]", 480, 360)
-	popup.set_content(html)
-	popup.open()
-
-/obj/structure/mineral_door/vv_do_topic(list/href_list)
-	if(!(. = ..())) // always call parent first
-		return
-	if(href_list[VV_HK_OVERWATCH_DOOR_LOG])
-		if(!check_rights(R_ADMIN, FALSE))
-			return
-		var/html = "<b>OVERWATCH — Door Interaction Log</b><br>"
-		html += "<b>Door:</b> [name] @ [AREACOORD(src)]<br>"
-		html += "<b>State:</b> [door_opened ? "Open" : "Closed"][locked ? ", Locked" : ""]<br><br>"
-		if(!door_overwatch_log || !door_overwatch_log.len)
-			html += "<i>No interactions recorded for this door yet.</i>"
-		else
-			for(var/entry in door_overwatch_log)
-				html += "[entry]<br>"
-		var/datum/browser/popup = new(usr, "overwatch_door_[REF(src)]", "OVERWATCH - [name]", 480, 360)
-		popup.set_content(html)
-		popup.open()
 
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
@@ -382,10 +321,6 @@
 
 /obj/structure/mineral_door/proc/Open(silent = FALSE, mob/user)
 	isSwitchingStates = TRUE
-	// OVERWATCH: Track door opened
-	if(user)
-		overwatch_record_interact(user, src, "opened")
-		overwatch_door_log_interaction(user, "opened")
 	if(!silent)
 		playsound(src, openSound, 100)
 	if(!windowed)
@@ -408,10 +343,6 @@
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in T)
 		return
-	// OVERWATCH: Track door closed
-	if(user)
-		overwatch_record_interact(user, src, "closed")
-		overwatch_door_log_interaction(user, "closed")
 	isSwitchingStates = TRUE
 	if(!silent)
 		playsound(src, closeSound, 100)
@@ -764,9 +695,6 @@
 				if(lockprogress >= locktreshold)
 					picked = TRUE
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
-					// OVERWATCH: Track successful lockpick
-					overwatch_record_interact(user, src, "lockpicked")
-					overwatch_door_log_interaction(user, "lockpicked")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
 						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] & [locked ? "unlocked" : "locked"] it. [ADMIN_JMP(src)]")
@@ -811,19 +739,11 @@
 	if(isSwitchingStates || door_opened)
 		return
 	if(locked)
-		// OVERWATCH: Track unlock
-		if(user)
-			overwatch_record_interact(user, src, "unlocked")
-			overwatch_door_log_interaction(user, "unlocked")
 		user?.visible_message(span_warning("[user] unlocks [src]."), \
 			span_notice("I unlock [src]."))
 		playsound(src, unlocksound, 100)
 		locked = 0
 	else
-		// OVERWATCH: Track lock
-		if(user)
-			overwatch_record_interact(user, src, "locked")
-			overwatch_door_log_interaction(user, "locked")
 		user?.visible_message(span_warning("[user] locks [src]."), \
 			span_notice("I lock [src]."))
 		playsound(src, locksound, 100)
