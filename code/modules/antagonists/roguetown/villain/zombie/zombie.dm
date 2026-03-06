@@ -333,7 +333,7 @@
 		qdel(src)
 		return
 
-	zombie.can_do_sex = FALSE	//no fuck off
+	
 
 	zombie.blood_volume = BLOOD_VOLUME_NORMAL
 	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE)

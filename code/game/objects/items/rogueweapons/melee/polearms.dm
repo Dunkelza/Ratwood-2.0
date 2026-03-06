@@ -70,7 +70,7 @@
 	sharpness_penalty = 2
 
 /datum/intent/spear/cut/halberd
-	damfactor = 0.9
+	damfactor = 1.2
 
 /datum/intent/spear/cut/scythe
 	reach = 3
