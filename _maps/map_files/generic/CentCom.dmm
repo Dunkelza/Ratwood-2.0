@@ -1084,15 +1084,11 @@
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "eM" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/open/water/river{
-	dir = 1;
-	icon_state = "rockwd";
-	name = "muddy river";
-	water_color = "#705a43";
-	water_reagent = /datum/reagent/water/gross
+/obj/effect/decal/cobble/mossy{
+	dir = 9
 	},
-/area/rogue)
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/inhumen/wretch/camp)
 "eN" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -2627,7 +2623,7 @@
 /obj/machinery/light/rogue/wallfire/candle/floorcandle/alt{
 	pixel_y = -25
 	},
-/turf/open/floor/rogue/blocks/flipped,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "nG" = (
 /obj/effect/decal/edge{
@@ -3495,10 +3491,6 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "sT" = (
-/obj/structure/closet/crate/coffin/vampire,
-/obj/machinery/light/rogue/wallfire/candle/floorcandle/alt{
-	pixel_y = -25
-	},
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "floor3"
 	},
@@ -6291,14 +6283,12 @@
 	},
 /area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
 "KA" = (
-/obj/structure/minecart_rail,
-/obj/structure/fluff/walldeco/vinez/blue,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves{
-	ambush_mobs = null;
-	first_time_text = null;
-	name = "Wretched Caves"
-	})
+/obj/structure/far_travel{
+	name = "Road to Gehenna";
+	desc = "The everwinter fields of Gehenna beckon you. Anywhere is better than here.\n(Drag your sprite onto this to exit the round!)"
+	},
+/turf/open/floor/rogue/blocks/flipped,
+/area/rogue/under/cave/inhumen/wretch/camp)
 "KE" = (
 /obj/structure/roguewindow,
 /obj/structure/curtain/black,
@@ -20070,7 +20060,7 @@ xL
 jT
 xm
 xL
-KA
+eX
 eX
 eX
 eX
@@ -21120,11 +21110,11 @@ uM
 uM
 uM
 uM
-XV
 uM
-uM
-uM
-uM
+DO
+DO
+DO
+DO
 bX
 "}
 (96,1,1) = {"
@@ -21251,10 +21241,10 @@ uM
 Ng
 uM
 uM
-uM
-uM
-uM
-uM
+DO
+nF
+nF
+DO
 bX
 "}
 (97,1,1) = {"
@@ -21382,8 +21372,8 @@ uM
 uM
 DO
 DO
-DO
-DO
+qO
+eM
 DO
 bX
 "}
@@ -21514,7 +21504,7 @@ DO
 ok
 LM
 sT
-DO
+KA
 bX
 "}
 (99,1,1) = {"
@@ -21643,8 +21633,8 @@ DO
 qd
 LM
 zn
-nF
-DO
+LM
+KA
 bX
 "}
 (100,1,1) = {"
@@ -24972,7 +24962,7 @@ bX
 bX
 bX
 bX
-eM
+Nc
 Nc
 YG
 YG
