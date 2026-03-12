@@ -49,7 +49,7 @@
     var/list/upper_coords = get_upper_wall_coordinates(null, NORTH)
     return ground_coords.len + upper_coords.len
 
-/obj/item/tent_kit/Initialize()
+/obj/item/tent_kit/Initialize(mapload)
     . = ..()
     create_tent_components()
 
