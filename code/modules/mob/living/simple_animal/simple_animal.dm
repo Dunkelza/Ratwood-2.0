@@ -327,11 +327,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/proc/handle_automated_movement()
 	set waitfor = FALSE
 	if(!stop_automated_movement && wander && !doing)
-		if(ssaddle && has_buckled_mobs())
+		if(ssaddle)
 			return 0
 		if(binded)
 			return FALSE
 		if(AIStatus == AI_OFF || AIStatus == AI_IDLE)
+			return 0
+		if(pulledby && stop_automated_movement_when_pulled)
 			return 0
 		if((isturf(loc) || allow_movement_on_non_turfs) && (mobility_flags & MOBILITY_MOVE))		//This is so it only moves if it's not inside a closet, gentics machine, etc.
 			if(turns_since_move < turns_per_move)
