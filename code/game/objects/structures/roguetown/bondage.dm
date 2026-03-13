@@ -138,7 +138,7 @@
 /obj/structure/bondage/gloryhole/CanPass(atom/movable/mover, turf/target)
 	if(has_buckled_mobs())
 		return FALSE
-	return get_dir(loc, target) != SOUTH
+	return get_dir(loc, mover) != dir
 
 /obj/structure/bondage/gloryhole/Initialize(mapload)
 	. = ..()
