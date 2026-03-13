@@ -180,3 +180,32 @@
 	desc = "A torture table with a built-in lever mechanism."
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "tort_table_lever"
+
+/obj/structure/bondage/torture_table/lever/attack_right(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!has_buckled_mobs())
+		to_chat(user, span_warning("There is nobody to tighten the chains on..."))
+		return
+	var/mob/living/L = locate() in buckled_mobs
+	if(!L)
+		return
+	if(user == L)
+		to_chat(user, span_warning("I can't reach the lever..."))
+		return
+	playsound(src, 'sound/foley/winch.ogg', 100, extrarange = 3)
+	user.visible_message(span_warning("[user] begins to ratchet the chains on [L]!"), span_warning("You start tightening the chains!"))
+	if(do_after(user, 2 SECONDS, src))
+		var/mob/living/L_double_check = locate() in buckled_mobs
+		if(!L_double_check || L != L_double_check) // they got off, abort
+			return
+		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+		if(BP)
+			L.visible_message(span_boldwarning("Chains pull and dig into [L]'s [BP.name]!"), span_userdanger("[src] chains tear into my [BP.name]!"))
+			L.emote("agony")
+			BP.add_wound(/datum/wound/fracture)
+			BP.update_disabled()
+			L.apply_damage(90, BRUTE, def_zone)
+			L.Paralyze(80)
