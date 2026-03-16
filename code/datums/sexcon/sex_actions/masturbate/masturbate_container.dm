@@ -1,6 +1,10 @@
 /datum/sex_action/masturbate_container
 	name = "Masturbate into container"
 	category = SEX_CATEGORY_HANDS
+	/// Self-action: signal resolver reads user_sex_part as receiver_part. Set so modular_emit_received_sex_action_signal fires correctly.
+	user_sex_part = SEX_PART_COCK | SEX_PART_CUNT
+	/// Bespoke per-genital chastity checks live in shows_on_menu/can_perform — skip the generic validate signal to avoid double-blocking.
+	intimate_check_flags = SEX_ACTION_INTIMATE_CHECK_NONE
 
 /datum/sex_action/masturbate_container/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
