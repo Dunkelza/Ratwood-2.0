@@ -1,3 +1,6 @@
+/// Indexed by chastity_type + 1. Each entry is the list of traits applied by apply_standard_chastity_traits().
+/// Type 0 = full belt, 1 = cage, 2 = cage+anal, 3 = spiked cage, 4 = spiked cage+anal.
+/// Cursed devices do NOT use this list — their traits are toggled dynamically via apply_cursed_state().
 GLOBAL_LIST_INIT(chastity_standard_traits, list(
 	list(TRAIT_CHASTITY_FULL),
 	list(TRAIT_CHASTITY_CAGE),
@@ -13,12 +16,15 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 	var/chastity_flat = FALSE // is the cage flat-style (more restrictive) or standard? Generally just for our cursed cage content.
 	var/chastity_move_sound = SFX_JINGLE_BELLS // sound played when the chastity device moves
 	var/chastity_move_delay = CHASTITY_MOVE_SOUND_DELAY // delay between movement sounds
-	var/chastity_move_volume = 55 // how load is our cock cage?
+	var/chastity_move_volume = 55 // how loud is our cock cage?
 	var/chastity_move_chance = 5 // how often does it trigger on move?
 	var/chastity_high_pop_client_cap = CHASTITY_HIGH_POP_THRESHOLD // for jingle throttle. Don't want the server spamming the noise when 120 people potentially cage up. 
-	var/chastity_high_pop_move_chance_mult = CHASTITY_HIGH_POP_SOUND_MULT
-	var/tmp/chastity_move_counter = 0 // 
-// base chastity item and vars
+	var/chastity_high_pop_move_chance_mult = CHASTITY_HIGH_POP_SOUND_MULT // lower chance to play the sound in high pop.
+	var/tmp/chastity_move_counter = 0 // counter for move sound delay
+// Core type definition — base name, icon, sizing, and feature-slot vars.
+// Movement-sound vars (chastity_move_sound, chastity_move_delay, etc.) are declared in the
+// block above because BYOND requires them before Initialize() is compiled. Both blocks together
+// form the full /obj/item/chastity type; this split is purely a compile-order requirement.
 /obj/item/chastity
 	name = "chastity belt"
 	desc = "A unisex metal device designed to prevent penetrative sex. It has a lock on the front, and encloses the groin area behind robust iron bars. For the devout."
@@ -45,7 +51,7 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 	var/sprite_acc = /datum/sprite_accessory/chastity/full // overlay for chastity items on the sprite, function in a similar vein to underwear in that they aren't traditional equipped clothing items, instead going in a snowflake slot
 	lefthand_file = 'modular/icons/mob/inhands/lewd/items_lefthand.dmi'
 	righthand_file = 'modular/icons/mob/inhands/lewd/items_righthand.dmi'
-	// nudist_approved = TRUE // prep for nudist PR being made by another person.
+	nudist_approved = TRUE
 
 // Ensure each chastity item has a unique lockhash used by matching keys.
 /obj/item/chastity/Initialize()
@@ -96,6 +102,9 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 		attached_toy.pixel_y = -6
 		attached_toy.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
+/// Mounts a dildo onto this device. Fails if a toy is already present on the device OR if the
+/// current wearer already has a belt-mounted toy (prevents two insertion sources stacking).
+/// Sets is_attached_to_belt on the dildo, adds it to vis_contents, and refreshes overlays.
 /obj/item/chastity/proc/attach_toy(obj/item/dildo/new_toy, mob/user)
 	if(!new_toy || attached_toy || new_toy.is_attached_to_belt)
 		return FALSE
@@ -113,6 +122,8 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 	refresh_wearer_overlays()
 	return TRUE
 
+/// Removes the mounted dildo. Attempts to place it in the user's active hand first;
+/// if that fails (hand full or no user), drops it at the device's location instead.
 /obj/item/chastity/proc/detach_toy(mob/user)
 	if(!attached_toy)
 		return FALSE
@@ -189,13 +200,62 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 	forceMove(H)
 	H.chastity_device = src
 	chastity_victim = H
+	var/datum/component/intimate_action_guard/chastity/action_guard_component = LoadComponent(/datum/component/intimate_action_guard/chastity)
+	if(action_guard_component)
+		action_guard_component.bind_to_wearer(H)
+	var/datum/component/intimate_reaction/chastity_receive_flavor/reaction_component = LoadComponent(/datum/component/intimate_reaction/chastity_receive_flavor)
+	if(reaction_component)
+		reaction_component.bind_to_wearer(H)
 	register_wearer_jingle(H)
 	refresh_chastity_mood_effects(H)
 	refresh_wearer_overlays()
 
+/// Returns TRUE if the wearer has hard mode enabled in their preferences.
+/// Hard mode is an opt-in preference that makes the chastity device truly inescapable:
+/// no master key, no lockpick, no hammer & chisel. Only the original generated key,
+/// werewolf transformation destroying the device, or a catastrophic forced removal can free them.
+/// Always call this before allowing any removal path other than the generated key.
 /obj/item/chastity/proc/is_hardmode_active()
 	return chastity_victim?.client?.prefs?.chastity_hardmode == CHASTITY_HARDMODE_ENABLED
 
+/// Returns the appropriate lock-denial flavor string for this device.
+/// Cursed devices get their own message; all other locked/hardmode devices use the generic denial.
+/// Use this instead of repeating the ternary at every call site.
+/obj/item/chastity/proc/get_lock_denial_string()
+	return pick_chastity_string("chastity_lock_messages.json", chastity_cursed ? "chastity_cursed_lock" : "chastity_lock_denial")
+
+/// Returns TRUE only if interaction_item is the exact persistent key object spawned for this device.
+/// Reference-equality check — a copied key or a different key with the same lockhash will not pass.
+/obj/item/chastity/proc/is_generated_unlock_key(obj/item/interaction_item)
+	if(!interaction_item || !generated_key || QDELETED(generated_key))
+		return FALSE
+	return interaction_item == generated_key
+
+/// Signal handler for COMSIG_CARBON_CHASTITY_LOCK_INTERACT.
+/// Fired by any tool that attempts to interact with the chastity lock (lockpick, hammer & chisel, forced removal).
+/// The lord key bypasses this signal entirely and calls is_hardmode_active() directly to avoid
+/// a type mismatch (it attacks mobs, not the device itself).
+/// Returns COMPONENT_CHASTITY_LOCK_INTERACT_BLOCK to silently prevent the action if:
+///   - the interaction is a removal (new_locked_state == FALSE)
+///   - hard mode is active
+///   - the item used is NOT the original generated key (or no item was used at all)
+/// Locking is always permitted even in hard mode.
+/obj/item/chastity/proc/on_chastity_lock_interact(datum/source, mob/user, obj/item/interaction_item, new_locked_state, method)
+	SIGNAL_HANDLER
+	if(source != chastity_victim)
+		return
+	if(!is_hardmode_active())
+		return
+	if(new_locked_state)
+		return
+	if(is_generated_unlock_key(interaction_item))
+		return
+	return COMPONENT_CHASTITY_LOCK_INTERACT_BLOCK
+
+/// Syncs the generated key's name, desc, and hardmode_indestructible flag to match the current
+/// wearer and hard mode state. Call this whenever the wearer changes or prefs are updated.
+/// If hard mode just activated (was_hardmode_key was FALSE), notifies the holding user so they
+/// understand the weight of what they're carrying before they walk away with it.
 /obj/item/chastity/proc/sync_generated_key_metadata(mob/living/carbon/human/H, mob/user = null)
 	if(!H || !generated_key || QDELETED(generated_key))
 		return
@@ -213,8 +273,9 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 		if(user && !was_hardmode_key)
 			to_chat(user, span_warning("The key feels heavier than it should. [H]'s fate now rests in your hands."))
 
-// Key generation for non-cursed devices, spawns a matching key on the equipping user's turf if one doesn't already exist. Cursed devices don't get keys since they're meant to be locked via the collar master menu and not interact with traditional locks and keys.
-// Spawns a matching physical key for non-cursed devices at the equipping user's turf.
+// Spawns a matching physical key at the equipping user's turf (non-cursed devices only).
+// Reuses the cached generated_key if it still exists to survive re-equips without orphaning old keys.
+// Cursed devices don't get keys — they are locked/unlocked exclusively through the collar master TGUI.
 /obj/item/chastity/proc/generate_chastity_key(mob/user, mob/living/carbon/human/H)
 	if(!user || !H)
 		return
@@ -259,11 +320,12 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 
 	SEND_SIGNAL(H, COMSIG_CARBON_CHASTITY_LOCK_CHANGED, user, interaction_item, new_locked_state, interaction_source)
 	notify_chastity_state_change(H, state_change_reason)
-	to_chat(H, new_locked_state ? span_warning(pick(GLOB.chastity_lock_click)) : span_notice(pick(GLOB.chastity_unlock_click)))
+	to_chat(H, new_locked_state ? span_warning(pick_chastity_string("chastity_lock_messages.json", "chastity_lock_click")) : span_notice(pick_chastity_string("chastity_lock_messages.json", "chastity_unlock_click")))
 	return TRUE
 
-// Our checks for whether the wearer has traits that would cause them to have mood effects related to wearing a chastity device, like the devout or masochist traits, are all based on checking for the presence of the relevant chastity traits that should be applied with each device type, so we need to make sure those traits are applied correctly according to the device type. This proc handles applying those traits on equip and removing them on unequip for standard devices, while cursed devices will handle it separately since their traits can change dynamically based on their cursed state.
-// Emits a shared state-change signal so mood/visual refresh logic stays in one listener.
+/// Fires COMSIG_CARBON_CHASTITY_STATE_CHANGED on the wearer so mood effects and cursed visuals
+/// stay in sync after any trait or mode change. If the device is no longer the wearer's active
+/// device (e.g. mid-removal), falls back to a direct refresh_chastity_mood_effects() call instead.
 /obj/item/chastity/proc/notify_chastity_state_change(mob/living/carbon/human/H, reason = "")
 	if(!H)
 		return
@@ -272,6 +334,8 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 		return
 	refresh_chastity_mood_effects(H)
 
+/// Returns TRUE if H has the Devotee virtue in either virtue slot.
+/// Checked alongside patron_approves_chastity() to gate the chastity_devout mood bonus.
 /obj/item/chastity/proc/has_devotee_virtue(mob/living/carbon/human/H)
 	if(!H?.client?.prefs)
 		return FALSE
@@ -281,6 +345,9 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 		return TRUE
 	return FALSE
 
+/// Returns TRUE if H's patron would consider chastity virtuous.
+/// Explicitly excluded: inhumen patrons (lust-aligned, consider chastity an affront) and Eora
+/// (chastity conflicts with her domain). A null patron also returns FALSE — no patron, no blessing.
 /obj/item/chastity/proc/patron_approves_chastity(mob/living/carbon/human/H)
 	if(!H?.patron)
 		return FALSE
@@ -290,6 +357,8 @@ GLOBAL_LIST_INIT(chastity_standard_traits, list(
 		return FALSE
 	return TRUE
 
+/// Strips all chastity-related mood stresses from H. Called at the start of refresh_chastity_mood_effects()
+/// and directly from remove_chastity() to guarantee a clean slate before re-evaluating or on unequip.
 /obj/item/chastity/proc/clear_chastity_mood_effects(mob/living/carbon/human/H)
 	if(!H)
 		return

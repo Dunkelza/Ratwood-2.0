@@ -1,3 +1,39 @@
+/**
+ * collar_master_tgui — TGUI interface and action routing for the collar_master component.
+ *
+ * The main entry point is the collar_master_control_ui() verb added to the master's body in
+ * collar_master_component.dm::_JoinParent(). It creates a /datum/collar_control_menu datum and
+ * opens the "CollarControl" TGUI window.
+ *
+ * /datum/collar_control_menu:
+ *   - Holds a reference to the caller's /datum/component/collar_master (master_component).
+ *   - selected_pet_refs is an associative list of REF() strings for currently-selected pets.
+ *     Selection is per-session (not persisted); the front-end sends select_pet / select_all /
+ *     clear_selection actions to manage it.
+ *
+ * ui_data() flow:
+ *   - Validates the component via get_component_for_user() to prevent a UI spoofed by a non-master.
+ *   - Builds a pets_data list: per-pet status, anatomy, selection state, and full cursed-chastity
+ *     state if the pet has a bound cursed device.
+ *
+ * ui_act() action routing:
+ *   - Selection actions (select_pet, select_all, clear_selection) are cheap reads — no cooldown.
+ *   - All other actions resolve selected pets via resolve_selected_pets(), which re-validates against
+ *     CM.my_pets to prevent stale refs from doing anything after a pet is released mid-session.
+ *   - Most actions consume a shared command_cooldown via consume_cooldown() to prevent rapid-fire abuse.
+ *   - Cursed chastity direct-state actions (chastity_set_*) deliberately skip the global cooldown
+ *     check at line ~128 and run their own consume_cooldown() inline. This is intentional: they are
+ *     read-like parameter changes (not punishment actions) and need their own per-change throttle
+ *     rather than being blocked by a shock/surrender that fired a moment before.
+ *   - resolve_single_cursed_target() guards chastity_set_* actions — they require exactly one pet
+ *     with a cursed device selected, and emit a chat warning otherwise.
+ *
+ * Helper procs at the bottom of the file:
+ *   - get_component_for_user(): cross-validates UI user against the stored master_component reference.
+ *   - resolve_selected_pets(): resolves selected_pet_refs back to live mob refs, re-checking my_pets membership.
+ *   - consume_cooldown(): returns FALSE and warns if the command cooldown has not yet elapsed.
+ *   - report_count(): unified feedback — tells the master how many pets were affected by a batch command.
+ */
 /mob/proc/collar_master_control_ui()
 	set name = "Collar Control (TGUI)"
 	set category = "Collar Tab"
@@ -50,10 +86,19 @@
 		if(!pet)
 			continue
 		var/list/pet_entry = list()
+		var/location_name = get_area_name(pet, TRUE)
 		pet_entry["ref"] = REF(pet)
 		pet_entry["name"] = pet.real_name
 		pet_entry["connected"] = !!pet.client
+		pet_entry["condition"] = pet.get_damage_condition_summary()
+		pet_entry["location"] = location_name ? location_name : "Unknown"
 		pet_entry["conscious"] = (pet.stat < UNCONSCIOUS)
+		if(pet.stat == DEAD)
+			pet_entry["mental_state"] = "Dead"
+		else if(pet.stat >= UNCONSCIOUS)
+			pet_entry["mental_state"] = "Unconscious"
+		else
+			pet_entry["mental_state"] = "Conscious"
 		pet_entry["selected"] = (REF(pet) in selected_pet_refs)
 		pet_entry["speech_altered"] = (pet in CM.speech_altered_pets)
 		pet_entry["orgasm_denied"] = (pet in CM.denied_orgasm_pets)
@@ -244,8 +289,8 @@
 			var/mob/living/carbon/human/pet = resolve_single_cursed_target(CM, targets, user)
 			if(!pet)
 				return TRUE
-				if(!consume_cooldown(CM, user))
-					return TRUE
+			if(!consume_cooldown(CM, user))
+				return TRUE
 			var/new_lock = text2num("[params["locked"]]")
 			var/affected = 0
 			if(CM.set_pet_chastity_lock(pet, new_lock))
@@ -255,8 +300,8 @@
 			var/mob/living/carbon/human/pet = resolve_single_cursed_target(CM, targets, user)
 			if(!pet)
 				return TRUE
-				if(!consume_cooldown(CM, user))
-					return TRUE
+			if(!consume_cooldown(CM, user))
+				return TRUE
 			var/front_mode = clamp(text2num("[params["front_mode"]]"), 0, 3)
 			var/affected = 0
 			if(CM.set_pet_chastity_front_mode(pet, front_mode))
@@ -266,8 +311,8 @@
 			var/mob/living/carbon/human/pet = resolve_single_cursed_target(CM, targets, user)
 			if(!pet)
 				return TRUE
-				if(!consume_cooldown(CM, user))
-					return TRUE
+			if(!consume_cooldown(CM, user))
+				return TRUE
 			var/anal_open = text2num("[params["anal_open"]]")
 			var/affected = 0
 			if(CM.set_pet_chastity_anal_open(pet, anal_open))
@@ -277,8 +322,8 @@
 			var/mob/living/carbon/human/pet = resolve_single_cursed_target(CM, targets, user)
 			if(!pet)
 				return TRUE
-				if(!consume_cooldown(CM, user))
-					return TRUE
+			if(!consume_cooldown(CM, user))
+				return TRUE
 			var/spikes_on = text2num("[params["spikes_on"]]")
 			var/affected = 0
 			if(CM.set_pet_chastity_spikes(pet, spikes_on))
@@ -288,8 +333,8 @@
 			var/mob/living/carbon/human/pet = resolve_single_cursed_target(CM, targets, user)
 			if(!pet)
 				return TRUE
-				if(!consume_cooldown(CM, user))
-					return TRUE
+			if(!consume_cooldown(CM, user))
+				return TRUE
 			var/is_flat = text2num("[params["is_flat"]]")
 			var/affected = 0
 			if(CM.set_pet_chastity_flat(pet, is_flat))

@@ -2,14 +2,13 @@
 	name = "Stroke their clit"
 	check_same_tile = FALSE
 	category = SEX_CATEGORY_HANDS
+	target_sex_part = SEX_PART_CUNT
 	subtle_supported = TRUE
 
 /datum/sex_action/masturbate_other_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
-		return FALSE
-	if(target.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 
@@ -19,8 +18,6 @@
 	if(!check_location_accessible(user, target, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
-		return FALSE
-	if(target.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 

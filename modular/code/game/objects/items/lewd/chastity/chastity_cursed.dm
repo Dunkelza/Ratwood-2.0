@@ -2,13 +2,13 @@
 /obj/item/chastity/cursed/attack_self(mob/user)
 	if(!user?.mind)
 		return
-	if(alert(user, "Become the master of this device?", "[src]", "Yes", "No") != "Yes")
+	if(tgui_alert(user, "Become the master of this device?", "[src]", list("Yes", "No")) != "Yes")
 		return
 	var/datum/component/collar_master/CM = user.mind.GetComponent(/datum/component/collar_master)
 	if(!CM)
 		user.mind.AddComponent(/datum/component/collar_master)
 	chastity_master = user.mind
-	to_chat(user, span_userdanger(pick(GLOB.chastity_imprint)))
+	to_chat(user, span_userdanger(pick_chastity_string("chastity_cursed_messages.json", "chastity_imprint")))
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		log_chastity_command(H, user.mind, CHASTITY_LOG_IMPRINT, "device=[src]")
@@ -82,7 +82,7 @@
 	var/is_open_front = FALSE
 
 	if(has_penis && has_vagina)
-		is_open_front = (cursed_front_mode == 3)
+		is_open_front = (cursed_front_mode != 0)
 	else if(has_penis)
 		is_open_front = (cursed_front_mode == 1)
 	else if(has_vagina)
@@ -142,6 +142,32 @@
 		return
 	log_chastity_command(H, chastity_master, log_type, details, chastity_master && chastity_master != H.mind)
 
+// Plays the most appropriate front-state transition sound for cursed devices.
+/obj/item/chastity/proc/play_cursed_front_mode_change_sound(mob/living/carbon/human/H, old_mode, new_mode)
+	if(!H)
+		return FALSE
+
+	var/has_penis = !!H.getorganslot(ORGAN_SLOT_PENIS)
+	var/has_vagina = !!H.getorganslot(ORGAN_SLOT_VAGINA)
+	var/was_penis_open = has_penis && (old_mode == 1 || old_mode == 3)
+	var/is_penis_open = has_penis && (new_mode == 1 || new_mode == 3)
+	var/was_vagina_open = has_vagina && (old_mode == 2 || old_mode == 3)
+	var/is_vagina_open = has_vagina && (new_mode == 2 || new_mode == 3)
+
+	if((was_penis_open && !is_penis_open) || (was_vagina_open && !is_vagina_open))
+		playsound(H, 'sound/foley/doors/windowdown.ogg', 50, TRUE)
+		return TRUE
+
+	if(!was_vagina_open && is_vagina_open && (was_penis_open == is_penis_open))
+		playsound(H, 'sound/foley/doors/windowup.ogg', 50, TRUE)
+		return TRUE
+
+	if((!was_penis_open && is_penis_open) || (!was_vagina_open && is_vagina_open))
+		playsound(H, pick('sound/foley/equip/swordlarge1.ogg', 'sound/foley/equip/swordlarge2.ogg'), 50, TRUE)
+		return TRUE
+
+	return FALSE
+
 // Toggles cursed lock state and reapplies cursed trait effects.
 /obj/item/chastity/proc/toggle_cursed_lock(mob/living/carbon/human/H)
 	if(!chastity_cursed || !H)
@@ -149,7 +175,7 @@
 	locked = !locked
 	apply_cursed_state(H)
 	playsound(H, locked ? 'sound/foley/doors/lock.ogg' : 'sound/foley/doors/unlock.ogg', 50, TRUE)
-	to_chat(H, locked ? span_warning(pick(GLOB.chastity_remote_lock)) : span_notice(pick(GLOB.chastity_remote_unlock)))
+	to_chat(H, locked ? span_warning(pick_chastity_string("chastity_lock_messages.json", "chastity_remote_lock")) : span_notice(pick_chastity_string("chastity_lock_messages.json", "chastity_remote_unlock")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_LOCK, "locked=[locked]")
 	return TRUE
 
@@ -164,7 +190,7 @@
 	locked = new_state
 	apply_cursed_state(H)
 	playsound(H, locked ? 'sound/foley/doors/lock.ogg' : 'sound/foley/doors/unlock.ogg', 50, TRUE)
-	to_chat(H, locked ? span_warning(pick(GLOB.chastity_remote_lock)) : span_notice(pick(GLOB.chastity_remote_unlock)))
+	to_chat(H, locked ? span_warning(pick_chastity_string("chastity_lock_messages.json", "chastity_remote_lock")) : span_notice(pick_chastity_string("chastity_lock_messages.json", "chastity_remote_unlock")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_LOCK, "locked=[locked] changed=TRUE")
 	return TRUE
 
@@ -188,26 +214,16 @@
 	if(!current_index)
 		current_index = 1
 
+	var/old_mode = cursed_front_mode
 	var/next_index = (current_index % length(valid_modes)) + 1
 	cursed_front_mode = valid_modes[next_index]
 
 	apply_cursed_state(H)
-
-	// Play appropriate audio based on the new state
-	if(has_penis)
-		if(cursed_front_mode == 1 || cursed_front_mode == 3)
-			playsound(H, pick('sound/foley/equip/swordlarge1.ogg', 'sound/foley/equip/swordlarge2.ogg'), 50, TRUE)
-		else
-			playsound(H, 'sound/foley/doors/windowdown.ogg', 50, TRUE)
-	else if(has_vagina)
-		if(cursed_front_mode == 2 || cursed_front_mode == 3)
-			playsound(H, 'sound/foley/doors/windowup.ogg', 50, TRUE)
-		else
-			playsound(H, 'sound/foley/doors/windowdown.ogg', 50, TRUE)
+	play_cursed_front_mode_change_sound(H, old_mode, cursed_front_mode)
 
 	var/state_name = get_cursed_front_state_name(H)
 
-	to_chat(H, span_notice(replacetext(pick(GLOB.chastity_front_shift), "%STATE%", state_name)))
+	to_chat(H, span_notice(replacetext(pick_chastity_string("chastity_cursed_messages.json", "chastity_front_shift"), "%STATE%", state_name)))
 	log_cursed_chastity_command(H, CHASTITY_LOG_FRONT, "mode=[cursed_front_mode] state=[state_name]")
 	return TRUE
 
@@ -238,26 +254,11 @@
 	var/old_mode = cursed_front_mode
 	cursed_front_mode = new_mode
 	apply_cursed_state(H)
-
-	// Play appropriate audio based on what changed
-	if(has_penis)
-		var/was_penis_open = (old_mode == 1 || old_mode == 3)
-		var/is_penis_open = (new_mode == 1 || new_mode == 3)
-		if(!was_penis_open && is_penis_open)
-			playsound(H, pick('sound/foley/equip/swordlarge1.ogg', 'sound/foley/equip/swordlarge2.ogg'), 50, TRUE)
-		else if(was_penis_open && !is_penis_open)
-			playsound(H, 'sound/foley/doors/windowdown.ogg', 50, TRUE)
-	if(has_vagina && !has_penis)
-		var/was_vagina_open = (old_mode == 2 || old_mode == 3)
-		var/is_vagina_open = (new_mode == 2 || new_mode == 3)
-		if(!was_vagina_open && is_vagina_open)
-			playsound(H, 'sound/foley/doors/windowup.ogg', 50, TRUE)
-		else if(was_vagina_open && !is_vagina_open)
-			playsound(H, 'sound/foley/doors/windowdown.ogg', 50, TRUE)
+	play_cursed_front_mode_change_sound(H, old_mode, new_mode)
 
 	var/state_name = get_cursed_front_state_name(H)
 
-	to_chat(H, span_notice(replacetext(pick(GLOB.chastity_front_shift), "%STATE%", state_name)))
+	to_chat(H, span_notice(replacetext(pick_chastity_string("chastity_cursed_messages.json", "chastity_front_shift"), "%STATE%", state_name)))
 	log_cursed_chastity_command(H, CHASTITY_LOG_FRONT, "mode=[cursed_front_mode] state=[state_name] changed=TRUE")
 	return TRUE
 
@@ -268,7 +269,7 @@
 	cursed_anal_open = !cursed_anal_open
 	apply_cursed_state(H)
 	playsound(H, cursed_anal_open ? 'sound/items/uncork.ogg' : 'sound/misc/mat/pop.ogg', 50, TRUE)
-	to_chat(H, cursed_anal_open ? span_notice(pick(GLOB.chastity_anal_open)) : span_warning(pick(GLOB.chastity_anal_closed)))
+	to_chat(H, cursed_anal_open ? span_notice(pick_chastity_string("chastity_cursed_messages.json", "chastity_anal_open")) : span_warning(pick_chastity_string("chastity_cursed_messages.json", "chastity_anal_closed")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_ANAL, "open=[cursed_anal_open]")
 	return TRUE
 
@@ -283,7 +284,7 @@
 	cursed_anal_open = new_state
 	apply_cursed_state(H)
 	playsound(H, cursed_anal_open ? 'sound/items/uncork.ogg' : 'sound/misc/mat/pop.ogg', 50, TRUE)
-	to_chat(H, cursed_anal_open ? span_notice(pick(GLOB.chastity_anal_open)) : span_warning(pick(GLOB.chastity_anal_closed)))
+	to_chat(H, cursed_anal_open ? span_notice(pick_chastity_string("chastity_cursed_messages.json", "chastity_anal_open")) : span_warning(pick_chastity_string("chastity_cursed_messages.json", "chastity_anal_closed")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_ANAL, "open=[cursed_anal_open] changed=TRUE")
 	return TRUE
 
@@ -294,7 +295,7 @@
 	cursed_spikes_on = !cursed_spikes_on
 	apply_cursed_state(H)
 	playsound(H, cursed_spikes_on ? 'sound/items/beartrap.ogg' : 'sound/foley/flesh_rem.ogg', 50, TRUE)
-	to_chat(H, cursed_spikes_on ? span_warning(pick(GLOB.chastity_spikes_extend)) : span_notice(pick(GLOB.chastity_spikes_retract)))
+	to_chat(H, cursed_spikes_on ? span_warning(pick_chastity_string("chastity_cursed_messages.json", "chastity_spikes_extend")) : span_notice(pick_chastity_string("chastity_cursed_messages.json", "chastity_spikes_retract")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_SPIKES, "enabled=[cursed_spikes_on]")
 	return TRUE
 
@@ -309,7 +310,7 @@
 	cursed_spikes_on = new_state
 	apply_cursed_state(H)
 	playsound(H, cursed_spikes_on ? 'sound/items/beartrap.ogg' : 'sound/foley/flesh_rem.ogg', 50, TRUE)
-	to_chat(H, cursed_spikes_on ? span_warning(pick(GLOB.chastity_spikes_extend)) : span_notice(pick(GLOB.chastity_spikes_retract)))
+	to_chat(H, cursed_spikes_on ? span_warning(pick_chastity_string("chastity_cursed_messages.json", "chastity_spikes_extend")) : span_notice(pick_chastity_string("chastity_cursed_messages.json", "chastity_spikes_retract")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_SPIKES, "enabled=[cursed_spikes_on] changed=TRUE")
 	return TRUE
 
@@ -318,9 +319,9 @@
 	if(!chastity_cursed || !H)
 		return FALSE
 	chastity_flat = !chastity_flat
-	update_cursed_visual(H)
+	notify_chastity_state_change(H, "cursed_flat_toggled")
 	playsound(H, chastity_flat ? 'sound/items/garrote.ogg' : 'sound/items/garrote2.ogg', 50, TRUE)
-	to_chat(H, chastity_flat ? span_warning(pick(GLOB.chastity_flat_enable)) : span_notice(pick(GLOB.chastity_flat_disable)))
+	to_chat(H, chastity_flat ? span_warning(pick_chastity_string("chastity_mode_messages.json", "chastity_flat_enable")) : span_notice(pick_chastity_string("chastity_mode_messages.json", "chastity_flat_disable")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_FLAT, "flat=[chastity_flat]")
 	return TRUE
 
@@ -333,8 +334,8 @@
 		log_cursed_chastity_command(H, CHASTITY_LOG_FLAT, "flat=[chastity_flat] changed=FALSE")
 		return TRUE
 	chastity_flat = new_state
-	update_cursed_visual(H)
+	notify_chastity_state_change(H, "cursed_flat_set")
 	playsound(H, chastity_flat ? 'sound/items/garrote.ogg' : 'sound/items/garrote2.ogg', 50, TRUE)
-	to_chat(H, chastity_flat ? span_warning(pick(GLOB.chastity_flat_enable)) : span_notice(pick(GLOB.chastity_flat_disable)))
+	to_chat(H, chastity_flat ? span_warning(pick_chastity_string("chastity_mode_messages.json", "chastity_flat_enable")) : span_notice(pick_chastity_string("chastity_mode_messages.json", "chastity_flat_disable")))
 	log_cursed_chastity_command(H, CHASTITY_LOG_FLAT, "flat=[chastity_flat] changed=TRUE")
 	return TRUE

@@ -27,6 +27,8 @@
 	var/subtle_supported = FALSE
 	/// Only allow select actions to end with a knot-tie
 	var/knot_on_finish = FALSE
+	/// Central intimate-state validation participation. Generic actions default to both roles; chastityplay keeps bespoke checks.
+	var/intimate_check_flags = SEX_ACTION_INTIMATE_CHECK_BOTH
 
 /datum/sex_action/proc/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return TRUE
@@ -49,6 +51,7 @@
 // chastity play abstract action, contains shared code for actions that interact with chastity devices
 /datum/sex_action/chastityplay 
 	abstract_type = /datum/sex_action/chastityplay
+	intimate_check_flags = SEX_ACTION_INTIMATE_CHECK_NONE
 
 /datum/sex_action/chastityplay/proc/get_chastity_device_name(mob/living/carbon/human/owner)
 	var/modular_result = modular_get_chastity_device_name(owner)

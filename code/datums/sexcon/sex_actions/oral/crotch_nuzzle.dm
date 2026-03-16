@@ -1,11 +1,10 @@
 /datum/sex_action/crotch_nuzzle
 	name = "Nuzzle their crotch"
 	user_sex_part = SEX_PART_JAWS
+	target_sex_part = SEX_PART_COCK|SEX_PART_CUNT
 
 /datum/sex_action/crotch_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
-		return FALSE
-	if(target.sexcon.has_chastity_cage())
 		return FALSE
 	return TRUE
 
@@ -15,8 +14,6 @@
 	if(!check_location_accessible(user, target, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
 	if(!check_location_accessible(user, user, BODY_ZONE_PRECISE_MOUTH))
-		return FALSE
-	if(target.sexcon.has_chastity_cage())
 		return FALSE
 	return TRUE
 

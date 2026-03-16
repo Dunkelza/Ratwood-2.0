@@ -2,6 +2,7 @@
 	name = "Force them to nuzzle"
 	require_grab = TRUE
 	stamina_cost = 1.0
+	user_sex_part = SEX_PART_COCK|SEX_PART_CUNT
 	target_sex_part = SEX_PART_JAWS
 
 /datum/sex_action/force_crotch_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -12,8 +13,6 @@
 				return FALSE
 		else
 			return FALSE
-	if(user.sexcon.has_chastity_cage())
-		return FALSE
 	return TRUE
 
 /datum/sex_action/force_crotch_nuzzle/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -27,8 +26,6 @@
 	if(!check_location_accessible(user, user, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
 	if(!check_location_accessible(user, target, BODY_ZONE_PRECISE_MOUTH))
-		return FALSE
-	if(user.sexcon.has_chastity_cage())
 		return FALSE
 	return TRUE
 

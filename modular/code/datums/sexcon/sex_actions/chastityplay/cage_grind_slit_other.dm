@@ -36,10 +36,10 @@
     return TRUE
 
 /datum/sex_action/chastityplay/cage_grind_slit_other/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(span_warning("[user] presses [user.p_their()] [get_chastity_device_name(user)] against [target]'s genital slit..."))
+    user.visible_message(span_warning("[user] rolls forward until [user.p_their()] [get_chastity_device_name(user)] meets the flush seam of [target]'s genital slit."))
 
 /datum/sex_action/chastityplay/cage_grind_slit_other/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] grinds [user.p_their()] [get_chastity_device_name(user)] against [target]'s genital slit..."))
+    user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] works [user.p_their()] [get_chastity_device_name(user)] against [target]'s slit in a slow, relentless grind..."))
     user.sexcon.outercourse_noise(target, TRUE)
     user.sexcon.perform_sex_action(user, 1.2, 1, TRUE)
     user.sexcon.perform_sex_action(target, 1.6, 0, TRUE)
@@ -47,7 +47,7 @@
     target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/chastityplay/cage_grind_slit_other/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(span_warning("[user] slides [user.p_their()] [get_chastity_device_name(user)] away from [target]'s genital slit."))
+    user.visible_message(span_warning("[user] rocks back, breaking contact between [user.p_their()] [get_chastity_device_name(user)] and [target]'s slit."))
 
 /datum/sex_action/chastityplay/cage_grind_slit_other/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
     if(user.sexcon.finished_check())

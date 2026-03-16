@@ -26,18 +26,18 @@
     return TRUE
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(span_warning("[user] presses [user.p_their()] belt against [target]'s belt."))
+    user.visible_message(span_warning("[user] maneuvers close until [user.p_their()] belt meets [target]'s belt \u2014 the contact announcing itself with a dull clunk of steel."))
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] scissor-grinds belt to belt with [target]."))
-    user.sexcon.outercourse_noise(target, TRUE)
+    user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] works [user.p_their()] hips against [target]'s in a grinding scissor, metal dragging over metal with an ugly rasp..."))
+    // Chastity device sound is handled internally by perform_sex_action via chastitycourse_noise — no outercourse noise here, it's purely metal-on-metal.
     user.sexcon.perform_sex_action(user, 1.3, 1, TRUE)
     user.sexcon.perform_sex_action(target, 1.3, 1, TRUE)
     user.sexcon.handle_passive_ejaculation(target)
     target.sexcon.handle_passive_ejaculation(user)
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-    user.visible_message(span_warning("[user] pulls [user.p_their()] belt away from [target]'s."))
+    user.visible_message(span_warning("[user] untangles [user.p_their()] legs from [target]'s and the two belts scrape apart."))
 
 /datum/sex_action/chastityplay/scissor_cage_to_cage/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
     if(target.sexcon.finished_check())

@@ -636,6 +636,8 @@
 		arousal_amt = modular_adjustments[1]
 		pain_amt = modular_adjustments[2]
 	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)
+	/// modular signal to let other systems know about the sex action, currently used for chastity course to track arousal and apply pain, but can be used for other things in the future
+	modular_emit_received_sex_action_signal(action_target, arousal_amt, pain_amt, giving)
 	if(modular_should_play_chastitycourse_noise(action_target))
 		chastitycourse_noise(action_target)
 
@@ -653,7 +655,7 @@
 
 	damage_from_pain(pain_amt)
 	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
-	try_do_pain_effect(pain_amt, giving)
+	try_do_pain_effect(pain_amt, giving, TRUE)
 
 /datum/sex_controller/proc/damage_from_pain(pain_amt)
 	if(pain_amt < PAIN_MINIMUM_FOR_DAMAGE)
@@ -707,7 +709,7 @@
 
 	return FALSE
 
-/datum/sex_controller/proc/try_do_pain_effect(pain_amt, giving)
+/datum/sex_controller/proc/try_do_pain_effect(pain_amt, giving, allow_intimate_item_reaction = FALSE)
 	if(pain_amt < PAIN_MILD_EFFECT)
 		return
 	if(last_pain + PAIN_COOLDOWN >= world.time)
@@ -715,8 +717,7 @@
 	if(prob(50))
 		return
 	last_pain = world.time
-	var/masochist_spiked = (current_action && is_masochist_in_spiked_chastity())
-	if(modular_try_do_chastity_pain_effect(pain_amt, giving, masochist_spiked))
+	if(allow_intimate_item_reaction && user?.chastity_device && HAS_TRAIT(user, TRAIT_CHASTITY_SPIKED))
 		return
 	if(pain_amt >= PAIN_HIGH_EFFECT)
 		var/pain_msg = pick(list("IT HURTS!!!", "IT NEEDS TO STOP!!!", "I CAN'T TAKE IT ANYMORE!!!"))
@@ -954,6 +955,8 @@
 			continue
 		if(!action.shows_on_menu(user, target))
 			continue
+		if(action_blocked_by_intimate_state(action, TRUE))
+			continue
 		dat += "<td>"
 		var/link = ""
 		if(!can_perform_action(action_type, user_is_incapacitated))
@@ -1114,9 +1117,29 @@
 		return FALSE
 	if(!inherent_perform_check(action_type, incapacitated))
 		return FALSE
+	if(action_blocked_by_intimate_state(action))
+		return FALSE
 	if(!action.can_perform(user, target))
 		return FALSE
 	return TRUE
+/// Checks if the action is blocked by an intimate state, such as chastity. If menu_check is TRUE, this is being called for the purpose of showing the action in the menu, and certain checks that would be redundant to do on every menu open (like checking for orgasm immunity from a collar) can be skipped.
+/datum/sex_controller/proc/action_blocked_by_intimate_state(datum/sex_action/action, menu_check = FALSE)
+	if(!action || !user)
+		return FALSE
+	if(action.intimate_check_flags == SEX_ACTION_INTIMATE_CHECK_NONE)
+		return FALSE
+
+	var/user_part = action.user_sex_part & (SEX_PART_COCK | SEX_PART_CUNT | SEX_PART_ANUS)
+	if((action.intimate_check_flags & SEX_ACTION_INTIMATE_CHECK_USER) && user_part)
+		if(SEND_SIGNAL(user, COMSIG_CARBON_SEX_ACTION_VALIDATE, action, target, user_part, TRUE, menu_check) & COMPONENT_SEX_ACTION_BLOCK)
+			return TRUE
+
+	var/target_part = action.target_sex_part & (SEX_PART_COCK | SEX_PART_CUNT | SEX_PART_ANUS)
+	if(target && (action.intimate_check_flags & SEX_ACTION_INTIMATE_CHECK_TARGET) && target_part)
+		if(SEND_SIGNAL(target, COMSIG_CARBON_SEX_ACTION_VALIDATE, action, user, target_part, FALSE, menu_check) & COMPONENT_SEX_ACTION_BLOCK)
+			return TRUE
+
+	return FALSE
 
 /datum/sex_controller/proc/chastity_content_enabled_for(mob/living/carbon/human/H)
 	var/modular_result = modular_chastity_content_enabled_for(H)

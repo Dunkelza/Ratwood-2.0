@@ -15,8 +15,6 @@
 			return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
-	if(user.sexcon.has_chastity_vagina())
-		return FALSE
 	return TRUE
 
 /datum/sex_action/force_cunnilingus/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -32,8 +30,6 @@
 	if(!check_location_accessible(user, target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
-		return FALSE
-	if(user.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 

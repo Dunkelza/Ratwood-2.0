@@ -117,6 +117,72 @@
 				call(src, "modular_handle_chastity_toggle_disable")()
 			to_chat(src, "Chastity content disabled.")
 
+/client/verb/toggle_Chastity_Hardmode()
+	set category = "Options"
+	set name = "Toggle Permanent Binding"
+	
+	if(!prefs)
+		return
+	
+	// Enabling hard mode requires confirmation
+	if(prefs.chastity_hardmode == CHASTITY_HARDMODE_DISABLED)
+		var/confirm = alert(src, 
+			"PERMANENT CHASTITY BINDING:\n\n\
+			• Only the device's unique key can unlock it\n\
+			• Keys can be lost, stolen, or destroyed forever\n\
+			• Divine intervention will not free you\n\
+			• Lockpicks and tools will fail\n\
+			• Even the Duke's master key holds no power\n\
+			• Physical removal is impossible\n\
+			• You will remain bound until the key releases you\n\n\
+			Do you accept these terms of permanent binding?",
+			"Permanent Chastity Binding",
+			"I accept the binding",
+			"I refuse")
+		
+		if(confirm != "I accept the binding")
+			to_chat(src, span_notice("You decline the permanent binding."))
+			return
+		
+		prefs.chastity_hardmode = CHASTITY_HARDMODE_ENABLED
+		prefs.save_preferences()
+		if(ishuman(mob))
+			var/mob/living/carbon/human/H = mob
+			H.chastity_device?.sync_generated_key_metadata(H, mob)
+		to_chat(src, span_boldwarning("You have accepted the terms of PERMANENT BINDING. Only keys shall grant freedom."))
+		log_game("[key_name(src)] enabled permanent chastity binding.")
+		message_admins("[key_name_admin(src)] enabled permanent chastity binding.")
+	else
+		// Disabling requires the humiliation prayer
+		to_chat(src, span_notice("To disable permanent binding, you must recite the Prayer of Foolish Repentance to Eora."))
+		var/sacred_prayer = "Dear Eora, I embraced this binding in foolish haste because I'm a dullard and I'm sorry, so so so sorry for being such a stupid stupid stupid person and I'm begging you please please please free my loins."
+		var/encoded_sacred_prayer = html_encode(sacred_prayer)
+		var/prayer_prompt = "Recite the Prayer of Foolish Repentance EXACTLY as written:\n\n\"[sacred_prayer]\"\n\n(You must type this yourself - copying is forbidden by divine law)"
+		var/prayer_attempt = tgui_input_text(src, prayer_prompt, "Prayer of Foolish Repentance", "", length(encoded_sacred_prayer), FALSE, TRUE, 0, FALSE, GLOB.tgui_always_state, FALSE, TRUE)
+
+		if(!prayer_attempt)
+			to_chat(src, span_warning("Eora does not hear your silence."))
+			return
+
+		// tgui_input_text() html-encodes player input, so compare against the prayer normalized the same way.
+		if(prayer_attempt != encoded_sacred_prayer)
+			to_chat(src, span_warning("Eora rejects your imperfect prayer. You must recite it EXACTLY as written."))
+			to_chat(src, span_notice("You wrote: \"[prayer_attempt]\""))
+			to_chat(src, span_notice("Required: \"[sacred_prayer]\""))
+			log_game("[key_name(src)] failed the humiliation prayer (incorrect text).")
+			return
+
+		// They did it! The humiliation is complete
+		prefs.chastity_hardmode = CHASTITY_HARDMODE_DISABLED
+		prefs.save_preferences()
+		if(ishuman(mob))
+			var/mob/living/carbon/human/H = mob
+			H.chastity_device?.sync_generated_key_metadata(H)
+		to_chat(src, span_boldnotice("Eora hears your pathetic plea and takes pity upon you. The permanent binding is lifted."))
+		to_chat(src, span_notice("You have revoked the permanent binding. Mortal means may now test the lock once more."))
+		log_game("[key_name(src)] disabled permanent chastity binding via humiliation prayer.")
+		message_admins("[key_name_admin(src)] disabled permanent chastity binding by reciting the humiliation prayer.")
+
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "Options"
 	set name = "Toggle Compliance Notifs"

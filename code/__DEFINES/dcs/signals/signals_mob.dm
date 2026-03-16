@@ -46,6 +46,14 @@
 ///Intimate accessory state changed on a wearer (mob/living/carbon/human/wearer, obj/item/intimate_accessory/device, reason)
 #define COMSIG_CARBON_INTIMATE_STATE_CHANGED "carbon_intimate_state_changed"
 
+/// Standardized received-sex-action hook emitted on the receiving carbon (mob/living/carbon/human/acting_mob, datum/sex_controller/acting_sexcon, datum/sex_action/action, receiver_part, giving, arousal_amt, pain_amt, applied_force, applied_speed)
+#define COMSIG_CARBON_SEX_ACTION_RECEIVED "carbon_sex_action_received"
+
+/// Pre-validation hook emitted on an involved carbon during sex action menu/execution checks (datum/sex_action/action, mob/living/carbon/human/other, checked_part, is_user_role, menu_check)
+#define COMSIG_CARBON_SEX_ACTION_VALIDATE "carbon_sex_action_validate"
+	/// Return to hide or block the action.
+	#define COMPONENT_SEX_ACTION_BLOCK (1<<0)
+
 /// Pre-command hook for collar masters targeting a pet (mob/living/carbon/human/pet, datum/component/collar_master/controller, command_id, command_value)
 #define COMSIG_CARBON_COLLAR_COMMAND "carbon_collar_command"
 	/// Return to block execution of a collar command.

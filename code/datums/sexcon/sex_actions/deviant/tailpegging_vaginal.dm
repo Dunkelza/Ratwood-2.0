@@ -11,8 +11,6 @@
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_TAIL))
 		return FALSE
-	if(target.sexcon.has_chastity_vagina())
-		return FALSE
 	return TRUE
 
 /datum/sex_action/tailpegging_vaginal/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -23,8 +21,6 @@
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_TAIL))
-		return FALSE
-	if(target.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 

@@ -22,11 +22,11 @@
 	return TRUE
 
 /datum/sex_action/chastityplay/rimming_shield/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] begins to worm their tongue up and under [target]'s  anal shield..."))
+	user.visible_message(span_warning("[user] ducks low and presses [user.p_their()] face to the lower edge of [target]'s anal shield, searching for an angle."))
 
 /datum/sex_action/chastityplay/rimming_shield/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] wriggles their tongue under [target]'s anal shield..."))
-	user.sexcon.oralcourse_noise(user)
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] drives [user.p_their()] tongue beneath [target]'s anal shield, working it into whatever gap the metal allows..."))
+	user.sexcon.oralcourse_noise(target)
 	user.sexcon.do_thrust_animate(target)
 
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
@@ -34,7 +34,7 @@
 		target.sexcon.ejaculate()
 
 /datum/sex_action/chastityplay/rimming_shield/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] frees their tongue from under [target]'s anal shield..."))
+	user.visible_message(span_warning("[user] pulls back from [target]'s shield, jaw aching, and straightens up."))
 
 /datum/sex_action/chastityplay/rimming_shield/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

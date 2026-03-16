@@ -1,6 +1,7 @@
 /datum/sex_action/masturbate_vagina_finger
 	name = "Finger pussy"
 	category = SEX_CATEGORY_HANDS
+	user_sex_part = SEX_PART_CUNT
 	target_sex_part = SEX_PART_CUNT
 	subtle_supported = TRUE
 
@@ -8,8 +9,6 @@
 	if(user != target)
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
-		return FALSE
-	if(user.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 
@@ -19,8 +18,6 @@
 	if(!check_location_accessible(user, user, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
-		return FALSE
-	if(user.sexcon.has_chastity_vagina())
 		return FALSE
 	return TRUE
 

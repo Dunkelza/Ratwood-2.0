@@ -17,7 +17,10 @@ type PetEntry = {
   ref: string;
   name: string;
   connected: boolean;
+  condition: string;
+  location: string;
   conscious: boolean;
+  mental_state: string;
   selected: boolean;
   speech_altered: boolean;
   orgasm_denied: boolean;
@@ -97,9 +100,8 @@ const PetSelection = () => {
           <Table.Cell collapsing>Select</Table.Cell>
           <Table.Cell>Name</Table.Cell>
           <Table.Cell collapsing>Conn</Table.Cell>
-          <Table.Cell collapsing>State</Table.Cell>
+          <Table.Cell collapsing>Mental</Table.Cell>
           <Table.Cell>Flags</Table.Cell>
-          <Table.Cell collapsing>Cursed</Table.Cell>
         </Table.Row>
         {data.pets?.map((pet) => (
           <Table.Row key={pet.ref}>
@@ -117,27 +119,59 @@ const PetSelection = () => {
             </Table.Cell>
             <Table.Cell>{pet.name}</Table.Cell>
             <Table.Cell collapsing>{pet.connected ? 'Yes' : 'No'}</Table.Cell>
-            <Table.Cell collapsing>
-              {pet.conscious ? 'Awake' : 'Down'}
-            </Table.Cell>
-            <Table.Cell>
-              {[
-                pet.speech_altered && 'Muted',
-                pet.orgasm_denied && 'Denied',
-                pet.arousal_forced && 'Aroused',
-                pet.clothing_forbidden && 'Nudist',
-                pet.forced_love && 'Love',
-              ]
-                .filter(Boolean)
-                .join(', ') || 'None'}
-            </Table.Cell>
-            <Table.Cell collapsing>
-              {pet.has_cursed_chastity ? 'Yes' : 'No'}
-            </Table.Cell>
+            <Table.Cell collapsing>{pet.mental_state}</Table.Cell>
+            <Table.Cell>{getPetFlags(pet)}</Table.Cell>
           </Table.Row>
         ))}
       </Table>
       </Box>
+    </Section>
+  );
+};
+
+const getPetFlags = (pet: PetEntry) => {
+  return (
+    [
+      pet.speech_altered && 'Muted',
+      pet.orgasm_denied && 'Denied',
+      pet.arousal_forced && 'Aroused',
+      pet.clothing_forbidden && 'Nudist',
+      pet.forced_love && 'Love',
+    ]
+      .filter(Boolean)
+      .join(', ') || 'None'
+  );
+};
+
+const SelectedPetInfo = (props: { selectedPets: PetEntry[] }) => {
+  const { selectedPets } = props;
+
+  return (
+    <Section title={`Pet Information (${selectedPets.length} selected)`}>
+      {!selectedPets.length ? (
+        <Box color="label">Select at least one pet to view details.</Box>
+      ) : (
+        <Stack vertical>
+          {selectedPets.map((pet) => (
+            <Stack.Item key={pet.ref}>
+              <Section title={pet.name}>
+                <LabeledList>
+	                  <LabeledList.Item label="Condition">
+	                    {pet.condition}
+	                  </LabeledList.Item>
+                  <LabeledList.Item label="Location">{pet.location}</LabeledList.Item>
+                  <LabeledList.Item label="Mental State">
+                    {pet.mental_state}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Pet Flags">
+                    {getPetFlags(pet)}
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+            </Stack.Item>
+          ))}
+        </Stack>
+      )}
     </Section>
   );
 };
@@ -197,6 +231,21 @@ const toggleStateColor = (state: ToggleVisualState) => {
   return undefined;
 };
 
+const getCommandSectionTitle = (selectedPets: PetEntry[]) => {
+  if (!selectedPets.length) {
+    return 'Collar / Cage Commands';
+  }
+
+  const cursedCount = selectedPets.filter((pet) => pet.has_cursed_chastity).length;
+  if (!cursedCount) {
+    return 'Collar Commands';
+  }
+  if (cursedCount === selectedPets.length) {
+    return 'Cage Commands';
+  }
+  return 'Collar / Cage Commands';
+};
+
 const CommandButton = (props: {
   label: string;
   onClick: () => void;
@@ -232,6 +281,7 @@ const ControlPanel = () => {
   const selectedPets = data.pets?.filter((pet) => pet.selected) ?? [];
   const selectedCursedPets = selectedPets.filter((pet) => pet.has_cursed_chastity);
   const hasSelection = selectedPets.length > 0;
+  const commandSectionTitle = getCommandSectionTitle(selectedPets);
   const speechState = getToggleVisualState(selectedPets, 'speech_altered');
   const clothingState = getToggleVisualState(
     selectedPets,
@@ -276,8 +326,12 @@ const ControlPanel = () => {
         </Section>
       </Stack.Item>
 
+      <Stack.Item>
+        <SelectedPetInfo selectedPets={selectedPets} />
+      </Stack.Item>
+
       <Stack.Item grow>
-        <Section title="Collar Commands" fill>
+        <Section title={commandSectionTitle} fill>
           <Stack>
             <Stack.Item basis="50%" grow>
               <Stack vertical>
@@ -507,14 +561,37 @@ const CursedChastityControls = (props: {
   const cursedPets = selectedPets.filter((pet) => pet.has_cursed_chastity);
   const selectedCursedPet = cursedPets.length === 1 ? cursedPets[0] : undefined;
   const showPenisControls = !!selectedCursedPet?.has_penis;
-  const showVaginaControls =
-    !!selectedCursedPet?.has_vagina && !selectedCursedPet?.has_penis;
+  const showVaginaControls = !!selectedCursedPet?.has_vagina;
 
   const currentLocked = selectedCursedPet?.chastity.locked ?? false;
   const currentAnalOpen = selectedCursedPet?.chastity.anal_open ?? false;
   const currentSpikesOn = selectedCursedPet?.chastity.spikes_on ?? false;
   const currentFlat = selectedCursedPet?.chastity.is_flat ?? false;
   const currentFrontMode = selectedCursedPet?.chastity.front_mode ?? 0;
+  const penisOpen = currentFrontMode === 1 || currentFrontMode === 3;
+  const vaginaOpen = currentFrontMode === 2 || currentFrontMode === 3;
+
+  const togglePenisFrontMode = () => {
+    const newMode = penisOpen
+      ? showVaginaControls && vaginaOpen
+        ? 2
+        : 0
+      : showVaginaControls && vaginaOpen
+        ? 3
+        : 1;
+    act('chastity_set_front_mode', { front_mode: newMode });
+  };
+
+  const toggleVaginaFrontMode = () => {
+    const newMode = vaginaOpen
+      ? showPenisControls && penisOpen
+        ? 1
+        : 0
+      : showPenisControls && penisOpen
+        ? 3
+        : 2;
+    act('chastity_set_front_mode', { front_mode: newMode });
+  };
 
   return (
     <Stack vertical>
@@ -536,23 +613,12 @@ const CursedChastityControls = (props: {
         <Stack.Item>
           <Button
             fluid
-            color={
-              currentFrontMode === 1 || currentFrontMode === 3
-                ? 'pink'
-                : 'red'
-            }
+            color={penisOpen ? 'pink' : 'red'}
             disabled={cursedActionDisabled}
             tooltip={reasonForCursedAction}
-            onClick={() => {
-              const isOpen =
-                currentFrontMode === 1 || currentFrontMode === 3;
-              const newMode = isOpen ? 0 : 1;
-              act('chastity_set_front_mode', { front_mode: newMode });
-            }}
+            onClick={togglePenisFrontMode}
           >
-            {currentFrontMode === 1 || currentFrontMode === 3
-              ? 'PENIS OPEN'
-              : 'PENIS CLOSED'}
+            {penisOpen ? 'PENIS OPEN' : 'PENIS CLOSED'}
           </Button>
         </Stack.Item>
       )}
@@ -561,23 +627,12 @@ const CursedChastityControls = (props: {
         <Stack.Item>
           <Button
             fluid
-            color={
-              currentFrontMode === 2 || currentFrontMode === 3
-                ? 'pink'
-                : 'red'
-            }
+            color={vaginaOpen ? 'pink' : 'red'}
             disabled={cursedActionDisabled}
             tooltip={reasonForCursedAction}
-            onClick={() => {
-              const isOpen =
-                currentFrontMode === 2 || currentFrontMode === 3;
-              const newMode = isOpen ? 0 : 2;
-              act('chastity_set_front_mode', { front_mode: newMode });
-            }}
+            onClick={toggleVaginaFrontMode}
           >
-            {currentFrontMode === 2 || currentFrontMode === 3
-              ? 'VAGINA OPEN'
-              : 'VAGINA CLOSED'}
+            {vaginaOpen ? 'VAGINA OPEN' : 'VAGINA CLOSED'}
           </Button>
         </Stack.Item>
       )}
@@ -623,7 +678,7 @@ const CursedChastityControls = (props: {
               act('chastity_set_flat', { is_flat: currentFlat ? 0 : 1 })
             }
           >
-            {currentFlat ? 'FLAT CAGE' : 'STANDARD CAGE'}
+            {currentFlat ? 'FLAT FIT' : 'STANDARD FIT'}
           </Button>
         </Stack.Item>
       )}

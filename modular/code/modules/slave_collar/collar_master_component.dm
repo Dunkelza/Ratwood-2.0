@@ -1,13 +1,51 @@
+/**
+ * collar_master — mind-based component that lets a player act as a "master" over bound pets.
+ *
+ * Ownership model:
+ *   - The component attaches to a /datum/mind, not a body. If the master mind body-swaps, the
+ *     component travels with the mind and the verbs are re-added to the new body via _JoinParent/_RemoveFromParent.
+ *   - my_pets: pets currently active under this master (have full signal hooks).
+ *   - registered_pets: pets with at least the base attack-gate signal hooks wired up.
+ *     In practice these are the same population; registered_pets is used to guard the explicit remove_pet path.
+ *   - speech_altered_pets, denied_orgasm_pets: feature-state subsets. Membership ≠ ownership.
+ *
+ * Control items (collar vs. cursed chastity):
+ *   - A pet is bound via either a /obj/item/clothing/neck/roguetown/cursed_collar OR a cursed
+ *     /obj/item/chastity (chastity_cursed == TRUE). Both carry a collar_master/chastity_master mind ref.
+ *   - get_pet_control_item() resolves whichever is present and stamps this mind onto it.
+ *   - send_pet_gain_signal() fires the appropriate COMSIG (COMSIG_CARBON_GAIN_COLLAR or COMSIG_CARBON_GAIN_CHASTITY)
+ *     so downstream listeners (inventory, trait hooks, etc.) stay consistent.
+ *   - cleanup_pet() calls release_pet_control_item() which removes the item through the correct path
+ *     without any O(n) global list scan.
+ *
+ * Pet lifecycle (add → signal → stabilize → cleanup):
+ *   1. add_pet(): validates control item, commits to my_pets, registers signals, fires gain signal,
+ *      queues two delayed stabilization pulses.
+ *   2. verify_control_binding() / final_verify_binding(): deferred signal re-sends that guard against
+ *      race conditions during equip/body transitions.
+ *   3. cleanup_pet(): full teardown — signals, tracking lists, traits, listening state, timers,
+ *      control item release, release feedback. Called on death or explicit release.
+ *
+ * Signal routing:
+ *   - on_pet_say()      → intercepts COMSIG_MOB_SAY to replace speech with animal noises when altered.
+ *   - on_pet_attack()   → gates COMSIG_MOB_ATTACK_HAND / COMSIG_ITEM_ATTACK to block harm-intent
+ *                         attacks against the master and punish the attempt with collar shock.
+ *   - on_pet_death()    → defers cleanup via addtimer to avoid signal re-entrancy during death handling.
+ *   - relay_heard()     → forwards COMSIG_MOVABLE_HEAR from listened pet to master's chat.
+ *   - relay_emote()     → forwards COMSIG_MOB_EMOTE from listened pet to master's chat.
+ *
+ * High-pop feedback suppression:
+ *   - When GLOB.clients >= high_pop_suppression_cap (default 120), per-pet per-channel cooldowns
+ *     are applied via high_pop_feedback_until to throttle arousal sounds, jitter, and messages.
+ *   - high_pop_feedback_allowed() is the central gate; keys are "[REF(pet)]:[channel]".
+ *
+ * Cursed chastity command wrappers (lines ~928–1026):
+ *   - toggle_* procs cycle state; set_* procs write directly (used by TGUI direct-state actions).
+ *   - get_commandable_cursed_chastity() is the shared guard: validates pet, fires the COLLAR_COMMAND
+ *     signal so listeners can block the action, then returns the device for the caller to act on.
+ */
 #define COLLAR_TRAIT "collar_master"
-#define EMOTE_MESSAGE "emote_message"
-#define EMOTE_SOURCE "emote_source"
-#define ANTAGONIST_PREVIEW_ICON_SIZE 96
-#define COMSIG_LIVING_SURRENDER "living_surrender"
 #define COLLAR_SURRENDER_TIME 10 SECONDS
-#define COMSIG_MOB_CLICK_SHIFT "mob_click_shift"
-#define COMPONENT_INTERRUPT_CLICK "interrupt_click"
-#define HEARING_MESSAGE_MODE "message_mode"
-#define MODE_SAY "say"
 
 GLOBAL_LIST_EMPTY(collar_masters)
 
@@ -22,6 +60,12 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	icon_state = "surrender"
 
 /datum/component/collar_master
+	// Invariants:
+	// - my_pets contains pets currently considered under this master's control.
+	// - registered_pets contains pets with the base collar-master signal hooks active.
+	// - speech_altered_pets and denied_orgasm_pets are feature-state subsets, not ownership lists.
+	// - listening_pet is the single current hearing/emote tap target.
+	// - high_pop_feedback_until is a per-pet/per-channel suppression map used only for feedback throttling.
 	var/datum/mind/mindparent
 	var/list/my_pets = list()
 	var/list/temp_selected_pets = list()
@@ -32,24 +76,10 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	var/scrying = FALSE
 	var/last_command_time = 0
 	var/command_cooldown = 2 SECONDS
-	var/static/list/pet_sounds = list(
-		"*lets out a soft whimper",
-		"*whines quietly",
-		"*makes a needy sound",
-		"*lets out a submissive mewl",
-		"*makes a pathetic noise",
-		"*whimpers needily",
-		"*mewls submissively",
-		"*pants heavily",
-		"*lets out a desperate whine",
-		"*makes a pleading sound"
-	)
-	var/static/list/arousal_messages = list(
-		"Your collar tingles as pleasure courses through you...",
-		"Waves of heat spread from your collar...",
-		"Your body quivers with building arousal...",
-		"The collar's influence makes you shudder with need..."
-	)
+	/// Flavor text path for collar string banks. Kept as a file-local define to avoid global pollution.
+	/// Full list entries live in modular/code/modules/slave_collar/strings/collar_flavor_text.json.
+	var/static/list/pet_sounds = strings("collar_flavor_text.json", "collar_pet_sounds", "modular/code/modules/slave_collar/strings")
+	var/static/list/arousal_messages = strings("collar_flavor_text.json", "collar_arousal_messages", "modular/code/modules/slave_collar/strings")
 	var/list/registered_pets = list()
 	var/list/speech_altered_pets = list()
 	var/list/denied_orgasm_pets = list()
@@ -79,6 +109,8 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	high_pop_feedback_until[key] = world.time + cooldown
 	return TRUE
 
+// --- Component lifecycle ---
+
 // Initialize component state for this master and register in global tracking.
 /datum/component/collar_master/Initialize(...)
 	. = ..()
@@ -92,28 +124,84 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		cleanup_pet(pet)
 	GLOB.collar_masters -= mindparent
 
+// --- Pet binding and stabilization ---
+
+// Resolves the control item currently binding this pet and stamps master ownership onto it.
+/datum/component/collar_master/proc/get_pet_control_item(mob/living/carbon/human/pet)
+	if(!pet)
+		return null
+
+	var/obj/item/clothing/neck/roguetown/cursed_collar/collar = pet.get_item_by_slot(SLOT_NECK)
+	var/obj/item/chastity/chastity = pet.chastity_device
+	var/obj/item/control_item
+
+	if(istype(collar))
+		control_item = collar
+		collar.collar_master = mindparent
+		if(!collar.collar_master)
+			return null
+	else if(istype(chastity) && chastity.chastity_cursed)
+		control_item = chastity
+		chastity.chastity_master = mindparent
+		if(!chastity.chastity_master)
+			return null
+
+	return control_item
+
+// Returns a user-facing name for the active control item type.
+/datum/component/collar_master/proc/get_control_item_name(obj/item/control_item)
+	return istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar) ? "collar" : "chastity device"
+
+// Returns the controlling mind stamped onto a collar or cursed chastity item.
+/datum/component/collar_master/proc/get_control_item_master(obj/item/control_item)
+	if(istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar))
+		var/obj/item/clothing/neck/roguetown/cursed_collar/collar = control_item
+		return collar.collar_master
+	if(istype(control_item, /obj/item/chastity))
+		var/obj/item/chastity/chastity = control_item
+		return chastity.chastity_master
+	return null
+
+// Sends the correct control gain signal for the pet's active control item.
+/datum/component/collar_master/proc/send_pet_gain_signal(mob/living/carbon/human/pet, obj/item/control_item)
+	if(!pet || !control_item)
+		return FALSE
+	if(istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar))
+		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_COLLAR, control_item)
+	else
+		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_CHASTITY, control_item)
+	return TRUE
+
+// Queues the delayed post-bind feedback and verification pulses without changing existing timing.
+/datum/component/collar_master/proc/queue_binding_stabilization(mob/living/carbon/human/pet, obj/item/control_item)
+	if(!pet || !control_item)
+		return FALSE
+	addtimer(CALLBACK(src, PROC_REF(give_control_feedback), pet, control_item), 0.1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(verify_control_binding), pet, control_item), 0.2 SECONDS)
+	return TRUE
+
+// Registers attack-related control signals for a pet.
+/datum/component/collar_master/proc/register_pet(mob/living/carbon/human/pet)
+	if(!pet || !(pet in my_pets))
+		return FALSE
+
+	// Use existing signals from the dominated component
+	RegisterSignal(pet, list(
+		COMSIG_MOB_ATTACK_HAND,
+		COMSIG_HUMAN_MELEE_UNARMED_ATTACK,
+		COMSIG_ITEM_ATTACK,
+		COMSIG_LIVING_ATTACKED_BY
+	), PROC_REF(on_pet_attack))
+
+	return TRUE
+
 // Registers a pet under this master and binds control source (collar or cursed chastity).
 /datum/component/collar_master/proc/add_pet(mob/living/carbon/human/pet)
 	if(!pet || (pet in my_pets))
 		return FALSE
 
-	// Get the collar or chastity and ensure it's properly set up
-	var/obj/item/clothing/neck/roguetown/cursed_collar/collar = pet.get_item_by_slot(SLOT_NECK)
-	var/obj/item/chastity/chastity = pet.vars["chastity_device"]
-	var/obj/item/control_item
-	var/is_collar = FALSE
-	if(istype(collar))
-		control_item = collar
-		collar.collar_master = mindparent
-		if(!collar.collar_master)
-			return FALSE
-		is_collar = TRUE
-	else if(istype(chastity) && chastity.chastity_cursed)
-		control_item = chastity
-		chastity.chastity_master = mindparent
-		if(!chastity.chastity_master)
-			return FALSE
-	else
+	var/obj/item/control_item = get_pet_control_item(pet)
+	if(!control_item)
 		return FALSE
 
 	// Commit pet registration only after control source is validated.
@@ -125,17 +213,8 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	RegisterSignal(pet, COMSIG_MOB_DEATH, PROC_REF(on_pet_death))
 
 	register_pet(pet)
-
-	if(is_collar)
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_COLLAR, control_item)
-	else
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_CHASTITY, control_item)
-
-	// Wait a tick before giving feedback to allow signal to process
-	addtimer(CALLBACK(src, PROC_REF(give_control_feedback), pet, control_item), 0.1 SECONDS)
-
-	// Verify signal was received and processed
-	addtimer(CALLBACK(src, PROC_REF(verify_control_binding), pet, control_item), 0.2 SECONDS)
+	send_pet_gain_signal(pet, control_item)
+	queue_binding_stabilization(pet, control_item)
 
 	return TRUE
 
@@ -143,7 +222,7 @@ GLOBAL_LIST_EMPTY(collar_masters)
 /datum/component/collar_master/proc/give_control_feedback(mob/living/carbon/human/pet, obj/item/control_item)
 	if(!pet || !(pet in my_pets))
 		return
-	var/item_name = istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar) ? "collar" : "chastity device"
+	var/item_name = get_control_item_name(control_item)
 	to_chat(pet, span_notice("The [item_name] tightens as it recognizes its master!"))
 	to_chat(parent, span_notice("You feel the [item_name] bind to [pet]'s will."))
 
@@ -152,25 +231,21 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	if(!pet || !control_item)
 		return
 
-	var/is_collar = istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar)
-	var/master = is_collar ? control_item:collar_master : control_item:chastity_master
+	var/datum/mind/master = get_control_item_master(control_item)
 	if(!master)
 		return
 
 	// Prevent self-control
-	var/mob/master_mob = istype(master, /datum/mind) ? master:current : master
+	var/mob/master_mob = master.current
 	if(pet == master_mob)
-		var/item_name = is_collar ? "collar" : "chastity device"
+		var/item_name = get_control_item_name(control_item)
 		to_chat(pet, span_warning("The [item_name] refuses to bind."))
 		pet.dropItemToGround(control_item, force = TRUE)
 		return FALSE
 
-	var/item_name = is_collar ? "collar" : "chastity device"
+	var/item_name = get_control_item_name(control_item)
 	to_chat(pet, span_notice("Your [item_name] pulses, reinforcing your master's control..."))
-	if(is_collar)
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_COLLAR, control_item)
-	else
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_CHASTITY, control_item)
+	send_pet_gain_signal(pet, control_item)
 	addtimer(CALLBACK(src, PROC_REF(final_verify_binding), pet, control_item), 0.2 SECONDS)
 
 // Final delayed signal pulse for robustness after equip/bind transitions.
@@ -178,15 +253,11 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	if(!pet || !control_item)
 		return
 
-	var/is_collar = istype(control_item, /obj/item/clothing/neck/roguetown/cursed_collar)
-	var/master = is_collar ? control_item:collar_master : control_item:chastity_master
+	var/datum/mind/master = get_control_item_master(control_item)
 	if(!master)
 		return
 
-	if(is_collar)
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_COLLAR, control_item)
-	else
-		SEND_SIGNAL(pet, COMSIG_CARBON_GAIN_CHASTITY, control_item)
+	send_pet_gain_signal(pet, control_item)
 
 // Speech interception: swaps normal speech for pet noises when alteration is active.
 /datum/component/collar_master/proc/on_pet_say(datum/source, list/speech_args)
@@ -208,6 +279,8 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		return
 	pet.emote("me", EMOTE_VISIBLE, pick(pet_sounds))
 
+// --- Release and cleanup ---
+
 // Death hook: defers cleanup to avoid signal re-entrancy issues during death handling.
 /datum/component/collar_master/proc/on_pet_death(datum/source)
 	SIGNAL_HANDLER
@@ -216,9 +289,9 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		return
 	addtimer(CALLBACK(src, PROC_REF(cleanup_pet), pet), 0.1 SECONDS)
 
-// Explicit pet removal path: unregister active signals, then cleanup state.
-/datum/component/collar_master/proc/remove_pet(mob/living/carbon/human/pet)
-	if(!pet || !(pet in registered_pets))
+// Unregisters the base signal hooks used by the explicit remove path.
+/datum/component/collar_master/proc/unregister_pet_base_signals(mob/living/carbon/human/pet)
+	if(!pet)
 		return FALSE
 
 	UnregisterSignal(pet, list(
@@ -230,6 +303,14 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		COMSIG_LIVING_ATTACKED_BY
 	))
 
+	return TRUE
+
+// Explicit pet removal path: unregister active signals, then cleanup state.
+/datum/component/collar_master/proc/remove_pet(mob/living/carbon/human/pet)
+	if(!pet || !(pet in registered_pets))
+		return FALSE
+
+	unregister_pet_base_signals(pet)
 	registered_pets -= pet
 	cleanup_pet(pet)
 	return TRUE
@@ -585,7 +666,7 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		return FALSE
 
 	var/status_text = "<span class='notice'><b>[pet.real_name] Status:</b>\n"
-	status_text += "Health: [pet.health]/[pet.maxHealth]\n"
+	status_text += "Condition: [pet.get_damage_condition_summary()]\n"
 	status_text += "Location: [get_area(pet)]\n"
 	status_text += "Mental State: [pet.stat >= UNCONSCIOUS ? "Unconscious" : "Conscious"]\n"
 	status_text += "Active Traits: "
@@ -642,17 +723,15 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		return
 
 	if(user == mindparent?.current)
-		to_chat(user, span_notice("\n[check_pet_status(pet)]"))
+		to_chat(user, span_notice("\nThe collar recognizes you as [pet.real_name]'s master. Use Collar Control for live status."))
 	else if(user != pet)
 		to_chat(user, span_warning("\nThey wear a strange collar around their neck."))
 
-// Centralized pet cleanup: traits, timers, listening links, and control-item release.
-/datum/component/collar_master/proc/cleanup_pet(mob/living/carbon/human/pet)
-	if(!pet || !(pet in my_pets))
+// Releases all pet-facing signal hooks used during cleanup.
+/datum/component/collar_master/proc/cleanup_pet_signals(mob/living/carbon/human/pet)
+	if(!pet)
 		return FALSE
 
-	// Release pet signal hooks regardless of whether cleanup came from remove_pet(),
-	// release-selected, or component Destroy().
 	UnregisterSignal(pet, list(
 		COMSIG_MOB_SAY,
 		COMSIG_MOB_DEATH,
@@ -664,59 +743,104 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		COMSIG_MOB_EMOTE
 	))
 
+	return TRUE
+
+// Removes per-pet throttling keys and side-list membership.
+/datum/component/collar_master/proc/cleanup_pet_tracking(mob/living/carbon/human/pet)
+	if(!pet)
+		return FALSE
+
 	var/pet_key_prefix = "[REF(pet)]:"
 	for(var/key in high_pop_feedback_until)
 		if(findtext(key, pet_key_prefix) == 1)
 			high_pop_feedback_until -= key
 
-	// Remove all collar-related traits
-	REMOVE_TRAIT(pet, TRAIT_NUDIST, COLLAR_TRAIT)
-
-	// Remove from lists
 	my_pets -= pet
 	registered_pets -= pet
 	speech_altered_pets -= pet
 	denied_orgasm_pets -= pet
+	return TRUE
 
+// Removes persistent collar-applied traits from a pet.
+/datum/component/collar_master/proc/cleanup_pet_traits(mob/living/carbon/human/pet)
+	if(!pet)
+		return FALSE
+	REMOVE_TRAIT(pet, TRAIT_NUDIST, COLLAR_TRAIT)
+	return TRUE
+
+// Clears the currently active listening tap target if it matches this pet.
+/datum/component/collar_master/proc/cleanup_pet_listening_state(mob/living/carbon/human/pet)
+	if(!pet)
+		return FALSE
 	if(pet == listening_pet)
 		UnregisterSignal(pet, list(COMSIG_MOVABLE_HEAR, COMSIG_MOB_EMOTE))
 		listening_pet = null
 		listening = FALSE
+	return TRUE
 
-	if(!isnull(pet.active_timers))
-		var/deny_loop = "deny_orgasm_[REF(pet)]"
-		if(deny_loop in pet.active_timers)
-			var/deny_timer = pet.active_timers[deny_loop]
-			if(deny_timer)
-				deltimer(deny_timer)
-			pet.active_timers[deny_loop] = null
-		var/arousal_loop = "force_arousal_[REF(pet)]"
-		if(arousal_loop in pet.active_timers)
-			var/arousal_timer = pet.active_timers[arousal_loop]
-			if(isnum(arousal_timer) && arousal_timer)
-				deltimer(arousal_timer)
-			pet.active_timers[arousal_loop] = null
-			pet.clear_fullscreen("love")
+// Cancels active denial/arousal timers and clears any persistent fullscreen state.
+/datum/component/collar_master/proc/cleanup_pet_timers(mob/living/carbon/human/pet)
+	if(!pet || isnull(pet.active_timers))
+		return FALSE
 
-	// Handle collar removal and trigger uncollared signal
+	var/deny_loop = "deny_orgasm_[REF(pet)]"
+	if(deny_loop in pet.active_timers)
+		var/deny_timer = pet.active_timers[deny_loop]
+		if(deny_timer)
+			deltimer(deny_timer)
+		pet.active_timers[deny_loop] = null
+
+	var/arousal_loop = "force_arousal_[REF(pet)]"
+	if(arousal_loop in pet.active_timers)
+		var/arousal_timer = pet.active_timers[arousal_loop]
+		if(isnum(arousal_timer) && arousal_timer)
+			deltimer(arousal_timer)
+		pet.active_timers[arousal_loop] = null
+		pet.clear_fullscreen("love")
+
+	return TRUE
+
+// Releases the active collar or cursed chastity item tied to this pet.
+/datum/component/collar_master/proc/release_pet_control_item(mob/living/carbon/human/pet)
+	if(!pet)
+		return FALSE
+
 	var/obj/item/clothing/neck/roguetown/cursed_collar/collar = pet.get_item_by_slot(SLOT_NECK)
 	if(istype(collar))
 		SEND_SIGNAL(pet, COMSIG_CARBON_LOSE_COLLAR)
 		pet.dropItemToGround(collar, force = TRUE)
 		REMOVE_TRAIT(collar, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-	// Ensure cursed chastity control bindings are removed when a pet is freed.
 	var/obj/item/chastity/device = pet.chastity_device
 	if(istype(device) && device.chastity_cursed && device.chastity_master == mindparent)
 		device.remove_chastity(pet)
 		if(!QDELETED(device))
 			device.forceMove(get_turf(pet))
 
-	// Feedback
+	return TRUE
+
+// Sends the standardized release feedback after all teardown work is complete.
+/datum/component/collar_master/proc/send_pet_release_feedback(mob/living/carbon/human/pet)
+	if(!pet)
+		return FALSE
 	SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_RELEASED, src)
 	to_chat(pet, span_notice("Your mind clears as the collar's control fades!"))
 	if(mindparent.current)
 		to_chat(mindparent.current, span_warning("[pet] is no longer under your control!"))
+	return TRUE
+
+// Centralized pet cleanup: traits, timers, listening links, and control-item release.
+/datum/component/collar_master/proc/cleanup_pet(mob/living/carbon/human/pet)
+	if(!pet || !(pet in my_pets))
+		return FALSE
+
+	cleanup_pet_signals(pet)
+	cleanup_pet_tracking(pet)
+	cleanup_pet_traits(pet)
+	cleanup_pet_listening_state(pet)
+	cleanup_pet_timers(pet)
+	release_pet_control_item(pet)
+	send_pet_release_feedback(pet)
 
 	return TRUE
 
@@ -777,6 +901,8 @@ GLOBAL_LIST_EMPTY(collar_masters)
 
 	return TRUE
 
+// --- Pet state / punishment toggles ---
+
 // Toggles speech alteration state for one pet.
 /datum/component/collar_master/proc/toggle_speech(mob/living/carbon/human/pet)
 	if(!pet || !(pet in my_pets))
@@ -795,21 +921,6 @@ GLOBAL_LIST_EMPTY(collar_masters)
 
 	playsound(pet, 'sound/misc/vampirespell.ogg', 50, TRUE)
 	log_collar_command(pet, COLLAR_LOG_SPEECH, "altered=[pet in speech_altered_pets]")
-	return TRUE
-
-// Registers attack-related control signals for a pet.
-/datum/component/collar_master/proc/register_pet(mob/living/carbon/human/pet)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-
-	// Use existing signals from the dominated component
-	RegisterSignal(pet, list(
-		COMSIG_MOB_ATTACK_HAND,
-		COMSIG_HUMAN_MELEE_UNARMED_ATTACK,
-		COMSIG_ITEM_ATTACK,
-		COMSIG_LIVING_ATTACKED_BY
-	), PROC_REF(on_pet_attack))
-
 	return TRUE
 
 // Toggles orgasm denial loop for a pet.
@@ -852,6 +963,8 @@ GLOBAL_LIST_EMPTY(collar_masters)
 		if(high_pop_feedback_allowed(pet, "denial_message", 8 SECONDS))
 			to_chat(pet, span_warning("Your collar prevents you from reaching climax!"))
 
+// --- Cursed chastity command wrappers ---
+
 // Returns pet's currently equipped cursed chastity device, if present.
 /datum/component/collar_master/proc/get_pet_cursed_chastity(mob/living/carbon/human/pet)
 	if(!pet)
@@ -860,6 +973,14 @@ GLOBAL_LIST_EMPTY(collar_masters)
 	if(!istype(device) || !device.chastity_cursed)
 		return null
 	return device
+
+// Shared direct-command guard for cursed chastity state setters.
+/datum/component/collar_master/proc/get_commandable_cursed_chastity(mob/living/carbon/human/pet, command_id, command_arg)
+	if(!pet || !(pet in my_pets))
+		return null
+	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, command_id, command_arg) & COMPONENT_COLLAR_COMMAND_BLOCK)
+		return null
+	return get_pet_cursed_chastity(pet)
 
 // Wrapper command: toggles cursed chastity lock for a controlled pet.
 /datum/component/collar_master/proc/toggle_pet_chastity_lock(mob/living/carbon/human/pet)
@@ -899,44 +1020,28 @@ GLOBAL_LIST_EMPTY(collar_masters)
 
 // Direct-state wrapper: sets cursed chastity lock instead of toggling/cycling.
 /datum/component/collar_master/proc/set_pet_chastity_lock(mob/living/carbon/human/pet, should_lock)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, COLLAR_COMMAND_SET_CHASTITY_LOCK, should_lock) & COMPONENT_COLLAR_COMMAND_BLOCK)
-		return FALSE
-	var/obj/item/chastity/device = get_pet_cursed_chastity(pet)
+	var/obj/item/chastity/device = get_commandable_cursed_chastity(pet, COLLAR_COMMAND_SET_CHASTITY_LOCK, should_lock)
 	if(!device)
 		return FALSE
 	return device.set_cursed_lock(pet, should_lock)
 
 // Direct-state wrapper: sets cursed chastity front mode.
 /datum/component/collar_master/proc/set_pet_chastity_front_mode(mob/living/carbon/human/pet, mode)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, COLLAR_COMMAND_SET_CHASTITY_FRONT_MODE, mode) & COMPONENT_COLLAR_COMMAND_BLOCK)
-		return FALSE
-	var/obj/item/chastity/device = get_pet_cursed_chastity(pet)
+	var/obj/item/chastity/device = get_commandable_cursed_chastity(pet, COLLAR_COMMAND_SET_CHASTITY_FRONT_MODE, mode)
 	if(!device)
 		return FALSE
 	return device.set_cursed_front_mode(pet, mode)
 
 // Direct-state wrapper: sets cursed chastity anal access.
 /datum/component/collar_master/proc/set_pet_chastity_anal_open(mob/living/carbon/human/pet, should_open)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, COLLAR_COMMAND_SET_CHASTITY_ANAL_OPEN, should_open) & COMPONENT_COLLAR_COMMAND_BLOCK)
-		return FALSE
-	var/obj/item/chastity/device = get_pet_cursed_chastity(pet)
+	var/obj/item/chastity/device = get_commandable_cursed_chastity(pet, COLLAR_COMMAND_SET_CHASTITY_ANAL_OPEN, should_open)
 	if(!device)
 		return FALSE
 	return device.set_cursed_anal_open(pet, should_open)
 
 // Direct-state wrapper: sets cursed chastity spike state.
 /datum/component/collar_master/proc/set_pet_chastity_spikes(mob/living/carbon/human/pet, should_enable)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, COLLAR_COMMAND_SET_CHASTITY_SPIKES, should_enable) & COMPONENT_COLLAR_COMMAND_BLOCK)
-		return FALSE
-	var/obj/item/chastity/device = get_pet_cursed_chastity(pet)
+	var/obj/item/chastity/device = get_commandable_cursed_chastity(pet, COLLAR_COMMAND_SET_CHASTITY_SPIKES, should_enable)
 	if(!device)
 		return FALSE
 	return device.set_cursed_spikes(pet, should_enable)
@@ -952,11 +1057,7 @@ GLOBAL_LIST_EMPTY(collar_masters)
 
 // Direct-state wrapper: sets cursed chastity flat state.
 /datum/component/collar_master/proc/set_pet_chastity_flat(mob/living/carbon/human/pet, should_be_flat)
-	if(!pet || !(pet in my_pets))
-		return FALSE
-	if(SEND_SIGNAL(pet, COMSIG_CARBON_COLLAR_COMMAND, src, COLLAR_COMMAND_SET_CHASTITY_FLAT, should_be_flat) & COMPONENT_COLLAR_COMMAND_BLOCK)
-		return FALSE
-	var/obj/item/chastity/device = get_pet_cursed_chastity(pet)
+	var/obj/item/chastity/device = get_commandable_cursed_chastity(pet, COLLAR_COMMAND_SET_CHASTITY_FLAT, should_be_flat)
 	if(!device)
 		return FALSE
 	return device.set_cursed_flat(pet, should_be_flat)

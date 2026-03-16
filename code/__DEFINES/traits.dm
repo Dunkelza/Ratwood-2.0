@@ -512,7 +512,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CHASTITY_VAGINA_BLOCKED = span_info("My chastity device blocks access to my vagina."),
 	TRAIT_CHASTITY_ANAL = span_info("My chastity device is equipped with a shield that protects my anus from penetration."),
 	TRAIT_CHASTITY_SPIKED = span_info("My chastity device is equipped with spikes constantly pressing against my nethers."),
-	TRAIT_CHASTITY_LOCKED = span_info("My chastity device is locked, it's impossible to remove without the key.")
+	TRAIT_CHASTITY_LOCKED = span_info("My chastity device is locked, it's impossible to remove without the key."),
 	TRAIT_GANG_A = span_info("I belong to the Rontz Ratz gang"),
 	TRAIT_GANG_B = span_info("I belong to the Blortz Volves gang")
 ))
