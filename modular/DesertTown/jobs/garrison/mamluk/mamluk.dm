@@ -3,8 +3,8 @@
 	flag = MAMLUK
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 8
+	spawn_positions = 8
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES

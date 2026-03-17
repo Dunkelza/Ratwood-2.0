@@ -3,8 +3,8 @@
 	flag = BOGGUARD
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 8
+	spawn_positions = 8
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
@@ -60,7 +60,7 @@
 	category_tags = list(CTAG_JANISSARY)
 	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
-		STATKEY_PER = 2,//7 points weighted, same as MAA. They get temp buffs in the woods instead of in the city.
+		STATKEY_PER = 2,//7 points weighted, same as MAA. They get temp buffs in the city instead of in the city.
 		STATKEY_SPD = 2,
 		STATKEY_WIL = 1
 	)
@@ -122,7 +122,7 @@
 	category_tags = list(CTAG_JANISSARY)
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
-		STATKEY_STR = 2,//7 points weighted, same as MAA. They get temp buffs in the woods instead of in the city.
+		STATKEY_STR = 2,//7 points weighted, same as MAA. They get temp buffs in the desert instead of in the city.
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 		STATKEY_PER = 1
