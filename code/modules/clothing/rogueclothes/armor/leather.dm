@@ -343,3 +343,114 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/armor/leather/duchess
+	name = "duchess dress"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "duchess"
+	item_state = "duchess"
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_ARMOR
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/duke
+	name = "ducal uniform"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "duke"
+	item_state = "duke"
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	body_parts_covered = CHEST|VITALS|ARMS
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/hand
+	name = "Hand's Jacket"
+	desc = "A heavy coat of fine, yet rugged fabric. Reinforced, because one never knows."
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "hand"
+	item_state = "hand"
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR //ugly hack to make it render over the head
+	armor = ARMOR_LEATHER_STUDDED
+	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/heir
+	name = "Heir's uniform"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "heir"
+	item_state = "heir"
+	body_parts_covered = BELOW_HEAD
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/heiress
+	name = "Heiress's uniform"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "heiress"
+	item_state = "heiress"
+	body_parts_covered = BELOW_HEAD
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/councillor
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "councillorial uniform"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "councillor"
+	item_state = "councillor"
+	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/magos
+	name = "Magos' Robes"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "magos"
+	item_state = "magos"
+	slot_flags = ITEM_SLOT_ARMOR
+	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	sleevetype = null
+	sleeved = null
+
+/obj/item/clothing/suit/roguetown/armor/leather/steward
+	name = "Steward's Vest"
+	desc = ""
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/armor.dmi'
+	icon_state = "steward"
+	item_state = "steward"
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	armor = ARMOR_PADDED_BAD
+	sleevetype = null
+	sleeved = null
+	
+/obj/item/clothing/head/roguetown/duchess_hood
+	name = "duchess hood"
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/head.dmi'
+	icon_state = "duchess_hood"
+	item_state = "duchess_hood"
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	armor = ARMOR_PADDED_BAD
+	sleevetype = null
+	sleeved = null
