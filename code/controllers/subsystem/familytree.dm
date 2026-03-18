@@ -535,7 +535,7 @@ SUBSYSTEM_DEF(familytree)
 			continue
 		if(potential_spouse.stat == DEAD)
 			continue
-		if(potential_spouse.stat == DEAD || !potential_spouse.client)
+		if(potential_spouse.spouse_mob)
 			continue
 		if(!H.pronouns_match(potential_spouse))
 			continue
