@@ -511,6 +511,7 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	minstr = 12
 	max_blade_int = 350
+	associated_skill = /datum/skill/combat/polearms // yes it is located in the axe folder and uses axe subtypes it is a polearm
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
 
@@ -535,6 +536,7 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	minstr = 12
 	max_blade_int = 350
+	associated_skill = /datum/skill/combat/polearms // yes it is located in the axe folder and uses axe subtypes it is a polearm
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
 
