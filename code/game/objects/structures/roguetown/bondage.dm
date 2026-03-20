@@ -119,6 +119,7 @@
 	name = "gloryhole"
 	desc = "A wooden partition with a suspicious hole."
 	icon_state = "gloryhole"
+	dir = SOUTH
 	density = TRUE
 	layer = MOB_LAYER
 	plane = GAME_PLANE
@@ -153,11 +154,11 @@
 	var/adir = get_dir(loc, user)
 	switch(adir)
 		if(EAST)
-			animate(user, pixel_x = -26, time = 2.7)
+			animate(user, pixel_x = -28, time = 2.7)
 		if(SOUTH)
 			animate(user, pixel_y = 26, time = 2.7)
 		if(WEST)
-			animate(user, pixel_x = 26, time = 2.7)
+			animate(user, pixel_x = 28, time = 2.7)
 		else
 			return
 	user.is_shifted = TRUE
