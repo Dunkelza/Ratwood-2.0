@@ -7,6 +7,8 @@
 	name = "janissary chainmail"
 	desc = "A longer steel maille that protects the legs, still doesn't protect against arrows though."
 	body_parts_covered = COVERAGE_FULL
+	sleeved = null
+	sleevetype = null
 	icon = 'modular/DesertTown/icons/clothing/armor.dmi'
 	mob_overlay_icon = 'modular/DesertTown/icons/clothing/onmob/armor.dmi'
 	icon_state = "mamaluke"
@@ -29,6 +31,8 @@
 	icon_state = "cataphract"
 	icon_state = "cataphract"
 	body_parts_covered = COVERAGE_FULL
+	sleeved = null
+	sleevetype = null
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL
 	// anvilrepair = /datum/skill/craft/armorsmithing
 	// smeltresult = /obj/item/ingot/steel
