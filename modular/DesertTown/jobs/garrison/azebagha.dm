@@ -8,7 +8,7 @@
 	allowed_maps = list("Desert Town")
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
-	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "An experienced soldier of the Sultan's Azeb Corp you have been tasked with overseeing the newly constructed border. \
 				You report to the Royal Family and their sheikhs, \
 				and your job is to keep the younger Janissaries in line and to ensure the routes to the city remain safe.\
