@@ -7,6 +7,12 @@
 		"vagina" = FALSE,
 		"breasts" = FALSE
 	)
+	var/descriptor_height     = /datum/mob_descriptor/height/moderate
+	var/descriptor_body       = /datum/mob_descriptor/body/muscular
+	var/descriptor_fur        = /datum/mob_descriptor/fur/coarse
+	var/descriptor_voice      = /datum/mob_descriptor/voice/growly
+	var/descriptor_muzzle     = /datum/mob_descriptor/face/gnoll/long_muzzle
+	var/descriptor_expression = /datum/mob_descriptor/face_exp/gnoll/alert
 
 /datum/gnoll_prefs/New()
 	. = ..()
@@ -76,6 +82,138 @@
 		dat += "<a href='?_src_=gnoll_prefs;action=toggle_genital;genital=[genital_id];toggle=[toggle_action]'>[toggle_action == "enable" ? "Enable" : "Disable"]</a><br>"
 	dat += "<br>"
 
+	// Height section
+	dat += "<b>Height:</b> "
+	var/list/height_options = list(
+		/datum/mob_descriptor/height/moderate = "Moderate",
+		/datum/mob_descriptor/height/middling = "Middling",
+		/datum/mob_descriptor/height/short = "Short",
+		/datum/mob_descriptor/height/tall = "Tall",
+		/datum/mob_descriptor/height/towering = "Towering",
+		/datum/mob_descriptor/height/giant = "Giant",
+		/datum/mob_descriptor/height/tiny = "Tiny"
+	)
+	for(var/tp in height_options)
+		var/label = height_options[tp]
+		if(descriptor_height == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=height;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
+	// Body section
+	dat += "<b>Build:</b> "
+	var/list/body_options = list(
+		/datum/mob_descriptor/body/average = "Average",
+		/datum/mob_descriptor/body/athletic = "Athletic",
+		/datum/mob_descriptor/body/muscular = "Muscular",
+		/datum/mob_descriptor/body/herculean = "Herculean",
+		/datum/mob_descriptor/body/toned = "Toned",
+		/datum/mob_descriptor/body/heavy = "Heavy",
+		/datum/mob_descriptor/body/lean = "Lean",
+		/datum/mob_descriptor/body/burly = "Burly",
+		/datum/mob_descriptor/body/gaunt = "Gaunt",
+		/datum/mob_descriptor/body/lanky = "Lanky"
+	)
+	for(var/tp in body_options)
+		var/label = body_options[tp]
+		if(descriptor_body == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=body;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
+	// Fur section
+	dat += "<b>Coat:</b> "
+	var/list/fur_options = list(
+		/datum/mob_descriptor/fur/plain = "Plain",
+		/datum/mob_descriptor/fur/short = "Short",
+		/datum/mob_descriptor/fur/coarse = "Coarse",
+		/datum/mob_descriptor/fur/bristly = "Bristly",
+		/datum/mob_descriptor/fur/fluffy = "Fluffy",
+		/datum/mob_descriptor/fur/shaggy = "Shaggy",
+		/datum/mob_descriptor/fur/silky = "Silky",
+		/datum/mob_descriptor/fur/lank = "Lank",
+		/datum/mob_descriptor/fur/mangy = "Mangy",
+		/datum/mob_descriptor/fur/velvety = "Velvety",
+		/datum/mob_descriptor/fur/dense = "Dense",
+		/datum/mob_descriptor/fur/matted = "Matted"
+	)
+	for(var/tp in fur_options)
+		var/label = fur_options[tp]
+		if(descriptor_fur == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=fur;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
+	// Voice section
+	dat += "<b>Voice:</b> "
+	var/list/voice_options = list(
+		/datum/mob_descriptor/voice/growly = "Growly",
+		/datum/mob_descriptor/voice/deep = "Deep",
+		/datum/mob_descriptor/voice/booming = "Booming",
+		/datum/mob_descriptor/voice/gravelly = "Gravelly",
+		/datum/mob_descriptor/voice/commanding = "Commanding",
+		/datum/mob_descriptor/voice/monotone = "Monotone",
+		/datum/mob_descriptor/voice/ordinary = "Ordinary",
+		/datum/mob_descriptor/voice/soft = "Soft",
+		/datum/mob_descriptor/voice/grave = "Grave",
+		/datum/mob_descriptor/voice/venomous = "Venomous",
+		/datum/mob_descriptor/voice/dispassionate = "Dispassionate",
+		/datum/mob_descriptor/voice/whiny = "Whiny",
+		/datum/mob_descriptor/voice/drawling = "Drawling",
+		/datum/mob_descriptor/voice/shrill = "Shrill",
+		/datum/mob_descriptor/voice/stilted = "Stilted"
+	)
+	for(var/tp in voice_options)
+		var/label = voice_options[tp]
+		if(descriptor_voice == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=voice;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
+	// Muzzle shape section
+	dat += "<b>Muzzle Shape:</b> "
+	var/list/muzzle_options = list(
+		/datum/mob_descriptor/face/gnoll/long_muzzle = "Long",
+		/datum/mob_descriptor/face/gnoll/short_muzzle = "Short",
+		/datum/mob_descriptor/face/gnoll/broad_muzzle = "Broad",
+		/datum/mob_descriptor/face/gnoll/narrow_muzzle = "Narrow",
+		/datum/mob_descriptor/face/gnoll/scarred_muzzle = "Scarred",
+		/datum/mob_descriptor/face/gnoll/sharp_muzzle = "Sharp",
+		/datum/mob_descriptor/face/gnoll/worn_muzzle = "Worn",
+		/datum/mob_descriptor/face/gnoll/disfigured_muzzle = "Disfigured"
+	)
+	for(var/tp in muzzle_options)
+		var/label = muzzle_options[tp]
+		if(descriptor_muzzle == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=muzzle;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
+	// Expression section
+	dat += "<b>Expression:</b> "
+	var/list/expression_options = list(
+		/datum/mob_descriptor/face_exp/gnoll/alert = "Alert",
+		/datum/mob_descriptor/face_exp/gnoll/snarling = "Snarling",
+		/datum/mob_descriptor/face_exp/gnoll/predatory = "Predatory",
+		/datum/mob_descriptor/face_exp/gnoll/hollow = "Hollow",
+		/datum/mob_descriptor/face_exp/gnoll/fierce = "Fierce",
+		/datum/mob_descriptor/face_exp/gnoll/vacant = "Vacant",
+		/datum/mob_descriptor/face_exp/gnoll/groveling = "Groveling",
+		/datum/mob_descriptor/face_exp/gnoll/leering = "Leering"
+	)
+	for(var/tp in expression_options)
+		var/label = expression_options[tp]
+		if(descriptor_expression == tp)
+			dat += "<b>[label]</b> "
+		else
+			dat += "<a href='?_src_=gnoll_prefs;action=set_descriptor;slot=expression;type=[tp]'>[label]</a> "
+	dat += "<br><br>"
+
 	dat += "<center><a href='?_src_=gnoll_prefs;action=close'>Close</a></center>"
 	dat += "</body></html>"
 
@@ -118,6 +256,104 @@
 			if(genital in genitals)
 				genitals[genital] = (toggle == "enable")
 				gnoll_show_ui(user)
+
+		if("set_descriptor")
+			var/slot = href_list["slot"]
+			var/new_type = text2path(href_list["type"])
+			if(!new_type)
+				return
+			switch(slot)
+				if("height")
+					var/list/valid_height = list(
+						/datum/mob_descriptor/height/moderate,
+						/datum/mob_descriptor/height/middling,
+						/datum/mob_descriptor/height/short,
+						/datum/mob_descriptor/height/tall,
+						/datum/mob_descriptor/height/towering,
+						/datum/mob_descriptor/height/giant,
+						/datum/mob_descriptor/height/tiny
+					)
+					if(new_type in valid_height)
+						descriptor_height = new_type
+				if("body")
+					var/list/valid_body = list(
+						/datum/mob_descriptor/body/average,
+						/datum/mob_descriptor/body/athletic,
+						/datum/mob_descriptor/body/muscular,
+						/datum/mob_descriptor/body/herculean,
+						/datum/mob_descriptor/body/toned,
+						/datum/mob_descriptor/body/heavy,
+						/datum/mob_descriptor/body/lean,
+						/datum/mob_descriptor/body/burly,
+						/datum/mob_descriptor/body/gaunt,
+						/datum/mob_descriptor/body/lanky
+					)
+					if(new_type in valid_body)
+						descriptor_body = new_type
+				if("fur")
+					var/list/valid_fur = list(
+						/datum/mob_descriptor/fur/plain,
+						/datum/mob_descriptor/fur/short,
+						/datum/mob_descriptor/fur/coarse,
+						/datum/mob_descriptor/fur/bristly,
+						/datum/mob_descriptor/fur/fluffy,
+						/datum/mob_descriptor/fur/shaggy,
+						/datum/mob_descriptor/fur/silky,
+						/datum/mob_descriptor/fur/lank,
+						/datum/mob_descriptor/fur/mangy,
+						/datum/mob_descriptor/fur/velvety,
+						/datum/mob_descriptor/fur/dense,
+						/datum/mob_descriptor/fur/matted
+					)
+					if(new_type in valid_fur)
+						descriptor_fur = new_type
+				if("voice")
+					var/list/valid_voice = list(
+						/datum/mob_descriptor/voice/growly,
+						/datum/mob_descriptor/voice/deep,
+						/datum/mob_descriptor/voice/booming,
+						/datum/mob_descriptor/voice/gravelly,
+						/datum/mob_descriptor/voice/commanding,
+						/datum/mob_descriptor/voice/monotone,
+						/datum/mob_descriptor/voice/ordinary,
+						/datum/mob_descriptor/voice/soft,
+						/datum/mob_descriptor/voice/grave,
+						/datum/mob_descriptor/voice/venomous,
+						/datum/mob_descriptor/voice/dispassionate,
+						/datum/mob_descriptor/voice/whiny,
+						/datum/mob_descriptor/voice/drawling,
+						/datum/mob_descriptor/voice/shrill,
+						/datum/mob_descriptor/voice/stilted
+					)
+					if(new_type in valid_voice)
+						descriptor_voice = new_type
+				if("muzzle")
+					var/list/valid_muzzle = list(
+						/datum/mob_descriptor/face/gnoll/long_muzzle,
+						/datum/mob_descriptor/face/gnoll/short_muzzle,
+						/datum/mob_descriptor/face/gnoll/broad_muzzle,
+						/datum/mob_descriptor/face/gnoll/narrow_muzzle,
+						/datum/mob_descriptor/face/gnoll/scarred_muzzle,
+						/datum/mob_descriptor/face/gnoll/sharp_muzzle,
+						/datum/mob_descriptor/face/gnoll/worn_muzzle,
+						/datum/mob_descriptor/face/gnoll/disfigured_muzzle
+					)
+					if(new_type in valid_muzzle)
+						descriptor_muzzle = new_type
+				if("expression")
+					var/list/valid_expression = list(
+						/datum/mob_descriptor/face_exp/gnoll/alert,
+						/datum/mob_descriptor/face_exp/gnoll/snarling,
+						/datum/mob_descriptor/face_exp/gnoll/predatory,
+						/datum/mob_descriptor/face_exp/gnoll/hollow,
+						/datum/mob_descriptor/face_exp/gnoll/fierce,
+						/datum/mob_descriptor/face_exp/gnoll/vacant,
+						/datum/mob_descriptor/face_exp/gnoll/groveling,
+						/datum/mob_descriptor/face_exp/gnoll/leering
+					)
+					if(new_type in valid_expression)
+						descriptor_expression = new_type
+			gnoll_show_ui(user)
 
 		if("close")
 			user << browse(null, "window=gnoll_prefs")

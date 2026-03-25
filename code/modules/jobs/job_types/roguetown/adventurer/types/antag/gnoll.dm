@@ -101,6 +101,14 @@
 		qdel(breasts)
 
 	update_body()
+	clear_mob_descriptors()
+	add_mob_descriptor(/datum/mob_descriptor/stature/gnoll)
+	add_mob_descriptor(prefs.descriptor_height || /datum/mob_descriptor/height/moderate)
+	add_mob_descriptor(prefs.descriptor_body || /datum/mob_descriptor/body/muscular)
+	add_mob_descriptor(prefs.descriptor_fur || /datum/mob_descriptor/fur/coarse)
+	add_mob_descriptor(prefs.descriptor_voice || /datum/mob_descriptor/voice/growly)
+	add_mob_descriptor(prefs.descriptor_muzzle || /datum/mob_descriptor/face/gnoll/long_muzzle)
+	add_mob_descriptor(prefs.descriptor_expression || /datum/mob_descriptor/face_exp/gnoll/alert)
 
 /datum/outfit/job/roguetown/gnoll/proc/don_pelt(mob/living/carbon/human/H)
 	if(H.mind)
