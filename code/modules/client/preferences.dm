@@ -1022,17 +1022,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		var ctrl = e.ctrlKey ? 1 : 0;
 		var shift = e.shiftKey ? 1 : 0;
 		var numpad = (95 < e.keyCode && e.keyCode < 112) ? 1 : 0;
-
 		var main_key = e.key;
 		switch (main_key){
-			case '#':
-			main_key = '%23';
+			case '#':main_key = '%23';
 			break;
-			case '&':
-			main_key = '%26';
+			case '&':main_key = '%26';
 			break;
-			case '=':
-			main_key = '%3D';
+			case '=':main_key = '%3D';
 			break;
 		};
 		var escPressed = e.keyCode == 27 ? 1 : 0;
