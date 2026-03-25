@@ -38,9 +38,9 @@ SUBSYSTEM_DEF(gnoll_scaling)
 		if(GNOLL_SCALING_FLAT)
 			target_slots = (players_amt >= 50) ? 3 : 1
 		if(GNOLL_SCALING_DYNAMIC)
-				target_slots = 2
-				if(players_amt > 80)
-					target_slots += (players_amt - 80)
+			target_slots = 2
+			if(players_amt > 80)
+				target_slots += (players_amt - 80)
 
 	desired_gnoll_slots = target_slots
 	gnoll_playercount_lock = (target_slots <= 1)
