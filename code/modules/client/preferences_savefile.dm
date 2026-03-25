@@ -757,6 +757,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["gnoll_name"]						>> gnoll_prefs.gnoll_name
 	S["gnoll_pronouns"]					>> gnoll_prefs.gnoll_pronouns
 	S["gnoll_pelt_type"]				>> gnoll_prefs.pelt_type
+	if(!gnoll_prefs.pelt_type)
+		gnoll_prefs.pelt_type = "firepelt"
 	S["gnoll_genitals_penis"]			>> gnoll_prefs.genitals["penis"]
 	S["gnoll_genitals_vagina"]			>> gnoll_prefs.genitals["vagina"]
 	S["gnoll_genitals_breasts"]			>> gnoll_prefs.genitals["breasts"]

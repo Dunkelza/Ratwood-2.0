@@ -86,7 +86,7 @@
 	var/mob/living/carbon/human/H = C
 	var/pelt_type = "firepelt" // default
 	if(H.client?.prefs?.gnoll_prefs)
-		pelt_type = H.client.prefs.gnoll_prefs.pelt_type
+		pelt_type = H.client.prefs.gnoll_prefs.pelt_type || "firepelt"
 	C.icon_state = pelt_type
 	C.base_pixel_x = -8
 	C.pixel_x = -8

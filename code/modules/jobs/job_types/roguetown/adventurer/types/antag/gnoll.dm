@@ -57,9 +57,8 @@
 	if(prefs.gnoll_pronouns)
 		pronouns = prefs.gnoll_pronouns
 
-	if(prefs.pelt_type)
-		icon_state = prefs.pelt_type
-		dna?.species?.custom_base_icon = prefs.pelt_type
+	icon_state = prefs.pelt_type || "firepelt"
+	dna?.species?.custom_base_icon = prefs.pelt_type || "firepelt"
 
 	var/wants_penis = !!prefs.genitals["penis"]
 	var/wants_vagina = !!prefs.genitals["vagina"]
