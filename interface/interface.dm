@@ -274,18 +274,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
-
-/*
-/client/verb/changelog()
-	set name = "Changelog"
-	set category = "OOC"
-	set hidden = 1
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "font-style=;")
-*/
+		winset(src, "infobuttons.changelog", "font-style=;")
 
 /*
 /client/verb/set_blur()
