@@ -1501,7 +1501,7 @@
 
 /datum/crafting_recipe/roguetown/structure/floorcandle
     name = "floor candles"
-    result = /obj/machinery/light/rogue/wallfire/candle/floorcandle
+    result = /obj/machinery/light/rogue/candle/floorcandle
     reqs = list(/obj/item/candle/yellow = 2)
     verbage_simple = "build"
     verbage = "builds"
@@ -1512,7 +1512,7 @@
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealt
     name = "alt floor candles"
-    result = /obj/machinery/light/rogue/wallfire/candle/floorcandle/alt
+    result = /obj/machinery/light/rogue/candle/floorcandle/alt
     reqs = list(/obj/item/candle/yellow = 2)
     verbage_simple = "build"
     verbage = "builds"
@@ -1523,7 +1523,7 @@
 
 /datum/crafting_recipe/roguetown/structure/floorcandlepink
     name = "eoran floor candles"
-    result = /obj/machinery/light/rogue/wallfire/candle/floorcandle/pink
+    result = /obj/machinery/light/rogue/candle/floorcandle/pink
     reqs = list(/obj/item/candle/eora = 2)
     verbage_simple = "build"
     verbage = "builds"
@@ -1534,7 +1534,7 @@
 
 /datum/crafting_recipe/roguetown/structure/floorcandlealtpink
     name = "alt eoran floor candles"
-    result = /obj/machinery/light/rogue/wallfire/candle/floorcandle/alt/pink
+    result = /obj/machinery/light/rogue/candle/floorcandle/alt/pink
     reqs = list(/obj/item/candle/eora = 2)
     verbage_simple = "build"
     verbage = "builds"
