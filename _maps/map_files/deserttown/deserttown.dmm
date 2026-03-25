@@ -12336,6 +12336,9 @@
 /obj/item/cushion/desert1,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
+"gvw" = (
+/turf/open/floor/rogue/lightpath,
+/area/rogue/indoors/town/dwarfin/desert)
 "gvF" = (
 /mob/living/carbon/human/species/skeleton/npc/easy,
 /turf/open/floor/rogue/lightpath,
@@ -25059,7 +25062,7 @@
 "mGF" = (
 /obj/structure/closet/crate/chest/gold{
 	locked = 1;
-	lockid = "sheriff"
+	lockid = "sergeant"
 	},
 /obj/item/roguekey/warden,
 /obj/item/roguekey/warden,
@@ -27459,9 +27462,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/deserttown)
-"nON" = (
-/turf/open/floor/rogue/lightpath,
-/area/rogue/indoors/town/dwarfin/desert)
 "nPd" = (
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 8
@@ -28043,8 +28043,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	locked = 1;
-	lockid = "sheriff";
-	name = "Warden's office"
+	lockid = "sergeant";
+	name = "Azebagha's Office"
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/deserttown/warden)
@@ -599198,7 +599198,7 @@ bco
 bco
 bco
 bco
-nON
+gvw
 aYd
 aYd
 aYd
@@ -599500,7 +599500,7 @@ bco
 bco
 bco
 bco
-nON
+gvw
 aYd
 pSN
 nch
@@ -599808,7 +599808,7 @@ aYd
 rjf
 aYd
 aYd
-nON
+gvw
 bco
 rOP
 fIB
