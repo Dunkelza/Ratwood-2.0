@@ -1381,7 +1381,7 @@
 /datum/crafting_recipe/roguetown/structure/floorclock
 	name = "Floor Clock"
 	result = /obj/structure/fluff/clock
-	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear = 1, /obj/item/ingot/iron = 1)
+	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear/bronze = 1, /obj/item/ingot/iron = 1)
 	verbage_simple = "construst"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/engineering
@@ -1390,7 +1390,7 @@
 /datum/crafting_recipe/roguetown/structure/wallclock
 	name = "Wall Clock (North)"
 	result = /obj/structure/fluff/wallclock
-	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear = 1, /obj/item/ingot/iron = 1)
+	reqs = list(/obj/item/natural/wood/plank = 2,/obj/item/roguegear/bronze = 1, /obj/item/ingot/iron = 1)
 	verbage_simple = "construst"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/engineering
