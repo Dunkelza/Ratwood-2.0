@@ -11,7 +11,7 @@ LICH SKELETONS
 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich
 
 /datum/outfit/job/roguetown/greater_skeleton/lich
-	cloak = /obj/item/clothing/cloak/half	//starts black, so they can be identified.
+	cloak = /obj/item/clothing/cloak/thief_cloak/yoruku
 	belt = /obj/item/storage/belt/rogue/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/paalloy
 	backl = /obj/item/storage/backpack/rogue/satchel
