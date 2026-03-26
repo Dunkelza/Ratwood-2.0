@@ -25,7 +25,7 @@
 	min_pq = 6
 	max_pq = null
 	cmode_music = 'sound/music/combat_desert1.ogg'
-	job_traits = list(TRAIT_OUTDOORSMAN, TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR)
+	job_traits = list(TRAIT_OUTDOORSMAN, TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR, TRAIT_FUSILIER)
 	job_subclasses = list(
 		/datum/advclass/azebagha/azebagha
 	)
@@ -79,23 +79,24 @@
 		STATKEY_WIL = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/shields = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_MASTER,	
-		/datum/skill/misc/riding = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,	
+		/datum/skill/combat/polearms = 4,
+		/datum/skill/combat/swords = 4,
+		/datum/skill/combat/axes = 4,
+		/datum/skill/combat/whipsflails = 4,
+		/datum/skill/combat/maces = 4,
+		/datum/skill/combat/knives = 3,
+		/datum/skill/combat/shields = 4,
+		/datum/skill/combat/crossbows = 3,
+		/datum/skill/combat/bows = 4,
+		/datum/skill/combat/firearms = 4,
+		/datum/skill/combat/wrestling = 4,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/sneaking = 2,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/athletics = 5,	
+		/datum/skill/misc/riding = 5,
+		/datum/skill/misc/tracking = 4,	
 	)
 
 /datum/outfit/job/roguetown/azebagha/azebagha/pre_equip(mob/living/carbon/human/H)
@@ -120,7 +121,7 @@
 	if(H.mind)
 		var/primary = list("Scimitar","Shotel","Whip","Warden Axe")
 		var/primary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		var/secondary = list("Greataxe","Javelins and Shield","Blackhorn Longbow","Handgonne")
+		var/secondary = list("Glaive","Javelins and Shield","Blackhorn Longbow","Handgonne")
 		var/secondary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(primary_choice)
@@ -136,9 +137,9 @@
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
 
 		switch(secondary_choice)
-			if("Greataxe")			
+			if("Glaive")			
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-				l_hand = /obj/item/rogueweapon/greataxe/steel
+				l_hand = /obj/item/rogueweapon/halberd/glaive
 			if("Javelins and Shield")	
 				beltr = /obj/item/quiver/javelin/steel
 				backl = /obj/item/rogueweapon/shield/iron/zybantine
