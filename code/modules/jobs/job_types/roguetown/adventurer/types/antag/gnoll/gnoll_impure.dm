@@ -38,7 +38,7 @@
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/gnoll_armor/impure
 	icon_state = null
 	max_integrity = 400
-	auto_repair_mode_base = 90
+	repair_time = 14 SECONDS
 	armor = ARMOR_GNOLL_WEAK
 
 /datum/outfit/job/roguetown/gnoll_impure/proc/don_pelt(mob/living/carbon/human/H)

@@ -36,6 +36,5 @@
 	icon_state = "knight"
 	max_integrity = 800
 	armor = ARMOR_GNOLL_STRONG
-	// Stronger, so repair less armor when it repairs
-	auto_repair_mode_base = 75
-	relative_repair_interval = 25 SECONDS
+	// Stronger, so it repairs more slowly.
+	repair_time = 32 SECONDS

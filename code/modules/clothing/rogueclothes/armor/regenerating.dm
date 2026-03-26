@@ -27,11 +27,6 @@
 	var/interrupt_dflag
 	var/interrupt_ddir
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/Initialize(mapload)
-	. = ..()
-	if(auto_repair_mode)
-		setup_auto_repair()
-
 /obj/item/clothing/suit/roguetown/armor/regenerating/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	. = ..()
 	if(regen_interrupt(damage_amount, damage_type, damage_flag, attack_dir))
@@ -63,35 +58,6 @@
 		to_chat(loc, span_notice(repairmsg_end))
 		deltimer(reptimer)
 		return
-
-	var/repair_amount
-	var/next_tick_time
-	var/skin_broken = 0
-	if(obj_integrity == 0)
-		skin_broken = 1
-
-	if(relative_repair_mode)
-		// math: (interval / total time) * max health
-		// example: (5s / 50s) * 100 HP = 10 HP per tick
-		var/repair_ratio = relative_repair_interval / repair_time
-		if(!skin_broken)
-			repair_amount = repair_ratio * max_integrity
-		else
-			repair_amount = 5
-		next_tick_time = relative_repair_interval
-	else
-		// static mode: 20% of max integrity
-		if(!skin_broken)
-			repair_amount = 0.2 * max_integrity
-		else
-			repair_amount = 5
-		next_tick_time = repair_time
-
-	obj_integrity = min(obj_integrity + repair_amount, max_integrity)
-
-	// Fix armor so it can still be interrupted from regenerating
-	if(obj_broken && obj_integrity > 0)
-		obj_fix(full_repair = FALSE)
 
 	to_chat(loc, span_notice(repairmsg_continue))
 	reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), repair_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)

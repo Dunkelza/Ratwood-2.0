@@ -15,8 +15,7 @@
 	max_integrity = 475
 	item_flags = DROPDEL
 
-	auto_repair_mode = TRUE
-	relative_repair_interval = 15 SECONDS
+	repair_time = 14 SECONDS
 	interrupt_damount = 15
 
 /datum/antagonist/gnoll

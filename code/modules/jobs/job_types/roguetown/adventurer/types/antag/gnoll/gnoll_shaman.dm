@@ -44,5 +44,5 @@
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/gnoll_armor/shaman
 	icon_state = "shaman"
 	max_integrity = 400
-	auto_repair_mode_base = 90
+	repair_time = 14 SECONDS
 	armor = ARMOR_GNOLL_WEAK
