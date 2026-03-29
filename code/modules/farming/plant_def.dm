@@ -341,7 +341,7 @@
 	produce_amount_max = 3
 
 /datum/plant_def/eggplant
-	name = "eggplant bush"
+	name = "eggplant stalk"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "eggplant"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/eggplant
