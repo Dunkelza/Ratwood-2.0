@@ -21,7 +21,10 @@
 
 /obj/item/clothing/neck/roguetown/cursed_collar/examine(mob/user)
 	. = ..()
-	. += span_notice("It bears [received_cum_count] marks of others' release this binding.")
+	if(received_cum_count == 1)
+		. += span_notice("1 tally mark is etched into the collar's metal surface.")
+	else if(received_cum_count > 1)
+		. += span_notice("[received_cum_count] tally marks are etched into the collar's metal surface.")
 
 /obj/item/clothing/neck/roguetown/cursed_collar/proc/record_nonself_ejaculation(mob/living/carbon/human/source, mob/living/carbon/human/wearer)
 	if(!source || !wearer)

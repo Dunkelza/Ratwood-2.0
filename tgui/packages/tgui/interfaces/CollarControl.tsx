@@ -167,7 +167,7 @@ const SelectedPetInfo = (props: { selectedPets: PetEntry[] }) => {
                   <LabeledList.Item label="Pet Flags">
                     {getPetFlags(pet)}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Received (Others)">
+                  <LabeledList.Item label="Loads Received">
                     {pet.received_cum_count ?? 'N/A'}
                   </LabeledList.Item>
                 </LabeledList>
