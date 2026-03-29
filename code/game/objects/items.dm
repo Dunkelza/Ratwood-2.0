@@ -1517,6 +1517,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				update_force_dynamic()
 			wdefense_dynamic = (wdefense + wdefense_wbonus)
 			user.update_inv_hands()
+			if(sharpness != IS_BLUNT)
+				sharpness = IS_BLUNT
 
 /obj/item/proc/wield(mob/living/carbon/user, show_message = TRUE)
 	if(wielded)
@@ -1556,6 +1558,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return
 	if(alt_intents && !gripped_intents)
 		altgrip(user)
+		sharpness = IS_SHARP
 	if(gripped_intents)
 		wield(user)
 
