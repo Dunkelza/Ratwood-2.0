@@ -50,6 +50,13 @@
 		user.apply_status_effect(/datum/status_effect/buff/xylix_joy)
 		to_chat(user, span_info("Their beauty brings a smile to my face, and fortune to my steps!"))
 
+/mob/living/carbon/human/proc/human_modular_examine_lines(mob/user, observer_privilege, m1, m2, m3)
+	var/list/lines = list()
+	var/list/ext_lines = human_modular_examine_extension(user, observer_privilege, m1, m2, m3)
+	if(length(ext_lines))
+		lines += ext_lines
+	return lines
+
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
 	var/t_He = p_they(TRUE)
@@ -106,6 +113,7 @@
 		if(SSticker.regentmob == src)
 			used_title = "[used_title]" + " Regent"
 		var/display_as_wanderer = FALSE
+		var/display_as_lowlife = FALSE
 		if(observer_privilege)
 			used_name = real_name
 		if(migrant_type)
@@ -115,6 +123,8 @@
 			var/datum/job/J = SSjob.GetJob(job)
 			if(!J || J.wanderer_examine)
 				display_as_wanderer = TRUE
+			if(J.lowlife_examine)
+				display_as_lowlife = TRUE
 		var/rank_color = "#725D4C"
 		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4)
 			social_rank = SOCIAL_RANK_MINOR_NOBLE
@@ -137,6 +147,8 @@
 		if ((valid_headshot_link(src, headshot_link, TRUE)) && (user.client?.prefs.chatheadshot))
 			if(display_as_wanderer)
 				display1 = span_info("ø ------------ ø\n[chat_headshot(headshot_link)]\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			else if(display_as_lowlife)
+				display1 = span_info("ø ------------ ø\n[chat_headshot(headshot_link)]\nThis is <EM>[used_name]</EM>, the lowlife [race_name].")
 			else if(used_title)
 				display1 = span_info("ø ------------ ø\n[chat_headshot(headshot_link)]\nThis is <EM>[used_name]</EM>, the [race_name] [used_title].")
 			else
@@ -144,6 +156,8 @@
 		else
 			if(display_as_wanderer)
 				display1 = span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			else if(display_as_lowlife)
+				display1 = span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the lowlife [race_name].")
 			else if(used_title)
 				display1 = span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the [race_name] [used_title].")
 			else
@@ -202,6 +216,9 @@
 				. += (L.STAPER >= 8 && L.STAINT >= 5) ? span_aiprivradio("[m1] [wet_or_dry]!") : span_warning("[m1] letting out some glossy stuff!")
 			else
 				. += span_aiprivradio("[m1] [wet_or_dry]!")
+		var/list/modular_lines = human_modular_examine_lines(user, observer_privilege, m1, m2, m3)
+		if(length(modular_lines))
+			. += modular_lines
 
 		if((HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) || (HAS_TRAIT(user, TRAIT_RACISMISBAD) && !(src.dna.species.name == "Elf" || src.dna.species.name == "Dark Elf" || src.dna.species.name == "Half Elf")))
 			. += span_phobia("A foreigner...")
@@ -532,6 +549,11 @@
 			var/obj/item/storage/belt/rogue/belt_with_dildo = belt
 			if(belt_with_dildo.attached_toy)
 				. += "[m3] [belt_with_dildo.attached_toy.get_examine_string(user)] attached to [m2] belt. "
+
+	var/modular_chastity_toy_line = human_modular_chastity_toy_examine_line(user, m2, m3)
+	if(modular_chastity_toy_line)
+		. += modular_chastity_toy_line
+
 
 	//right belt
 	if(beltr && !(SLOT_BELT_R in obscured))
