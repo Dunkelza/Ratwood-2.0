@@ -239,7 +239,8 @@
 			if(!(direct_target in display_targets))
 				display_targets += direct_target
 	var/active_source = length(hunted_targets) ? "Hunted flaw" : "Combat fallback"
-	var/selection_mode_description = "Follows gnoll tracking rules: hunted targets are preferred globally, combat roles are only used when no hunted targets are valid."
+	var/selection_mode_description = "F
+	ollows gnoll tracking rules: hunted targets are preferred globally, combat roles are only used when no hunted targets are valid."
 	if(length(direct_scent_targets))
 		selection_mode_description += " Active direct-scent targets already being tracked by gnolls are also shown below."
 	var/gnoll_mode_name = "Unavailable"
@@ -320,7 +321,7 @@
 					tracking_location_labels += "[gnoll_mob.real_name]: [AREACOORD(gnoll_mob)]"
 				gnoll_tracking_display = tracking_name_links.Join(", ")
 				gnoll_tracking_locations = tracking_location_labels.Join("<br>")
-			var/row_key = "[lowertext(target.real_name)]-[REF(target)]"
+			var/row_key = "[LOWER_TEXT(target.real_name)]-[REF(target)]"
 			sorted_target_rows[row_key] = "<tr><td>[target_name]</td><td>[target_location]</td><td>[target_key]</td><td>[target_job]</td><td>[target_source]</td><td>[gnoll_tracking_display]</td><td>[gnoll_tracking_locations]</td></tr>"
 
 		sortTim(sorted_target_rows, GLOBAL_PROC_REF(cmp_text_asc), associative = TRUE)
