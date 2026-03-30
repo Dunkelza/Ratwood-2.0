@@ -10,8 +10,8 @@
 	howl_sounds = list('sound/vo/mobs/gnoll/yeen_howl.ogg')
 	howl_sounds_far = list('sound/vo/mobs/hyena/gnoll_distant.ogg')
 	wolf_antag_type = /datum/antagonist/gnoll
-	howl_spies_allowed = FALSE
-	howl_distance_limit = 20
+	howl_spies_allowed = TRUE
+	howl_distance_limit = 500
 
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff
 	name = "Track"
