@@ -55,17 +55,28 @@
 	if(owner)
 		owner.special_role = null
 
-/datum/antagonist/gnoll/proc/get_tracked_target()
+/datum/antagonist/gnoll/proc/get_sniff_spell()
 	var/mob/living/current_mob = owner?.current
-	if(!current_mob?.mind)
+	if(!current_mob)
 		return null
 
-	var/obj/effect/proc_holder/spell/invoked/gnoll_sniff/sniff_spell = current_mob.mind.get_spell(/obj/effect/proc_holder/spell/invoked/gnoll_sniff)
+	for(var/obj/effect/proc_holder/spell/invoked/gnoll_sniff/S as anything in current_mob.mob_spell_list)
+		return S
+
+	if(current_mob.mind)
+		var/obj/effect/proc_holder/spell/invoked/gnoll_sniff/S = current_mob.mind.get_spell(/obj/effect/proc_holder/spell/invoked/gnoll_sniff)
+		if(S)
+			return S
+
+	return null
+
+/datum/antagonist/gnoll/proc/get_tracked_target()
+	var/obj/effect/proc_holder/spell/invoked/gnoll_sniff/sniff_spell = get_sniff_spell()
 	if(!sniff_spell)
 		return null
 
 	var/mob/living/target = sniff_spell.tracked_target_ref?.resolve()
-	if(!target || QDELETED(target) || target.stat == DEAD)
+	if(!target || !sniff_spell.is_valid_hunted(target))
 		return null
 
 	return target

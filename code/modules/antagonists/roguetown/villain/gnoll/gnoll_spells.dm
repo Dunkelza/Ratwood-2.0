@@ -56,7 +56,7 @@
 	var/list/name_counts = list()
 	//Allows a fallback, if no hunted targets are available, we can track worthy prey (combat roles) instead. 
 	for(var/mob/living/L in GLOB.player_list)
-		if(L == user || istype(L, /mob/living/carbon/human/dummy) || !L.mind)
+		if(L == user || QDELETED(L) || L.stat == DEAD || istype(L, /mob/living/carbon/human/dummy) || !L.mind)
 			continue
 		var/base_name = "[L.real_name]"
 		var/name_count = (name_counts[base_name] || 0) + 1

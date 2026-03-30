@@ -39,6 +39,40 @@ SUBSYSTEM_DEF(gnoll_scaling)
 /datum/controller/subsystem/gnoll_scaling/proc/get_scaling_context(mode, players_amt)
 	return "mode=[get_mode_name(mode)], storyteller=[last_storyteller_name], origin=[last_mode_origin], active_humans=[players_amt]"
 
+/datum/controller/subsystem/gnoll_scaling/proc/get_admin_scaling_snapshot()
+	var/list/snapshot = list(
+		"mode_name" = "Unavailable",
+		"is_non_single" = FALSE,
+		"pop_remaining" = "N/A",
+	)
+
+	var/mode = get_gnoll_scaling()
+	snapshot["mode_name"] = get_mode_name(mode)
+	var/is_non_single = (mode != GNOLL_SCALING_SINGLE)
+	snapshot["is_non_single"] = is_non_single
+	if(!is_non_single)
+		return snapshot
+
+	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
+	var/next_slot_at_players = null
+
+	switch(mode)
+		if(GNOLL_SCALING_FLAT)
+			if(players_amt < flat_mode_threshold_players && flat_mode_high_slots > flat_mode_low_slots)
+				next_slot_at_players = flat_mode_threshold_players
+		if(GNOLL_SCALING_DYNAMIC)
+			if(dynamic_mode_players_per_extra_slot > 0 && desired_gnoll_slots < max_gnoll_slots)
+				var/current_extra_slots = max(desired_gnoll_slots - dynamic_mode_base_slots, 0)
+				next_slot_at_players = dynamic_mode_start_players + ((current_extra_slots + 1) * dynamic_mode_players_per_extra_slot)
+
+	if(!isnull(next_slot_at_players))
+		var/pop_remaining = max(next_slot_at_players - players_amt, 0)
+		snapshot["pop_remaining"] = "[pop_remaining] (next at [next_slot_at_players])"
+	else
+		snapshot["pop_remaining"] = "0 (no further slot increases in this mode)"
+
+	return snapshot
+
 /datum/controller/subsystem/gnoll_scaling/proc/resolve_preferred_mode(preferred_mode, storyteller_name = "Unknown")
 	last_storyteller_name = storyteller_name
 	last_mode_origin = "direct"
