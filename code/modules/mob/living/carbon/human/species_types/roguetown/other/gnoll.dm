@@ -98,6 +98,7 @@
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	RegisterSignal(C, COMSIG_MOVABLE_BARK, PROC_REF(cancel_default_bark))
+	C.ambushable = FALSE
 	var/mob/living/carbon/human/H = C
 	var/pelt_type = "firepelt" // default
 	if(H.client?.prefs?.gnoll_prefs)
