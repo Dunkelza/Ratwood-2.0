@@ -2161,14 +2161,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 			env_adjust = -step
 		if(loc_temp <= BODYTEMP_NORMAL_MIN && !istype(cur_turf, /turf/open/water))
 			if(!(GLOB.cold_breath_overlay in H.overlays))
-				var/mutable_appearance/cold_breath = GLOB.cold_breath_overlay
-				if(H.gender == MALE)
-					cold_breath.pixel_x += offset_features[OFFSET_HEAD][1]
-					cold_breath.pixel_y += offset_features[OFFSET_HEAD][2]
-				else
-					cold_breath.pixel_x += offset_features[OFFSET_HEAD_F][1]
-					cold_breath.pixel_y += offset_features[OFFSET_HEAD_F][2]
-				H.add_overlay(cold_breath)
+				H.add_overlay(GLOB.cold_breath_overlay)
 		else
 			if(GLOB.cold_breath_overlay in H.overlays)
 				H.cut_overlay(GLOB.cold_breath_overlay)
