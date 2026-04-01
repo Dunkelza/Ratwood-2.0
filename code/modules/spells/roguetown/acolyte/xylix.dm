@@ -37,7 +37,7 @@
 	chargedloop = /datum/looping_sound/invokeholy
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	recharge_time = 30 SECONDS
+	recharge_time = 45 SECONDS
 	var/firstcast = TRUE
 	var/icon/clone_icon
 
@@ -51,11 +51,16 @@
 		revert_cast()
 		return
 	var/turf/T = get_turf(user)
-	new /mob/living/simple_animal/hostile/rogue/xylixdouble(T, user, clone_icon)
+	var/holy_skill = user.get_skill_level(/datum/skill/magic/holy)
+	var/scaled_skill = max(1, holy_skill)
+	var/invis_seconds = min(6, 3 + FLOOR(scaled_skill / 2, 1))
+	var/invis_time = invis_seconds SECONDS
+	var/clone_duration = max(1 SECONDS, round(invis_time * 0.7))
+	new /mob/living/simple_animal/hostile/rogue/xylixdouble(T, user, clone_icon, clone_duration)
 	animate(user, alpha = 0, time = 0 SECONDS, easing = EASE_IN)
-	user.mob_timers[MT_INVISIBILITY] = world.time + 7 SECONDS
-	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, update_sneak_invis), TRUE), 7 SECONDS)
-	addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[user] fades back into view."), span_notice("You become visible again.")), 7 SECONDS)
+	user.mob_timers[MT_INVISIBILITY] = world.time + invis_time
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, update_sneak_invis), TRUE), invis_time)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[user] fades back into view."), span_notice("You become visible again.")), invis_time)
 	return TRUE
 
 /mob/living/simple_animal/hostile/rogue/xylixdouble
@@ -81,9 +86,9 @@
 	playsound(loc, 'sound/magic/decoylaugh.ogg', 50)
 	explode()
 
-/mob/living/simple_animal/hostile/rogue/xylixdouble/Initialize(mapload, mob/living/carbon/human/copycat, icon/I)
+/mob/living/simple_animal/hostile/rogue/xylixdouble/Initialize(mapload, mob/living/carbon/human/copycat, icon/I, duration = 7 SECONDS)
 	. = ..()
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/simple_animal, death), TRUE), 7 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/simple_animal, death), TRUE), duration)
 	icon = I
 	name = copycat.name
 
@@ -213,6 +218,15 @@
 	devotion_cost = 10
 	invocations = list()
 	associated_skill = /datum/skill/magic/holy
+	recharge_time = 5 SECONDS
+
+/obj/effect/proc_holder/spell/invoked/projectile/fetch/miracle/cast(list/targets, mob/living/user)
+	var/turf/T = get_turf(targets[1])
+	if(T.z < user.z)
+		to_chat(user, span_warning("You cannot use Divine Fetch below your floor!"))
+		revert_cast()
+		return FALSE
+	return ..()
 
 /obj/effect/proc_holder/spell/invoked/projectile/repel/miracle
 	name = "Divine Repel"
@@ -220,6 +234,14 @@
 	devotion_cost = 14
 	invocations = list()
 	associated_skill = /datum/skill/magic/holy
+
+/obj/effect/proc_holder/spell/invoked/projectile/repel/miracle/cast(list/targets, mob/living/user)
+	var/turf/T = get_turf(targets[1])
+	if(T.z < user.z)
+		to_chat(user, span_warning("You cannot use Divine Repel below your floor!"))
+		revert_cast()
+		return FALSE
+	return ..()
 
 #define NOTHING "nothing"
 #define XYLIX "xylix"
@@ -229,6 +251,9 @@
 #define RAVOX "ravox"
 #define MALUM "malum"
 #define EORA "eora"
+#define BAOTHA "baotha"
+#define GRAGGAR "graggar"
+#define MATTHIOS "matthios"
 
 //JACKPOOOOOOOT 777
 /datum/status_effect/xylix_blessed_luck
@@ -274,7 +299,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/astrata_favor
 
 /datum/status_effect/astrata_favor/on_apply()
-	effectedstats = list("constitution" = 5, "willpower" = 5)
+	effectedstats = list("constitution" = rand(1, 3), "willpower" = rand(1, 3))
 	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, XYLIX_LUCK_TRAIT)
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, XYLIX_LUCK_TRAIT)
 	ADD_TRAIT(owner, TRAIT_STEELHEARTED, XYLIX_LUCK_TRAIT)
@@ -304,7 +329,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/noc_favor
 
 /datum/status_effect/noc_favor/on_apply()
-	effectedstats = list("intelligence" = 3, "speed" = 3)
+	effectedstats = list("intelligence" = rand(1, 3), "speed" = rand(1, 3))
 	owner.alpha = 127
 	. = ..()
 
@@ -325,7 +350,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
 
 /datum/status_effect/zizo_unfavor/on_apply()
-	effectedstats = list("strength" = -3, "perception" = -3, "intelligence" = -3, "constitution" = -3, "willpower" = -3, "speed" = -3)
+	effectedstats = list("strength" = -rand(1, 5), "perception" = -rand(1, 5), "intelligence" = -rand(1, 5), "constitution" = -rand(1, 5), "willpower" = -rand(1, 5), "speed" = -rand(1, 5))
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
@@ -341,7 +366,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_favor
 
 /datum/status_effect/ravox_favor/on_apply()
-	effectedstats = list("strength" = 3, "speed" = 3, "willpower" = 3)
+	effectedstats = list("strength" = rand(1, 3), "speed" = rand(1, 3), "willpower" = rand(1, 3))
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/ravox_favor
@@ -353,21 +378,83 @@
 /datum/status_effect/malum_favor
 	id = "malum_favor"
 	status_type = STATUS_EFFECT_UNIQUE
-	duration = 5 SECONDS
+	duration = 1 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/buff/malum_favor
 
 /datum/status_effect/malum_favor/on_apply()
-	for(var/obj/item/item in owner.get_equipped_items())
-		item.max_integrity *= 1.1
-		item.obj_integrity = min(item.obj_integrity + item.max_integrity/2, item.max_integrity)
-		if(item.blade_int)
-			item.max_blade_int *= 1.1
-			item.blade_int = min(item.blade_int + item.max_blade_int/2, item.max_blade_int)
+	effectedstats = list("constitution" = 1, "willpower" = rand(1, 5))
 	. = ..()
+
+//Baotha Jackpot
+/datum/status_effect/baotha_favor
+	id = "baotha_favor"
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 1 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/buff/baotha_favor
+
+/datum/status_effect/baotha_favor/on_apply()
+	effectedstats = list("speed" = rand(2, 3))
+	owner.drunkenness = max(owner.drunkenness, 30)
+	owner.apply_status_effect(/datum/status_effect/buff/druqks/baotha)
+	if(owner.client?.prefs?.sexable)
+		if(!owner.sexcon)
+			owner.sexcon = new /datum/sex_controller(owner)
+		owner.sexcon.set_arousal(100)
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/baotha_favor
+	name = "Baotha's Favor"
+	desc = "You feel euphoric, quick, very flushed and intoxicated."
+	icon_state = "status"
+
+//Graggar Jackpot
+/datum/status_effect/graggar_favor
+	id = "graggar_favor"
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 1 SECONDS
+	alert_type = /atom/movable/screen/alert/status_effect/buff/graggar_favor
+
+/datum/status_effect/graggar_favor/on_apply()
+	var/list/allowed_zones = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	var/zone = pick(allowed_zones)
+	var/obj/item/bodypart/BP = owner.get_bodypart(zone)
+	if(BP)
+		BP.add_wound(pick(/datum/wound/dynamic/bruise, /datum/wound/dynamic/slash, /datum/wound/dynamic/puncture))
+		if(prob(25) && zone in list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+			BP.add_wound(/datum/wound/fracture)
+	owner.visible_message(span_warning("[owner] suddenly winces as flesh tears and bruises under Graggar's wrath!"), span_userdanger("Pain blossoms across my body as Graggar's rage wounds me!"))
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/graggar_favor
+	name = "Graggar's Favor"
+	desc = "Violence turns inward. Blood and pain has been inflicted upon you!"
+	icon_state = "status"
+
+//Matthios Jackpot
+/datum/status_effect/matthios_favor
+	id = "matthios_favor"
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 1 SECONDS
+	alert_type = /atom/movable/screen/alert/status_effect/buff/matthios_favor
+
+/datum/status_effect/matthios_favor/on_apply()
+	var/meister_balance = SStreasury.bank_accounts[owner] ? SStreasury.bank_accounts[owner] : 0
+	if(meister_balance > 0)
+		var/stolen = min(rand(1, 10), meister_balance)
+		SStreasury.bank_accounts[owner] -= stolen
+		to_chat(owner, span_warning("Matthios skims [stolen] mammon from your meister!"))
+	else
+		to_chat(owner, span_notice("Matthios reaches for your meister, but finds it empty."))
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/matthios_favor
+	name = "Matthios' Favor"
+	desc = "The Free-God palms coin from your meister with a crooked grin."
+	icon_state = "status"
 
 /atom/movable/screen/alert/status_effect/buff/malum_favor
 	name = "Favor of Malum"
-	desc = "Malum has refined the work of the artisans on your equipment."
+	desc = "Malum lends you his enduring strength and will."
 	icon_state = "status"
 
 //Eora Jackpot
@@ -419,7 +506,9 @@
 								XYLIX = 100 - luck_bonus,			RAVOX = 60 -luck_bonus/2,
 								EORA = 70 - luck_bonus/2,			NOTHING = 80 - luck_bonus,
 								MALUM = 50 - luck_bonus/2,			NOC = 50 - luck_bonus,
-								ASTRATA = 15 + luck_bonus * 1.5,	ZIZO = ceil(10-luck_bonus)
+								ASTRATA = 15 + luck_bonus * 1.5,	ZIZO = ceil(10-luck_bonus),
+								BAOTHA = 40 - luck_bonus/3,		GRAGGAR = 35 - luck_bonus/3,
+								MATTHIOS = 45 - luck_bonus/3
 								)
 
 	var/list/chances = typelist("patronChances", patronChances)
@@ -433,6 +522,7 @@
 			to_chat(user, span_danger("You won... Nothing!"))
 		if(XYLIX)
 			user.apply_status_effect(/datum/status_effect/xylix_blessed_luck)
+			new /obj/item/roguecoin/gold(get_turf(user), 1)
 			to_chat(user, span_danger("Xylix's fortune favors you!"))
 		if(ASTRATA)
 			user.apply_status_effect(/datum/status_effect/astrata_favor)
@@ -452,6 +542,15 @@
 		if(EORA)
 			user.apply_status_effect(/datum/status_effect/eora_favor)
 			to_chat(user, span_danger("Eora's love envelops you!"))
+		if(BAOTHA)
+			user.apply_status_effect(/datum/status_effect/baotha_favor)
+			to_chat(user, span_danger("Baotha's haze grips your body and mind!"))
+		if(GRAGGAR)
+			user.apply_status_effect(/datum/status_effect/graggar_favor)
+			to_chat(user, span_danger("Graggar's fury marks your flesh!"))
+		if(MATTHIOS)
+			user.apply_status_effect(/datum/status_effect/matthios_favor)
+			to_chat(user, span_danger("Matthios steals from your meister as a lesson in greed!"))
 	return ..()
 
 #undef NOTHING
@@ -462,3 +561,6 @@
 #undef RAVOX
 #undef MALUM
 #undef EORA
+#undef BAOTHA
+#undef GRAGGAR
+#undef MATTHIOS

@@ -44,6 +44,11 @@
 		H.adjust_skillrank(/datum/skill/magic/druidic, 3, TRUE)
 		to_chat(H, span_notice("As a follower of Dendor, you have innate knowledge of druidic magic."))
 
+	// Add lockpicking skill for Matthios followers (Matthiosan Knock grants this knowledge)
+	if(istype(H.patron, /datum/patron/inhumen/matthios))
+		H.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, SKILL_LEVEL_APPRENTICE, TRUE)
+		to_chat(H, span_notice("As a follower of Matthios, Matthiosan Knock has taught you the basics of lockpicking."))
+
 	to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts. \
 	You forego the hauberk that paladins wear in favor of humbling your foes through bloodless strikes. \
 	Your satchel hangs heavy, too, with ample provisions for the pilgrimage you're upon."))
@@ -380,6 +385,7 @@
 		if(/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/combat_matthios.ogg'
 			ADD_TRAIT(H, TRAIT_HERESIARCH, TRAIT_GENERIC)
+			H.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, SKILL_LEVEL_APPRENTICE, TRUE)
 		if(/datum/patron/inhumen/graggar)
 			H.cmode_music = 'sound/music/combat_graggar.ogg'
 			ADD_TRAIT(H, TRAIT_HERESIARCH, TRAIT_GENERIC)

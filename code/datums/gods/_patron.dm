@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(prayers)
 		ADD_TRAIT(pious, trait, "[type]")
 	if(HAS_TRAIT(pious, TRAIT_XYLIX))
 		pious.grant_language(/datum/language/thievescant)
+	if(istype(src, /datum/patron/divine/xylix))
 		pious.verbs += /mob/living/carbon/human/proc/emote_ffsalute
 	if (HAS_TRAIT(pious, TRAIT_CABAL))
 		pious.faction |= "cabal"
@@ -51,6 +52,8 @@ GLOBAL_LIST_EMPTY(prayers)
 		pious.faction -= "cabal"
 	if(HAS_TRAIT(pious, TRAIT_XYLIX))
 		pious.remove_language(/datum/language/thievescant)
+	if(istype(src, /datum/patron/divine/xylix))
+		pious.verbs -= /mob/living/carbon/human/proc/emote_ffsalute
 	for(var/trait in mob_traits)
 		REMOVE_TRAIT(pious, trait, "[type]")
 
