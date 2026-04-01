@@ -863,19 +863,13 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 /atom/proc/rmb_self(mob/user)
 	return
 
-/atom/proc/rmb_althand(mob/user)
-	return
-
 /mob/proc/rmb_on(atom/A, params)
 	return
 
 /mob/proc/RightClickOn(atom/A, params)
 	if(A.Adjacent(src))
-		if(A.loc == src)
-			if(A == get_active_held_item())
-				A.rmb_self(src)
-			else if(A == get_inactive_held_item())
-				A.rmb_althand(src)
+		if(A.loc == src && (A == get_active_held_item()) )
+			A.rmb_self(src)
 		else
 			rmb_on(A, params)
 	else if(used_intent?.rmb_ranged)

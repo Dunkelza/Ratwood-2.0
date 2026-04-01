@@ -68,10 +68,6 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	. = ..()
 	toggle_cork(user)
 
-/obj/item/reagent_containers/glass/bottle/rmb_althand(mob/user)
-	. = ..()
-	toggle_cork(user)
-
 /obj/item/reagent_containers/glass/bottle/attack_self(mob/user)
 	. = ..()
 	toggle_cork(user)
@@ -81,7 +77,10 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(item_flags & IN_STORAGE)
 		/*
 		Currently the bottle underlay and the tetris.dm underlay (from Vanderlin inventory) do *not* play nice 
-		if you try to update the bottle's icon. They'll gladly interfere with each other's underlays if you update one or the other.
+		if you trigger bottle icon updates. They'll gladly interfere with each other's underlays if you update one or the other.
+
+		This is just a half-assed bandage fix, and certainly not perfect. You can still transfer liquids in stored open bottles,
+		which deletes the inventory's underlay for that item until you refresh the inventory view.
 		*/
 		to_chat(user, span_warning("I need to take [src] out first!"))
 		return
@@ -125,46 +124,23 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		desc = "An open bottle. Hopefully a cork is nearby."
 	update_icon()
 
-/obj/item/reagent_containers/glass/bottle/proc/handle_autoclose(mob/living/user, datum/component/storage/concrete/stor, notify_user = TRUE, make_sound = FALSE)
-	// I hate my stupid hacky chud proc, but alas.
+/obj/item/reagent_containers/glass/bottle/on_enter_storage(datum/component/storage/concrete/S, mob/M)
+	. = ..()
+	warn_opened(M, S)
+
+/obj/item/reagent_containers/glass/bottle/proc/warn_opened(mob/user, datum/component/storage/concrete/storage)
 	if(closed)
 		return
+	if(storage.does_not_spill)
+		return
+	if(!reagents.total_volume)
+		return
 	
-	// we will try to find the user, as best we can
-	if(!user && stor && (istype(stor.real_location(), /atom/movable)))
-		var/atom/movable/baggy = stor.real_location()
-		if(isliving(baggy.loc)) 
-			user = baggy.loc
-		else if(istype(baggy.loc, /obj/item/storage)) // i.e. pouch within a bag
-			var/obj/item/storage/baggy2 = baggy.loc
-			if(isliving(baggy2.loc))
-				user = baggy2.loc
-
-	var/already_notified = FALSE
-	if(user)
-		if(user.mob_timers["autocork_notif"] && (world.time < (user.mob_timers["autocork_notif"] + 0.3 SECONDS)))
-			already_notified = TRUE //anti-spam, in case you're gathering with a sack.
-		if(notify_user && !already_notified)
-			to_chat(user, span_info("I recork [src] before storing it."))
-			user.mob_timers["autocork_notif"] = world.time
-
-	// If we opt to make a sound, it will never be more than once per action.
-	var/soundcheck = make_sound ? !already_notified : TRUE
-
-	closed = TRUE
-	do_close(user, no_msg = TRUE, no_snd = soundcheck)
-
-/obj/item/reagent_containers/glass/bottle/on_enter_storage(datum/component/storage/concrete/S)
-	. = ..()
-	if(S.bottle_autoclose)
-		handle_autoclose(stor = S, notify_user = TRUE, make_sound = TRUE)
-
-/*
-	I tried overriding attack_obj() for autoclose too. It didn't work, for a couple of reasons:
-	- Storage component's attack_obj signal is very aggressive and somehow overrides this item's overrides (likely due to how signals work)
-	- The bottle would perform its autoclose interaction when trying to click on a water bin, preventing transfer
-	But for all other "autoclose" interactions that don't involve a storage component, you can provide the user as `user` if you have it.
-*/
+	if(istype(user))
+		if(!user.mob_timers["bottleopen_warn"] || (world.time > (user.mob_timers["bottleopen_warn"] + 0.3 SECONDS)))
+			to_chat(user, span_info("I store [src] <b>uncorked</b>."))
+			user.mob_timers["bottleopen_warn"] = world.time
+	return
 
 /obj/item/reagent_containers/glass/bottle/Initialize(mapload)
 	. = ..()

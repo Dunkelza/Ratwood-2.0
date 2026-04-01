@@ -74,7 +74,7 @@
 	var/intercept_parent_attack = TRUE
 	var/intercept_parent_mousedrop = TRUE
 
-	var/bottle_autoclose = TRUE					// "Closable" reagent bottles being put in storage will automatically be re-corked
+	var/does_not_spill = FALSE						// Suppresses liquid spilling behavior for reagent containers held within
 
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
@@ -181,9 +181,10 @@
 	for(var/mob/living/L in can_see_contents())
 		if(!L.CanReach(A))
 			hide_from(L)
-	for(var/obj/item/reagent_containers/I in A.contents)
-		if(I.reagents && I.spillable)
-			I.reagents.remove_all(3)
+	if(!does_not_spill)
+		for(var/obj/item/reagent_containers/I in A.contents)
+			if(I.spillable && I.reagents)
+				I.reagents.remove_all(3)
 
 /datum/component/storage/proc/attack_self(datum/source, mob/M)
 	if(locked)
