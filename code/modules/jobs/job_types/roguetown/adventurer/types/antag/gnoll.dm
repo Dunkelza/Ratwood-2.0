@@ -74,10 +74,18 @@
 	rumour = null
 	noble_gossip = null
 
-	if(initial_setup && status_traits)
+	if(status_traits)
 		for(var/trait in status_traits.Copy())
 			if(HAS_TRAIT_FROM(src, trait, TRAIT_VIRTUE))
 				REMOVE_TRAIT(src, trait, TRAIT_VIRTUE)
+
+	// Explicitly purge known lamia/mount carryover paths that can survive species swaps.
+	REMOVE_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE, BODY_ZONE_TAUR)
+	REMOVE_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE, TRAIT_VIRTUE)
+	REMOVE_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE, TRAIT_GENERIC)
+	REMOVE_TRAIT(src, TRAIT_LAMIAN_TAIL, INNATE_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_LAMIAN_TAIL, TRAIT_VIRTUE)
+	REMOVE_TRAIT(src, TRAIT_LAMIAN_TAIL, TRAIT_GENERIC)
 
 	var/datum/gnoll_prefs/prefs = client.prefs.gnoll_prefs
 

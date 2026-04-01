@@ -122,6 +122,10 @@
 
 	if(applies_post_equipment)
 		apply_character_post_equipment(H)
+		// Gnoll setup runs in outfit pre_equip, but virtues/loadout traits are applied here.
+		// Re-apply gnoll preferences so gnolls stay isolated from base-slot trait inheritance.
+		if(H.dna?.species?.id == "gnoll")
+			H.apply_gnoll_preferences(FALSE)
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit), TRUE), 20)
