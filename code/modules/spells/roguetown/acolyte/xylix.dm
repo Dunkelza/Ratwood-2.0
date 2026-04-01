@@ -174,7 +174,7 @@
 	devotion_cost = 30
 	miracle = TRUE
 	var/leap_dist = 4	//3 tiles (+1 to account for origin tile)
-	var/static/list/sounds = list('sound/magic/xylix_slip1.ogg','sound/magic/xylix_slip2.ogg','sound/magic/xylix_slip3.ogg','sound/magic/xylix_slip4.ogg')
+	var/static/list/sounds = list('sound/magic/xylix_slip1.ogg','sound/magic/xylix_slip2.ogg','sound/magic/xylix_slip2.ogg','sound/magic/xylix_slip3.ogg','sound/magic/xylix_slip4.ogg','sound/magic/xylix_slip4.ogg')
 
 /obj/effect/proc_holder/spell/self/xylixslip/cast(list/targets, mob/user = usr)
 	. = ..()
@@ -208,8 +208,7 @@
 			playsound(target_turf, target_turf.landsound, 100, FALSE)
 		H.emote("jump", forced = TRUE)
 		H.OffBalance(8 SECONDS)
-		if(prob(50))
-			playsound(H, pick(sounds), 100, TRUE)
+		playsound(H, pick(sounds), 100, TRUE)
 		return TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/fetch/miracle
@@ -394,12 +393,14 @@
 
 /datum/status_effect/baotha_favor/on_apply()
 	effectedstats = list("speed" = rand(2, 3))
-	owner.drunkenness = max(owner.drunkenness, 30)
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.drunkenness = max(C.drunkenness, 30)
 	owner.apply_status_effect(/datum/status_effect/buff/druqks/baotha)
 	if(owner.client?.prefs?.sexable)
 		if(!owner.sexcon)
 			owner.sexcon = new /datum/sex_controller(owner)
-		owner.sexcon.set_arousal(100)
+		owner.sexcon.set_arousal(110)
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/baotha_favor
@@ -420,7 +421,7 @@
 	var/obj/item/bodypart/BP = owner.get_bodypart(zone)
 	if(BP)
 		BP.add_wound(pick(/datum/wound/dynamic/bruise, /datum/wound/dynamic/slash, /datum/wound/dynamic/puncture))
-		if(prob(25) && zone in list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+		if(prob(25))
 			BP.add_wound(/datum/wound/fracture)
 	owner.visible_message(span_warning("[owner] suddenly winces as flesh tears and bruises under Graggar's wrath!"), span_userdanger("Pain blossoms across my body as Graggar's rage wounds me!"))
 	. = ..()

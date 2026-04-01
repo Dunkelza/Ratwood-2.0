@@ -4,7 +4,7 @@
 	desc = "The Manyfaced Matthios has no true form. Some see Him as a merry highwayman, some as a god of beggars, and others the father of all dragons. One thing is certain: His followers despise Astrata's nobility."
 	worshippers = "Highwaymen, Downtrodden Peasants, Merchants, Slaves, Kobolds"
 	crafting_recipes = list(/datum/crafting_recipe/roguetown/sewing/bandithood)
-	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_EYES, TRAIT_SEEPRICES_SHITTY, TRAIT_XYLIX)
+	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_EYES, TRAIT_SEEPRICES_SHITTY)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/appraise						= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/targeted/touch/lesserknock/miracle	= CLERIC_T0,
@@ -20,6 +20,14 @@
 		"MATTHIOS IS MY LORD!",
 	)
 	storyteller = /datum/storyteller/matthios
+
+/datum/patron/inhumen/matthios/on_gain(mob/living/living)
+	. = ..()
+	living.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+
+/datum/patron/inhumen/matthios/on_loss(mob/living/living)
+	. = ..()
+	living.adjust_skillrank(/datum/skill/misc/lockpicking, -1, TRUE)
 
 // When near coin of at least 100 mammon, zchurch, bad-cross, or ritual talk
 /datum/patron/inhumen/matthios/can_pray(mob/living/follower)
