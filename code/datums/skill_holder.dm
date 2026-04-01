@@ -253,8 +253,6 @@
 
 /datum/skill_holder/proc/get_skill_level(skill)
 	var/datum/skill/S = GetSkillRef(skill)
-	if(!(S in known_skills))
-		return SKILL_LEVEL_NONE
 	var/level = known_skills[S] || SKILL_LEVEL_NONE
 	if(S?.abstract_type in list(/datum/skill/labor, /datum/skill/craft))
 		level += current?.get_inspirational_bonus() || 0
@@ -316,6 +314,12 @@
 	for(var/i in known_skills)
 		if(known_skills[i]) //Do we actually have a level in this?
 			shown_skills += i
+	var/datum/skill/lockpick_skill = GetSkillRef(/datum/skill/misc/lockpicking)
+	if(get_skill_level(/datum/skill/misc/lockpicking) > SKILL_LEVEL_NONE)
+		shown_skills |= lockpick_skill
+	var/datum/skill/music_skill = GetSkillRef(/datum/skill/misc/music)
+	if(get_skill_level(/datum/skill/misc/music) > SKILL_LEVEL_NONE)
+		shown_skills |= music_skill
 	if(!length(shown_skills))
 		to_chat(user, span_warning("I don't have any skills."))
 		return
