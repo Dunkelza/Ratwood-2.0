@@ -1358,12 +1358,12 @@
 	anchored = TRUE
 	invisibility = INVISIBILITY_ABSTRACT
 
-	var/mob/living/owner
+	var/datum/weakref/owner_ref
 
 /obj/effect/xylix_pratfall_proxy/Initialize(mapload, mob/living/_owner)
 	. = ..()
 	if(istype(_owner))
-		owner = _owner
+		owner_ref = WEAKREF(_owner)
 
 /datum/status_effect/buff/xylix_pratfall
 	id = "xylix_pratfall"
@@ -1407,11 +1407,14 @@
 /obj/effect/xylix_pratfall_proxy/Crossed(atom/movable/AM)
 	. = ..()
 
-	if(!owner || !isliving(AM))
+	if(!isliving(AM))
+		return
+
+	var/mob/living/M = owner_ref?.resolve()
+	if(!M)
 		return
 
 	var/mob/living/L = AM
-	var/mob/living/M = owner
 
 	if(L.buckled)
 		return

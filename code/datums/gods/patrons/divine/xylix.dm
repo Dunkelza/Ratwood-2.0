@@ -40,26 +40,6 @@
 	)
 	storyteller = /datum/storyteller/xylix
 
-#define XYLIX_MUSIC_BONUS "xylix_music_bonus"
-
-/datum/patron/divine/xylix/proc/apply_music_bonus(mob/living/living)
-	return
-
-/datum/patron/divine/xylix/proc/remove_music_bonus(mob/living/living)
-	return
-
-/datum/patron/divine/xylix/on_gain(mob/living/living)
-	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(apply_music_bonus), living), 1)
-
-/datum/patron/divine/xylix/post_equip(mob/living/pious)
-	. = ..()
-	apply_music_bonus(pious)
-
-/datum/patron/divine/xylix/on_loss(mob/living/living)
-	remove_music_bonus(living)
-	. = ..()
-
 // Near a gambling machine, cross, or within the church
 /datum/patron/divine/xylix/can_pray(mob/living/follower)
 	. = ..()
@@ -94,10 +74,8 @@
 		*situational_bonus = -1.25
 		*message_out = span_warning("Xylix twists the fate of [target] to heal less than usual!")
 		*message_self = span_warning("Xylix twists your fate to heal less than usual!")
-	else if(prob(50))
+	else if(prob(60))
 		*conditional_buff = TRUE
 		*situational_bonus = rand(1, 2.5)
 		*message_out = span_notice("Xylix brings fortune and heals [target] more than usual!")
 		*message_self = span_notice("Xylix brings fortune and heals you more than usual!")
-
-#undef XYLIX_MUSIC_BONUS

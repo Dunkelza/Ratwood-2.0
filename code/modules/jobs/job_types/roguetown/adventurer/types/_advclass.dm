@@ -107,14 +107,6 @@
 		for(var/skill in subclass_skills)
 			H.adjust_skillrank_up_to(skill, subclass_skills[skill], TRUE)
 
-	// Re-apply patron skill bonuses after class skills to avoid setup overwriting them.
-	if(istype(H.patron, /datum/patron/inhumen/matthios))
-		var/datum/patron/inhumen/matthios/matthios = H.patron
-		matthios.apply_lockpick_bonus(H)
-	if(istype(H.patron, /datum/patron/divine/xylix))
-		var/datum/patron/divine/xylix/xylix = H.patron
-		xylix.apply_music_bonus(H)
-
 	if(length(subclass_stashed_items))
 		if(!H.mind)
 			return

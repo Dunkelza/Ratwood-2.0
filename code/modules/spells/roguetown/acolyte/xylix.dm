@@ -442,7 +442,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	var/can_use = 1
-	var/obj/effect/dummy/parlor_trick/active_dummy = null
+	var/datum/weakref/active_dummy_ref = null
 	var/saved_appearance = null
 
 /obj/item/melee/touch_attack/parlor_trick/afterattack()
@@ -486,11 +486,12 @@
 /obj/item/melee/touch_attack/parlor_trick/proc/toggle(mob/user)
 	if(!can_use || !saved_appearance)
 		return
+	var/obj/effect/dummy/parlor_trick/active_dummy = active_dummy_ref?.resolve()
 	if(active_dummy)
 		eject_all()
 		playsound(get_turf(src), 'sound/magic/decoylaugh.ogg', 20, TRUE, -6)
 		qdel(active_dummy)
-		active_dummy = null
+		active_dummy_ref = null
 		to_chat(user, span_notice("You deactivate \the [src]."))
 		new /obj/effect/temp_visual/gravpush(get_turf(src))
 	else
@@ -501,6 +502,7 @@
 		new /obj/effect/temp_visual/gravpush(get_turf(src))
 
 /obj/item/melee/touch_attack/parlor_trick/proc/disrupt(delete_dummy = 1)
+	var/obj/effect/dummy/parlor_trick/active_dummy = active_dummy_ref?.resolve()
 	if(active_dummy)
 		for(var/mob/M in active_dummy)
 			to_chat(M, span_danger("Your parlor trick wanes!"))
@@ -508,11 +510,14 @@
 		eject_all()
 		if(delete_dummy)
 			qdel(active_dummy)
-		active_dummy = null
+		active_dummy_ref = null
 		can_use = FALSE
 		addtimer(VARSET_CALLBACK(src, can_use, TRUE), 2.5 SECONDS)
 
 /obj/item/melee/touch_attack/parlor_trick/proc/eject_all()
+	var/obj/effect/dummy/parlor_trick/active_dummy = active_dummy_ref?.resolve()
+	if(!active_dummy)
+		return
 	for(var/atom/movable/A in active_dummy)
 		A.forceMove(active_dummy.loc)
 		if(ismob(A))
@@ -547,7 +552,7 @@
 		V.unbuckle_mob(M, force = TRUE)
 	M.forceMove(src)
 	master = C
-	master.active_dummy = src 
+	master.active_dummy_ref = WEAKREF(src)
 
 
 /obj/effect/dummy/parlor_trick/Destroy()

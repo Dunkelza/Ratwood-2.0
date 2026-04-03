@@ -21,26 +21,6 @@
 	)
 	storyteller = /datum/storyteller/matthios
 
-#define MATTHIOS_LOCKPICK_BONUS "matthios_lockpick_bonus"
-
-/datum/patron/inhumen/matthios/proc/apply_lockpick_bonus(mob/living/living)
-	return
-
-/datum/patron/inhumen/matthios/proc/remove_lockpick_bonus(mob/living/living)
-	return
-
-/datum/patron/inhumen/matthios/on_gain(mob/living/living)
-	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(apply_lockpick_bonus), living), 1)
-
-/datum/patron/inhumen/matthios/post_equip(mob/living/pious)
-	. = ..()
-	apply_lockpick_bonus(pious)
-
-/datum/patron/inhumen/matthios/on_loss(mob/living/living)
-	remove_lockpick_bonus(living)
-	. = ..()
-
 // When near coin of at least 100 mammon, zchurch, bad-cross, or ritual talk
 /datum/patron/inhumen/matthios/can_pray(mob/living/follower)
 	. = ..()
@@ -85,5 +65,3 @@
 	if(HAS_TRAIT(target, TRAIT_COMMIE))
 		*conditional_buff = TRUE
 		*situational_bonus = 2.5
-
-#undef MATTHIOS_LOCKPICK_BONUS
