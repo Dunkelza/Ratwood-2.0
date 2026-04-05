@@ -491,7 +491,7 @@
 /datum/status_effect/buff/viewingbuff
 	id = "viewingbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/viewingbuff
-	effectedstats = list(STATKEY_PER = 3)
+	effectedstats = list(STATKEY_PER = 2)
 
 /datum/status_effect/buff/barkeepbuff
 	id = "barkeepbuff"
