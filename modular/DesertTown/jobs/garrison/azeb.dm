@@ -15,7 +15,6 @@
 	
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
-	allowed_maps = list("Desert Town")
 
 	outfit = /datum/outfit/job/roguetown/azeb
 	advclass_cat_rolls = list(CTAG_AZEB = 20)

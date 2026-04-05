@@ -3,7 +3,6 @@
 	name = "Janissary Footman"
 	tutorial = "You are a member of the Sultans Retinue. Ensure the safety of the Sultan and their subjects, defend the powers that be from the horrors of the outside world, and keep the Sultanate alive."
 	outfit = /datum/outfit/job/roguetown/janissary/footman
-	//allowed_maps = list("Desert Town")
 
 	category_tags = list(CTAG_JANISSARY)
 	// traits_applied = list(TRAIT_MEDIUMARMOR)

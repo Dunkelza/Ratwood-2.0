@@ -21,7 +21,6 @@
 	min_pq = 8
 	max_pq = null
 	round_contrib_points = 2
-	allowed_maps = list("Desert Town")
 
 	cmode_music = 'sound/music/combat_desert2.ogg'
 	social_rank = SOCIAL_RANK_MINOR_NOBLE

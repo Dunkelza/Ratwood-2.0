@@ -28,7 +28,6 @@
 	job_subclasses = list(
 		/datum/advclass/sheikh
 	)
-	allowed_maps = list("Desert Town")
 
 /datum/job/roguetown/sheikh/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

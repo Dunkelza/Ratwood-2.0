@@ -15,7 +15,6 @@
 	obsfuscated_job = FALSE
 	class_setup_examine = FALSE
 	social_rank = SOCIAL_RANK_DIRT
-	allowed_maps = list("Desert Town")
 
 // //Hooking in here does not mess with their equipment procs
 // /datum/job/roguetown/adventurer/courtagent/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

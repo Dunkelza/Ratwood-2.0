@@ -2,7 +2,6 @@
 /datum/advclass/janissary/zephyr
 	name = "Janissary Zephyr"
 	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
-	//allowed_maps = list("Desert Town")
 	outfit = /datum/outfit/job/roguetown/janissary/zephyr
 
 	category_tags = list(CTAG_JANISSARY)

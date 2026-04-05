@@ -19,7 +19,6 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
-	allowed_maps = list("Desert Town")
 	round_contrib_points = 2
 	advjob_examine = TRUE
 	cmode_music = 'sound/music/cmode/towner/combat_towner.ogg'

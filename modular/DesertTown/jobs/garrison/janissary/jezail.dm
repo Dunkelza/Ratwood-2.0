@@ -2,7 +2,6 @@
 /datum/advclass/janissary/jezail
 	name = "Janissary Jezail"
 	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
-	//allowed_maps = list("Desert Town")
 	outfit = /datum/outfit/job/roguetown/janissary/jezail
 
 	maximum_possible_slots = 2//One always tells the truth, the other only lies. Guess wrong and they both shoot you.

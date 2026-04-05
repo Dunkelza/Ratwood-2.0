@@ -23,7 +23,6 @@
 	round_contrib_points = 2
 	social_rank = SOCIAL_RANK_MINOR_NOBLE
 	cmode_music = 'sound/music/combat_zybantine.ogg'
-	allowed_maps = list("Desert Town")
 	job_subclasses = list(
 		/datum/advclass/slavemaster
 	)
