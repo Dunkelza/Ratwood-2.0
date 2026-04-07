@@ -36,7 +36,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(ishuman(L))
-			if(istype(H.cloak, /obj/item/clothing/cloak/half/shadowcloak))
+			if(istype(H.cloak, /obj/item/clothing/cloak/dunestalker))
 				var/obj/item/clothing/S = H.cloak
 				var/index = findtext(H.real_name, " ")
 				if(index)
