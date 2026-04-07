@@ -30,6 +30,7 @@
 	var/datum/weakref/tracked_target_ref = null
 	var/list/target_warning_next_by_ref = list()
 	var/shown_hunt_disclaimer = FALSE
+	var/last_selection
 
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff/proc/sync_antag_tracked_target(mob/user, mob/living/target)
 	var/datum/antagonist/gnoll/gnoll_antag = user?.mind?.has_antag_datum(/datum/antagonist/gnoll)
@@ -71,8 +72,9 @@
 			continue
 		var/base_name = "[L.real_name]"
 		var/name_count = (name_counts[base_name] || 0) + 1
+		var/class = L.get_class_title()
 		name_counts[base_name] = name_count
-		var/entry_name = (name_count > 1) ? "[base_name] ([name_count])" : base_name
+		var/entry_name = (name_count > 1) ? "[base_name] ([name_count])[length(class) ? " - [class]" : ""]" : "[base_name][length(class) ? " - [class]" : ""]"
 		if(L.has_flaw(/datum/charflaw/hunted))
 			hunted_targets[entry_name] = L
 		else if(L.job in combat_roles)
@@ -84,7 +86,7 @@
 		to_chat(user, span_warning("The air is stale. No worthy prey walks these lands."))
 		return
 
-	var/selection = input(user, "Whose scent shall we follow?", "The Great Hunt") as null|anything in possible_targets
+	var/selection = tgui_input_list(user, "Whose scent shall we follow?", "The Great Hunt", possible_targets, last_selection)
 	if(!selection)
 		return
 
@@ -98,6 +100,7 @@
 		to_chat(user, span_warning("That scent slips away before you can lock onto it."))
 		return
 
+	last_selection = selection
 	tracked_target_ref = WEAKREF(selected_target)
 	sync_antag_tracked_target(user, selected_target)
 	notify_tracked_target(selected_target)
