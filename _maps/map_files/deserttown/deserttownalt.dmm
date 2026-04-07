@@ -290,7 +290,6 @@
 /obj/effect/landmark/start/bandit{
 	dir = 8
 	},
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "hX" = (
@@ -440,7 +439,6 @@
 "nm" = (
 /obj/item/cushion/desert2,
 /obj/effect/landmark/start/bandit,
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "nq" = (
@@ -621,6 +619,10 @@
 "rd" = (
 /obj/structure/fluff/traveltile/bandit{
 	aportalid = "banditexit";
+	alpha = 0
+	},
+/obj/structure/fluff/traveltile/bandit{
+	aportalid = "banditexit2";
 	alpha = 0
 	},
 /turf/open/floor/rogue/darkpath,
@@ -816,7 +818,6 @@
 /area/rogue/outdoors/banditcamp/desert)
 "Am" = (
 /obj/item/cushion/desert1,
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "AC" = (
@@ -853,7 +854,6 @@
 /obj/effect/landmark/start/bandit{
 	dir = 8
 	},
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "BJ" = (
@@ -1234,7 +1234,6 @@
 /area/rogue/indoors/banditcamp/hoardmaster)
 "NY" = (
 /obj/item/cushion/zybantine,
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "Oc" = (
@@ -1246,7 +1245,6 @@
 "Oi" = (
 /obj/item/cushion/desert1,
 /obj/effect/landmark/start/bandit,
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "Op" = (
@@ -1281,7 +1279,6 @@
 /obj/effect/landmark/start/bandit{
 	dir = 4
 	},
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "PF" = (
@@ -1340,7 +1337,6 @@
 /obj/effect/landmark/start/bandit{
 	dir = 4
 	},
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "Ss" = (
@@ -1439,7 +1435,6 @@
 /obj/effect/landmark/start/bandit{
 	dir = 8
 	},
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "WZ" = (
@@ -1499,7 +1494,6 @@
 "ZS" = (
 /obj/item/cushion/zybantine,
 /obj/effect/landmark/start/bandit,
-/obj/effect/landmark/start/banditlate_alt,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/banditcamp/desert)
 "ZV" = (
