@@ -780,7 +780,7 @@
 	armor = null
 	flags_inv = HIDEFACE|HIDESNOUT
 	body_parts_covered = FACE
-	block2add = FOV_BEHIND
+	block2add = null
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	smeltresult = null
 	anvilrepair = /datum/skill/craft/ceramics
@@ -796,9 +796,12 @@
 
 /obj/item/clothing/mask/rogue/xylixmask/proc/update_identity_flags(mob/user)
 	flags_inv = hide_identity ? (HIDEFACE|HIDESNOUT) : NONE
+	block2add = hide_identity ? FOV_BEHIND : null
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.update_inv_wear_mask()
+		H.update_fov_angles()
+		H.update_vision_cone()
 
 /obj/item/clothing/mask/rogue/xylixmask/proc/toggle_identity(mob/user)
 	hide_identity = !hide_identity
