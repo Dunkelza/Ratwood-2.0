@@ -495,7 +495,7 @@
 		qdel(held_item)
 		return TRUE
 	// Allows player to pray while wearing eoran bud.
-	if(HAS_TRAIT(follower, TRAIT_PACIFISM))
+	if(HAS_TRAIT(follower, TRAIT_EORAN_CONTENTED))
 		return TRUE
 	to_chat(follower, span_danger("For Eora to hear my prayer I must either pray within the church, near a psycross, offering her poppy flowers, or wearing one of her blessed flowers atop my head.."))
 	return FALSE
