@@ -734,6 +734,11 @@
 	effectedstats = list("fortune" = random_luck)
 	. = ..()
 
+/datum/status_effect/xylix_blessed_luck/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
+
 /atom/movable/screen/alert/status_effect/buff/xylix_blessed_luck
 	name = "Xylixian Blessed Luck"
 	desc = "Even though you haven't won one of his favors, he still favors you."
@@ -782,6 +787,8 @@
 	qdel(owner.particles)
 	owner.particles = null
 	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/astrata_favor
 	name = "Astrata's Favor"
@@ -803,6 +810,8 @@
 /datum/status_effect/noc_favor/on_remove()
 	owner.alpha = 255
 	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/noc_favor
 	name = "Noc's Favor"
@@ -820,6 +829,11 @@
 	effectedstats = list("strength" = -rand(1, 5), "perception" = -rand(1, 5), "intelligence" = -rand(1, 5), "constitution" = -rand(1, 5), "willpower" = -rand(1, 5), "speed" = -rand(1, 5))
 	. = ..()
 
+/datum/status_effect/zizo_unfavor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
+
 /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
 	name = "Zizo's Intervention"
 	desc = "Your patron was not attentive enough and caught Zizo's attention. You feel weaker."
@@ -836,6 +850,11 @@
 	effectedstats = list("strength" = rand(1, 3), "speed" = rand(1, 3), "willpower" = rand(1, 3))
 	. = ..()
 
+/datum/status_effect/ravox_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
+
 /atom/movable/screen/alert/status_effect/buff/ravox_favor
 	name = "Favor of Ravox"
 	desc = "The power of Ravox supports you."
@@ -851,6 +870,11 @@
 /datum/status_effect/malum_favor/on_apply()
 	effectedstats = list("constitution" = 1, "willpower" = rand(1, 5))
 	. = ..()
+
+/datum/status_effect/malum_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 //Baotha Jackpot
 /datum/status_effect/baotha_favor
@@ -870,6 +894,11 @@
 			owner.sexcon = new /datum/sex_controller(owner)
 		owner.sexcon.set_arousal(110)
 	. = ..()
+
+/datum/status_effect/baotha_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/baotha_favor
 	name = "Baotha's Favor"
@@ -894,6 +923,11 @@
 	owner.visible_message(span_warning("[owner] suddenly winces as flesh tears and bruises under Graggar's wrath!"), span_userdanger("Pain blossoms across my body as Graggar's rage wounds me!"))
 	. = ..()
 
+/datum/status_effect/graggar_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
+
 /atom/movable/screen/alert/status_effect/buff/graggar_favor
 	name = "Graggar's Favor"
 	desc = "Violence turns inward. Blood and pain has been inflicted upon you!"
@@ -915,6 +949,11 @@
 	else
 		to_chat(owner, span_notice("Matthios reaches for your meister, but finds it empty. Truly, a poor fool!"))
 	. = ..()
+
+/datum/status_effect/matthios_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/matthios_favor
 	name = "Matthios' Favor"
@@ -941,6 +980,8 @@
 /datum/status_effect/eora_favor/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_BEAUTIFUL, XYLIX_LUCK_TRAIT)
 	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /datum/status_effect/eora_favor/process()
 	owner.adjustBruteLoss(-1.25)
@@ -985,6 +1026,8 @@
 /datum/status_effect/necra_favor/on_remove()
 	owner.RemoveElement(/datum/element/cleaning)
 	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/necra_favor
 	name = "Necra's Favor"
@@ -1010,6 +1053,11 @@
 	to_chat(owner, span_notice("A wet retch spills forth a leech as Pestra's swarm mends me from within."))
 	. = ..()
 
+/datum/status_effect/pestra_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
+
 /atom/movable/screen/alert/status_effect/buff/pestra_favor
 	name = "Pestra's Favor"
 	desc = "A leeching purge and crawling mercy ease poison and knit your wounds."
@@ -1032,6 +1080,8 @@
 /datum/status_effect/dendor_favor/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, XYLIX_LUCK_TRAIT)
 	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/dendor_favor
 	name = "Dendor's Favor"
@@ -1048,17 +1098,24 @@
 /datum/status_effect/abyssor_favor/on_apply()
 	playsound(owner, 'sound/misc/undertow.ogg', 75, FALSE)
 	if(prob(50))
-		owner.stamina_add(25)
-		owner.adjustOxyLoss(5)
+		owner.stamina_add(round(owner.max_stamina * 0.5))
+		owner.energy_add(-round(owner.max_energy * 0.5))
+		owner.adjustOxyLoss(20)
 		owner.losebreath += 2
 		owner.Dizzy(5)
 		owner.blur_eyes(10)
 		owner.emote("drown")
-		to_chat(owner, span_warning("Abyssor's depths seize your lungs and drag your breath away!"))
+		to_chat(owner, span_warning("Abyssor's depths seize your lungs and drag your breath away, draining half your stamina and mana!"))
 	else
-		owner.energy_add(max(5, round(owner.max_energy * 0.03)))
-		to_chat(owner, span_notice("A cool tide washes over your mind, restoring a bit of my energy."))
+		owner.stamina_add(-round(owner.max_stamina * 0.5))
+		owner.energy_add(round(owner.max_energy * 0.5))
+		to_chat(owner, span_notice("A cool tide washes over your mind, restoring half your stamina and mana."))
 	. = ..()
+
+/datum/status_effect/abyssor_favor/on_remove()
+	. = ..()
+	owner?.update_fov_angles()
+	owner?.update_vision_cone()
 
 /atom/movable/screen/alert/status_effect/buff/abyssor_favor
 	name = "Abyssor's Favor"
