@@ -521,8 +521,7 @@
 			if(U.attached_accessory)
 				accessory_msg += " with [icon2html(U.attached_accessory, user)] \a [U.attached_accessory]"
 		var/str = "[m3] [get_examine_item_name_with_hover(user, wear_pants)][accessory_msg]. "
-		if(!wear_armor)
-			str += wear_pants.integrity_check(is_smart)
+		str += wear_pants.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3] a pair of some pants! "
 		. += str
@@ -543,7 +542,7 @@
 	if(wear_armor && !(SLOT_ARMOR in obscured))
 		var/str = "[m3] [get_examine_item_name_with_hover(user, wear_armor)]. "
 		if(is_smart || is_normal)
-			str += wear_armor.integrity_check(elaborate = TRUE)
+			str += wear_armor.integrity_check()
 		else if (is_stupid)
 			if(istype(wear_armor, /obj/item/clothing/suit/roguetown/armor))
 				var/obj/item/clothing/suit/roguetown/armor/examined_armor = wear_armor
