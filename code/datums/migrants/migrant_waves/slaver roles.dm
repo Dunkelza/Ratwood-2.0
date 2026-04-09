@@ -21,7 +21,6 @@
 /datum/migrant_role/slaver/slavez
 	name = "Slave"
 	greet_text = "An unlucky slave, captured from their home, moved to the Zybantines and trained for slave labor and obediency, for long enough to where you can only faintly remember who you were before... You are now being transported from the deserts to harsher lands to be sold."
-	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	grant_lit_torch = TRUE
