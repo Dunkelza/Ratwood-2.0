@@ -63,7 +63,10 @@
 	var/tooltip_html = I.get_hover_examine_html(user)
 	if(!tooltip_html)
 		return display_name
-	return "<span data-component=\"TooltipHTML\" data-position=\"bottom-start\" data-html=\"[html_encode(tooltip_html)]\">[display_name]</span>"
+	var/label = display_name
+	if(!I.has_customized_identity() && !I.always_show_examine_link)
+		label = "<u><font color='#add8e6'>[display_name]</font></u>"
+	return "<span data-component=\"TooltipHTML\" data-position=\"bottom-start\" data-html=\"[html_encode(tooltip_html)]\">[label]</span>"
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)

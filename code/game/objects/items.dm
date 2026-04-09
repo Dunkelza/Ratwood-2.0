@@ -727,10 +727,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	return html_encode(desc)
 
 /obj/item/proc/get_hover_examine_condition_text()
-	var/condition_text = integrity_check()
-	if(!condition_text)
-		return null
-	return strip_html_simple(condition_text)
+	return null
 
 /obj/item/proc/get_hover_examine_stat_lines(mob/user)
 	var/list/lines = list()
@@ -783,16 +780,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		lines += "<b>ANTI-OBJECT MOD:</b> [demolition_mod * 100]%"
 	var/true_durability = get_true_durability_percent_text()
 	if(true_durability)
-		var/durability_line = "<b>TRUE DURABILITY:</b> [true_durability]"
-		var/condition_text = get_hover_examine_condition_text()
-		if(condition_text)
-			durability_line += " - [html_encode(condition_text)]"
-		lines += durability_line
+		lines += "<b>Durability:</b> [true_durability]"
 	return lines
 
 /obj/item/proc/get_hover_examine_html(mob/user)
 	var/list/sections = list()
-	sections += "<b>[html_encode(name)]</b>"
 	var/description_text = get_hover_examine_description()
 	if(description_text)
 		sections += description_text

@@ -648,11 +648,7 @@ BLIND     // can't see anything
 		lines += "<b>PREVENTS CRITS:</b> [prevents.Join(", ")]"
 	var/true_durability = get_true_durability_percent_text()
 	if(true_durability)
-		var/durability_line = "<b>TRUE DURABILITY:</b> [true_durability]"
-		var/condition_text = get_hover_examine_condition_text()
-		if(condition_text)
-			durability_line += " - [html_encode(condition_text)]"
-		lines += durability_line
+		lines += "<b>Durability:</b> [true_durability]"
 	return lines
 
 // Handle clicks from chat to show the examine details
