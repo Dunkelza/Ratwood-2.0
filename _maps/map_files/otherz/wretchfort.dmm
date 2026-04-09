@@ -23,7 +23,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "aq" = (
 /obj/structure/mannequin/male/decorative,
 /obj/structure/fluff/walldeco/church/line{
@@ -107,17 +107,17 @@
 	pixel_y = 3
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "aY" = (
 /obj/structure/ritualcircle/graggar{
 	icon_state = "graggar_active_mortosasye_author"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "aZ" = (
 /obj/structure/fluff/railing/wood/east,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bb" = (
 /obj/structure/chair/bench/church{
 	dir = 4
@@ -139,7 +139,7 @@
 "be" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bk" = (
 /obj/structure/fluff/psycross/zizocross,
 /obj/effect/decal/remains/human,
@@ -148,7 +148,7 @@
 "bl" = (
 /obj/effect/decal/remains/saiga,
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bm" = (
 /obj/structure/mineral_door/wood/violet{
 	name = "Laboratory"
@@ -159,15 +159,15 @@
 /obj/structure/well,
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bz" = (
 /obj/structure/flora/roguetree/stump/burnt,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bA" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bB" = (
 /obj/effect/landmark/start/gnoll,
 /turf/open/floor/rogue/cobble/mossy,
@@ -206,7 +206,7 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bU" = (
 /obj/machinery/light/rogue/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -219,7 +219,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "bY" = (
 /obj/structure/table/wood/poor/alt,
 /obj/item/candle/skull/lit{
@@ -254,7 +254,7 @@
 	pixel_x = -12
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ct" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/wall/mineral/rogue/stone/red_moss,
@@ -274,7 +274,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "cz" = (
 /obj/machinery/light/rogue/smelter,
 /turf/open/floor/rogue/concrete,
@@ -282,11 +282,11 @@
 "cA" = (
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "cI" = (
 /obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "cK" = (
 /obj/item/storage/belt/rogue/surgery_bag/full,
 /obj/structure/table/wood/poor,
@@ -301,7 +301,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "cP" = (
 /obj/structure/mineral_door/wood/window{
 	name = "Garden"
@@ -329,7 +329,7 @@
 "de" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "df" = (
 /obj/structure/curtain,
 /turf/open/floor/rogue/tile/bfloorz,
@@ -343,7 +343,7 @@
 "dm" = (
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/blocks/flipped,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "dr" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
@@ -427,7 +427,7 @@
 	pixel_x = 13
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "er" = (
 /obj/structure/fluff/walldeco/church/line{
 	layer = 3
@@ -447,7 +447,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "eu" = (
 /obj/structure/fluff/walldeco/bogbanner/bogguard/animated,
 /turf/closed/wall/mineral/rogue/stone,
@@ -458,7 +458,7 @@
 	pixel_x = 9
 	},
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "eF" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border,
@@ -467,11 +467,11 @@
 "eG" = (
 /obj/structure/vine,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "eH" = (
 /obj/structure/fluff/railing/corner/south_east,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "eJ" = (
 /obj/structure/table/church/m,
 /obj/item/clothing/neck/roguetown/zcross/iron,
@@ -480,7 +480,7 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "eO" = (
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "eV" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/cobble/mossy,
@@ -500,13 +500,13 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "fn" = (
 /obj/structure/stairs/ccw{
 	dir = 8
 	},
 /turf/open/floor/rogue/rooftop,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "fq" = (
 /obj/structure/fluff/statue/knight/r,
 /obj/machinery/light/rogue/firebowl/standing/green{
@@ -517,7 +517,7 @@
 	dir = 9
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "fu" = (
 /obj/structure/closet/crate/chest,
 /obj/item/leash/chain,
@@ -546,14 +546,14 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "fP" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "fQ" = (
 /obj/structure/composter,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "fU" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -568,11 +568,11 @@
 	name = "Road to Gehenna"
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "gb" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "gg" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -585,7 +585,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "gj" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves{
@@ -641,7 +641,7 @@
 "gH" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "gJ" = (
 /obj/effect/decal/cleanable/blood/splatter/walls,
 /turf/closed/mineral/rogue/bedrock,
@@ -665,7 +665,7 @@
 "gS" = (
 /obj/structure/flora/roguegrass/herb/salvia,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "gT" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
@@ -730,7 +730,7 @@
 	redstone_id = "inhumenoutdoorgaol1"
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "il" = (
 /turf/closed/mineral/rogue/cinnabar,
 /area/rogue/under/cavewet/bogcaves{
@@ -741,7 +741,7 @@
 "im" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "in" = (
 /obj/item/natural/bone,
 /obj/structure/flora/roguegrass/water/reeds,
@@ -751,11 +751,11 @@
 /obj/structure/chair/stool/rogue,
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "it" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "iv" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -871,7 +871,7 @@
 "ji" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "jl" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -907,7 +907,7 @@
 "jC" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "jD" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4;
@@ -922,7 +922,7 @@
 "jM" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "jR" = (
 /obj/structure/foxpelt,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -932,7 +932,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "jW" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	name = "Temple"
@@ -946,7 +946,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "ke" = (
 /turf/open/floor/rogue/blocks/flipped,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "kf" = (
 /obj/structure/bearpelt{
 	pixel_x = -13;
@@ -959,7 +959,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "kn" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/carpet,
@@ -999,7 +999,7 @@
 "kM" = (
 /obj/structure/fluff/walldeco/vinez/r,
 /turf/open/floor/rogue/blocks/flipped,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "kT" = (
 /obj/structure/closet/crate/drawer{
 	pixel_y = 8
@@ -1023,12 +1023,12 @@
 "kV" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "kY" = (
 /obj/machinery/light/rogue/candle/blue,
 /obj/structure/flora/tinymushrooms,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ld" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/rogue/dirt/road,
@@ -1036,7 +1036,7 @@
 "lh" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "li" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -1101,7 +1101,7 @@
 	dir = 10
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "lX" = (
 /obj/structure/table/wood/poor/alt,
 /obj/item/reagent_containers/glass/cup/skull,
@@ -1110,7 +1110,7 @@
 "me" = (
 /obj/structure/chair/hotspring_bench/left,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "mj" = (
 /obj/item/reagent_containers/glass/bucket{
 	anchored = 1
@@ -1148,7 +1148,7 @@
 /obj/machinery/light/rogue/candle/blue,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "mJ" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/structure/fluff/walldeco/vinez/red,
@@ -1171,7 +1171,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "mO" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	name = "Gaol"
@@ -1230,14 +1230,14 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "nq" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nw" = (
 /obj/structure/lever/wall{
 	dir = 4;
 	lockid = "inhumenoutdoorgaol2"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nx" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ffff00";
@@ -1264,13 +1264,13 @@
 "nM" = (
 /obj/structure/flora/roguetree/stump,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nN" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	icon_state = "gibbl5"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nO" = (
 /obj/structure/roguemachine/scomm/receive_only/r,
 /turf/open/floor/rogue/herringbone,
@@ -1293,18 +1293,18 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "nS" = (
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nT" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "nX" = (
 /obj/structure/fluff/pillow/magenta{
 	color = "#5232a8";
 	dir = 8
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "oe" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/landmark/start/gnoll,
@@ -1323,7 +1323,7 @@
 	icon_state = "splatter6"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "oo" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -1343,7 +1343,7 @@
 "oz" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks/flipped,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "oD" = (
 /turf/closed/mineral/random/rogue/coppertin/med,
 /area/rogue)
@@ -1370,7 +1370,7 @@
 "oT" = (
 /obj/structure/gate/bars/preopen,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pb" = (
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -1400,18 +1400,18 @@
 "py" = (
 /obj/structure/flora/roguegrass/bush/westleach,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pz" = (
 /obj/structure/fluff/railing/wood/east,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pA" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/zizo_bane,
 /obj/machinery/light/rogue/candle/blue/l,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pN" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/dirt,
@@ -1427,7 +1427,7 @@
 	pixel_y = 32
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pS" = (
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble,
@@ -1439,7 +1439,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "pX" = (
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "pY" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	icon_state = "gibdown1"
@@ -1548,10 +1548,10 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "qX" = (
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ra" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet/bogcaves{
@@ -1581,15 +1581,15 @@
 /obj/structure/bed/rogue/inn/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "rn" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "rr" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "rw" = (
 /obj/structure/table/church{
 	dir = 1;
@@ -1634,12 +1634,12 @@
 	dir = 4
 	},
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "sg" = (
 /obj/structure/bars/grille,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "si" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
@@ -1662,7 +1662,7 @@
 "sn" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "sx" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -1681,7 +1681,7 @@
 "sB" = (
 /obj/structure/vine,
 /turf/open/water/bath,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "sC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pillory{
@@ -1692,7 +1692,7 @@
 "sM" = (
 /obj/structure/flora/roguegrass/swampweed,
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "sR" = (
 /obj/structure/fluff/alch,
 /obj/machinery/light/rogue/candle/green,
@@ -1700,7 +1700,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "sY" = (
 /turf/open/water/bath,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "tg" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -1734,7 +1734,7 @@
 	color = "#F75D59"
 	},
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "tG" = (
 /obj/structure/fluff/walldeco/serpflag{
 	desc = "Into whatsoever houses I enter, I will enter to help the sick, and I will abstain from all intentional wrong-doing and harm, especially from abusing the bodies of man or woman, bond or free.";
@@ -1747,7 +1747,7 @@
 	dir = 8
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "tN" = (
 /obj/effect/decal/remains/fox,
 /turf/open/water/bloody,
@@ -1757,7 +1757,7 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "tQ" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/landmark/start/wretch,
@@ -1802,7 +1802,7 @@
 	aportalid = "wretchin2"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "uC" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/cobble,
@@ -1841,11 +1841,11 @@
 	pixel_x = 2
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "uO" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/bath,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "uR" = (
 /obj/structure/bed/rogue/inn/double{
 	dir = 8
@@ -1861,13 +1861,13 @@
 "uT" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "uZ" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 5
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "vh" = (
 /obj/effect/decal/cobble/mossy,
 /obj/item/rope,
@@ -1898,7 +1898,7 @@
 "vE" = (
 /obj/structure/fluff/walldeco/bogbanner/bogguard/animated,
 /turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "vI" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -1907,7 +1907,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "vJ" = (
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "vQ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/natural/cloth{
@@ -1920,7 +1920,7 @@
 /obj/structure/flora/roguetree/burnt,
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "we" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
@@ -1962,13 +1962,13 @@
 	icon_state = "gibbl3"
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "wT" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xa" = (
 /obj/structure/table/vtable,
 /obj/item/reagent_containers/glass/mortar{
@@ -2011,7 +2011,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xk" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -2040,11 +2040,11 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xA" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xH" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -2052,11 +2052,11 @@
 /obj/item/roguemachine/navigator/blackmarket,
 /obj/structure/ritualcircle/matthios,
 /turf/open/floor/rogue/metal/barograte,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xO" = (
 /obj/structure/vine,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "xQ" = (
 /obj/structure/fluff/walldeco/bogbanner/zizo,
 /turf/open/floor/rogue/cobble,
@@ -2069,7 +2069,7 @@
 "yf" = (
 /obj/effect/decal/cleanable/debris/stony,
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "yl" = (
 /obj/effect/decal/carpet,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -2077,11 +2077,11 @@
 "yr" = (
 /obj/effect/decal/cleanable/debris/stony,
 /turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "yz" = (
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "yB" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -2103,7 +2103,7 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "yH" = (
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "yJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/flora/roguegrass,
@@ -2186,11 +2186,11 @@
 /obj/item/paper,
 /obj/item/paper,
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zz" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zA" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -2203,7 +2203,7 @@
 	dir = 6
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zF" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5;
@@ -2211,7 +2211,7 @@
 	},
 /obj/structure/fluff/walldeco/bogbanner/bogguard,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zL" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/seeds/potato{
@@ -2233,7 +2233,7 @@
 	name = "wheat seeds"
 	},
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zM" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/machinery/light/rogue/candle,
@@ -2249,7 +2249,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zS" = (
 /obj/item/natural/bone,
 /turf/open/water/river{
@@ -2259,11 +2259,11 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zU" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "zX" = (
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/herringbone,
@@ -2337,11 +2337,11 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "Az" = (
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "AA" = (
 /obj/item/natural/bone,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "AB" = (
 /obj/machinery/light/rogue/candle{
 	pixel_y = -32
@@ -2368,7 +2368,7 @@
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "AY" = (
 /obj/structure/lever{
 	redstone_id = "inhumengaol2"
@@ -2388,18 +2388,18 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Bi" = (
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Bl" = (
 /obj/structure/chair/hotspring_bench/right,
 /mob/living/simple_animal/hostile/retaliate/rogue/trufflepig{
 	name = "Star-Sugar"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Bt" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Bv" = (
 /obj/effect/decal/cleanable/debris/stony,
 /obj/structure/flora/roguegrass,
@@ -2524,7 +2524,7 @@
 	name = "DANGER!! GNOLLS!!"
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Cp" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/remains/human,
@@ -2570,7 +2570,7 @@
 "CM" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "CO" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
@@ -2585,7 +2585,7 @@
 /obj/machinery/light/rogue/candle/blue/r,
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "CS" = (
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/rogue/cobble,
@@ -2598,7 +2598,7 @@
 	dir = 9
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Dc" = (
 /obj/structure/chair/wood/rogue{
 	dir = 1
@@ -2642,7 +2642,7 @@
 "Dz" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "DF" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/water/bloody,
@@ -2672,7 +2672,7 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "DS" = (
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "DZ" = (
 /obj/structure/bed/rogue/inn{
 	dir = 8
@@ -2687,11 +2687,11 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Ee" = (
 /turf/open/floor/rogue/rooftop,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ef" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Eg" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks,
@@ -2717,7 +2717,7 @@
 "Eu" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ev" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1;
@@ -2802,7 +2802,7 @@
 "Fw" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Fy" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/cloak/stabard/bog,
@@ -2821,7 +2821,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "FB" = (
 /obj/structure/flora/roguetree/burnt,
 /obj/item/natural/bone,
@@ -2833,14 +2833,14 @@
 	aportalid = "wretchin1"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "FJ" = (
 /obj/structure/ritualcircle/baotha{
 	icon_state = "baotha_active"
 	},
 /obj/structure/shisha/hookah,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "FK" = (
 /obj/structure/table/church/end,
 /obj/item/organ/heart{
@@ -2850,7 +2850,7 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "FL" = (
 /turf/closed/wall/mineral/rogue/stone/blue_moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "FP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/stairs/stone{
@@ -2861,7 +2861,7 @@
 "FR" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "FT" = (
 /obj/structure/rack/rogue/shelf,
 /obj/item/reagent_containers/glass/bottle/alchemical{
@@ -2906,19 +2906,19 @@
 "Gg" = (
 /obj/item/soap,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Gj" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 10
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Gk" = (
 /obj/structure/stairs/stone{
 	dir = 1
 	},
 /turf/open/floor/rogue/blocks/flipped,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Gm" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/carpet/royalblack,
@@ -2970,7 +2970,7 @@
 	dir = 9
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Hi" = (
 /obj/structure/table/wood,
 /obj/item/cooking/platter/pewter,
@@ -2984,7 +2984,7 @@
 	icon_state = "gibbl5"
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Hk" = (
 /obj/structure/fluff/wallclock,
 /obj/structure/fluff/statue/gargoyle,
@@ -2993,7 +2993,7 @@
 "Hl" = (
 /obj/structure/curtain/black,
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Hp" = (
 /obj/structure/mineral_door/wood/window{
 	name = "Attic"
@@ -3021,7 +3021,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ia" = (
 /obj/item/natural/bone,
 /obj/structure/flora/roguegrass/water/reeds,
@@ -3038,7 +3038,7 @@
 	pixel_x = -12
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Im" = (
 /obj/item/organ/heart{
 	pixel_y = 3
@@ -3048,7 +3048,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Is" = (
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "It" = (
 /obj/structure/lever{
 	redstone_id = "inhumengaol3"
@@ -3058,11 +3058,11 @@
 "Iu" = (
 /obj/structure/bars/grille,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ix" = (
 /obj/item/skull,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "IA" = (
 /turf/closed/mineral/random/rogue/ironcoal/med,
 /area/rogue/under/cavewet/bogcaves{
@@ -3074,7 +3074,7 @@
 /obj/machinery/light/rogue/candle/blue,
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "IG" = (
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -3088,11 +3088,11 @@
 /obj/structure/fluff/walldeco/vinez,
 /obj/structure/curtain/brown,
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "IU" = (
 /obj/structure/chair/freedomchair,
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "IV" = (
 /obj/structure/minecart_rail,
 /turf/open/floor/rogue/naturalstone,
@@ -3104,7 +3104,7 @@
 "IZ" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Je" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	name = "Chapel"
@@ -3118,7 +3118,7 @@
 "Jf" = (
 /obj/effect/decal/cleanable/debris/stony,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Jp" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -3157,7 +3157,7 @@
 "JG" = (
 /obj/structure/flora/roguetree/evil,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "JJ" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -3219,18 +3219,18 @@
 "Kj" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Kp" = (
 /obj/structure/far_travel{
 	desc = "The everwinter fields of Gehenna beckon you. Anywhere is better than here.\n(Drag your sprite onto this to exit the round!)";
 	name = "Road to Gehenna"
 	},
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Kq" = (
 /obj/structure/flora/roguetree,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Kr" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
@@ -3242,17 +3242,17 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Kt" = (
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Kw" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 10
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ky" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5;
@@ -3278,11 +3278,11 @@
 "KE" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "KF" = (
 /obj/structure/flora/roguegrass/bush/westleach,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "KI" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/churchmarble,
@@ -3302,7 +3302,7 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "KU" = (
 /obj/structure/fluff/statue/knight,
 /obj/machinery/light/rogue/firebowl/standing/green{
@@ -3313,7 +3313,7 @@
 	dir = 5
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "KV" = (
 /obj/structure/giantfur,
 /turf/open/floor/rogue/dirt/road,
@@ -3342,7 +3342,7 @@
 "Ll" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/wall/mineral/rogue/stone/red_moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Lo" = (
 /obj/item/alch/airdust,
 /obj/item/alch/airdust,
@@ -3362,7 +3362,7 @@
 	redstone_id = "inhumenoutdoorgaol1"
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Lt" = (
 /obj/structure/fluff/statue/myth,
 /turf/open/floor/rogue/blocks,
@@ -3374,11 +3374,11 @@
 "Ly" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Lz" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "LA" = (
 /obj/structure/mirror,
 /turf/open/floor/rogue/carpet,
@@ -3397,19 +3397,19 @@
 	pixel_y = 8
 	},
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "LJ" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "LO" = (
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "LQ" = (
 /turf/closed/wall/mineral/rogue/stone/window{
 	icon_state = "stonewindow"
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "LR" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/wall/mineral/rogue/decostone/mossy/red,
@@ -3433,7 +3433,7 @@
 	},
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Mf" = (
 /obj/structure/mineral_door/wood{
 	name = "Peddler"
@@ -3476,7 +3476,7 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "My" = (
 /obj/structure/roguewindow,
 /obj/structure/curtain,
@@ -3490,11 +3490,11 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "MJ" = (
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "MK" = (
 /obj/effect/decal/cleanable/sigil/N,
 /turf/open/floor/rogue/blocks,
@@ -3502,13 +3502,13 @@
 "ML" = (
 /obj/machinery/light/roguestreet,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "MM" = (
 /obj/structure/stairs/stone{
 	dir = 1
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "MX" = (
 /obj/effect/decal/cobbleedge{
 	dir = 9
@@ -3534,11 +3534,11 @@
 	pixel_y = -32
 	},
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ne" = (
 /obj/machinery/light/rogue/firebowl/standing/red,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ng" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/cobblerock,
@@ -3561,7 +3561,7 @@
 	dir = 5
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Nt" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8
@@ -3577,7 +3577,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Nz" = (
 /obj/structure/rack/rogue/shelf,
 /turf/open/floor/rogue/churchrough,
@@ -3588,7 +3588,7 @@
 	},
 /obj/structure/fluff/walldeco/bogbanner/bogguard,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "NC" = (
 /obj/item/natural/bone,
 /obj/machinery/light/rogue/candle/red,
@@ -3603,13 +3603,13 @@
 	pixel_x = -12
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "NL" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 10
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "NM" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -3628,10 +3628,10 @@
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Od" = (
 /turf/closed/wall/mineral/rogue/stone/red_moss,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Oe" = (
 /obj/structure/rack/rogue,
 /obj/effect/decal/cleanable/dirt/cobweb{
@@ -3655,7 +3655,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ol" = (
 /obj/effect/decal/cleanable/sigil/W,
 /turf/open/floor/rogue/blocks,
@@ -3666,7 +3666,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Ov" = (
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ow" = (
 /obj/structure/vine,
 /turf/open/floor/rogue/naturalstone,
@@ -3689,7 +3689,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "OJ" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -3730,7 +3730,7 @@
 "OZ" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Pf" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
@@ -3754,7 +3754,7 @@
 "Pn" = (
 /obj/structure/fluff/railing/wood/west,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Pu" = (
 /obj/structure/table/church,
 /obj/item/candle/skull/lit{
@@ -3766,11 +3766,11 @@
 /obj/structure/bars/grille,
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Pw" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Py" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 10;
@@ -3782,7 +3782,7 @@
 "Pz" = (
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "PB" = (
 /obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/herringbone,
@@ -3835,7 +3835,7 @@
 	layer = 2.2
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Qn" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/landmark/start/gnoll,
@@ -3852,7 +3852,7 @@
 	icon_state = "gib4-old"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Qs" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/grass,
@@ -3866,7 +3866,7 @@
 	pixel_x = 0
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Qx" = (
 /obj/structure/pillory{
 	lockid = "inhumen"
@@ -3876,7 +3876,7 @@
 "QA" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "QB" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -3889,7 +3889,7 @@
 "QH" = (
 /obj/effect/decal/cleanable/debris/glassy,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "QI" = (
 /obj/effect/decal/cleanable/debris/woody,
 /obj/machinery/light/roguestreet/walllamp{
@@ -3920,7 +3920,7 @@
 "QS" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "QU" = (
 /turf/open/transparent/openspace,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -3934,11 +3934,11 @@
 	aportalid = "wretchin1"
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "QX" = (
 /obj/item/rogueweapon/mace/church,
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ra" = (
 /obj/structure/stairs/stone/ccwdown{
 	dir = 8
@@ -3967,7 +3967,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "RF" = (
 /obj/structure/fluff/statue/femalestatue/zizo{
 	desc = "An ancient statue depicting an elven woman.";
@@ -3985,7 +3985,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "RK" = (
 /obj/structure/table/wood/poor,
 /obj/item/dice/d6{
@@ -4031,7 +4031,7 @@
 /obj/item/rogueweapon/shovel/aalloy,
 /obj/item/rogueweapon/thresher/aalloy,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Sc" = (
 /obj/machinery/light/rogue/cauldron,
 /turf/open/floor/rogue/churchrough,
@@ -4046,7 +4046,7 @@
 "Sm" = (
 /obj/structure/flora/tinymushrooms,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Sn" = (
 /obj/machinery/light/rogue/firebowl/standing/green,
 /turf/open/floor/rogue/concrete,
@@ -4057,14 +4057,14 @@
 	layer = 2
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Sr" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Ss" = (
 /turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "St" = (
 /obj/structure/spider/stickyweb{
 	dir = 8;
@@ -4075,7 +4075,7 @@
 "Su" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "SA" = (
 /obj/effect/decal/cleanable/sigil/E,
 /turf/open/floor/rogue/blocks,
@@ -4096,17 +4096,17 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "SO" = (
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "SR" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "SV" = (
 /obj/structure/fluff/pillow/magenta{
 	color = "#5232a8"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Tb" = (
 /obj/structure/rack/rogue,
 /obj/item/rope/chain,
@@ -4119,7 +4119,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Td" = (
 /obj/structure/chair/wood/rogue/chair3{
 	dir = 8
@@ -4135,7 +4135,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "Tp" = (
 /turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Tt" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -4155,24 +4155,24 @@
 "Ty" = (
 /obj/structure/fluff/railing/wood/north,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "TH" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/mace/wsword,
 /obj/item/rogueweapon/mace/wsword,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "TK" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "TW" = (
 /obj/structure/roguemachine/noticeboard,
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "TX" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/glass/cup/skull,
@@ -4216,14 +4216,14 @@
 	pixel_y = 3
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ut" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	pixel_y = 5
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ux" = (
 /obj/item/reagent_containers/glass/bucket{
 	anchored = 1
@@ -4238,13 +4238,13 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "UD" = (
 /turf/closed/mineral/random/rogue/coppertin/med,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "UG" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/mace/woodclub,
 /obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "UH" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -4286,7 +4286,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "UW" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt/road,
@@ -4294,7 +4294,7 @@
 "UZ" = (
 /obj/structure/handcart,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Va" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 10
@@ -4306,10 +4306,10 @@
 	dir = 4
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Vd" = (
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Vf" = (
 /obj/structure/bars/passage{
 	redstone_id = "inhumengaol3"
@@ -4336,10 +4336,10 @@
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Vv" = (
 /turf/open/floor/rogue/metal/barograte,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Vy" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/reagent_containers/food/snacks/butter,
@@ -4358,7 +4358,7 @@
 "VA" = (
 /obj/machinery/light/rogue/candle/r,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "VD" = (
 /obj/machinery/light/rogue/hearth,
 /obj/item/cooking/pan/aalloy,
@@ -4367,7 +4367,7 @@
 /area/rogue/under/cave/inhumen/wretch/camp)
 "VG" = (
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "VL" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/naturalstone,
@@ -4383,14 +4383,14 @@
 	pixel_x = -12
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "VR" = (
 /obj/structure/roguemachine/mail{
 	desc = "Carrier zads have fallen severely out of fashion ever since the advent of this hydropneumatic mail system. A coin slot activates thssssssssse mechanism for dispensing parchment(a zenny) and quills(a ziliqua).";
 	mailtag = "Wretched Grotto"
 	},
 /turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "VT" = (
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/machinery/light/rogue/candle/red,
@@ -4411,7 +4411,7 @@
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "VY" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "VZ" = (
 /obj/structure/ritualcircle/zizo{
 	icon_state = "zizo_active"
@@ -4427,7 +4427,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Wb" = (
 /obj/structure/fluff/walldeco/vinez,
 /obj/structure/fluff/walldeco/vinez/red,
@@ -4461,7 +4461,7 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Wj" = (
 /obj/structure/curtain/brown,
 /turf/open/floor/rogue/dirt/road,
@@ -4475,7 +4475,7 @@
 	layer = 2.2
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Wn" = (
 /obj/structure/chair/bench/church/r{
 	dir = 4
@@ -4491,7 +4491,7 @@
 	})
 "Wu" = (
 /turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Ww" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
@@ -4504,11 +4504,11 @@
 	},
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "WE" = (
 /obj/structure/plough,
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "WF" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	icon_state = "splatter5"
@@ -4535,13 +4535,13 @@
 	water_color = "#705a43";
 	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "WV" = (
 /obj/machinery/light/roguestreet/midlamp{
 	pixel_y = 8
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "WW" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/cobble,
@@ -4551,11 +4551,11 @@
 	redstone_id = "inhumenoutdoorgaol2"
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "WY" = (
 /obj/structure/flora/roguetree/stump,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Xa" = (
 /obj/structure/bookcase/random,
 /obj/machinery/light/rogue/candle/l,
@@ -4574,20 +4574,20 @@
 "Xi" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Xr" = (
 /obj/structure/fluff/railing/wood/north,
 /obj/effect/decal/cleanable/blood/tracks{
 	icon_state = "splatter5"
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Xv" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "floor3"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "XA" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -4607,7 +4607,7 @@
 	dir = 8
 	},
 /turf/open/water/swamp,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "XK" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -4619,7 +4619,7 @@
 "XL" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/mineral/rogue,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "XM" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf,
@@ -4634,7 +4634,7 @@
 /obj/structure/well,
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "XR" = (
 /obj/structure/spider/stickyweb{
 	dir = 1
@@ -4662,7 +4662,7 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Yw" = (
 /turf/closed/mineral/rogue/elementalmote,
 /area/rogue/under/cavewet/bogcaves{
@@ -4738,7 +4738,7 @@
 /obj/structure/flora/roguegrass/herb/salvia,
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/grasspurple,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Zd" = (
 /obj/structure/curtain/brown,
 /turf/open/floor/rogue/cobble/mossy,
@@ -4746,7 +4746,7 @@
 "Zj" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Zk" = (
 /obj/effect/decal/cleanable/sigil/S,
 /turf/open/floor/rogue/blocks/platform,
@@ -4772,7 +4772,7 @@
 	name = "onion seeds"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Zo" = (
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/cave/inhumen/wretch/camp)
@@ -4789,7 +4789,7 @@
 	icon_state = "gibbl2"
 	},
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "Zu" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/cavewet/bogcaves{
@@ -4803,13 +4803,13 @@
 	icon_state = "chains5"
 	},
 /turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ZB" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ZF" = (
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/cobblerock,
@@ -4830,11 +4830,11 @@
 	name = "Temple"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ZK" = (
 /obj/structure/flora/roguetree,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 "ZM" = (
 /obj/structure/chair/stool/rogue,
 /obj/machinery/light/rogue/candle/blue/l,
@@ -4859,7 +4859,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/cave/inhumen/wretch/ghrotto)
+/area/rogue/outdoors/cave/wretch)
 
 (1,1,1) = {"
 iy
