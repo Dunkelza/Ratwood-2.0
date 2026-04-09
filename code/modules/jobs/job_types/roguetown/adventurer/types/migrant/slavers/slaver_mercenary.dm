@@ -222,5 +222,4 @@
 		/obj/item/flashlight/flare/torch/lantern/copper = 1,
 		/obj/item/needle = 1,
 	)
-	if(H.mind)
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
