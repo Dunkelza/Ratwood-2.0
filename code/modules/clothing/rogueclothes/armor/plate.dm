@@ -634,9 +634,9 @@
 	desc = "A chiseled breastplate of bronze, further padded with hide to comfort its championing bod. The plates have been carefully forged to mimic the statuesque physiques of Psydonia's ancient heroes. Wearing it bolsters you with determination."
 	body_parts_covered = CHEST | VITALS | LEGS 
 	icon_state = "bronzecuirass"
-	armor = ARMOR_BRONZE
+	armor = ARMOR_CUIRASS
 	smeltresult = /obj/item/ingot/bronze
-	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
 	armor_class = ARMOR_CLASS_MEDIUM
 	boobed = FALSE
 	smelt_bar_num = 2
@@ -646,10 +646,10 @@
 	desc = "A thick bronze plate, meticulously sculpted to fit its wearer's physique and guard their heart from all that'd seek to strike it. Unfortunately, it does little to riposte more emotional blows."
 	icon_state = "bronzeprotector"
 	item_state = "bronzeprotector"
-	body_parts_covered = CHEST | VITALS
-	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE //250 INT, or a little above Iron - and +100 INT over the Copper variant.
+	body_parts_covered = CHEST
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
 	armor_class = ARMOR_CLASS_LIGHT
-	armor = ARMOR_BRONZE
+	armor = ARMOR_CUIRASS
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bronze
 	name = "bronze panoplic armor"
@@ -658,8 +658,8 @@
 	</br>Scholars oft-describe this suit as a 'panoply', purpose-made for the physiques of Psydonia's earliest Aasimari."
 	icon_state = "bronzeplate"
 	item_state = "bronzeplate"
-	armor = ARMOR_BRONZE
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRONZE + 100
+	armor = ARMOR_CUIRASS
+	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
 	armor_class = ARMOR_CLASS_HEAVY
 	smeltresult = /obj/item/ingot/bronze
 	smelt_bar_num = 3
@@ -688,7 +688,7 @@
 	icon_state = "bronzeplatealt"
 	item_state = "bronzeplatealt"
 	body_parts_covered = CHEST | VITALS | LEGS
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRONZE //Halfplate analogue. Still heavy as hell.
+	max_integrity = ARMOR_INT_CHEST_PLATE_IRON //Halfplate analogue. Still heavy as hell.
 
 //----------------- INFAREDBARON SPRITEWORK/ARMOR.DM ---------------------
 /obj/item/clothing/suit/roguetown/armor/plate/citywatch
