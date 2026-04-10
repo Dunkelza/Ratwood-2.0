@@ -53,7 +53,7 @@
 /datum/alch_cauldron_recipe/big_mana_potion
 	name = "Elixir of Mana (Strong)"
 	smells_like = "fear"
-	skill_required = SKILL_LEVEL_JOURNEYMAN
+	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/medicine/manapot = 100,/datum/reagent/additive = 100)
 
 /datum/alch_cauldron_recipe/stamina_potion
