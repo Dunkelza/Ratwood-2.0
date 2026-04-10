@@ -2448,7 +2448,7 @@
 	emote("fortune", intentional = TRUE)
 
 /datum/emote/living/praysuicide
-    key = "Suicide"
+    key = "Suicidal pray"
     key_third_person = "utters their last words"
     message = ""                   
     emote_type = EMOTE_AUDIBLE
@@ -2456,7 +2456,7 @@
     show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_praysuicide()
-    set name = "Suicide"
+    set name = "Suicidal pray"
     set category = "Emotes"
     emote("praysuicide", intentional = TRUE)
 
@@ -2466,9 +2466,7 @@
 
     var/mob/living/L = user
 
-
     to_chat(L, span_danger("I pray to my patron for my death... and I am heard."))
-
 
     var/lastmsg = params
     if(!lastmsg)
