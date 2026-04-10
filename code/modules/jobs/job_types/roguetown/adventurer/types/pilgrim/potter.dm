@@ -64,3 +64,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/takeapprentice)
+	if(H.age == AGE_MIDDLEAGED)
+		H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, 5, TRUE)
+	if(H.age == AGE_OLD)
+		H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, 6, TRUE)

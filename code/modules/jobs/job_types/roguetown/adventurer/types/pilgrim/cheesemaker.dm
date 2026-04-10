@@ -64,6 +64,11 @@
 		/obj/item/reagent_containers/food/snacks/grown/wheat = 6,
 		/obj/item/natural/cloth = 2,
 		/obj/item/book/rogue/yeoldecookingmanual = 1,
-		/obj/item/recipe_book/survival = 1,
 		)
 	r_hand = /obj/item/flashlight/flare/torch
+	if(H.age == AGE_MIDDLEAGED)
+		H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 5, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
+	if(H.age == AGE_OLD)
+		H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 6, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/farming, 4, TRUE)
