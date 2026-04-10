@@ -1782,6 +1782,14 @@
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cave/inhumen/wretch/camp)
+"ue" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks{
+	icon_state = "bluestone"
+	},
+/area/rogue/under/cave/inhumen/wretch/camp)
 "ug" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/mineral/rogue/bedrock,
@@ -2068,6 +2076,14 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
+"xZ" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/fluff/psycross/graggar/decorated{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/cave/wretch)
 "yf" = (
 /obj/effect/decal/cleanable/debris/stony,
 /turf/open/floor/rogue/grass,
@@ -2075,6 +2091,11 @@
 "yl" = (
 /obj/effect/decal/carpet,
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cave/inhumen/wretch/camp)
+"ym" = (
+/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/roguetree/burnt,
+/turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/under/cave/inhumen/wretch/camp)
 "yr" = (
 /obj/effect/decal/cleanable/debris/stony,
@@ -2742,6 +2763,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave/inhumen/wretch/gnollcavern)
 "EK" = (
+/obj/structure/fluff/psycross/graggar/decorated,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves{
 	ambush_mobs = null;
@@ -3677,6 +3699,15 @@
 	first_time_text = null;
 	name = "Wretched Caves"
 	})
+"Oz" = (
+/obj/structure/fluff/traveltile/wretch{
+	aportalgoesto = "wretchtradeout";
+	aportalid = "wretchtradein"
+	},
+/turf/open/floor/rogue/blocks{
+	icon_state = "bluestone"
+	},
+/area/rogue/under/cave/inhumen/wretch/camp)
 "OA" = (
 /turf/closed/mineral/random/rogue/ironcoal,
 /area/rogue/under/cavewet/bogcaves{
@@ -8508,7 +8539,7 @@ Az
 Az
 Az
 om
-sn
+xZ
 DS
 bA
 Az
@@ -9244,7 +9275,7 @@ AA
 Az
 Az
 Az
-sn
+xZ
 DS
 Su
 sg
@@ -11084,7 +11115,7 @@ tW
 Kj
 QE
 QE
-QE
+ue
 QE
 XA
 QE
@@ -11175,9 +11206,9 @@ tW
 tW
 UD
 Kj
-Kj
-Kj
-Kj
+QE
+Oz
+QE
 DS
 Kj
 bA
@@ -11267,9 +11298,9 @@ Tw
 tW
 tW
 tW
-tW
-tW
-vY
+QE
+QE
+ym
 vY
 Ly
 DS
@@ -19456,9 +19487,9 @@ MM
 pX
 Wu
 Bi
-Bi
-Bi
-Bi
+Ee
+Ee
+Ee
 Bi
 Bi
 Bi
@@ -19550,7 +19581,7 @@ Wu
 Wu
 Wu
 Wu
-Bi
+Ee
 Bi
 Bi
 Bi
