@@ -43,7 +43,7 @@
 	name = "Elixir of Health (Strong)"
 	smells_like = "berry pie"
 	skill_required = SKILL_LEVEL_EXPERT // If it has "Strong", lock it roundstart for Apothecary or above
-	output_reagents = list(/datum/reagent/medicine/healthpot = 100,/datum/reagent/additive = 100)
+	output_reagents = list(/datum/reagent/medicine/healthpot = 50,/datum/reagent/additive = 50)
 
 /datum/alch_cauldron_recipe/mana_potion
 	name = "Elixir of Mana"
@@ -54,7 +54,7 @@
 	name = "Elixir of Mana (Strong)"
 	smells_like = "fear"
 	skill_required = SKILL_LEVEL_EXPERT
-	output_reagents = list(/datum/reagent/medicine/manapot = 100,/datum/reagent/additive = 100)
+	output_reagents = list(/datum/reagent/medicine/manapot = 50,/datum/reagent/additive = 50)
 
 /datum/alch_cauldron_recipe/stamina_potion
 	name = "Elixir of Stamina"
@@ -65,7 +65,7 @@
 	name = "Elixir of Stamina (Strong)"
 	smells_like = "clean winds"
 	skill_required = SKILL_LEVEL_JOURNEYMAN
-	output_reagents = list(/datum/reagent/medicine/stampot = 100,/datum/reagent/additive = 100)
+	output_reagents = list(/datum/reagent/medicine/stampot = 50,/datum/reagent/additive = 50)
 
 //S.P.E.C.I.A.L. potions - Expert or above (roundstart Witch etc.)
 /datum/alch_cauldron_recipe/temp_potion
