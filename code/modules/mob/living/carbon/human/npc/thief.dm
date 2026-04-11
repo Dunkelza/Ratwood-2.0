@@ -134,10 +134,10 @@
 		if(51 to 60)
 			beltl = /obj/item/lockpickring/mundane
 		if(61 to 100)
-			return
+			beltl = null
 	switch(rand(1, 100))
 		if(1 to 40)
-			return
+			beltr = null
 		if(41 to 85)
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 		if(86 to 95)

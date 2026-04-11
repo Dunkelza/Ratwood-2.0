@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 		beltl = /obj/item/storage/belt/rogue/pouch/medicine
 	switch(rand(1, 100))
 		if(1 to 50)
-			return
+			beltr = null
 		if(51 to 85)
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 		if(86 to 95)

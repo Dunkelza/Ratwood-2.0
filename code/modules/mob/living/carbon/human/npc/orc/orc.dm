@@ -104,7 +104,7 @@
 		beltl = /obj/item/reagent_containers/glass/bottle/alchemical/healthpot
 	switch(rand(1, 100))
 		if(1 to 50)
-			return
+			beltr = null
 		if(51 to 95)
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 		if(96 to 100)

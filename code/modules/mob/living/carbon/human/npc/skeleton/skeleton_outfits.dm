@@ -72,7 +72,7 @@
 			if(1 to 50)
 				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 			if(51 to 95)
-				return
+				beltr = null
 			if(96 to 100)
 				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
@@ -115,7 +115,7 @@
 			if(1 to 50)
 				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 			if(51 to 95)
-				return
+				beltr = null
 			if(96 to 100)
 				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
@@ -165,7 +165,7 @@
 			if(1 to 50)
 				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 			if(51 to 95)
-				return
+				beltr = null
 			if(96 to 100)
 				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
@@ -203,7 +203,7 @@
 			if(1 to 50)
 				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 			if(51 to 95)
-				return
+				beltr = null
 			if(96 to 100)
 				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
@@ -271,7 +271,7 @@
 			if(1 to 50)
 				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
 			if(51 to 95)
-				return
+				beltr = null
 			if(96 to 100)
 				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
