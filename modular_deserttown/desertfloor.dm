@@ -17,6 +17,9 @@
 						/turf/open/floor/rogue/dirt/desert,
 						/turf/open/floor/rogue/dirt/road/desert,
 						/turf/open/floor/rogue/citybrick,
+						/turf/open/floor/rogue/cobble,
+						/turf/open/floor/rogue/cobblerock,
+						/turf/open/floor/rogue/cobble/mossy,
 						/turf/open/floor/rogue/grassred,
 						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
@@ -225,43 +228,10 @@
 	src.ChangeTurf(/turf/open/floor/rogue/dirt/desert, flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/rogue/dirt/desert
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	// canSmoothWith = list(
-	// 					/turf/open/floor/rogue/grass,
-	// 					/turf/open/floor/rogue/dunes,
-	// 					/turf/open/floor/rogue/dirt,
-	// 					/turf/open/floor/rogue/dirt/road,
-	// 					/turf/open/floor/rogue/dirt/desert,
-	// 					/turf/open/floor/rogue/dirt/road/desert,
-	// 					/turf/open/floor/rogue/citybrick,
-	// 					/turf/open/floor/rogue/grassred,
-	// 					/turf/open/floor/rogue/grassyel,
-	// 					/turf/open/floor/rogue/grasscold,
-	// 					/turf/open/floor/rogue/grassgrey,
-	// 					/turf/open/floor/rogue/grasspurple,
-	// 					/turf/open/floor/rogue/snowpatchy,
-	// 					/turf/open/floor/rogue/snow,
-	// 					/turf/open/floor/rogue/snowrough,)
+	icon = 'modular_deserttown/icons/desertfloor.dmi'
 
 /turf/open/floor/rogue/dirt/road/desert
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	// canSmoothWith = list(
-						// /turf/open/floor/rogue/grass,
-						// /turf/open/floor/rogue/dunes,
-						// /turf/open/floor/rogue/desert_grass,
-						// /turf/open/floor/rogue/dirt,
-						// /turf/open/floor/rogue/dirt/road,
-						// /turf/open/floor/rogue/dirt/desert,
-						// /turf/open/floor/rogue/dirt/road/desert,
-						// /turf/open/floor/rogue/citybrick,
-						// /turf/open/floor/rogue/grassred,
-						// /turf/open/floor/rogue/grassyel,
-						// /turf/open/floor/rogue/grasscold,
-						// /turf/open/floor/rogue/grassgrey,
-						// /turf/open/floor/rogue/grasspurple,
-						// /turf/open/floor/rogue/snowpatchy,
-						// /turf/open/floor/rogue/snow,
-						// /turf/open/floor/rogue/snowrough,)
+	icon = 'modular_deserttown/icons/desertfloor.dmi'
 
 
 ///.
