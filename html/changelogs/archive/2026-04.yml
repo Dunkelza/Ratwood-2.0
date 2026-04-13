@@ -128,3 +128,6 @@
       the exception of "No Flaw (-3 TRI)". (For now.)
   - bugfix: Added "on_removal" proc overrides for the simple "trait-granter" procs
       that were lacking them.
+2026-04-13:
+  zeroisthebiggay:
+  - bugfix: mending no longer glows
