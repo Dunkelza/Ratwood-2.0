@@ -30,7 +30,7 @@
 	)
 
 /datum/advclass/slave/servant
-	traits_applied = list(TRAIT_CICERONE, TRAIT_ROYALSERVANT)
+	traits_applied = list(TRAIT_CICERONE, TRAIT_ROYALSERVANT, TRAIT_FOOD_STIPEND)
 
 /datum/advclass/slave/servant
 	traits_applied = list(TRAIT_CICERONE)
