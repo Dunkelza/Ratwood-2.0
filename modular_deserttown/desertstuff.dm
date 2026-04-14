@@ -381,3 +381,9 @@
 // 	desc = "A large zybantine sword with a single-edged blade, a crossguard and a knife-like hilt. "
 // 	icon = 'modular_deserttown/icons/items/desertweapons64.dmi'
 // 	icon_state = "Kmesser"
+
+/obj/structure/fluff/traveltile/alashurentrance
+	desc = "Awake from this dream. The road to Al-Ashur awaits."
+	name = "To Al-Ashur"
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "underworldportal"

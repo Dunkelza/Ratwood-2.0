@@ -173,16 +173,16 @@
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
 "uw" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "rockhill2";
-	name = "Southwestern path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashur2";
+	name = "Southwestern path to Al-Ashur"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
 "vv" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "rockhill3";
-	name = "Southern path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashur3";
+	name = "Southern path to Al-Ashur"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
@@ -221,9 +221,9 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld/adventurespawn)
 "yF" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "rockhillsilly";
-	name = "Unlucky path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashursilly";
+	name = "Unlucky path to Al-Ashur"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
@@ -323,9 +323,9 @@
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
 "Mq" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "rockhill1";
-	name = "North-Western path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashur1";
+	name = "North-Western path to Al-Ashur"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
@@ -399,9 +399,9 @@
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/underworld/adventurespawn)
 "UT" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "rockhill4";
-	name = "Eastern path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashur4";
+	name = "Eastern path to Al-Ashur"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld/adventurespawn)
@@ -413,9 +413,9 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld/adventurespawn)
 "VD" = (
-/obj/structure/fluff/traveltile/rockhillentrance{
-	aportalgoesto = "RockhillRandom";
-	name = "Mysterious path to Rockhill"
+/obj/structure/fluff/traveltile/alashurentrance{
+	aportalgoesto = "alashurrandom";
+	name = "Mysterious path to Al-Ashur"
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
