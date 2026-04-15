@@ -100,6 +100,16 @@
 /obj/item/rogueweapon/hammer/proc/repair_item(obj/item/attacked_item, mob/living/user)
 	if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 		return
+		// basic principles: everybody repairs now at old squire level
+		// however, if we're below journeyman, we can only field repair BROKEN objects to 60% integrity
+		// skilled craftsmen can repair to 100% as usual
+		var/obj/item/attacked_item = attacked_object
+		var/repair_skill = blacksmith.get_skill_level(attacked_item.anvilrepair)
+		var/unskilled = repair_skill < SKILL_LEVEL_JOURNEYMAN
+		var/integrity_percentage = (attacked_item.obj_integrity / attacked_item.max_integrity) * 100
+
+		if (HAS_TRAIT(blacksmith, TRAIT_SQUIRE_REPAIR)) // squires are always considered skilled w/o other bonuses for the purposes of repair
+			unskilled = FALSE
 
 	if(!attacked_item.ontable())
 		to_chat(user, span_warning("I should put this on a table or an anvil first."))
@@ -107,17 +117,17 @@
 
 	do
 		var/repair_percent = get_repair_percent(attacked_item)
-		if(user.get_skill_level(attacked_item.anvilrepair) <= 0)
-			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || HAS_TRAIT(user, TRAIT_DWARF_REPAIR))
-				if(locate(/obj/machinery/anvil) in attacked_item.loc)
-					repair_percent = 0.035
-				//Squires can repair on tables, but less efficiently
-				else if(attacked_item.ontable())
-					repair_percent = 0.015
-			else if(prob(30))
-				repair_percent = 0.01
+		if (unskilled && !attacked_item.obj_broken && attacked_item.shoddy_repair && integrity_percentage >= 60)
+			to_chat(user, span_warning("I can't do anything else to fix this right now - I should see a skilled craftsman."))
+			return
+
+		if(repair_skill <= 0)
+			if(locate(/obj/machinery/anvil) in attacked_object.loc)
+				repair_percent = 0.035
+			else if(attacked_item.ontable())
+				repair_percent = 0.015
 			else
-				repair_percent = 0
+				repair_percent = 0.01
 		else
 			repair_percent *= user.get_skill_level(attacked_item.anvilrepair)
 
@@ -126,6 +136,7 @@
 			repair_percent *= attacked_item.max_integrity
 			var/exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
+			integrity_percentage = (attacked_item.obj_integrity / attacked_item.max_integrity) * 100
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else
@@ -133,8 +144,24 @@
 				if(attacked_item.body_parts_covered != attacked_item.body_parts_covered_dynamic)
 					user.visible_message(span_info("[user] repairs [attacked_item]'s coverage!"))
 					attacked_item.repair_coverage()
-			if(attacked_item.obj_broken && attacked_item.obj_integrity == attacked_item.max_integrity)
-				attacked_item.obj_fix()
+			if(attacked_item.obj_broken)
+				var/do_fix = FALSE
+				if (unskilled && integrity_percentage >= 60)
+					attacked_item.shoddy_repair = TRUE
+					blacksmith.visible_message(span_info("[blacksmith] finishes field-repairing [attacked_item]."))
+					to_chat(user, span_warning("I should get this properly fixed by a skilled craftsman later."))
+					do_fix = TRUE
+				else if (!unskilled && integrity_percentage >= 100)
+					if (attacked_item.shoddy_repair)
+						attacked_item.shoddy_repair = FALSE
+						to_chat(user, span_notice("My skilled hand has fully repaired this item."))
+					do_fix = TRUE
+				if (do_fix)
+					attacked_item.obj_fix()
+					return
+			else if (!attacked_item.obj_broken && !unskilled && attacked_item.shoddy_repair && integrity_percentage >= 100)
+				attacked_item.shoddy_repair = FALSE
+				to_chat(user, span_notice("My skilled hand has fully repaired this item."))
 			user.mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 		else
 			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
