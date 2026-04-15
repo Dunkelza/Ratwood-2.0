@@ -1495,6 +1495,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/cloak/lordcloak/ladycloak
 	triumph_cost = 3
 
+/datum/loadout_item/wedding_dress
+	name = "Wedding Silk Dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress
+
 /datum/loadout_item/tri_lady_cloak/nobility_check(client/C)
 	var/datum/preferences/P = C.prefs
 	if(!P)
