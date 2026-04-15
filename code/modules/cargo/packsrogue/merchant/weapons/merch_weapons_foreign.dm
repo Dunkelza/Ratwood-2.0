@@ -40,7 +40,7 @@
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/navaja)
 
 /datum/supply_pack/rogue/merc_weapons/naginata
-	name = "Kazengun Naginata"
+	name = "Kazengun Naginata (Polearm)"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/spear/naginata)
 
@@ -50,7 +50,7 @@
 	contains = list(/obj/item/rogueweapon/mace/goden/kanabo)
 
 /datum/supply_pack/rogue/merc_weapons/ssangsudo
-	name = "Kazengun Ssangsudo (Greatdsword)"
+	name = "Kazengun Ssangsudo (Greatsword)"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo)
 
