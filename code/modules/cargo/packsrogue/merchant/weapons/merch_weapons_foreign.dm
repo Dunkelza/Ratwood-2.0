@@ -34,11 +34,6 @@
 	cost = 80
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/pick)
 
-/datum/supply_pack/rogue/merc_weapons/nagaika
-	name = "Nagaika Whip"
-	cost = 80
-	contains = list(/obj/item/rogueweapon/whip/nagaika)
-
 /datum/supply_pack/rogue/merc_weapons/navaja
 	name = "Navaja"
 	cost = 80
@@ -63,6 +58,21 @@
 	name = "Kazengun Hook Sword"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/sword/sabre/hook)
+
+/datum/supply_pack/rogue/merc_weapons/kazengundagger
+	name = "Kazengun Tanto"
+	cost = 80
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
+
+/datum/supply_pack/rogue/merc_weapons/kazengunsheath
+	name = "Small Lacquer Sheath"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/scabbard/sheath/kazengun)
+
+/datum/supply_pack/rogue/merc_weapons/nagaika
+	name = "Nagaika Whip"
+	cost = 80
+	contains = list(/obj/item/rogueweapon/whip/nagaika)
 
 /datum/supply_pack/rogue/merc_weapons/glaive
 	name = "Glaive"
