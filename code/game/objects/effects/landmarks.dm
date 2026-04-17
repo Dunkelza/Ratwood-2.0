@@ -460,22 +460,26 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Smithy Apprentice"
 	icon_state = "arrow"
 
-//goblin
+//tribal
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/tribalchieftain
+	name = "Chieftain"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblincook
-	name = "Goblin Cook"
+/obj/effect/landmark/start/tribalshaman
+	name = "Tribal Shaman"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinguard
-	name = "Goblin Guard"
+/obj/effect/landmark/start/tribalguard
+	name = "Tribal Guard"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinsmith
-	name = "Goblin Smith"
+/obj/effect/landmark/start/tribalrabble
+	name =  "Tribal Rabble"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/tribalvillager
+	name = "Tribal"
 	icon_state = "arrow"
 
 //Antagonist spawns
