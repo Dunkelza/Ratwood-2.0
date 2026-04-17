@@ -308,18 +308,9 @@
 	stump_type = null
 	pixel_x = -32
 
-// /obj/structure/flora/roguetree/palm/burnt/Initialize()
-// 	. = ..()
-// 	icon_state = "st[rand(1,2)]"
-
-//Stairs
-
-/obj/structure/stairs/desert
-	name = "sand stairs"
-	icon = 'modular_deserttown/icons/sandstairs.dmi'
-	icon_state = "sandstairs"
-	max_integrity = 600
-
+/obj/structure/flora/roguetree/palm/Initialize()
+	. = ..()
+	icon_state = "st[rand(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/tall/desert
 	icon = 'modular_deserttown/icons/alt/foliagetall.dmi'
@@ -328,6 +319,13 @@
 // 	. = ..()
 // 	icon_state = "tallbush[pick(1,2)]"
 
+//Stairs
+
+/obj/structure/stairs/desert
+	name = "sand stairs"
+	icon = 'modular_deserttown/icons/sandstairs.dmi'
+	icon_state = "sandstairs"
+	max_integrity = 600
 
 //If we need to change the number of rooms
 // /obj/structure/roguemachine/vendor/inndesert
