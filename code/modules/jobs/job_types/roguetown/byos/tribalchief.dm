@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/tribalchieftain
 	title = "Chieftain"
-	f_title = "Chieftess"
+	f_title = "Tribe Chieftess"
 	flag = TRIBALCHIEFTAIN
 	department_flag = TRIBAL
 	faction = "Station"
