@@ -1,4 +1,4 @@
-/datum/job/roguetown/tribalworker
+/datum/job/roguetown/tribalvillager
 	title = "Tribal"
 	flag = TRIBALVILLAGER
 	department_flag = TRIBAL
@@ -14,7 +14,7 @@
 	display_order = JDO_TRIBALVILLAGER
 	whitelist_req = TRUE
 
-	outfit = /datum/outfit/job/roguetown/tribalguard
+	outfit = /datum/outfit/job/roguetown/tribalvillager
 	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 
 	min_pq = 0
@@ -40,7 +40,7 @@
 		/datum/advclass/woodworker
 	)
 
-/datum/outfit/job/roguetown/tribalworker/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalvillager/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.faction += list("orcs", "tribe")
 	if(!H.has_language(/datum/language/draconic))
