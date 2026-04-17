@@ -14,7 +14,6 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
 	ignoredensity = TRUE
-	wallcraft = TRUE
 
 /obj/structure/drape/zybantine
 	name = "zybantine drape"
