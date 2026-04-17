@@ -117,3 +117,8 @@
 		// /datum/job/roguetown/shophand,
 		
 	)
+
+	threat_regions = list(
+		THREAT_REGION_JUNGLE,
+		THREAT_REGION_ISLAND,
+	)

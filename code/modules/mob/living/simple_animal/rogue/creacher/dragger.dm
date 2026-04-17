@@ -162,7 +162,7 @@
 /mob/living/simple_animal/hostile/rogue/dragger/flesh
 	name = "FLESH HOMUNCULUS"
 	desc = null
-	icon = "icons/roguetown/mob/monster/flesh.dmi"
+	icon = 'icons/roguetown/mob/monster/flesh.dmi'
 	icon_state = "FLESH"
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	maxHealth = 666
@@ -175,26 +175,26 @@
 	STAWIL = 16
 	pixel_x = 0
 
-/mob/living/simple_animal/hostile/rogue/dragger/ascended
-	name = "???"
-	desc = ""
-	icon = "icons/roguetown/mob/monster/32x64.dmi"
-	icon_state = "ascend"
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
-	melee_damage_lower = 250
-	melee_damage_upper = 550
-	health = 66666
-	maxHealth = 66666
-	STACON = 66
-	STASTR = 66
-	STASPD = 66
-	STAWIL = 66
-	pixel_x = 0
+// /mob/living/simple_animal/hostile/rogue/dragger/ascended
+// 	name = "???"
+// 	desc = ""
+// 	icon = "icons/roguetown/mob/monster/32x64.dmi"
+// 	icon_state = "ascend"
+// 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+// 	melee_damage_lower = 250
+// 	melee_damage_upper = 550
+// 	health = 66666
+// 	maxHealth = 66666
+// 	STACON = 66
+// 	STASTR = 66
+// 	STASPD = 66
+// 	STAWIL = 66
+// 	pixel_x = 0
 
-/mob/living/simple_animal/hostile/retaliate/rogue/dragger/ascended/examine(mob/user)
-	. = ..()
-	. += "<span class='narsiesmall'>It is impossible to comprehend such a thing.</span>"
+// /mob/living/simple_animal/hostile/retaliate/rogue/dragger/ascended/examine(mob/user)
+// 	. = ..()
+// 	. += "<span class='narsiesmall'>It is impossible to comprehend such a thing.</span>"
 	
-/mob/living/simple_animal/hostile/retaliate/rogue/dragger/ascended/Initialize()
-	. = ..()
-	set_light(5,5, LIGHT_COLOR_RED)
+// /mob/living/simple_animal/hostile/retaliate/rogue/dragger/ascended/Initialize()
+// 	. = ..()
+// 	set_light(5,5, LIGHT_COLOR_RED)
