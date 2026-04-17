@@ -39,7 +39,7 @@
 							/obj/effect/decal/remains/bear = 0.5,
 							/obj/effect/decal/remains/human = 0.2,)
 	// spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
-	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield)
+	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield,/area/rogue/outdoors/town/byos)
 
 /datum/mapGeneratorModule/island/road
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
@@ -47,4 +47,4 @@
 	excluded_turfs = list()
 	spawnableAtoms = list(/obj/item/natural/stone = 18,
 							/obj/item/grown/log/tree/stick = 3)
-	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield)
+	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield,/area/rogue/outdoors/town/byos)
