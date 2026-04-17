@@ -403,6 +403,13 @@
 /mob/living/carbon/human/species/orc/npc/footsoldier,
 /turf/open/floor/rogue/dirt/road/desert,
 /area/rogue/outdoors/desertdeep)
+"ajd" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors/town/desert)
 "aje" = (
 /obj/structure/fluff/walldeco/customflag/deserttown{
 	pixel_y = 32
@@ -13283,6 +13290,13 @@
 	icon_state = "tilegreeny"
 	},
 /area/rogue/indoors/town/church)
+"fgX" = (
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors/town/desert)
 "fha" = (
 /obj/structure/closet/crate/drawer,
 /obj/machinery/light/rogue/candle/blue,
@@ -15714,6 +15728,10 @@
 "git" = (
 /obj/machinery/light/rogue/candle/l,
 /obj/item/rogueweapon/hoe/copper,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -27061,6 +27079,10 @@
 /obj/machinery/light/rogue/candle{
 	pixel_y = -32
 	},
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/dirt/road/desert,
 /area/rogue/indoors/town/desert)
 "kUs" = (
@@ -33362,17 +33384,6 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/underdarker)
-"nxO" = (
-/obj/item/seeds/random,
-/obj/item/seeds/random,
-/obj/item/seeds/random,
-/obj/item/seeds/random,
-/obj/item/seeds/random,
-/obj/structure/closet/crate/chest/wicker,
-/turf/open/floor/rogue/tile/brownbrick{
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	},
-/area/rogue/indoors/town/desert)
 "nxQ" = (
 /obj/structure/shisha/hookah,
 /turf/open/floor/rogue/citybrick/citybrick1,
@@ -38552,6 +38563,17 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/citybrick/citybrick1,
 /area/rogue/under/cave)
+"pyb" = (
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/structure/closet/crate/chest/wicker,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/indoors/town/desert)
 "pye" = (
 /obj/structure/pillory{
 	lockid = list("nightmaiden");
@@ -59363,6 +59385,15 @@
 	},
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/indoors/town/church/basement)
+"xKZ" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/indoors/town/desert)
 "xLd" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/camel/tame/saddled,
 /turf/open/floor/rogue/desert_grass,
@@ -59667,6 +59698,10 @@
 /area/rogue/indoors/town/church/basement)
 "xQI" = (
 /obj/item/reagent_containers/glass/bucket,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -266926,7 +266961,7 @@ yki
 yki
 kap
 kap
-igw
+uFf
 xNe
 sEF
 vuE
@@ -267238,8 +267273,8 @@ yki
 yki
 kap
 kap
-uFf
-xNe
+sEF
+sEF
 sEF
 vuE
 vuE
@@ -267548,9 +267583,9 @@ kvr
 kvr
 kvr
 yki
-kap
-kap
-kap
+sEF
+sEF
+sEF
 sEF
 iQf
 vuE
@@ -267861,8 +267896,8 @@ kvr
 kvr
 yki
 yki
-kap
-kap
+sEF
+sEF
 sEF
 vuE
 vuE
@@ -268173,8 +268208,8 @@ kvr
 kvr
 kvr
 yki
-kap
-kap
+sEF
+sEF
 sEF
 oZd
 cmt
@@ -382964,7 +382999,7 @@ eMy
 atX
 sCy
 tsQ
-mRT
+ajd
 aLF
 atX
 atX
@@ -383589,7 +383624,7 @@ atX
 tsF
 tsQ
 tsQ
-tsQ
+fgX
 atX
 eZT
 aAx
@@ -390132,7 +390167,7 @@ jPo
 uGk
 jPo
 jPo
-xCf
+xKZ
 atX
 jrl
 jrl
@@ -396972,7 +397007,7 @@ eMy
 atX
 slM
 xQI
-nxO
+pyb
 tkG
 atX
 aDz
