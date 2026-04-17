@@ -122,7 +122,7 @@
 		/datum/job/roguetown/tribalshaman,
 		/datum/job/roguetown/tribalguard,
 		/datum/job/roguetown/tribalrabble,
-		/datum/job/roguetown/tribalworker,
+		/datum/job/roguetown/tribalvillager,
 		
 	)
 

@@ -24,7 +24,7 @@
 		/datum/job/roguetown/tribalshaman,
 		/datum/job/roguetown/tribalguard,
 		/datum/job/roguetown/tribalrabble,
-		/datum/job/roguetown/tribalworker,
+		/datum/job/roguetown/tribalvillager,
 		
 		/datum/job/roguetown/vanguard,//more wardens
 		/datum/job/roguetown/guardsman,//MAA do double duty here
