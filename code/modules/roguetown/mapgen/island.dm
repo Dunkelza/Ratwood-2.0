@@ -7,12 +7,12 @@
 
 
 /datum/mapGenerator/island
-	modules = list(/datum/mapGeneratorModule/island,/datum/mapGeneratorModule/island/road)
+	modules = list(/datum/mapGeneratorModule/island,/datum/mapGeneratorModule/island/road, /datum/mapGeneratorModule/islandgrass)
 
 
 /datum/mapGeneratorModule/island
 	clusterCheckFlags = CLUSTER_CHECK_NONE
-	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/desert_grass)
+	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/desert_grass, /turf/open/floor/rogue/grass)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/newtreealt = 5,
 							/obj/structure/flora/roguetree/palm = 3,
@@ -42,6 +42,14 @@
 	// spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
 	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield,/area/rogue/outdoors/town/byos)
 
+/datum/mapGeneratorModule/islandgrass
+	clusterCheckFlags = CLUSTER_CHECK_NONE
+	allowed_turfs = list(/turf/open/floor/rogue/desert_grass, /turf/open/floor/rogue/grass)
+	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
+	spawnableAtoms = list(/obj/structure/flora/roguegrass = 4,
+							/obj/structure/flora/roguegrass/jungle = 2,)
+	allowed_areas = list(/area/rogue/outdoors/byos,/area/rogue/outdoors/rtfield,/area/rogue/outdoors/town/byos)
+	
 /datum/mapGeneratorModule/island/road
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
 	allowed_turfs = list(/turf/open/floor/rogue/dirt/road)

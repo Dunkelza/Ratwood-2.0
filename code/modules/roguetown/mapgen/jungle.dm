@@ -13,13 +13,12 @@
 	clusterCheckFlags = CLUSTER_CHECK_NONE
 	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/dirt/desert, /turf/open/floor/rogue/desert_grass, /turf/open/floor/rogue/grass, /turf/open/floor/rogue/grassred, /turf/open/floor/rogue/grassyel, /turf/open/floor/rogue/grasscold, /turf/open/floor/rogue/grassgrey)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
-	spawnableAtoms = list(/obj/structure/flora/newtreealt = 2,
-							/obj/structure/flora/roguetree/palm = 3,
+	spawnableAtoms = list(/obj/structure/flora/roguetree/palm = 4,
 							/obj/structure/flora/roguetree/jungle = 1,
 							/obj/structure/flora/roguetree/jungle/small = 2,
-							/obj/structure/flora/roguegrass/bush/jungle = 2,
+							/obj/structure/flora/roguegrass/bush/jungle = 3,
 							/obj/structure/flora/roguegrass/bush/jungle/large = 10,
-							/obj/structure/flora/roguegrass = 2,
+							/obj/structure/flora/roguegrass = 6,
 							/obj/structure/flora/roguegrass/jungle = 6,
 							/obj/structure/flora/roguegrass/maneater = 1,
 							/obj/structure/flora/roguegrass/maneater/real = 2,
