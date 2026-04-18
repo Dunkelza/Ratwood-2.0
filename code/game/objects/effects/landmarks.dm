@@ -482,6 +482,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Tribal"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/tribelate
+	name = "Tribal Late"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+	jobspawn_override = list("Chieftain", "Tribal Shaman", "Tribal Guard", "Tribal Rabble", "Tribal")
+
 //Antagonist spawns
 
 /obj/effect/landmark/start/wizard
