@@ -13,10 +13,10 @@
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll/bog = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
-				/mob/living/carbon/human/species/skeleton/npc/bogguard = 20,
+				/mob/living/carbon/human/species/npc/deadite = 20,
+				/mob/living/carbon/human/species/skeleton/npc/hardspread = 40,
+				/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe = 15,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
-				new /datum/ambush_config/bog_guard_deserters = 50,		
-				new /datum/ambush_config/bog_guard_deserters/hard = 25,
 				new /datum/ambush_config/mirespiders_ambush = 110,
 				new /datum/ambush_config/mirespiders_crawlers = 25,
 				new /datum/ambush_config/mirespiders_aragn = 10,
@@ -45,8 +45,13 @@
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf/bobcat = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
-				/mob/living/simple_animal/hostile/retaliate/rogue/fox = 30,
-				/mob/living/carbon/human/species/skeleton/npc/supereasy = 30)
+				/mob/living/simple_animal/hostile/retaliate/rogue/fox = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 20,
+				/mob/living/simple_animal/hostile/retaliate/rogue/mossback = 10,
+				/mob/living/simple_animal/hostile/retaliate/rogue/troll/bog = 5,
+				/mob/living/carbon/human/species/npc/deadite = 5,
+				/mob/living/carbon/human/species/skeleton/npc/supereasy = 10,
+				/mob/living/carbon/human/species/skeleton/npc/pirate = 30)
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
@@ -159,3 +164,10 @@
 	first_time_text = null
 	deathsight_message = "a brackish shore"
 	detail_text = null
+	ambush_times = list("night","dawn","dusk","day")
+	ambush_mobs = list(
+		/mob/living/carbon/human/species/goblin/npc/ambush/sea = 20,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mossback = 30,
+		new /datum/ambush_config/triple_deepone = 20,
+		new /datum/ambush_config/deepone_party = 10,
+	)
