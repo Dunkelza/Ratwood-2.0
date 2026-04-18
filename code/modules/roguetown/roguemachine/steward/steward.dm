@@ -37,7 +37,7 @@
 //	That lack of means enforce you not to evil:
 /obj/structure/roguemachine/steward/proc/setup_default_payments()
 	daily_payments["Knight Captain"] = 40
-	daily_payments["Knight"] = 40
+	daily_payments["awawa"] = 40
 	daily_payments["Sergeant"] = 40 //Garrison
 	daily_payments["Watch Captain"] = 45 //Don't get to live in a fancy keep with servants. More expenses.
 	daily_payments["Master Warden"] = 35 //Garrison
