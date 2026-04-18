@@ -899,6 +899,9 @@
 /obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/cavewet/byos/banditcove)
+"bkv" = (
+/turf/closed/mineral/rogue/sandstone/iron,
+/area/rogue/under/cave)
 "bkU" = (
 /obj/structure/bars/grille{
 	dir = 8;
@@ -2571,6 +2574,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
+"dhs" = (
+/obj/item/seeds/random,
+/turf/open/floor/rogue/dirt/desert,
+/area/rogue/outdoors/jungle)
 "dhY" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/inq/boat/office{
@@ -2706,6 +2713,8 @@
 /obj/item/seeds/pear,
 /obj/item/herbseed/manabloom,
 /obj/item/herbseed/manabloom,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/cave)
 "dlY" = (
@@ -4687,6 +4696,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/inq/boat)
+"fGM" = (
+/obj/item/seeds/random,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/jungle)
 "fIs" = (
 /obj/structure/stairs{
 	dir = 8
@@ -6823,10 +6836,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "hXF" = (
-/obj/structure/flora/roguetree/evil{
-	pixel_x = -11;
-	pixel_y = -6
-	},
+/obj/structure/flora/roguetree/wise,
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/cave)
 "hXH" = (
@@ -14930,6 +14940,10 @@
 /turf/closed/wall/mineral/rogue/craftstone,
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/under/cave)
+"qIc" = (
+/obj/item/seeds/random,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/jungle)
 "qIL" = (
 /obj/effect/landmark/start/guard_captain{
 	dir = 1
@@ -19546,6 +19560,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
+/obj/item/seeds/random,
 /turf/open/floor/rogue/naturalstone/sandstone,
 /area/rogue/indoors)
 "vDe" = (
@@ -111385,7 +111400,7 @@ rPH
 rPH
 rPH
 rPH
-rPH
+fGM
 rPH
 eqe
 rPH
@@ -113189,7 +113204,7 @@ rPH
 rPH
 rPH
 eqe
-rPH
+fGM
 rPH
 wtg
 rPH
@@ -117703,7 +117718,7 @@ kwS
 kwS
 cxc
 kwS
-kwS
+bkv
 kwS
 vBc
 mfO
@@ -117901,10 +117916,10 @@ pwO
 pwO
 pwO
 kwS
+bkv
 kwS
 kwS
-kwS
-kwS
+bkv
 kwS
 pwO
 mfO
@@ -118105,8 +118120,8 @@ kwS
 kwS
 kwS
 kwS
-kwS
-kwS
+bkv
+bkv
 kwS
 pwO
 bRS
@@ -118302,7 +118317,7 @@ kwS
 kwS
 kwS
 kwS
-kwS
+bkv
 kwS
 kwS
 kwS
@@ -118511,8 +118526,8 @@ cET
 cET
 cET
 cET
-kwS
-pwO
+bkv
+bkv
 ewh
 bRS
 ewh
@@ -118710,10 +118725,10 @@ cxc
 kwS
 cET
 cET
+bkv
 cET
 cET
-cET
-kwS
+bkv
 pwO
 mfO
 lIU
@@ -118913,8 +118928,8 @@ kwS
 cET
 cET
 cET
-cET
-cET
+bkv
+kwS
 kwS
 pwO
 pwO
@@ -119115,10 +119130,10 @@ cET
 cET
 cET
 cET
-cET
-cET
+bkv
 kwS
 kwS
+bkv
 pwO
 pwO
 pwO
@@ -119315,10 +119330,10 @@ kwS
 cET
 cET
 cET
+bkv
+bkv
 cET
-cET
-cET
-cET
+kwS
 kwS
 kwS
 kwS
@@ -119520,7 +119535,7 @@ cET
 cET
 cET
 cET
-cET
+kwS
 kwS
 kwS
 htM
@@ -119721,7 +119736,7 @@ cET
 cET
 cET
 cET
-cET
+kwS
 cET
 kwS
 kwS
@@ -119922,8 +119937,8 @@ cET
 cET
 cET
 cET
-cET
-cET
+kwS
+kwS
 cxc
 kwS
 kwS
@@ -120124,8 +120139,8 @@ cET
 cET
 cET
 cET
-cET
-cET
+kwS
+kwS
 kwS
 kwS
 kwS
@@ -132840,7 +132855,7 @@ eWy
 eqe
 eqe
 eqe
-eqe
+dhs
 eqe
 eqe
 eqe
@@ -134799,7 +134814,7 @@ viV
 vfx
 vfx
 viV
-viV
+qIc
 aGc
 pXR
 viV
@@ -138294,7 +138309,7 @@ rPH
 eqe
 wtg
 eqe
-rPH
+fGM
 rPH
 rPH
 rPH
