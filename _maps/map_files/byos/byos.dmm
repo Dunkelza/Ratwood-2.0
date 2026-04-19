@@ -1134,7 +1134,9 @@
 	dir = 4;
 	pixel_x = 2
 	},
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/tile,
 /area/rogue/under/cave)
 "bve" = (
@@ -1516,7 +1518,9 @@
 /turf/open/water/ocean,
 /area/rogue/under/cavewet/byos/banditcove)
 "bRu" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/under/cave)
 "bRw" = (
@@ -2402,7 +2406,9 @@
 /area/rogue/under/cave)
 "cTh" = (
 /obj/item/rogueweapon/sword/short/gladius/pagladius,
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "cTv" = (
@@ -4886,7 +4892,9 @@
 	},
 /area/rogue/indoors/town/tavern)
 "fKT" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "fKX" = (
@@ -7679,7 +7687,9 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/tile,
 /area/rogue/under/cave)
 "iMe" = (
@@ -9861,7 +9871,9 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
 "kZb" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "kZj" = (
@@ -10381,7 +10393,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/church)
 "lxD" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/tile,
 /area/rogue/under/cave)
 "lym" = (
@@ -10801,7 +10815,9 @@
 /area/rogue/outdoors/town/byos)
 "lXf" = (
 /obj/structure/bed/rogue/shit,
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "lXZ" = (
@@ -11060,7 +11076,9 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave)
 "miF" = (
@@ -11340,7 +11358,9 @@
 /area/rogue/outdoors/town/byos)
 "mzz" = (
 /obj/item/lockpick,
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "mzC" = (
@@ -17660,7 +17680,9 @@
 /turf/open/floor/rogue/desert_grass,
 /area/rogue/outdoors/jungle)
 "sYM" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/under/cave)
 "sYX" = (
@@ -18915,7 +18937,9 @@
 	color = "#ff0008";
 	light_color = "#ff0008"
 	},
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf_undead,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf_undead{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/under/cave)
 "uoq" = (
@@ -18960,7 +18984,9 @@
 /area/rogue/outdoors/town/byos)
 "uqO" = (
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/under/cave)
 "uqW" = (
@@ -18991,7 +19017,9 @@
 	},
 /area/rogue/indoors/town/shop)
 "urv" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
 "urX" = (
@@ -19820,7 +19848,9 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
 "vqW" = (
-/mob/living/carbon/human/species/npc/deadite,
+/mob/living/carbon/human/species/npc/deadite{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/cave)
 "vri" = (
