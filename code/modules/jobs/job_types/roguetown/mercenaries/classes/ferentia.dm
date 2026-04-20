@@ -1,10 +1,10 @@
-/datum/advclass/mercenary/generic
+/datum/advclass/mercenary/ferentia
 	name = "Sellknight"
 	tutorial = "Combat experience and skill doesn't pay for lodging, mammons do. A knight only in appearance, you took to the mercenary guild to sell your services as sword-toting muscle to the highest bidder."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_sellknight
-	class_select_category = CLASS_CAT_GENERIC
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellknight
+	class_select_category = CLASS_CAT_FERENTIA
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_fullplate.ogg'
 	traits_applied = list(TRAIT_HEAVYARMOR)
@@ -28,7 +28,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
 
-/datum/outfit/job/roguetown/mercenary/generic_sellknight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_sellknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("Combat experience and skill doesn't pay for lodging, mammons do. A knight only in appearance, you took to the mercenary guild to sell your services as sword-toting muscle to the highest bidder."))
 	if(H.mind)
@@ -81,10 +81,10 @@
 		)
 	H.merctype = 17
 
-/datum/advclass/mercenary/generic/sellspear
+/datum/advclass/mercenary/ferentia/sellspear
 	name = "Sellspear"
 	tutorial = "Faceless and numerous, the mercenary guild is occupied by many of your ilk. Maille and polearms are as easily used by the unskilled as they are effective."
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_sellspear
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellspear
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list( //Extremely all-rounder statline for an extremely all-rounder weapon class and middling armor class. You are John Spearman
 		STATKEY_PER = 2, //For stabbing and guardsman larping
@@ -106,7 +106,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
 
-/datum/outfit/job/roguetown/mercenary/generic_sellspear/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_sellspear/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("Faceless and numerous, the mercenary guild is occupied by many of your ilk. Maille and polearms are as easily used by the unskilled as they are effective."))
 	if(H.mind)
@@ -154,10 +154,10 @@
 		)
 	H.merctype = 17
 
-/datum/advclass/mercenary/generic/sellblade
+/datum/advclass/mercenary/ferentia/sellblade
 	name = "Sellblade"
 	tutorial = "An expert with a blade and nimble on your feet, those of your ability are something of a rare sight in the mercenary guild. Nevertheless effective at accomplishing the dirty work of others as you merge with the shadows, striking fast and deadly."
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_sellblade
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellblade
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_SEEPRICES_SHITTY) //Obligatory fast and nimble dodge expert class, specializing in either daggers or stabby swift weighted swords
 	subclass_stats = list( //Potentially a kind of scary statline, but you're going to be frail
@@ -182,7 +182,7 @@
 	)
 	extra_context = "This subclass gains Expert skill in their weapon of choice, be it swords or knives."
 
-/datum/outfit/job/roguetown/mercenary/generic_sellblade/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_sellblade/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("An expert with a blade and nimble on your feet, those of your ability are something of a rare sight in the mercenary guild. Nevertheless effective at accomplishing the dirty work of others as you merge with the shadows, striking fast and deadly."))
 	if(H.mind)
@@ -217,10 +217,10 @@
 		)
 	H.merctype = 17
 
-/datum/advclass/mercenary/generic/thug
+/datum/advclass/mercenary/ferentia/thug
 	name = "Hired Thug"
 	tutorial = "The mercenary guild is teeming with corn-fed brutes looking to make mammons off the only thing they're good at - while simple-minded describes you best, you possess brute strength and a heavy club. Sometimes that's all you need to solve problems in lyfe."
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_thug
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_thug
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_BASHDOORS, TRAIT_SEEPRICES_SHITTY, TRAIT_DRUNK_HEALING)
 	subclass_stats = list(
@@ -242,7 +242,7 @@
 	)
 	extra_context = "This subclass gains Expert skill in their weapon of choice, be it maces or unarmed."
 
-/datum/outfit/job/roguetown/mercenary/generic_thug/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_thug/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("The mercenary guild is teeming with corn-fed brutes looking to make mammons off the only thing they're good at - while simple-minded describes you best, you possess brute strength and a heavy club. Sometimes that's all you need to solve problems in lyfe."))
 	if(H.mind)
@@ -257,7 +257,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 			if("WHO NEEDS A CLUB? I HAVE MY HANDS!")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_ferentia)
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
 	head = /obj/item/clothing/neck/roguetown/chaincoif/iron
@@ -278,10 +278,10 @@
 		)
 	H.merctype = 17
 
-/datum/advclass/mercenary/generic/crossbowman
+/datum/advclass/mercenary/ferentia/crossbowman
 	name = "Light Crossbowman"
-	tutorial = "Once a member of a guard mayhaps - you recieved training in bludgeons and crossbows, serving as a generic yet numerous and effective ranged service to the mercenary guild."
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_crossbowman
+	tutorial = "Once a member of a guard mayhaps - you recieved training in bludgeons and crossbows, serving as a ferentia yet numerous and effective ranged service to the mercenary guild."
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_crossbowman
 	traits_applied = list(TRAIT_KEENEARS) //Guardmaxing
 	subclass_stats = list( //You're a little bit more tailored to the crossbowman identity than the Grenzelhoft crossbowman which is more of a utility role
 		STATKEY_PER = 3,
@@ -304,9 +304,9 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 	)
 
-/datum/outfit/job/roguetown/mercenary/generic_crossbowman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_crossbowman/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Once a member of a guard, mayhaps - you recieved training in bludgeons and crossbows, serving as a generic yet numerous and effective ranged service to the mercenary guild."))
+	to_chat(H, span_warning("Once a member of a guard, mayhaps - you recieved training in bludgeons and crossbows, serving as a ferentia yet numerous and effective ranged service to the mercenary guild."))
 	if(H.mind)
 		var/armor_options = list("Light Brigandine", "Studded Leather Vest")
 		var/armor_choice = input(H, "Choose your armor.", "DRESS UP") as anything in armor_options
@@ -347,10 +347,10 @@
 		)
 	H.merctype = 17
 
-/datum/advclass/mercenary/generic/longbowman
+/datum/advclass/mercenary/ferentia/longbowman
 	name = "Longbowman"
 	tutorial = "You've trained since you were young with a bow hunting game in the forest. You know the woods like you know the vitals of a wild saiga. In the mercenary guild, it's not hard to think of a brigand as a bipedal saiga."
-	outfit = /datum/outfit/job/roguetown/mercenary/generic_longbowman
+	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_longbowman
 	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_SURVIVAL_EXPERT) //Warden at home
 	subclass_stats = list(
 		STATKEY_PER = 3,
@@ -379,7 +379,7 @@
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
 	)
 
-/datum/outfit/job/roguetown/mercenary/generic_longbowman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/ferentia_longbowman/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("You've trained since you were young with a bow hunting game in the forest. You know the woods like you know the vitals of a wild saiga. In the mercenary guild, it's not hard to think of a brigand as a bipedal saiga."))
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
