@@ -132,7 +132,7 @@
 			var/datum/job/J = SSjob.GetJob(job)
 			if(!J || J.wanderer_examine)
 				display_as_wanderer = TRUE
-			if(J.lowlife_examine)
+			else if(J.lowlife_examine)
 				display_as_lowlife = TRUE
 		var/rank_color = "#725D4C"
 		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4)
@@ -153,7 +153,7 @@
 			social_strata = "<a href='?src=[REF(src)];social_strata=1'><font color='#[rank_color]'>⛯</font></A>"
 		var/display1
 		var/display2 = "[(!HAS_TRAIT(usr, TRAIT_OUTLANDER) && src.social_rank) ? "[social_strata]" : " "]"
-		if ((valid_headshot_link(src, headshot_link, TRUE)) && (user.client?.prefs.chatheadshot))
+		if ((dna?.species?.id != "gnoll") && (valid_headshot_link(src, headshot_link, TRUE)) && (user.client?.prefs.chatheadshot))
 			if(display_as_wanderer)
 				display1 = span_info("ø ------------ ø\n[chat_headshot(headshot_link)]\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
 			else if(display_as_lowlife)
@@ -249,18 +249,9 @@
 				if(their_god)
 					. += (user_side == mob_side) ? span_notice("Fellow [their_god.name] supporter!") : span_userdanger("Vile [their_god.name] supporter!")
 
-		if(dna.species.use_skintones)
-			var/skin_tone_wording = dna.species.skin_tone_wording ? LOWER_TEXT(dna.species.skin_tone_wording) : "skin tone"
-			var/list/skin_tones = dna.species.get_skin_list()
-			var/skin_tone_seen = "incomprehensible"
-			if(!HAS_TRAIT(src, TRAIT_ROTMAN) && skin_tone)
-				//AGGHHHHH this is stupid
-				for(var/tone in skin_tones)
-					if(src.skin_tone == skin_tones[tone])
-						skin_tone_seen = LOWER_TEXT(tone)
-						break
-			var/slop_lore_string = "."
-			. += span_info("[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]")
+
+		if(origin && origin != "Unknown")
+			. += span_info("[capitalize(m2)] ancestry is [origin].")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -969,15 +960,22 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/stress = H.get_stress_amount()//stress check for racism
-		if(H.has_flaw(/datum/charflaw/paranoid) || stress >= 4)//Paranoid or stressed, for basic examine.
-			if(H.dna.species.name != dna.species.name)
-				if(dna.species.stress_examine)//some species don't have a stress desc
+		if(H.dna.species.name != dna.species.name && dna.species.stress_examine)
+			var/should_apply_species_reaction = dna.species.examine_stress_always
+			if(!should_apply_species_reaction)
+				should_apply_species_reaction = H.has_flaw(/datum/charflaw/paranoid) || stress >= 4
+			if(should_apply_species_reaction)
+				var/is_graggar_follower = (H.patron?.type == dna.species.examine_relief_patron)
+				if(is_graggar_follower)
+					if(dna.species.examine_relief_event)
+						user.add_stress(dna.species.examine_relief_event)
+				else
 					. += dna.species.stress_desc
-				if(!HAS_TRAIT(user, TRAIT_TOLERANT))//They're given the stress event if they qualify for racism and aren't tolerant.
-					var/stress_type = /datum/stressevent/shunned_race
-					if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))//Xenophobic are hit worse. By a bit.
-						stress_type = /datum/stressevent/shunned_race_xenophobic
-					user.add_stress(stress_type)
+					if(dna.species.examine_stress_ignores_tolerant || !HAS_TRAIT(user, TRAIT_TOLERANT))//They're given the stress event if they qualify for racism and aren't tolerant.
+						var/stress_type = dna.species.examine_stress_event
+						if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))//Xenophobic are hit worse. By a bit.
+							stress_type = dna.species.examine_stress_event_xenophobic
+						user.add_stress(stress_type)
 
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
@@ -1070,7 +1068,7 @@
 		if(get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
 			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
 
-	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
+	if((dna?.species?.id != "gnoll") && (!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
 
 	/// Rumours & Gossip
@@ -1138,6 +1136,13 @@
 	if(!appears_dead)
 		if(skipface && user.has_flaw(/datum/charflaw/hunted) && user != src)
 			user.add_stress(/datum/stressevent/hunted)
+
+	if(dna?.species?.type == /datum/species/gnoll)
+		if(istype(user, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = user
+			if(H.dna?.species?.type == /datum/species/gnoll)
+				if(user.advjob)
+					. += span_notice("<i>They are a [advjob] of the pack.</i>")
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
