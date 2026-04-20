@@ -1,3 +1,12 @@
+/proc/ferentia_locality(mob/living/carbon/human/H)
+	var/is_local = input(H, "Are you a local?", "Ferentia Kingdom") as anything in list("I am from the Vale", "I am a foreigner")
+	switch(is_local)
+		if("I am from the Vale")
+			REMOVE_TRAIT(H, TRAIT_OUTLANDER, JOB_TRAIT)
+		else
+			to_chat(H, span_notice("I have arrived at the Vale's mercenary guild after travelling from a different county within the Ferentian kingdom."))
+
+
 /datum/advclass/mercenary/ferentia
 	name = "Sellknight"
 	tutorial = "Combat experience and skill doesn't pay for lodging, mammons do. A knight only in appearance, you took to the mercenary guild to sell your services as sword-toting muscle to the highest bidder."
@@ -79,6 +88,7 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/sellspear
@@ -152,6 +162,7 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/sellblade
@@ -164,13 +175,11 @@
 		STATKEY_SPD = 3,
 		STATKEY_PER = 2,
 		STATKEY_INT = 2,
-		STATKEY_WIL = 2,
-		STATKEY_STR = -1,
 		STATKEY_CON = -1
 
 	)
 	subclass_skills = list(
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE, //No lockpicking or pickpocketing, you're not a shady as fuck shanker, not a thief role
+		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE, //No lockpicking or pickpocketing, you're a shady as fuck shanker, not a thief role
 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE, //Your bane is being grabbed, you're an assassin, not a grappler
@@ -178,7 +187,7 @@
 		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 	)
 	extra_context = "This subclass gains Expert skill in their weapon of choice, be it swords or knives."
 
@@ -215,6 +224,7 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/thug
@@ -276,6 +286,7 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/crossbowman
@@ -345,6 +356,7 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/longbowman
@@ -413,4 +425,5 @@
 		/obj/item/rogueweapon/huntingknife = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
+	ferentia_locality(H)
 	H.merctype = 17
