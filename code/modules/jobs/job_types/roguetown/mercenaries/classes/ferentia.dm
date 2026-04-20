@@ -378,7 +378,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
 	)
-	extra_context = "This subclass gains Expert skill in their weapon of choice, be it axes or knives. Furthermore, this subclass possesses less stats compared to others to compensate for its Woodsman trait granting it a higher overall stat total when its conditions are met."
+	extra_context = "This subclass gains Journeyman skill in their weapon of choice, be it axes or knives. Furthermore, this subclass possesses less stats compared to others to compensate for its Woodsman trait granting it a higher overall stat total when its conditions are met."
 
 /datum/outfit/job/roguetown/mercenary/ferentia_longbowman/pre_equip(mob/living/carbon/human/H)
 	..()
