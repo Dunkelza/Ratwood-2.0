@@ -655,12 +655,12 @@
 /area/rogue/under/cave)
 "aKZ" = (
 /obj/structure/fluff/railing/border,
-/obj/structure/fluff/traveltile/wretch{
-	aportalgoesto = "wretchin1";
-	aportalid = "wretchout1"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 8
+	},
+/obj/structure/fluff/traveltile/bandit{
+	aportalgoesto = "BYOSPIRATESHIP2";
+	aportalid = "BYOSPIRATEENTRANCE2"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -804,6 +804,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
+"aVk" = (
+/obj/structure/fluff/railing/fence{
+	dir = 8
+	},
+/obj/structure/fluff/railing/fence,
+/turf/open/floor/rogue/dunes,
+/area/rogue/outdoors/beach/byos)
 "aWC" = (
 /obj/structure/fluff/railing/border/north,
 /obj/structure/table/wood/large_table,
@@ -4434,12 +4441,12 @@
 /area/rogue/under/cave)
 "fkj" = (
 /obj/structure/fluff/railing/border,
-/obj/structure/fluff/traveltile/wretch{
-	aportalgoesto = "wretchin1";
-	aportalid = "wretchout1"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 4
+	},
+/obj/structure/fluff/traveltile/bandit{
+	aportalgoesto = "BYOSPIRATESHIP2";
+	aportalid = "BYOSPIRATEENTRANCE2"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -6880,6 +6887,10 @@
 "hOG" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/under/town/basement)
+"hPG" = (
+/obj/machinery/light/rogue/candle/off/l,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "hQm" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/natural/poo/cow,
@@ -8188,6 +8199,11 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
+"jmW" = (
+/obj/structure/stairs/stone,
+/obj/machinery/light/rogue/candle/off/l,
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/indoors/town/church/chapel)
 "jnr" = (
 /obj/structure/flora/roguegrass/bush/jungle,
 /turf/open/floor/rogue/dirt/desert,
@@ -8229,6 +8245,7 @@
 	pixel_x = -8;
 	pixel_y = -4
 	},
+/obj/machinery/light/rogue/candle/off/r,
 /turf/open/floor/rogue/dirt/road/desert,
 /area/rogue/indoors/town/church/chapel)
 "joQ" = (
@@ -8746,6 +8763,10 @@
 /obj/item/natural/feather,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
+"jOG" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/floor/rogue/dirt/desert,
+/area/rogue/outdoors/byos)
 "jOQ" = (
 /obj/item/natural/glass_shard,
 /obj/effect/decal/cleanable/debris/glassy,
@@ -10796,6 +10817,19 @@
 "lVG" = (
 /turf/open/floor/rogue/dunes,
 /area/rogue/outdoors/beach/byos)
+"lVX" = (
+/obj/structure/chair/stool/rogue{
+	pixel_x = -4
+	},
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 3
+	},
+/obj/machinery/light/rogue/lanternpost{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/outdoors/beach/byos)
 "lWk" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/item/storage/bag/tray,
@@ -10888,8 +10922,8 @@
 	dir = 8
 	},
 /obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "BYOSPIRATEENTRANCE1";
-	aportalid = "BYOSPIRATESHIP1"
+	aportalgoesto = "BYOSPIRATEENTRANCE2";
+	aportalid = "BYOSPIRATESHIP2"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -11411,8 +11445,8 @@
 	pixel_x = 7
 	},
 /obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "BYOSPIRATEENTRANCE1";
-	aportalid = "BYOSPIRATESHIP1"
+	aportalgoesto = "BYOSPIRATEENTRANCE2";
+	aportalid = "BYOSPIRATESHIP2"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -15406,6 +15440,10 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors/banditcamp/byos)
+"qMY" = (
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/ruinedwood/turned,
+/area/rogue/outdoors/beach/byos)
 "qNG" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cave)
@@ -19677,6 +19715,7 @@
 /area/rogue/under/cave)
 "veg" = (
 /obj/structure/ladder,
+/obj/machinery/light/rogue/candle/off/r,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "veO" = (
@@ -21432,6 +21471,10 @@
 	water_color = "#8f1717"
 	},
 /area/rogue/under/cave)
+"xdU" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/outdoors/jungle)
 "xec" = (
 /obj/structure/fluff/railing/fence{
 	dir = 8
@@ -21532,6 +21575,10 @@
 "xnp" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/inq/boat)
+"xnE" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/byos)
 "xol" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -22203,6 +22250,9 @@
 /mob/living/carbon/human/species/skeleton/npc/pirate,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors)
+"yag" = (
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/jungle)
 "yah" = (
 /obj/effect/decal/cleanable/debris/stony,
 /obj/machinery/light/rogue/firebowl/standing,
@@ -22376,6 +22426,10 @@
 	},
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/under/cave)
+"yhc" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/outdoors/byos)
 "yid" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/dirt/desert,
@@ -106019,7 +106073,7 @@ qyz
 qyz
 fmM
 mSq
-oiW
+mSq
 fqT
 fYo
 qyz
@@ -106422,7 +106476,7 @@ fME
 qyz
 qyz
 cwT
-uoy
+lVX
 mSq
 ddg
 bvA
@@ -111460,7 +111514,7 @@ lVG
 lVG
 lVG
 lVG
-vIE
+naR
 ktP
 vIE
 vIE
@@ -111663,9 +111717,9 @@ lCE
 hIb
 lVG
 lVG
-vIE
-vIE
-vIE
+naR
+naR
+naR
 vIE
 vIE
 lVG
@@ -112467,8 +112521,8 @@ rPH
 rPH
 eqe
 pEa
-rPH
-eqe
+lKh
+fPO
 dDk
 dDk
 dDk
@@ -112668,7 +112722,7 @@ rPH
 rPH
 gqJ
 gqJ
-gqJ
+xdU
 eqe
 gqJ
 qhg
@@ -112871,7 +112925,7 @@ rPH
 eqe
 gqJ
 sGM
-eqe
+fPO
 eqe
 qhg
 qhg
@@ -116315,8 +116369,8 @@ nQc
 qhg
 qhg
 qhg
-qhg
-wad
+yhc
+xnE
 wad
 qhg
 qhg
@@ -116517,7 +116571,7 @@ nQc
 nQc
 nQc
 wad
-wad
+xnE
 oRs
 oSt
 wad
@@ -116718,11 +116772,11 @@ eWy
 eWy
 nQc
 nQc
-wad
+xnE
 oRs
 oRs
 oRs
-wad
+xnE
 wad
 wad
 qhg
@@ -116921,11 +116975,11 @@ pwO
 nQc
 wad
 nQc
-wad
+xnE
 oRs
 oRs
 oRs
-wad
+xnE
 wad
 qhg
 wad
@@ -117123,11 +117177,11 @@ pwO
 nQc
 wad
 nQc
-wad
+xnE
 oRs
 oRs
 oRs
-wad
+xnE
 wad
 qhg
 wad
@@ -117326,10 +117380,10 @@ nQc
 nQc
 wad
 wad
-wad
-wad
+xnE
+xnE
 oRs
-nQc
+jOG
 wad
 qhg
 wad
@@ -117530,7 +117584,7 @@ oSt
 nQc
 wad
 nQc
-wad
+xnE
 wad
 wad
 qhg
@@ -117950,7 +118004,7 @@ tRY
 fez
 fMp
 fMp
-fMp
+qMY
 dHV
 dHV
 fMp
@@ -121551,7 +121605,7 @@ dqG
 dqG
 dqG
 dqG
-sCV
+uqj
 sUk
 web
 abv
@@ -121751,8 +121805,8 @@ dqG
 dqG
 dqG
 dqG
-sCV
-sCV
+uqj
+uqj
 sCV
 qZn
 utN
@@ -121953,7 +122007,7 @@ dqG
 dqG
 dqG
 uqj
-sCV
+uqj
 rFN
 sCV
 tLG
@@ -126630,9 +126684,9 @@ chk
 brv
 xKr
 gKD
-oNX
+jmW
 xKr
-xKr
+hPG
 gKD
 nQc
 wad
@@ -131892,7 +131946,7 @@ nQc
 lVG
 lVG
 lVG
-vIE
+naR
 vIE
 vIE
 vIE
@@ -132093,7 +132147,7 @@ nQc
 nQc
 lVG
 oXO
-rgH
+oXO
 vIE
 vIE
 ktP
@@ -132192,8 +132246,8 @@ eWy
 cET
 cET
 cET
-oQg
-dNc
+cET
+eWy
 qNG
 qNG
 dNc
@@ -132291,9 +132345,9 @@ wad
 wad
 wad
 oXO
-rgH
+oXO
 jxm
-rgH
+oXO
 rgH
 rgH
 ktP
@@ -132593,7 +132647,7 @@ cET
 cET
 cET
 cET
-cET
+oQg
 oQg
 oQg
 oQg
@@ -132793,8 +132847,8 @@ kwS
 cET
 cET
 cET
-cET
-cET
+oQg
+oQg
 oQg
 oQg
 oQg
@@ -133672,7 +133726,7 @@ eqe
 eqe
 eqe
 eqe
-rPH
+lKh
 eqe
 eqe
 eqe
@@ -133872,10 +133926,10 @@ rPH
 rPH
 eqe
 eqe
-rPH
-rPH
+lKh
+lKh
 pPG
-rPH
+lKh
 rPH
 eqe
 eqe
@@ -134074,10 +134128,10 @@ rPH
 eqe
 eqe
 rPH
-rPH
+lKh
 pPG
 pPG
-eqe
+fPO
 eqe
 rPH
 rPH
@@ -134266,9 +134320,9 @@ qON
 eqe
 rPH
 rPH
-rPH
-eqe
-eqe
+lKh
+fPO
+fPO
 wtg
 eqe
 rPH
@@ -134276,9 +134330,9 @@ eqe
 rPH
 rPH
 rPH
-eqe
-eqe
-eqe
+fPO
+fPO
+fPO
 aIK
 eqe
 rPH
@@ -134468,10 +134522,10 @@ rPH
 rPH
 aIK
 rPH
-eqe
+fPO
 pPG
 pPG
-rPH
+lKh
 rPH
 lUR
 lUR
@@ -134482,10 +134536,10 @@ aIK
 eqe
 eqe
 eqe
-eqe
-rPH
-rPH
-rPH
+fPO
+lKh
+lKh
+lKh
 eqe
 rPH
 rPH
@@ -134670,10 +134724,10 @@ rPH
 eqe
 rPH
 rPH
-rPH
-rPH
+lKh
+lKh
 pPG
-rPH
+lKh
 eqe
 lUR
 lUR
@@ -134684,10 +134738,10 @@ eqe
 eqe
 eqe
 eqe
-rPH
+lKh
 pPG
 pPG
-rPH
+lKh
 eqe
 eqe
 rPH
@@ -134716,7 +134770,7 @@ lVG
 lVG
 lVG
 lVG
-vIE
+naR
 vIE
 vIE
 wOP
@@ -134829,8 +134883,8 @@ pyM
 pyM
 wZe
 pyM
-pyM
-pyM
+eqe
+eqe
 pyM
 pyM
 pyM
@@ -134873,11 +134927,11 @@ rPH
 rPH
 rPH
 eqe
-rPH
-eqe
-rPH
-rPH
-rPH
+lKh
+fPO
+lKh
+lKh
+lKh
 lUR
 lUR
 wtg
@@ -134886,11 +134940,11 @@ eqe
 eqe
 eqe
 rPH
-rPH
-eqe
+lKh
+fPO
 pPG
 pPG
-eqe
+fPO
 eqe
 eqe
 rPH
@@ -134919,8 +134973,8 @@ lVG
 lVG
 lVG
 lVG
-ktP
-vIE
+uDI
+naR
 lVG
 vIE
 lVG
@@ -135026,13 +135080,13 @@ pPG
 viV
 viV
 aGc
-wZe
-pyM
-wCp
-pyM
-pyM
-pyM
-pyM
+yag
+yag
+yag
+yag
+yag
+yag
+eqe
 pyM
 pyM
 pyM
@@ -135076,11 +135130,11 @@ eqe
 eqe
 aIK
 eqe
-rPH
-rPH
+lKh
+lKh
 pPG
 pPG
-eqe
+fPO
 rPH
 eqe
 eqe
@@ -135089,9 +135143,9 @@ rPH
 rPH
 rPH
 rPH
-eqe
-rPH
-rPH
+fPO
+lKh
+lKh
 eqe
 wtg
 rPH
@@ -135100,8 +135154,8 @@ rPH
 rPH
 eqe
 aIK
-eqe
-eqe
+fPO
+fPO
 eqe
 rPH
 rPH
@@ -135229,12 +135283,12 @@ viV
 lpO
 wCp
 pyM
+wCp
 pyM
 pyM
-pyM
-pyM
-pyM
-pyM
+eqe
+yag
+eqe
 pyM
 pyM
 pyM
@@ -135278,11 +135332,11 @@ eqe
 eqe
 eqe
 eqe
-rPH
+lKh
 pPG
 pPG
-rPH
-eqe
+lKh
+fPO
 eqe
 eqe
 rPH
@@ -135300,11 +135354,11 @@ eqe
 eqe
 rPH
 eqe
-eqe
+fPO
 pPG
 pPG
 pPG
-rPH
+lKh
 wtg
 rPH
 rPH
@@ -135433,9 +135487,9 @@ wCp
 pyM
 pyM
 pyM
+wZe
 pyM
-pyM
-pyM
+yag
 pyM
 wZe
 pyM
@@ -135479,17 +135533,17 @@ rPH
 eqe
 eqe
 rPH
-rPH
-rPH
+lKh
+lKh
 pPG
+lKh
+lKh
 rPH
 rPH
-rPH
-rPH
-eqe
-rPH
-rPH
-rPH
+fPO
+lKh
+lKh
+lKh
 eqe
 eqe
 eqe
@@ -135502,10 +135556,10 @@ rPH
 eqe
 rPH
 aIK
-eqe
+fPO
 pPG
 pPG
-rPH
+lKh
 rPH
 rPH
 rPH
@@ -135637,10 +135691,10 @@ wZe
 pyM
 pyM
 pyM
-pyM
+yag
 wCp
-pyM
-pyM
+wZe
+wCp
 wZe
 wCp
 wZe
@@ -135672,7 +135726,7 @@ lVG
 eqe
 eqe
 eqe
-rPH
+wtg
 rPH
 eqe
 eqe
@@ -135681,17 +135735,17 @@ rPH
 rPH
 rPH
 rPH
-rPH
+lKh
 pPG
-eqe
-eqe
+fPO
+fPO
 rPH
 rPH
 aIK
-rPH
+lKh
 pPG
 pPG
-eqe
+fPO
 eqe
 eqe
 eqe
@@ -135704,11 +135758,11 @@ eqe
 rPH
 rPH
 eqe
+fPO
+lKh
+lKh
 eqe
-rPH
-rPH
-eqe
-eqe
+fPO
 eqe
 rPH
 rPH
@@ -135839,10 +135893,10 @@ pyM
 pyM
 pyM
 pyM
-pyM
-pyM
-wZe
-wCp
+yag
+yag
+yag
+yag
 pCZ
 rPH
 rPH
@@ -135880,20 +135934,20 @@ eqe
 eqe
 eqe
 eqe
+fPO
+lKh
+rPH
+fPO
+fPO
+fPO
 eqe
 rPH
 rPH
-eqe
-eqe
-eqe
-eqe
 rPH
-rPH
-rPH
-rPH
-rPH
+lKh
+lKh
 pPG
-eqe
+fPO
 eqe
 rPH
 eqe
@@ -135909,9 +135963,9 @@ eqe
 eqe
 rPH
 eqe
-eqe
+fPO
 pPG
-rPH
+lKh
 rPH
 wtg
 eqe
@@ -136082,20 +136136,20 @@ eqe
 eqe
 eqe
 aIK
-eqe
+fPO
 pPG
-rPH
+lKh
 eqe
-eqe
-eqe
-rPH
-rPH
-rPH
-eqe
+aIK
 eqe
 rPH
 rPH
 rPH
+eqe
+eqe
+lKh
+lKh
+lKh
 rPH
 wtg
 rPH
@@ -136111,9 +136165,9 @@ rPH
 rPH
 rPH
 eqe
-eqe
+fPO
 pPG
-rPH
+lKh
 rPH
 rPH
 wtg
@@ -136284,12 +136338,12 @@ rPH
 rPH
 rPH
 rPH
-rPH
+lKh
 pPG
+lKh
 rPH
 rPH
-rPH
-rPH
+wtg
 rPH
 rPH
 rPH
@@ -136313,9 +136367,9 @@ rPH
 eqe
 eqe
 eqe
-eqe
-rPH
-rPH
+fPO
+lKh
+lKh
 rPH
 rPH
 wtg
@@ -136486,17 +136540,17 @@ eqe
 wtg
 eqe
 rPH
-eqe
+fPO
 pPG
-rPH
+lKh
 aIK
 aIK
 rPH
-rPH
-eqe
-eqe
-rPH
-rPH
+lKh
+fPO
+fPO
+lKh
+lKh
 rPH
 wtg
 eqe
@@ -136527,7 +136581,7 @@ rPH
 rPH
 rPH
 rPH
-rPH
+wtg
 wtg
 lVG
 lVG
@@ -136673,10 +136727,10 @@ vIE
 vIE
 lVG
 lVG
-sTI
+ltd
 lVG
 lVG
-sTI
+ltd
 vIE
 vIE
 vIE
@@ -136689,22 +136743,22 @@ eqe
 eqe
 rPH
 eqe
-rPH
+lKh
 eqe
 eqe
 rPH
 rPH
-eqe
+fPO
 pPG
 pPG
 pPG
-rPH
+lKh
 eqe
 eqe
 eqe
 eqe
-eqe
-eqe
+fPO
+fPO
 eqe
 eqe
 rPH
@@ -136872,12 +136926,12 @@ vIE
 vIE
 vIE
 vIE
-sTI
+ltd
 lVG
-sTI
+ltd
 lVG
 nWP
-sTI
+ltd
 oRg
 ktP
 vIE
@@ -136896,18 +136950,18 @@ eqe
 eqe
 rPH
 wtg
-rPH
+lKh
 pPG
 pPG
-rPH
+lKh
+fPO
 eqe
 eqe
 eqe
-eqe
-eqe
+fPO
 pPG
 pPG
-eqe
+fPO
 eqe
 eqe
 eqe
@@ -137078,8 +137132,8 @@ jrx
 lVG
 lVG
 lVG
-sTI
-sTI
+ltd
+ltd
 lVG
 vIE
 vIE
@@ -137096,12 +137150,12 @@ rPH
 wtg
 eqe
 eqe
-rPH
-rPH
+wtg
+lKh
 pPG
 pPG
-rPH
-rPH
+lKh
+lKh
 eqe
 eqe
 eqe
@@ -137109,7 +137163,7 @@ eqe
 aIK
 pPG
 pPG
-rPH
+lKh
 rPH
 rPH
 eqe
@@ -137238,7 +137292,7 @@ eWy
 eWy
 eWy
 lVG
-iQq
+aVk
 wOP
 vIE
 vIE
@@ -137275,10 +137329,10 @@ vIE
 wOP
 vIE
 lVG
-sTI
+ltd
 lVG
 lVG
-sTI
+ltd
 lVG
 jrx
 lVG
@@ -137297,21 +137351,21 @@ eqe
 rPH
 rPH
 rPH
-rPH
-rPH
+wtg
+lKh
 pPG
 pPG
 pPG
+lKh
 rPH
 rPH
 rPH
 rPH
-rPH
-rPH
+lKh
 pPG
 pPG
 pPG
-rPH
+lKh
 eqe
 rPH
 eqe
@@ -137442,10 +137496,10 @@ lVG
 lVG
 vIE
 vIE
-vIE
 uuc
 uuc
-vIE
+uuc
+uuc
 vIE
 vIE
 vIE
@@ -137478,11 +137532,11 @@ vIE
 vIE
 lVG
 lVG
-sTI
+ltd
 lVG
 lVG
-sTI
-sTI
+ltd
+ltd
 lVG
 vIE
 vIE
@@ -137492,7 +137546,7 @@ vIE
 vIE
 lVG
 lVG
-eqe
+fPO
 eqe
 eqe
 aIK
@@ -137501,19 +137555,19 @@ eqe
 eqe
 rPH
 wtg
-rPH
-rPH
-rPH
+lKh
+lKh
+lKh
 rPH
 rPH
 wtg
 eqe
 rPH
-rPH
+lKh
 pPG
 pPG
 pPG
-rPH
+lKh
 rPH
 rPH
 eqe
@@ -137641,30 +137695,27 @@ fle
 lVG
 aEu
 lVG
-iQq
-vIE
-vIE
-vIE
-uuc
-uuc
-vIE
-vIE
-vIE
-vIE
-vIE
-uuc
-vIE
-vIE
-vIE
-vIE
-vIE
-vIE
-vIE
+aVk
 vIE
 vIE
 uuc
 uuc
 uuc
+uuc
+uuc
+vIE
+vIE
+vIE
+uuc
+vIE
+vIE
+vIE
+vIE
+vIE
+vIE
+vIE
+vIE
+vIE
 uuc
 uuc
 uuc
@@ -137675,19 +137726,8 @@ uuc
 uuc
 uuc
 uuc
-lVG
-lVG
-lVG
-lVG
-lVG
-lVG
-lVG
-sTI
-lVG
-lVG
-lVG
-vIE
-vIE
+uuc
+uuc
 uuc
 lVG
 lVG
@@ -137695,26 +137735,40 @@ lVG
 lVG
 lVG
 lVG
-eqe
+lVG
+ltd
+lVG
+lVG
+lVG
+vIE
+vIE
+uuc
+lVG
+lVG
+lVG
+lVG
+lVG
+lVG
+fPO
 eqe
 eqe
 rPH
 eqe
 aIK
-eqe
-eqe
-rPH
-rPH
-rPH
-rPH
-eqe
-eqe
-eqe
-eqe
+fPO
 eqe
 rPH
 rPH
 rPH
+rPH
+eqe
+eqe
+eqe
+eqe
+fPO
+lKh
+lKh
+lKh
 rPH
 rPH
 wtg
@@ -137847,10 +137901,10 @@ vIE
 vIE
 vIE
 vIE
-vIE
 uuc
 uuc
-vIE
+uuc
+uuc
 vIE
 vIE
 vIE
@@ -137883,9 +137937,9 @@ lVG
 uuc
 lVG
 lVG
-sTI
+ltd
 lVG
-sTI
+ltd
 vIE
 vIE
 vIE
@@ -137897,14 +137951,14 @@ uuc
 lVG
 lVG
 lVG
-eqe
-eqe
+fPO
+fPO
 rPH
 rPH
 eqe
-eqe
+fPO
 pPG
-eqe
+fPO
 eqe
 rPH
 rPH
@@ -138049,6 +138103,10 @@ vIE
 vIE
 vIE
 vIE
+uuc
+uuc
+uuc
+uuc
 vIE
 vIE
 vIE
@@ -138057,10 +138115,6 @@ vIE
 vIE
 vIE
 vIE
-vIE
-vIE
-vIE
-vIE
 uuc
 uuc
 uuc
@@ -138100,14 +138154,14 @@ lVG
 lVG
 lVG
 lVG
-eqe
+fPO
 eqe
 rPH
 eqe
-eqe
+fPO
 pPG
 pPG
-eqe
+fPO
 eqe
 rPH
 rPH
@@ -138303,12 +138357,12 @@ lVG
 nWP
 lVG
 lVG
-eqe
+fPO
 rPH
 rPH
 eqe
-eqe
-eqe
+fPO
+fPO
 aIK
 eqe
 rPH
@@ -138505,7 +138559,7 @@ lVG
 lVG
 lVG
 lVG
-rPH
+lKh
 rPH
 wtg
 rPH
@@ -138670,13 +138724,13 @@ qyz
 qyz
 qyz
 qyz
-qyz
-qyz
-qyz
-qyz
-qyz
-qyz
-qyz
+uuc
+uuc
+uuc
+uuc
+uuc
+uuc
+uuc
 qyz
 qyz
 uuc
@@ -138910,13 +138964,13 @@ lVG
 lVG
 lVG
 lVG
-eqe
-rPH
+fPO
+wtg
 rPH
 wtg
 rPH
 sYy
-rPH
+wtg
 rPH
 rPH
 wtg
@@ -139123,8 +139177,8 @@ rPH
 rPH
 eqe
 eqe
-eqe
-eqe
+fPO
+fPO
 eqe
 lVG
 lVG
@@ -139314,17 +139368,17 @@ vIE
 lVG
 lVG
 lVG
-eqe
+fPO
 pPG
 rPH
 eqe
 rPH
-eqe
+fPO
 kSj
-eqe
+fPO
 kSj
-eqe
-eqe
+fPO
+fPO
 lVG
 lVG
 lVG
@@ -139516,7 +139570,7 @@ vIE
 lVG
 lVG
 lVG
-eqe
+fPO
 eqe
 aIK
 eqe
@@ -139719,9 +139773,9 @@ lVG
 lVG
 lVG
 kSj
-eqe
+fPO
 kSj
-eqe
+fPO
 lVG
 lVG
 lVG
