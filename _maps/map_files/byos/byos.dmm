@@ -1383,13 +1383,6 @@
 	},
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave/tribeden)
-"bEX" = (
-/obj/structure/far_travel,
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/tribeden)
 "bFx" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 9
@@ -6432,13 +6425,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
-"hie" = (
-/obj/structure/far_travel,
-/obj/structure/stairs/stone{
-	dir = 8
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/tribeden)
 "hix" = (
 /obj/structure/bars/grille{
 	dir = 8
@@ -7147,7 +7133,7 @@
 /area/rogue/indoors/town/shop)
 "hXF" = (
 /obj/structure/flora/roguetree/wise,
-/turf/closed/wall/mineral/rogue/wooddark,
+/turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "hXH" = (
 /obj/structure/mineral_door/wood{
@@ -11560,9 +11546,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
-"mAD" = (
-/turf/closed,
-/area/rogue)
 "mBh" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -12679,6 +12662,13 @@
 /obj/structure/flora/rock/pile,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
+"nPC" = (
+/obj/structure/far_travel,
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/tribeden)
 "nQc" = (
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/outdoors/byos)
@@ -15494,6 +15484,9 @@
 	},
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/indoors/inq/boat/basement)
+"qBh" = (
+/turf/closed,
+/area/rogue)
 "qBt" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/structure/winch{
@@ -18174,6 +18167,13 @@
 	pixel_y = 34
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/tribeden)
+"thI" = (
+/obj/structure/far_travel,
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/tribeden)
 "tie" = (
 /obj/machinery/light/rogue/torchholder/l,
@@ -35813,7 +35813,7 @@ gJn
 gJn
 gJn
 gJn
-mAD
+qBh
 gJn
 gJn
 gJn
@@ -41303,7 +41303,7 @@ dNc
 dNc
 dNc
 kVL
-bEX
+nPC
 kVL
 kVL
 kVL
@@ -41707,7 +41707,7 @@ dNc
 dNc
 dNc
 kVL
-hie
+thI
 kVL
 kVL
 kVL
