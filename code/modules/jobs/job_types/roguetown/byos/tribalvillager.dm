@@ -17,7 +17,7 @@
 	display_order = JDO_TRIBALVILLAGER
 	whitelist_req = TRUE
 
-	outfit = /datum/outfit/job/roguetown/tribalguard
+	outfit = /datum/outfit/job/roguetown/tribalvillager
 	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 
 	min_pq = 0
@@ -26,7 +26,7 @@
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	// social_rank = SOCIAL_RANK_PEASANT
 	// job_traits = list(TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_TRIBAL)
-	job_traits = list(TRAIT_TRIBAL, TRAIT_DARKVISION)
+	job_traits = list(TRAIT_TRIBAL, TRAIT_OUTDOORSMAN, TRAIT_DARKVISION)
 	job_subclasses = list(
 		/datum/advclass/barbersurgeon,
 		/datum/advclass/blacksmith,

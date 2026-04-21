@@ -1383,6 +1383,13 @@
 	},
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave/tribeden)
+"bEX" = (
+/obj/structure/far_travel,
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/tribeden)
 "bFx" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 9
@@ -6425,6 +6432,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
+"hie" = (
+/obj/structure/far_travel,
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/tribeden)
 "hix" = (
 /obj/structure/bars/grille{
 	dir = 8
@@ -11546,6 +11560,9 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave)
+"mAD" = (
+/turf/closed,
+/area/rogue)
 "mBh" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -35796,7 +35813,7 @@ gJn
 gJn
 gJn
 gJn
-gJn
+mAD
 gJn
 gJn
 gJn
@@ -41083,9 +41100,9 @@ nFS
 dNc
 dNc
 dNc
-dNc
-dNc
-dNc
+kVL
+kVL
+kVL
 dNc
 kVL
 kVL
@@ -41286,7 +41303,7 @@ dNc
 dNc
 dNc
 kVL
-kVL
+bEX
 kVL
 kVL
 kVL
@@ -41690,7 +41707,7 @@ dNc
 dNc
 dNc
 kVL
-kVL
+hie
 kVL
 kVL
 kVL
@@ -41891,9 +41908,9 @@ nFS
 dNc
 dNc
 dNc
-dNc
-dNc
-dNc
+kVL
+kVL
+kVL
 dNc
 kVL
 kVL

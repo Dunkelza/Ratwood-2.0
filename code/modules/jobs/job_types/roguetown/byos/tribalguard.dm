@@ -26,7 +26,7 @@
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	// cmode_music = 'sound/music/hornofthebeast.ogg'
 	// social_rank = SOCIAL_RANK_PEASANT
-	job_traits = list(TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_TRIBAL, TRAIT_DARKVISION)
+	job_traits = list(TRAIT_OUTDOORSMAN, TRAIT_SURVIVAL_EXPERT, TRAIT_TRIBAL, TRAIT_DARKVISION)
 	job_subclasses = list(
 		/datum/advclass/tribalguard/hunter,
 		/datum/advclass/tribalguard/warrior)
@@ -131,7 +131,7 @@
 
 /datum/outfit/job/roguetown/tribalguard/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/paalloy
+	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
 	gloves = /obj/item/clothing/gloves/roguetown/chain/paalloy
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/paalloy
