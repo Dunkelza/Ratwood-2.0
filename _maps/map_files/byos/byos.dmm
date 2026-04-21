@@ -1526,6 +1526,15 @@
 /area/rogue/indoors/inq/boat/office{
 	ceiling_protected = 1
 	})
+"bLV" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/outdoors/town/byos)
 "bMo" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/woodturned,
@@ -4488,13 +4497,6 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors)
-"fiq" = (
-/obj/structure/fluff/railing/border{
-	pixel_y = -7
-	},
-/obj/effect/landmark/start/inqlate,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/beach/byos)
 "fiv" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -20791,6 +20793,12 @@
 	},
 /turf/open/floor/rogue/naturalstone/sandstone,
 /area/rogue/under/cave)
+"vTM" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/outdoors/town/byos)
 "vUg" = (
 /obj/item/oystershell,
 /obj/structure/flora/roguegrass/water/reeds,
@@ -22406,6 +22414,13 @@
 /obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/under/cave)
+"xMu" = (
+/obj/structure/fluff/railing/border{
+	pixel_y = -7
+	},
+/obj/effect/landmark/start/inqlate,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/outdoors/beach/byos)
 "xMU" = (
 /obj/structure/chair/stool/rogue,
 /obj/structure/fluff/railing/border{
@@ -22473,6 +22488,10 @@
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/indoors/inq/boat/basement)
+"xSo" = (
+/obj/structure/flora/newtreealt,
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/outdoors/byos)
 "xSV" = (
 /obj/structure/vine{
 	color = "#bf080e"
@@ -118216,8 +118235,8 @@ dDk
 dDk
 wad
 qhg
-qhg
-qhg
+xSo
+xSo
 nQc
 qhg
 sCV
@@ -118827,7 +118846,7 @@ sCV
 sCV
 irC
 jKz
-rFN
+irC
 tRY
 fez
 sCV
@@ -119229,10 +119248,10 @@ fLw
 sCV
 fLw
 sCV
-sCV
 tRY
 tRY
-tRY
+irC
+irC
 rFN
 sCV
 qEZ
@@ -119432,7 +119451,7 @@ rlc
 rFN
 irC
 tRY
-tRY
+irC
 rFN
 rFN
 rFN
@@ -119634,7 +119653,7 @@ rFN
 sCV
 fez
 tRY
-rFN
+irC
 rFN
 rFN
 rFN
@@ -119835,7 +119854,7 @@ rFN
 jRz
 irC
 tRY
-oAo
+ipp
 rFN
 sCV
 sCV
@@ -120037,7 +120056,7 @@ rFN
 iPe
 irC
 tRY
-rFN
+irC
 sCV
 sCV
 sCV
@@ -120236,7 +120255,7 @@ rFN
 rFN
 rFN
 iPe
-rFN
+irC
 tRY
 fez
 rFN
@@ -120437,7 +120456,7 @@ sCV
 sCV
 sCV
 iPe
-rFN
+irC
 fez
 irC
 sCV
@@ -120632,13 +120651,13 @@ fSt
 xJH
 pqy
 rFN
-rFN
+irC
 tRY
-rFN
+irC
 sCV
 fLw
 rFN
-rFN
+irC
 fez
 tRY
 irC
@@ -120837,7 +120856,7 @@ irC
 irC
 tRY
 irC
-rFN
+irC
 rFN
 irC
 tRY
@@ -121241,10 +121260,10 @@ sCV
 rFN
 rFN
 rFN
-rFN
 irC
-rFN
-rFN
+irC
+irC
+irC
 tRY
 hMt
 rFN
@@ -121444,7 +121463,7 @@ rFN
 sCV
 rFN
 sCV
-rFN
+irC
 tRY
 fez
 fez
@@ -122050,9 +122069,9 @@ sLX
 jom
 ydo
 ebA
-rFN
+irC
 tRY
-rFN
+irC
 sCV
 rFN
 rFN
@@ -123666,7 +123685,7 @@ qzi
 hrK
 jwm
 rFN
-rFN
+irC
 gBy
 lmE
 oxd
@@ -123867,15 +123886,15 @@ orC
 wgK
 hhq
 gXH
-rFN
+irC
 fez
 fez
 ewE
-rFN
+sCV
 irC
 irC
 sCV
-tRY
+sCV
 irC
 fez
 irC
@@ -124067,8 +124086,8 @@ qvj
 pfp
 eXK
 mzn
-nXk
-soW
+bLV
+vTM
 tRY
 tRY
 ukI
@@ -124082,7 +124101,7 @@ tRY
 cjZ
 fez
 tRY
-rFN
+irC
 tRY
 fez
 lVG
@@ -124281,11 +124300,11 @@ fez
 tRY
 fez
 irC
-tRY
-tRY
-irC
-tRY
-fez
+sCV
+sCV
+rFN
+rFN
+sCV
 sCV
 lVG
 lVG
@@ -124471,9 +124490,9 @@ irC
 fez
 irC
 fez
-rFN
+irC
 tRY
-rFN
+irC
 tRY
 irC
 irC
@@ -124674,18 +124693,18 @@ irC
 rFN
 rFN
 oAo
-rFN
-rFN
+sCV
+sCV
 fez
 tRY
 etS
-rFN
+sCV
 qRR
 iPe
 rFN
+rFN
+rFN
 sCV
-rFN
-rFN
 qRR
 pDa
 rFN
@@ -124877,17 +124896,17 @@ rFN
 jKz
 rFN
 rFN
-iPe
-rFN
+fLw
+sCV
 irC
 irC
-rFN
+sCV
 iPe
 rFN
 rFN
 rFN
 sCV
-rFN
+sCV
 rFN
 rFN
 sCV
@@ -125079,7 +125098,7 @@ rFN
 rFN
 sCV
 sCV
-rFN
+sCV
 tRY
 fez
 irC
@@ -125281,7 +125300,7 @@ rFN
 rFN
 sCV
 sCV
-iPe
+fLw
 irC
 tRY
 irC
@@ -125483,7 +125502,7 @@ rFN
 rFN
 rFN
 sCV
-rFN
+sCV
 cjZ
 tRY
 irC
@@ -125685,7 +125704,7 @@ sCV
 rFN
 rFN
 rFN
-iPe
+fLw
 sCV
 fez
 fez
@@ -125888,10 +125907,10 @@ rFN
 sCV
 sCV
 sCV
-rFN
+sCV
 irC
 tRY
-rFN
+irC
 rFN
 rFN
 rFN
@@ -126089,10 +126108,10 @@ sCV
 rFN
 sCV
 sCV
-rFN
+sCV
 irC
 fez
-fez
+irC
 rFN
 rFN
 rFN
@@ -126292,10 +126311,10 @@ rFN
 iPe
 rFN
 rFN
-rFN
+sCV
 tRY
 irC
-tRY
+irC
 rFN
 iPe
 sCV
@@ -126491,13 +126510,13 @@ sCV
 sCV
 rFN
 rFN
-sCV
+rFN
 rFN
 rFN
 fLw
 irC
 fez
-fez
+irC
 rFN
 rFN
 rFN
@@ -126895,7 +126914,7 @@ sCV
 rFN
 rFN
 sCV
-sCV
+rFN
 rFN
 rFN
 rFN
@@ -127098,7 +127117,7 @@ qRR
 sCV
 sCV
 rFN
-sCV
+rFN
 rFN
 iPe
 irC
@@ -128113,7 +128132,7 @@ rFN
 sCV
 cbC
 tRY
-rFN
+irC
 sCV
 tcU
 amT
@@ -128313,8 +128332,8 @@ wrV
 rFN
 sCV
 rFN
-rFN
-rFN
+sCV
+irC
 tRY
 fez
 iPe
@@ -128517,9 +128536,9 @@ rFN
 sCV
 fez
 tRY
-rFN
+irC
 tRY
-rFN
+irC
 bAN
 xzV
 llf
@@ -128719,8 +128738,8 @@ sCV
 cjZ
 fez
 tRY
-rFN
-rFN
+irC
+irC
 rFN
 wmK
 aoc
@@ -128918,9 +128937,9 @@ xYU
 jmT
 bdP
 rFN
-rFN
+irC
 tRY
-rFN
+irC
 sCV
 rFN
 rFN
@@ -129323,7 +129342,7 @@ xSY
 bdP
 sCV
 tRY
-rFN
+irC
 sCV
 sCV
 rFN
@@ -138486,7 +138505,7 @@ oXK
 mSq
 rEY
 bUV
-fiq
+xMu
 qyz
 qyz
 qyz
