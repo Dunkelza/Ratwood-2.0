@@ -1024,6 +1024,10 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/shoes/roguetown/sandals/aalloy,
 /obj/item/clothing/shoes/roguetown/sandals/aalloy,
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets,
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets,
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets,
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/tribeden)
 "blJ" = (
@@ -2212,6 +2216,10 @@
 /obj/item/clothing/cloak/tribal,
 /obj/item/clothing/cloak/tribal,
 /obj/item/clothing/cloak/tribal,
+/obj/item/clothing/cloak/volfmantle,
+/obj/item/clothing/cloak/volfmantle,
+/obj/item/clothing/cloak/volfmantle,
+/obj/item/clothing/cloak/volfmantle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/tribeden)
 "czT" = (
@@ -2476,6 +2484,14 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/inq/boat)
+"cTA" = (
+/obj/item/rogueweapon/greataxe/steel/doublehead/graggar{
+	pixel_x = -14;
+	pixel_y = 18
+	},
+/obj/structure/rack/rogue/shelf,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/tribeden)
 "cTF" = (
 /obj/structure/curtain/red,
 /turf/open/floor/rogue/blocks,
@@ -2507,6 +2523,7 @@
 	icon_state = "borderfall";
 	pixel_y = 8
 	},
+/obj/effect/landmark/start/vampirelord,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/vampire_manor)
 "cUO" = (
@@ -4471,6 +4488,13 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors)
+"fiq" = (
+/obj/structure/fluff/railing/border{
+	pixel_y = -7
+	},
+/obj/effect/landmark/start/inqlate,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/outdoors/beach/byos)
 "fiv" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -10357,6 +10381,14 @@
 	dir = 4
 	},
 /area/rogue/outdoors/mountains)
+"lnB" = (
+/obj/structure/far_travel{
+	name = "teleport home";
+	icon = 'icons/roguetown/misc/structure.dmi';
+	icon_state = "underworldportal"
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave)
 "lnQ" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/rogue/ruinedwood{
@@ -10587,6 +10619,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
+/obj/structure/far_travel,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -11033,7 +11066,8 @@
 	},
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE2";
-	aportalid = "BYOSPIRATESHIP2"
+	aportalid = "BYOSPIRATESHIP2";
+	name = "sail to the island"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -11556,7 +11590,8 @@
 	},
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE2";
-	aportalid = "BYOSPIRATESHIP2"
+	aportalid = "BYOSPIRATESHIP2";
+	name = "sail to the island"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -13076,6 +13111,13 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
+"ohc" = (
+/obj/effect/landmark/start/banditlate,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/under/cavewet/byos/banditcove)
 "ohh" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/water/ocean,
@@ -14026,6 +14068,13 @@
 /obj/item/bedsheet/rogue/cloth,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
+"pfi" = (
+/obj/structure/fluff/railing/border{
+	pixel_y = -7
+	},
+/obj/structure/far_travel,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/outdoors/beach/byos)
 "pfj" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -14127,7 +14176,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/effect/landmark/start/banditlate,
+/obj/structure/far_travel,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -14641,7 +14690,8 @@
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE1";
-	aportalid = "BYOSPIRATESHIP1"
+	aportalid = "BYOSPIRATESHIP1";
+	name = "sail to the island"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -16214,7 +16264,6 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/absolver,
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/indoors/inq/boat)
 "rqP" = (
@@ -18541,7 +18590,6 @@
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
 /obj/machinery/light/rogue/torchholder/c,
-/obj/machinery/gear_painter,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/tribeden)
 "tzx" = (
@@ -18852,7 +18900,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/obj/effect/landmark/start/banditlate,
+/obj/structure/far_travel,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -21018,6 +21066,16 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
+"woB" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/effect/landmark/start/banditlate,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/under/cavewet/byos/banditcove)
 "woU" = (
 /turf/open/floor/rogue/metal{
 	icon_state = "plating2"
@@ -21093,9 +21151,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "wrB" = (
-/obj/structure/chair/wood/rogue,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/inq/boat/office)
+/obj/structure/curtain/red,
+/obj/effect/landmark/start/vampirespawn,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/vampire_manor)
 "wrC" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -21451,7 +21510,8 @@
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "BYOSPIRATEENTRANCE1";
-	aportalid = "BYOSPIRATESHIP1"
+	aportalid = "BYOSPIRATESHIP1";
+	name = "sail to the island"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -22804,6 +22864,7 @@
 	pixel_y = 8;
 	pixel_x = 8
 	},
+/obj/structure/far_travel,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -66101,7 +66162,7 @@ iFI
 usT
 cjT
 phi
-ycm
+woB
 ycm
 wHY
 ptL
@@ -66303,7 +66364,7 @@ tHv
 hXp
 cjT
 tQL
-pBH
+ohc
 wvI
 pDf
 ptL
@@ -85339,7 +85400,7 @@ dNc
 dNc
 dNc
 tIT
-gtg
+cTA
 vuH
 hFU
 jsk
@@ -87159,12 +87220,12 @@ dNc
 dNc
 dNc
 dNc
-dNc
 kVL
 ujQ
 sCr
 nQA
 nQA
+hFU
 vxq
 kVL
 tIT
@@ -87361,11 +87422,11 @@ dNc
 dNc
 dNc
 dNc
-dNc
 kVL
 kcU
 hFU
 nQA
+hFU
 hFU
 rAf
 kVL
@@ -87563,12 +87624,12 @@ dNc
 dNc
 dNc
 dNc
-dNc
 kVL
 pOQ
 hFm
 ldX
 tcO
+cDV
 fVb
 kVL
 hFU
@@ -138223,7 +138284,7 @@ fmM
 mSq
 oiW
 fqT
-fYo
+pfi
 qyz
 qyz
 qyz
@@ -138425,7 +138486,7 @@ oXK
 mSq
 rEY
 bUV
-fYo
+fiq
 qyz
 qyz
 qyz
@@ -175038,8 +175099,8 @@ uKc
 wQX
 rRr
 nFS
-eWy
-eWy
+nFS
+nFS
 eWy
 eWy
 eWy
@@ -175239,9 +175300,9 @@ rRr
 rRr
 rWL
 rRr
+rRr
+lnB
 nFS
-eWy
-eWy
 eWy
 eWy
 eWy
@@ -175442,8 +175503,8 @@ wQX
 wQX
 rRr
 nFS
-eWy
-eWy
+nFS
+nFS
 eWy
 eWy
 eWy
@@ -176637,9 +176698,9 @@ sqH
 sqH
 pIA
 pIA
-cTF
+wrB
 pIA
-cTF
+wrB
 pIA
 emi
 gui
@@ -177849,9 +177910,9 @@ sqH
 sqH
 pIA
 pIA
-cTF
+wrB
 pIA
-cTF
+wrB
 pIA
 pIA
 iQt
@@ -182650,7 +182711,7 @@ oKn
 wST
 pfM
 qpP
-wrB
+tQc
 rQp
 kUT
 gJW

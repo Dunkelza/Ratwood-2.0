@@ -279,6 +279,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Absolver"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/inqlate
+	name = "Inquisition Late"
+	delete_after_roundstart = FALSE
+	jobspawn_override = list("Absolver", "Orthodoxist", "Inquisitor")
+
 /obj/effect/landmark/start/sergeant
 	name = "Sergeant"
 	icon_state = "arrow"
