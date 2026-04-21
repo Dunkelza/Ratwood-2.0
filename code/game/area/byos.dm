@@ -133,7 +133,7 @@
 /area/rogue/indoors/inq/boat
 	name = "The Purity"
 	icon_state = "chapel"
-	first_time_text = "THE OTAVAN INQUISITION"
+	first_time_text = "THE PURITY"
 	ambientsounds = AMB_BOAT
 	ambientnight = AMB_BOAT
 
