@@ -175,11 +175,6 @@ GLOBAL_LIST_INIT(wanderer_positions, list(
 	"Bandit",
 	"Wretch",
 	"Gnoll",
-	// "Chieftain",
-	// "Shaman",
-	// "Tribal Guard",
-	// "Tribal Rabble",
-	// "Tribal Villager",
 ))
 
 GLOBAL_LIST_INIT(tribal_positions, list(
