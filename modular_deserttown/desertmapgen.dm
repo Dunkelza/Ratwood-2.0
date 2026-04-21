@@ -1,7 +1,7 @@
 /obj/effect/landmark/mapGenerator/rogue/desert
 	mapGeneratorType = /datum/mapGenerator/desert
-	endTurfX = 400
-	endTurfY = 300
+	endTurfX = 380
+	endTurfY = 310
 	startTurfX = 1
 	startTurfY = 1
 
@@ -39,8 +39,9 @@
 	clusterCheckFlags = CLUSTER_CHECK_ALL
 	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/desert_grass)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
-	spawnableAtoms = list(/obj/structure/flora/roguetree/palm = 2,
-							/obj/structure/flora/roguegrass/bush/desertshrub = 2,
+	spawnableAtoms = list(/obj/structure/flora/roguetree/palm = 5,
+							/obj/structure/flora/roguegrass/bush/desertshrub = 4,
+							/obj/structure/flora/newtreealt = 4,
 							/obj/structure/flora/roguegrass = 3,
 							/obj/structure/flora/roguetree/stump/log = 0.5,
 							/obj/structure/flora/ausbushes/ppflowers = 0.1,
