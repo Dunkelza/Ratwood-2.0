@@ -459,3 +459,8 @@
 	timer = 10 MINUTES
 	stressadd = -5
 	desc = span_boldgreen("What wonderious fireflies...")
+
+/datum/stressevent/xylixian_fate
+	timer = 10 MINUTES
+	stressadd = -2
+	desc = span_green("Xylix spun the thread of fate in my favour! Truly, I am blessed!")
