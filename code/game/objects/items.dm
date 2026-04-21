@@ -148,6 +148,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/altgripped = FALSE
 	var/list/alt_intents //these replace main intents
 	var/list/gripped_intents //intents while gripped, replacing main intents
+	var/isaltgripsharp = FALSE //In the edge case an alt gripped weapon should remain sharp, then change this to true
 	var/force_wielded = 0
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
 	var/wieldsound = FALSE
@@ -845,7 +846,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			var/oldy = pixel_y
 			pixel_y = pixel_y+5
 			animate(src, pixel_y = oldy, time = 0.5)
-	if(altgripped || wielded)
+	if(altgripped)
+		if(isaltgripsharp == FALSE)
+			sharpness = IS_SHARP
+		ungrip(user,FALSE)
+	else if(wielded)
 		ungrip(user, FALSE)
 	item_flags &= ~IN_INVENTORY
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED,user)
@@ -903,7 +908,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
-		if(altgripped || wielded)
+		if(altgripped)
+			if(isaltgripsharp == FALSE)
+				sharpness = IS_SHARP
+			ungrip(user,FALSE)
+		else if(wielded)
 			ungrip(user, FALSE)
 	if(twohands_required)
 		if(slot == ITEM_SLOT_HANDS)
@@ -1484,6 +1493,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(altgripped)
 		altgripped = FALSE
 		wielded = FALSE
+		if(isaltgripsharp == FALSE)
+			sharpness = IS_SHARP
 		if(force_wielded)
 			update_force_dynamic()
 		wdefense_dynamic = wdefense
@@ -1523,6 +1534,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				update_force_dynamic()
 			wdefense_dynamic = (wdefense + wdefense_wbonus)
 			user.update_inv_hands()
+			if(isaltgripsharp == TRUE)
+				return
+			sharpness = IS_BLUNT
 
 /obj/item/proc/wield(mob/living/carbon/user, show_message = TRUE)
 	if(wielded)
