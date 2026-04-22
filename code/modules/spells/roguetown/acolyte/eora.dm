@@ -965,7 +965,7 @@
 
 	for(var/aril_type in aril_types)
 		new aril_type(loc)
-		
+
 		// if you've tended your tree perfectly, are eligible to pick fruit, pray over the pomegranate, and haven't gotten one already, you get a guaranteed seed
 	var/mob/living/living_user = user
 	if(istype(living_user)\
@@ -1353,22 +1353,22 @@
 	var/hungercheck = H.nutrition
 	var/hydrohomiecheck = H.hydration
 	switch(hungercheck)
-		if(0 to NUTRITION_LEVEL_STARVING)
+		if(0 to NUTRITION_LEVEL_FED)
 			switch(assocskill)
-				if(SKILL_LEVEL_NOVICE)
+				if(SKILL_LEVEL_NONE)
 					H.nutrition = NUTRITION_LEVEL_STARVING + 50
-				if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_EXPERT)
+				if(SKILL_LEVEL_NOVICE to SKILL_LEVEL_JOURNEYMAN)
 					H.nutrition = NUTRITION_LEVEL_HUNGRY + 50
-				else	//Acolyte w/ Devotee
+				else	
 					H.nutrition = NUTRITION_LEVEL_FED
 	switch(hydrohomiecheck)
-		if(0 to HYDRATION_LEVEL_DEHYDRATED)
+		if(0 to HYDRATION_LEVEL_SMALLTHIRST)
 			switch(assocskill)
-				if(SKILL_LEVEL_NOVICE)
+				if(SKILL_LEVEL_NONE)
 					H.nutrition = HYDRATION_LEVEL_DEHYDRATED + 50
-				if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_EXPERT)
+				if(SKILL_LEVEL_NOVICE to SKILL_LEVEL_JOURNEYMAN)
 					H.nutrition = HYDRATION_LEVEL_THIRSTY + 50
-				else	//Acolyte w/ Devotee
+				else	
 					H.nutrition = HYDRATION_LEVEL_SMALLTHIRST
 	if(assocskill > SKILL_LEVEL_APPRENTICE)
 		H.add_stress(/datum/stressevent/eoran_blessing_greater)
