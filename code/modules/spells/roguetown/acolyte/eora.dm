@@ -1062,7 +1062,7 @@
 	//No undead because they kinda don't have blood to give for this.
 	if(!eater.construct && !(eater.mob_biotypes & MOB_UNDEAD))
 	var/current_brute_loss = eater.getBruteLoss()
-		if(wCount.len > 0)
+		if(wCount > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
 		eater.blood_volume = max(0, (eater.blood_volume * 0.06) - blood_loss)
@@ -1087,7 +1087,7 @@
 	var/list/wCount = eater.get_wounds()
 	if(!user.construct && !(user.mob_biotypes & MOB_UNDEAD))
 		var/current_brute_loss = eater.getBruteLoss()
-		if(wCount.len > 0)
+		if(wCount > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
 		user.blood_volume = max(0, (user.blood_volume * 0.08) - blood_loss)
