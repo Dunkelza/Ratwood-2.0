@@ -1000,7 +1000,6 @@
 /obj/structure/flora/roguetree/jungle/Initialize(mapload)
 	. = ..()
 	icon_state = "tree[rand(1, 6)]"
-	color = pick("#b9c4bd", "#95a796", "#d6e0d9")
 
 /obj/structure/flora/roguetree/jungle/small
 	pixel_y = 0
@@ -1031,7 +1030,6 @@
 		icon_state = "bushb[rand(1, 3)]"
 	else
 		icon_state = "bushc[rand(1, 3)]"
-	color = pick("#b9c4bd", "#95a796", "#d6e0d9")
 
 /obj/structure/flora/roguegrass/herb/random
 	name = "random herb"
@@ -1053,7 +1051,6 @@
 /obj/structure/flora/roguegrass/bush/jungle/large/Initialize(mapload)
 	. = ..()
 	icon_state = "bush[pick(1,2,3)]"
-	color = pick("#b9c4bd", "#95a796", "#d6e0d9")
 
 //Jungle grass
 
@@ -1067,7 +1064,6 @@
 /obj/structure/flora/roguegrass/jungle/Initialize(mapload)
 	. = ..()
 	icon_state = "grassa[rand(1, 5)]"
-	color = pick("#b9c4bd", "#95a796", "#d6e0d9")
 
 /obj/structure/flora/roguegrass/jungle/sparse
 	icon = 'icons/obj/flora/jungleflora.dmi'
@@ -1076,4 +1072,3 @@
 /obj/structure/flora/roguegrass/jungle/sparse/Initialize(mapload)
 	. = ..()
 	icon_state = "grassb[rand(1, 5)]"
-	color = pick("#b9c4bd", "#95a796", "#d6e0d9")

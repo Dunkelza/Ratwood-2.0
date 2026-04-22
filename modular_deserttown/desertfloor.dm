@@ -226,7 +226,10 @@
 						/turf/open/floor/rogue/grasspurple,
 						/turf/open/floor/rogue/snowpatchy,
 						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
+						/turf/open/floor/rogue/snowrough,
+						/turf/open/floor/rogue/cobble,
+						/turf/open/floor/rogue/cobblerock,
+						/turf/open/floor/rogue/cobble/mossy,)
 	neighborlay = "desertgrassedge"
 	spread_chance = 15
 	burn_power = 6
