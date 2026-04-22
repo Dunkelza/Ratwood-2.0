@@ -1226,7 +1226,7 @@
 /obj/item/reagent_containers/food/snacks/eoran_aril/ochre/apply_effects(mob/living/carbon/eater)
 	if(ishuman(eater))
 		var/mob/living/carbon/human/H = eater
-		if(H.patron.type == /datum/patron/divine/eora)
+		if(H.patron.type == /datum/patron/divine/eora & !h.status_effect/ritesexpended && !h.status_effect/devitalised)
 			var/list/mob/living/carbon/human/target_mobs = list()
 
 			for(var/mob/living/carbon/human/target in view(7, H))
@@ -1250,7 +1250,8 @@
 				target_mobs += target
 
 			if(target_mobs.len > 0)
-				H.apply_status_effect(/datum/status_effect/debuff/eoran_wilting)
+				H.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+				h.apply_status_effect(/datum/status_effect/debuff/devitalised)
 				addtimer(CALLBACK(GLOBAL_PROC_REF(process_ochre_revivals), target_mobs), 0)
 
 	return ..()
