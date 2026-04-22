@@ -343,7 +343,7 @@
 		return
 
 	eater.apply_status_effect(/datum/status_effect/buff/healing, (quality + (skill / 5)) * bitesize_mod)
-	if(skill > 4 && patron.type == /datum/patron/divine)
+	if(skill > 4 && patron.type == /datum/patron/divine && !h.status.effect(/datum/status_effect/buff/alch))
 		Eo_buff = rand(0, 6)
 		switch(Eo_buff)
 			if(0)
@@ -351,7 +351,7 @@
 				eater.apply_status_effect(/datum/status_effect/buff/alch/strengthpot, 45 SECONDS)
 			if(1)
 				eater.visible_message(span_notice("The food's blessing fortifies [eater]!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/fortitude, 45 SECONDS)
+				eater.apply_status_effect(/datum/status_effect/buff/alch/fortunepot, 45 SECONDS)
 			if(2)
 				eater.visible_message(span_notice("The food's blessing sharpens [eater]'s mind!"))
 				eater.apply_status_effect(/datum/status_effect/buff/alch/intelligencepot, 45 SECONDS)
