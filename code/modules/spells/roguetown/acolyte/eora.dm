@@ -1055,7 +1055,7 @@
 	effect_desc = "This fruit heals for a blood price."
 
 	var/heal_amount = 45
-	var/blood_loss = 225
+	var/blood_loss = (225 + (user.blood_volume * 0.06))
 
 /obj/item/reagent_containers/food/snacks/eoran_aril/crimson/apply_effects(mob/living/carbon/eater)
 	//Instant heal, but you can only eat 2 before the next will make you pass out.
@@ -1063,7 +1063,6 @@
 	//No undead because they kinda don't have blood to give for this.
 	if(!eater.construct && !(eater.mob_biotypes & MOB_UNDEAD))
 	var/current_brute_loss = eater.getBruteLoss()
-		blood_loss += (user.blood_volume * 0.06)
 		if(wCount.len > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
@@ -1089,11 +1088,10 @@
 	var/list/wCount = eater.get_wounds()
 	if(!user.construct && !(user.mob_biotypes & MOB_UNDEAD))
 		var/current_brute_loss = eater.getBruteLoss()
-		blood_loss += (user.blood_volume * 0.08)
 		if(wCount.len > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
-		user.blood_volume = max(0, user.blood_volume - blood_loss)
+		user.blood_volume = max(0, user.blood_volume - (blood_loss * 1.2))
 		eater.adjustBruteLoss(-(heal_amount + (current_brute_loss * 0.12)), 0)
 		eater.adjustFireLoss(-(heal_amount + (eater.getFireLoss() * 0.12)), 0)
 		eater.adjustToxLoss(-(heal_amount + (eater.getToxLoss() * 0.12)), 0)
