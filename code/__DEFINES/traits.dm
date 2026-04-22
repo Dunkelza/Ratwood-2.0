@@ -247,6 +247,7 @@
 #define TRAIT_EORAN_CALM "Eoran Calm"
 #define TRAIT_EORAN_SERENE "Eoran Serenity"
 #define TRAIT_EORAN_PITY "Eoran Commitment" //prevents using the eora seed pity mechanic twice
+#define TRAIT_EORAN_BLOSSOM "Eoran Blossom"
 #define TRAIT_NECRAS_VOW "Necra's Vow"
 #define TRAIT_PESTRAS_BLESSING "Pestra's blessing"
 #define TRAIT_ADRENALINE_RUSH "Adrenaline Rush"

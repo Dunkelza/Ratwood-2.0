@@ -110,6 +110,11 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/fire_act(added, maxstacks)
 	burning(1 MINUTES)
 
+/obj/item/reagent_containers/food/snacks/proc/on_equip(obj/item/i, mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_EORAN_BLOSSOM))
+		/datum/component/blessed_food/Initialize(mob/living/_caster, holy_skill, patron_init)
+
+
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	if(rotprocess)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))

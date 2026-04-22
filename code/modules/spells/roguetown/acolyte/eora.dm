@@ -21,18 +21,30 @@
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+		ADD_TRAIT(user, TRAIT_EORAN_BLOSSOM, "peaceflower_[REF(src)]")
 
 /obj/item/clothing/head/peaceflower/dropped(mob/living/carbon/human/user)
 	..()
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+	REMOVE_TRAIT(user, TRAIT_EORAN_BLOSSOM, "peaceflower_[REF(src)]")
 
-/obj/item/clothing/head/peaceflower/attack_hand(mob/user)
+/obj/item/clothing/head/peaceflower/proc/peace_check(mob/living/user)
+	// return true if we should be unequippable, return false if not
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(src == C.head)
-			to_chat(user, "<span class='warning'>I feel at peace. <b style='color:pink'>Why would you want anything else?</b></span>")
-			return
-	return ..()
+		if(src == C.head || src == C.wear_mask)
+			to_chat(user, "<span class='warning'>I feel at peace. <b style='color:pink'>Why would I want anything else?</b></span>")
+			return TRUE
+	return FALSE
+
+/obj/item/clothing/head/peaceflower/MouseDrop(atom/over_object)
+	if (!peace_check(usr))
+		return ..()
+
+/obj/item/clothing/head/peaceflower/attack_hand(mob/user)
+	if (!peace_check(user))
+		return ..()
+
 
 /obj/effect/proc_holder/spell/invoked/bud
 	name = "Eoran Bloom"
@@ -107,7 +119,7 @@
 	var/mob/living/carbon/partner
 	var/mob/living/carbon/caster
 	var/duration = 900 SECONDS
-	var/max_distance = 7
+	var/max_distance = 15
 	var/damage_share = 0.4
 	var/heal_share = 0.4
 	var/wound_chance = 15
@@ -331,8 +343,30 @@
 		return
 
 	eater.apply_status_effect(/datum/status_effect/buff/healing, (quality + (skill / 5)) * bitesize_mod)
-	if(skill > 4 && patron.type == /datum/patron/divine/eora)
-		eater.apply_status_effect(/datum/status_effect/buff/haste, 15 SECONDS)
+	if(skill > 4 && patron.type == /datum/patron/divine)
+		Eo_buff = rand(0, 6)
+		switch(Eo_buff)
+			if(0)
+				eater.visible_message(span_notice("The food's blessing strengthens [eater]!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/strengthpot, 90 SECONDS)
+			if(1)
+				eater.visible_message(span_notice("The food's blessing fortifies [eater]!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/fortitude, 90 SECONDS)
+			if(2)
+				eater.visible_message(span_notice("The food's blessing sharpens [eater]'s mind!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/intelligencepot, 90 SECONDS)
+			if(3)
+				eater.visible_message(span_notice("The food's blessing heightens [eater]'s senses!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/perceptionpot, 90 SECONDS)
+			if(4)
+				eater.visible_message(span_notice("The food's blessing steadies [eater]'s resolve!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/endurancepot, 90 SECONDS)
+			if(5)
+				eater.visible_message(span_notice("The food's blessing quickens [eater]!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/speedpot, 90 SECONDS)
+			if(6)
+				eater.visible_message(span_notice("The food's blessing emboldens [eater]!"))
+				eater.apply_status_effect(/datum/status_effect/buff/alch/constitutionpot, 90 SECONDS)
 
 /obj/effect/proc_holder/spell/invoked/bless_food
 	name = "Bless Food"
