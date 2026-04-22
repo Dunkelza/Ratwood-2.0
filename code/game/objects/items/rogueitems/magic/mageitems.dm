@@ -510,7 +510,8 @@
 		return FALSE
 	if(ckey) //player
 		src.ckey = ckey
-
+	if(src.ranged == TRUE && src.summon_tier >= 3)
+		ranged_cooldown *= 2
 	to_chat(src, span_userdanger("My summoner is [master.real_name]. They will need to convince me to obey them."))
 	to_chat(src, span_notice("[summon_primer]"))
 
