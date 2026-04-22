@@ -26,9 +26,6 @@
 	proximity_monitor = new(src, 7)
 
 /obj/item/parcel/HasProximity(mob/nearby)
-	if(!istype(nearby))
-		return
-
 	var/datum/component/quest_object/quest_component = GetComponent(/datum/component/quest_object)
 	if(!istype(quest_component))
 		return
@@ -37,7 +34,8 @@
 	if(!istype(quest))
 		return
 
-	if(get_dist(get_turf(src), get_turf(quest.quest_scroll_ref?.resolve())) > 7)
+	var/obj/item/paper/scroll/quest/scroll = quest.quest_scroll_ref?.resolve()
+	if(!scroll || get_turf(scroll) != get_turf(nearby))
 		return
 
 	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = get_turf(src), icon_state = "hidden", layer = 18)
