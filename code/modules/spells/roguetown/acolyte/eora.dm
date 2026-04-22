@@ -1052,26 +1052,32 @@
 	name = "crimson aril"
 	desc = "A blood-red seed that seems to pulse with vitality."
 	icon_state = "crimson"
-	effect_desc = "This fruit heals for a blood price."
+	effect_desc = "This fruit heals for a blood price. This seed can be fed to others at the cost of your own blood."
 
-	var/heal_amount = 45
+	var/heal_amount = 35
 	var/blood_loss = 225
+
+/obj/item/reagent_containers/food/snacks/eoran_aril/crimson/Initialize()
+	. = ..()
+	blood_loss = BLOOD_VOLUME_NORMAL * 0.03
 
 /obj/item/reagent_containers/food/snacks/eoran_aril/crimson/apply_effects(mob/living/carbon/eater)
 	var/list/wCount = eater.get_wounds()
 	//No undead because they kinda don't have blood to give for this.
 	if(!eater.construct && !(eater.mob_biotypes & MOB_UNDEAD))
-	var/current_brute_loss = eater.getBruteLoss()
+		var/current_brute_loss = eater.getBruteLoss()
+		blood_loss += (eater.blood_volume * 0.06)
+		if(wCount.len > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
-		eater.blood_volume = max(0, (eater.blood_volume * 0.06) - blood_loss)
+		eater.blood_volume = max(0, eater.blood_volume - blood_loss)
 		eater.adjustBruteLoss(-(heal_amount + (current_brute_loss * 0.12)), 0)
 		eater.adjustFireLoss(-(heal_amount + (eater.getFireLoss() * 0.12)), 0)
 		eater.adjustToxLoss(-(heal_amount + (eater.getToxLoss() * 0.12)), 0)
 		eater.adjustOxyLoss(-(heal_amount + (eater.getOxyLoss() * 0.12)), 0)
 		eater.adjustOrganLoss(ORGAN_SLOT_BRAIN, -heal_amount)
 		eater.adjustCloneLoss(-heal_amount, 0)
-		
+
 /obj/item/reagent_containers/food/snacks/eoran_aril/crimson/attack(mob/living/M, mob/living/user, def_zone)
 	if(!ishuman(M))
 		return
@@ -1084,11 +1090,13 @@
 		return
 	var/mob/living/carbon/human/eater = M
 	var/list/wCount = eater.get_wounds()
-	if(!user.construct && !(user.mob_biotypes & MOB_UNDEAD))
+	if(!eater.construct && !(eater.mob_biotypes & MOB_UNDEAD))
 		var/current_brute_loss = eater.getBruteLoss()
+		blood_loss += (user.blood_volume * 0.08)
+		if(wCount.len > 0)
 			eater.heal_wounds(heal_amount + (current_brute_loss * 0.12))
 			eater.update_damage_overlays()
-		user.blood_volume = max(0, (user.blood_volume * 0.08) - blood_loss)
+		user.blood_volume = max(0, user.blood_volume - blood_loss)
 		eater.adjustBruteLoss(-(heal_amount + (current_brute_loss * 0.12)), 0)
 		eater.adjustFireLoss(-(heal_amount + (eater.getFireLoss() * 0.12)), 0)
 		eater.adjustToxLoss(-(heal_amount + (eater.getToxLoss() * 0.12)), 0)
