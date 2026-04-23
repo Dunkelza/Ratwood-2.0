@@ -1127,6 +1127,9 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			for(var/mob/living/carbon/human/persononrune in onrune)
 				if(HAS_TRAIT(persononrune, TRAIT_EXTEROCEPTION))//Only works on Eorans
 					folksonrune += persononrune
+			if(!folksonrune.len)
+				to_chat(user, span_warning("There are no Eorans on the rune to perform this rite on."))
+				return
 			var/target = input(user, "Choose a host") as null|anything in folksonrune
 			if(!target)
 				return
@@ -1156,13 +1159,6 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.apply_status_effect(/datum/status_effect/buff/pacify)
 
 /obj/structure/ritualcircle/eora/proc/eoranaura(mob/living/carbon/human/target)
-	if(!HAS_TRAIT(target, TRAIT_EXTEROCEPTION))
-		loc.visible_message(span_cult("THE RITE REJECTS ONE WITHOUT PURE HEART!!"))
-		return FALSE
-	target.Stun(120)
-	to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-	target.emote("Agony")
-	playsound(loc, 'sound/magic/whiteflame.ogg', 70)
 	loc.visible_message(span_good("[target]'s form becomes enveloped in calming aura."))
 	spawn(20)
 		target.apply_status_effect(/datum/status_effect/eoranaura)

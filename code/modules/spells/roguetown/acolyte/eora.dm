@@ -342,29 +342,8 @@
 		return
 
 	eater.apply_status_effect(/datum/status_effect/buff/healing, (quality + (skill / 5)) * bitesize_mod)
-	if(skill > 4 && patron.type == /datum/patron/divine && !eater.has_status_effect(/datum/status_effect/buff/alch))
-		switch(pick(0,1,2,3,4,5,6))
-			if(0)
-				eater.visible_message(span_notice("The food's blessing strengthens [eater]!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/strengthpot, 45 SECONDS)
-			if(1)
-				eater.visible_message(span_notice("The food's blessing fortifies [eater]!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/fortunepot, 45 SECONDS)
-			if(2)
-				eater.visible_message(span_notice("The food's blessing sharpens [eater]'s mind!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/intelligencepot, 45 SECONDS)
-			if(3)
-				eater.visible_message(span_notice("The food's blessing heightens [eater]'s senses!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/perceptionpot, 45 SECONDS)
-			if(4)
-				eater.visible_message(span_notice("The food's blessing steadies [eater]'s resolve!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/endurancepot, 45 SECONDS)
-			if(5)
-				eater.visible_message(span_notice("The food's blessing quickens [eater]!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/speedpot, 45 SECONDS)
-			if(6)
-				eater.visible_message(span_notice("The food's blessing emboldens [eater]!"))
-				eater.apply_status_effect(/datum/status_effect/buff/alch/constitutionpot, 45 SECONDS)
+	if(skill > 4 && patron.type == /datum/patron/divine)
+		eater.apply_status_effect(/datum/status_effect/buff/haste, 15 SECONDS)
 
 /obj/effect/proc_holder/spell/invoked/bless_food
 	name = "Bless Food"
@@ -1085,7 +1064,7 @@
 		return
 	visible_message(span_danger("[user] begins altruistically channeling the crimson aril's power to restore [M]."),
 	 span_info("I begin channeling the crimson aril's power into [M] using my own blood."))
-	if(!do_mob(user, M, time = 0.6 SECONDS, double_progress = TRUE, can_move = FALSE))
+	if(!do_mob(user, M, time = 2 SECONDS, double_progress = TRUE))
 		return
 	var/mob/living/carbon/human/eater = M
 	var/list/wCount = eater.get_wounds()
@@ -1395,7 +1374,7 @@
 				if(SKILL_LEVEL_NOVICE to SKILL_LEVEL_JOURNEYMAN)
 					H.nutrition = NUTRITION_LEVEL_HUNGRY + 50
 				else	
-					H.nutrition = NUTRITION_LEVEL_FED
+					H.nutrition = NUTRITION_LEVEL_WELL_FED
 	switch(hydrohomiecheck)
 		if(0 to HYDRATION_LEVEL_SMALLTHIRST)
 			switch(assocskill)
@@ -1404,7 +1383,7 @@
 				if(SKILL_LEVEL_NOVICE to SKILL_LEVEL_JOURNEYMAN)
 					H.nutrition = HYDRATION_LEVEL_THIRSTY + 50
 				else	
-					H.nutrition = HYDRATION_LEVEL_SMALLTHIRST
+					H.nutrition = HYDRATION_LEVEL_HYDRATED
 	if(assocskill > SKILL_LEVEL_APPRENTICE)
 		H.add_stress(/datum/stressevent/eoran_blessing_greater)
 	else
