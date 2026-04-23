@@ -1200,16 +1200,16 @@
 	name = "ochre aril"
 	desc = "A blood-red seed that seems to pulse menacingly."
 	icon_state = "ochre"
-	effect_desc = "Return two nearby corpses in view from necra's embrace, by sacrificing part of your life."
+	effect_desc = "Return two nearby corpses in view from necra's embrace, at the cost of your own life."
 
 /obj/item/reagent_containers/food/snacks/eoran_aril/ochre/apply_effects(mob/living/carbon/eater)
 	if(ishuman(eater))
 		var/mob/living/carbon/human/H = eater
-		if(H.patron.type == /datum/patron/divine/eora && !eater.has_status_effect(/datum/status_effect/debuff/devitalised))
+		if(H.patron.type == /datum/patron/divine/eora)
 			var/list/mob/living/carbon/human/target_mobs = list()
 
 			for(var/mob/living/carbon/human/target in view(7, H))
-				if(target_mobs.len >= 1)
+				if(target_mobs.len >= 2)
 					break
 				if(target.stat != DEAD)
 					continue
@@ -1229,8 +1229,7 @@
 				target_mobs += target
 
 			if(target_mobs.len > 0)
-				H.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-				H.apply_status_effect(/datum/status_effect/debuff/devitalised)
+				H.apply_status_effect(/datum/status_effect/debuff/eoran_wilting)
 				addtimer(CALLBACK(GLOBAL_PROC_REF(process_ochre_revivals), target_mobs), 0)
 
 	return ..()
@@ -1246,6 +1245,30 @@
 /proc/revive_ochre_target(mob/living/carbon/human/target)
 	to_chat(world, span_userdanger("ATTEMPTING REVIVAL FOR [target]"))
 	if(QDELETED(target) || target.stat != DEAD)
+		return FALSE
+
+	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+
+	// Perform revival
+	target.adjustOxyLoss(-target.getOxyLoss())
+	if(target.revive(full_heal = FALSE))
+		// Transfer ghost back to body (if they were ghosted)
+		if(underworld_spirit && underworld_spirit.mind) // Ensure spirit exists and has a mind
+			underworld_spirit.mind.transfer_to(target, TRUE) // Transfer mind back to the revived body
+			qdel(underworld_spirit) // Delete the spirit mob
+		else
+			target.grab_ghost(force = TRUE) // This attempts to grab a ghost even if they committed suicide.
+
+		target.emote("breathgasp")
+		target.Jitter(100)
+		target.update_body()
+		target.visible_message(span_notice("[target] is revived by divine magic!"), span_green("I awake from the void."))
+
+		ADD_TRAIT(target, TRAIT_IWASREVIVED, "ochre_aril")
+		target.apply_status_effect(/datum/status_effect/debuff/metabolic_acceleration)
+		return TRUE
+	else
+		target.visible_message(span_warning("The magic falters, and nothing happens."))
 		return FALSE
 
 	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
