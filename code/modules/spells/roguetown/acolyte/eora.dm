@@ -343,7 +343,7 @@
 
 	eater.apply_status_effect(/datum/status_effect/buff/healing, (quality + (skill / 5)) * bitesize_mod)
 	if(skill > 4 && patron.type == /datum/patron/divine)
-		eater.apply_status_effect(/datum/status_effect/buff/haste, 50 SECONDS)
+		eater.apply_status_effect(/datum/status_effect/buff/haste, 55 SECONDS)
 
 /obj/effect/proc_holder/spell/invoked/bless_food
 	name = "Bless Food"
@@ -1379,11 +1379,11 @@
 		if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_SMALLTHIRST)
 			switch(assocskill)
 				if(SKILL_LEVEL_NONE)
-					H.nutrition = HYDRATION_LEVEL_DEHYDRATED + 50
+					H.hydration = HYDRATION_LEVEL_DEHYDRATED + 50
 				if(SKILL_LEVEL_NOVICE to SKILL_LEVEL_JOURNEYMAN)
-					H.nutrition = HYDRATION_LEVEL_THIRSTY + 50
+					H.hydration = HYDRATION_LEVEL_THIRSTY + 50
 				else	
-					H.nutrition = HYDRATION_LEVEL_HYDRATED
+					H.hydration = HYDRATION_LEVEL_HYDRATED
 	if(assocskill > SKILL_LEVEL_APPRENTICE)
 		H.add_stress(/datum/stressevent/eoran_blessing_greater)
 	else
