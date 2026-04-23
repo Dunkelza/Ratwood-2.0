@@ -7,10 +7,14 @@
 	var/list/loot_table
 	var/list/loot_table_lucky
 	var/list/pose_states
+	///If set, always uses this icon_state instead of picking from pose_states.
+	var/forced_pose
 
 /obj/structure/deadbody/Initialize(mapload)
 	. = ..()
-	if(pose_states)
+	if(forced_pose)
+		icon_state = forced_pose
+	else if(pose_states)
 		icon_state = pick(pose_states)
 
 /obj/structure/deadbody/attack_hand(mob/living/user)
