@@ -1200,16 +1200,16 @@
 	name = "ochre aril"
 	desc = "A blood-red seed that seems to pulse menacingly."
 	icon_state = "ochre"
-	effect_desc = "Return two nearby corpses in view from necra's embrace, at the cost of your own life."
+	effect_desc = "Return two nearby corpses in view from necra's embrace, by sacrificing part of your life."
 
 /obj/item/reagent_containers/food/snacks/eoran_aril/ochre/apply_effects(mob/living/carbon/eater)
 	if(ishuman(eater))
 		var/mob/living/carbon/human/H = eater
-		if(H.patron.type == /datum/patron/divine/eora && !eater.has_status_effect(/datum/status_effect/debuff/devitalised) && !eater.has_status_effect(/datum/status_effect/debuff/devitalised))
+		if(H.patron.type == /datum/patron/divine/eora && !eater.has_status_effect(/datum/status_effect/debuff/devitalised))
 			var/list/mob/living/carbon/human/target_mobs = list()
 
 			for(var/mob/living/carbon/human/target in view(7, H))
-				if(target_mobs.len >= 2)
+				if(target_mobs.len >= 1)
 					break
 				if(target.stat != DEAD)
 					continue
