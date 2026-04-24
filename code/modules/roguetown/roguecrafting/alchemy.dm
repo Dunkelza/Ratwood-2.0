@@ -114,7 +114,7 @@
 	reqs = list(/obj/item/reagent_containers/food/snacks/eoran_aril/auric = 1,
 				/obj/item/alch/viscera = 2,
 				/obj/item/reagent_containers/glass/bottle/alchemical,
-				/obj/item/roguegem/ruby,
+				/obj/item/reagent_containers/spidervenom_inert = 1,
 				/obj/item/alch/horn = 1)
 	craftdiff = 5
 	verbage_simple = "mix"

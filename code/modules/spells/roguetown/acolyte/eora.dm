@@ -1271,31 +1271,6 @@
 		target.visible_message(span_warning("The magic falters, and nothing happens."))
 		return FALSE
 
-	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-
-	// Perform revival
-	target.adjustOxyLoss(-target.getOxyLoss())
-	if(target.revive(full_heal = FALSE))
-		// Transfer ghost back to body (if they were ghosted)
-		if(underworld_spirit && underworld_spirit.mind) // Ensure spirit exists and has a mind
-			underworld_spirit.mind.transfer_to(target, TRUE) // Transfer mind back to the revived body
-			qdel(underworld_spirit) // Delete the spirit mob
-		else
-			target.grab_ghost(force = TRUE) // This attempts to grab a ghost even if they committed suicide.
-
-		target.emote("breathgasp")
-		target.Jitter(100)
-		target.update_body()
-		target.visible_message(span_notice("[target] is revived by divine magic!"), span_green("I awake from the void."))
-
-		ADD_TRAIT(target, TRAIT_IWASREVIVED, "ochre_aril")
-		target.apply_status_effect(/datum/status_effect/debuff/metabolic_acceleration)
-		return TRUE
-	else
-		target.visible_message(span_warning("The magic falters, and nothing happens."))
-		return FALSE
-
-//For now this is just artifical lux. But this may make the user/receiver indebted to eora eventually.
 //This is meant to be given guaranteed with T4 pommes for priests but given we don't have eoran priests yet I will implement this when we do.
 /obj/item/reagent_containers/lux/eoran_aril
 	name = "incandescent aril"
