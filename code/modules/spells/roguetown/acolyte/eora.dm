@@ -520,7 +520,7 @@
 			to_chat(user, span_warning("The tree has been fully pruned already!"))
 			return TRUE
 		var/skill = get_farming_skill(user)
-		var/prune_time = 25 SECONDS - (skill * 3.5 SECONDS)
+		var/prune_time = 15 SECONDS - (skill * 2.5 SECONDS)
 
 		to_chat(user, span_notice("You begin pruning the tree..."))
 
