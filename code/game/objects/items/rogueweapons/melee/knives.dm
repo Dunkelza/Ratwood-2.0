@@ -1,4 +1,4 @@
-﻿//intent datums ฅ^•ﻌ•^ฅ
+//intent datums :3
 
 /datum/intent/dagger
 	clickcd = 8
