@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid,
+/turf/open/floor/rogue/greenstone/runed,
+/area/rogue/under/wretch/cavern)
 "ac" = (
 /turf/open/water/bloody,
 /area/rogue/under/wretch/gnollcavern)
@@ -336,6 +340,13 @@
 "dn" = (
 /turf/closed/wall/mineral/rogue/pipe/corners,
 /area/rogue)
+"dq" = (
+/obj/machinery/light/rogue/candle/floorcandle/alt{
+	pixel_x = 7;
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/wretch/cavern)
 "dr" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
@@ -948,8 +959,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/wretch)
 "ki" = (
-/obj/effect/decal/cleanable/roguerune/arcyne/summoning/max,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/rogue/greenstone/runed,
 /area/rogue/under/wretch/cavern)
 "kj" = (
 /obj/machinery/light/rogue/torchholder{
@@ -1061,6 +1071,10 @@
 /obj/structure/curtain/brown,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/wretch/gnollcavern)
+"lk" = (
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment,
+/turf/open/floor/rogue/greenstone/runed,
+/area/rogue/under/wretch/cavern)
 "ls" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -1379,6 +1393,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/wretch/cavern)
+"oy" = (
+/obj/machinery/light/rogue/candle/floorcandle{
+	pixel_x = -4;
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/wretch/cavern)
 "oz" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks/flipped,
@@ -1664,6 +1685,13 @@
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/wretch)
+"rJ" = (
+/obj/machinery/light/rogue/candle/floorcandle{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/wretch/cavern)
 "rM" = (
 /turf/open/water/bloody,
 /area/rogue/under/wretch/temple)
@@ -1754,6 +1782,9 @@
 "sR" = (
 /turf/open/water/river/flow/north,
 /area/rogue/under/wretch/cavern)
+"sV" = (
+/turf/closed,
+/area/rogue)
 "sY" = (
 /turf/open/water/bath,
 /area/rogue/outdoors/wretch)
@@ -2033,6 +2064,13 @@
 	dir = 8
 	},
 /turf/open/transparent/openspace,
+/area/rogue/under/wretch/cavern)
+"wH" = (
+/obj/machinery/light/rogue/candle/floorcandle{
+	pixel_x = 10;
+	pixel_y = -18
+	},
+/turf/open/floor/rogue/greenstone,
 /area/rogue/under/wretch/cavern)
 "wJ" = (
 /turf/open/floor/rogue/ruinedwood,
@@ -3559,6 +3597,13 @@
 "Lj" = (
 /turf/open/water/bloody,
 /area/rogue/outdoors/wretch)
+"Lk" = (
+/obj/machinery/light/rogue/candle/floorcandle{
+	pixel_x = 0;
+	pixel_y = -11
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/wretch/cavern)
 "Ll" = (
 /obj/structure/bondage/x_pillory,
 /turf/open/floor/rogue/naturalstone,
@@ -4409,8 +4454,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/wretch)
 "Th" = (
-/obj/effect/decal/cleanable/roguerune/arcyne/enchantment/greater,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/rogue/greenstone,
 /area/rogue/under/wretch/cavern)
 "Tl" = (
 /obj/structure/chair/wood/rogue{
@@ -4796,6 +4840,13 @@
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/wretch)
+"WB" = (
+/obj/machinery/light/rogue/candle/floorcandle{
+	pixel_x = -3;
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/wretch/cavern)
 "WE" = (
 /obj/structure/plough,
 /turf/open/floor/rogue/grass,
@@ -4941,6 +4992,13 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/blocks/flipped,
 /area/rogue/under/wretch/temple)
+"Yg" = (
+/obj/machinery/light/rogue/candle/floorcandle/alt{
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/wretch/cavern)
 "Yh" = (
 /obj/effect/decal/cobble/mossy{
 	dir = 9
@@ -16761,9 +16819,9 @@ iy
 iy
 iy
 iy
+sV
 iy
 iy
-CT
 CT
 CT
 CT
@@ -16853,16 +16911,16 @@ iy
 iy
 iy
 iy
+sV
 iy
 iy
 LJ
 LJ
 LJ
 LJ
-LJ
-LJ
-LJ
-LJ
+kV
+kV
+kV
 LJ
 LJ
 LJ
@@ -16945,11 +17003,11 @@ iy
 iy
 iy
 iy
+sV
+CT
 LJ
 LJ
 LJ
-LJ
-kV
 kV
 kV
 kV
@@ -17037,12 +17095,12 @@ iy
 iy
 iy
 iy
+sV
 LJ
 LJ
 LJ
 el
 pn
-lB
 lB
 lB
 lB
@@ -17129,17 +17187,17 @@ iy
 iy
 iy
 iy
+sV
 LJ
 LJ
 el
 el
 lB
+Th
+rJ
+ki
 lB
-lB
-lB
-lB
-lB
-lB
+Th
 kV
 kV
 LJ
@@ -17221,16 +17279,16 @@ iy
 iy
 iy
 iy
+sV
 LJ
 LJ
 kV
+Th
 lB
-lB
-lB
-lB
-lB
-lB
-lB
+Th
+Th
+Th
+Th
 lB
 lB
 gm
@@ -17313,17 +17371,17 @@ iy
 iy
 iy
 iy
+CT
 LJ
 LJ
 kV
 lB
 lB
-lB
-lB
+ki
 Th
-lB
-lB
-lB
+lk
+Th
+Th
 lB
 Hc
 LJ
@@ -17404,18 +17462,18 @@ iy
 iy
 iy
 iy
-iy
+CT
+LJ
 LJ
 LJ
 kV
 pn
 lB
-lB
-lB
-lB
-lB
-lB
-lB
+wH
+Th
+Th
+Th
+Yg
 lB
 Ys
 el
@@ -17496,18 +17554,18 @@ iy
 iy
 iy
 iy
-iy
+CT
 LJ
 LJ
 kV
 kV
+kV
 lB
 lB
 lB
-lB
-lB
-lB
-lB
+Th
+ki
+Th
 pn
 lB
 cm
@@ -17588,14 +17646,14 @@ iy
 iy
 iy
 iy
-iy
-LJ
+CT
 LJ
 LJ
 kV
+LJ
+kV
 lB
-lB
-lB
+Th
 lB
 lB
 lB
@@ -17680,10 +17738,10 @@ iy
 iy
 iy
 iy
-iy
 LJ
 LJ
-LJ
+kV
+kV
 el
 LJ
 LJ
@@ -17772,9 +17830,9 @@ iy
 iy
 iy
 iy
-iy
 LJ
 LJ
+kV
 el
 el
 LJ
@@ -17866,6 +17924,7 @@ iy
 LJ
 LJ
 LJ
+kV
 LJ
 LJ
 pn
@@ -17875,7 +17934,6 @@ lB
 pn
 lB
 lB
-pn
 lB
 lB
 LJ
@@ -17959,16 +18017,16 @@ LJ
 LJ
 LJ
 kV
+kV
 lB
 lB
 lB
+ki
+Th
+oy
 lB
-lB
-lB
-lB
-lB
-lB
-lB
+Th
+pn
 lB
 LJ
 LJ
@@ -18049,16 +18107,16 @@ iy
 iy
 LJ
 LJ
+LJ
 kV
 kV
+Th
 lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
+Lk
+Th
+Th
+Th
+ki
 lB
 lB
 lB
@@ -18141,18 +18199,18 @@ iy
 iy
 LJ
 LJ
+LJ
 kV
-el
+kV
 lB
 lB
+Th
+Th
+ab
+Th
+Th
 lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
+Th
 lB
 qp
 el
@@ -18235,16 +18293,16 @@ LJ
 LJ
 kV
 kV
-lB
-lB
+kV
 lB
 lB
 ki
+Th
+Th
+Th
+dq
 lB
 lB
-lB
-lB
-pn
 lB
 el
 el
@@ -18326,17 +18384,17 @@ iy
 LJ
 LJ
 kV
-el
+kV
+kV
+pn
 lB
 lB
+WB
+Th
+ki
+Th
 lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
+pn
 el
 el
 LJ
@@ -18419,17 +18477,17 @@ LJ
 LJ
 kV
 kV
-lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
 el
+el
+lB
+Th
+lB
+lB
+lB
+lB
+lB
+kV
+kV
 LJ
 LJ
 QU
@@ -18509,18 +18567,18 @@ iy
 iy
 LJ
 LJ
-LJ
 kV
+kV
+el
+kV
+lB
+lB
+lB
+lB
+lB
 pn
-lB
-lB
-lB
-lB
-lB
-lB
-lB
-lB
-LJ
+el
+kV
 LJ
 LJ
 QU
@@ -18602,17 +18660,17 @@ iy
 LJ
 LJ
 LJ
+kV
+kV
+kV
+kV
 el
+kV
 el
-lB
-lB
-lB
-lB
-lB
-lB
-pn
+kV
+LJ
 el
-el
+LJ
 LJ
 LJ
 QU
@@ -18695,15 +18753,15 @@ LJ
 LJ
 LJ
 LJ
-el
+kV
+kV
+kV
+kV
+kV
+kV
+kV
 LJ
-lB
-lB
-lB
-lB
-lB
 LJ
-el
 LJ
 LJ
 LJ
@@ -18789,11 +18847,11 @@ LJ
 LJ
 LJ
 LJ
-kV
-el
-kV
-el
-kV
+LJ
+LJ
+LJ
+LJ
+LJ
 LJ
 LJ
 LJ
@@ -18881,11 +18939,11 @@ LJ
 LJ
 LJ
 LJ
-kV
-kV
-kV
-kV
-kV
+LJ
+LJ
+LJ
+LJ
+LJ
 LJ
 LJ
 LJ
