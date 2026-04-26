@@ -1577,3 +1577,4 @@
 	desc = "Blasphemy... unless...?"
 	icon_state = "zaelorian_crynsaris"
 	icon = 'icons/roguetown/misc/statues/statue_zizo.dmi'
+	pixel_x = -16

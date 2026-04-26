@@ -147,6 +147,8 @@
 #define TRAIT_PSYDONITE "Psydonite's Devotion" // Anti-Miracles on a selective basis, anastasis / cure rot still apply.
 #define TRAIT_BLACKBAGGER "Apprehension Techniques" // Capable of using Garrotes and Blackbags. Apprehension techniques.
 #define TRAIT_RESONANCE "Resonance Caster"//Casting miracles will buff nearby miraclists. Or, would, had I finished it. Instead it applies fortify in an AoE. - Carl
+/// Snowflake trait given to Eoran's wearing their bud
+#define TRAIT_EORAN_CONTENTED "Eoran Contented"
 
 // PATRON GOD CURSES
 
@@ -332,6 +334,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_IGNOREDAMAGESLOWDOWN = span_info("Hits slow me down no longer."),
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_PACIFISM = span_info("I cannot harm another living being."),
+	TRAIT_EORAN_CONTENTED = span_info("I feel much at ease."),
 	TRAIT_DEFILED_NOBLE = span_blue("I'm of noble blood but... Something feels off!"),
 	TRAIT_DISGRACED_NOBLE = span_warning("I was a scion of a noble house... long ago."),
 	TRAIT_EMPATH = span_info("I can notice when people are in pain."),
