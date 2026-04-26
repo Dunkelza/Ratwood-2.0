@@ -1609,8 +1609,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/wretch/gnollcavern)
 "qS" = (
-/turf/closed,
-/area/rogue)
+/obj/structure/roguewindow,
+/obj/structure/curtain/green,
+/turf/open/floor/rogue/tile/bfloorz,
+/area/rogue/under/wretch)
 "qU" = (
 /obj/structure/rack/rogue,
 /obj/item/rope,
@@ -2006,11 +2008,7 @@
 /turf/closed/mineral/rogue/gem,
 /area/rogue/under/wretch/cavern)
 "vC" = (
-/obj/structure/curtain{
-	icon_state = "curtain-closed";
-	open = 0;
-	opacity = 1
-	},
+/obj/structure/curtain/green,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/wretch)
 "vE" = (
@@ -3283,7 +3281,7 @@
 /area/rogue/under/wretch/gnollcavern)
 "HG" = (
 /obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/blocks,
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/wretch)
 "HI" = (
 /obj/machinery/light/rogue/candle/floorcandle/alt{
@@ -4941,9 +4939,6 @@
 /obj/machinery/light/rogue/firebowl/standing/red,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/wretch/gnollcavern)
-"WP" = (
-/turf/closed/basic,
-/area/rogue/under/wretch)
 "WR" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/river/muddy,
@@ -16910,7 +16905,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 iy
 iy
 CT
@@ -17002,7 +16997,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 iy
 iy
 LJ
@@ -17094,7 +17089,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 CT
 LJ
 LJ
@@ -17186,7 +17181,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 LJ
 LJ
 LJ
@@ -17278,7 +17273,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 LJ
 LJ
 el
@@ -17370,7 +17365,7 @@ iy
 iy
 iy
 iy
-qS
+iy
 LJ
 LJ
 kV
@@ -17401,7 +17396,7 @@ vI
 gC
 xk
 YF
-WP
+YF
 OQ
 ax
 OQ
@@ -26404,7 +26399,7 @@ YY
 Qw
 YY
 YY
-YY
+qS
 YY
 vC
 gj
