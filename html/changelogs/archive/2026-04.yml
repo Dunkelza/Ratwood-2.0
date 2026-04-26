@@ -330,3 +330,12 @@
       a bag) is spilling due to movement.
   - code_imp: Standardized the anti-spilling behavior of trays, using a new "does_not_spill"
       variable for storage components.
+2026-04-26:
+  MarioTheShiba:
+  - qol: gives barbers the opportunity to roleplay and give people good mood buffs
+      by getting a nice haircut.
+  Xander3359:
+  - balance: Eora's bud no longer pacifies Eoran's
+  - balance: Eora's bud now gives stats and prevents some stat loss from the pomegranate
+      tree
+  - rscdel: Removes Circuitus
