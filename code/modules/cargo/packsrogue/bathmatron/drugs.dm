@@ -13,7 +13,6 @@
 	cost = 50
 	contains = list(/obj/item/reagent_containers/powder/herozium)
 
-
 /datum/supply_pack/rogue/drugs/moondust
 	name = "Moon Dust"
 	cost = 10
@@ -88,3 +87,13 @@
 	name = "Fermented Crab"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab)
+
+/datum/supply_pack/rogue/drugs/shhig
+	name = "Shhig brand zigs (pack of 6)"
+	cost = 40
+	contains = list(/obj/item/storage/fancy/shhig)
+
+/datum/supply_pack/rogue/drugs/suidust
+	name = "Dust of Disguise (Gender only)"
+	cost = 135
+	contains = list(/obj/item/alch/transisdust)
