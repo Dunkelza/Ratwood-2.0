@@ -10,9 +10,9 @@
 		if (!recipient.mind?.has_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation))
 			recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		ADD_TRAIT(recipient, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
-		recipient.mind?.adjust_spellpoints(3)
+		recipient.mind?.adjust_spellpoints(2) // balance. message + darkvision/longstrider is agreee to be too strong, so pick one or the other
 	else
-		recipient.mind?.adjust_spellpoints(3) // 3 extra spellpoints since you don't get any spell point from the skill anymore
+		recipient.mind?.adjust_spellpoints(3) // everyone else that already has arcane gets their full 3, behavior unchanged
 	
 /datum/virtue/combat/devotee
 	name = "Devotee"
