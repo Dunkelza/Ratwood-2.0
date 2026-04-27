@@ -1190,6 +1190,14 @@
 	if(!target)
 		collar_bell_target = FALSE
 		return
+	collar = target.get_item_by_slot(SLOT_NECK)
+	if(collar && istype(collar) && collar.bellsound)
+		collar_bell_target = TRUE
+		var/datum/component/squeak/bell = collar.GetComponent(/datum/component/squeak)
+		if(bell && LAZYLEN(bell.override_squeak_sounds))
+			collar_sounds = bell.override_squeak_sounds
+		else
+			collar_sounds = SFX_COLLARJINGLE
 
 /datum/sex_controller/proc/inherent_perform_check(action_type, incapacitated)
 	var/datum/sex_action/action = SEX_ACTION(action_type)
