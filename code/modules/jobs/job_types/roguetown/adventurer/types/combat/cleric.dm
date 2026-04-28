@@ -129,7 +129,6 @@
 		if (/datum/patron/divine/eora)
 			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 			mask = /obj/item/clothing/head/roguetown/eoramask
-			r_hand = /obj/item/rogueweapon/huntingknife/scissors
 		if (/datum/patron/divine/xylix)
 			cloak = /obj/item/clothing/cloak/templar/xylix
 			mask = /obj/item/clothing/mask/rogue/xylixmask
@@ -626,6 +625,7 @@
 		if (/datum/patron/divine/eora)
 			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 			head = /obj/item/clothing/head/roguetown/eoramask
+			r_hand = /obj/item/rogueweapon/huntingknife/scissors
 			backpack_contents[/obj/item/reagent_containers/eoran_seed] = 1
 		if (/datum/patron/divine/xylix)
 			cloak = /obj/item/clothing/cloak/templar/xylix
