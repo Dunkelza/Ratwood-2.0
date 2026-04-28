@@ -501,8 +501,10 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/eoran_aril/crimson))
 		if(iscarbon(user))
 			var/mob/living/carbon/human/sacrifice = user
-			visible_message(span_danger("[user] begins altruistically channeling the crimson aril's power to restore the tree."),
-	 		 span_info("I begin channeling the crimson aril's power into the tree using my own blood."))
+			user.visible_message(
+				span_danger("[user] begins altruistically channeling the crimson aril's power to restore the tree."),
+				span_info("I begin channeling the crimson aril's power into the tree using my own blood.")
+			)
 			if(!do_after(sacrifice, 15 SECONDS))
 				return
 			sacrifice.blood_volume = max(0, sacrifice.blood_volume - ((BLOOD_VOLUME_NORMAL * 0.03) + (sacrifice.blood_volume * 0.06)))
@@ -1051,7 +1053,7 @@
 	var/heal_amount = 35
 	var/blood_loss = 225
 
-/obj/item/reagent_containers/food/snacks/eoran_aril/crimson/Initialize()
+/obj/item/reagent_containers/food/snacks/eoran_aril/crimson/Initialize(mapload)
 	. = ..()
 	blood_loss = BLOOD_VOLUME_NORMAL * 0.03
 
@@ -1077,8 +1079,10 @@
 	if(M == user)
 		. = ..()
 		return
-	visible_message(span_danger("[user] begins altruistically channeling the crimson aril's power to restore [M]."),
-	 span_info("I begin channeling the crimson aril's power into [M] using my own blood."))
+	user.visible_message(
+		span_danger("[user] begins altruistically channeling the crimson aril's power to restore [M]."),
+		span_info("I begin channeling the crimson aril's power into [M] using my own blood.")
+	)
 	if(!do_mob(user, M, time = 2 SECONDS, double_progress = TRUE))
 		return
 	var/mob/living/carbon/human/eater = M
