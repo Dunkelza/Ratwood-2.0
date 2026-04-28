@@ -1300,10 +1300,12 @@
 	icon_state = "pearlescent"
 	effect_desc = "Transforms poisons within your body into lifeblood at the cost of diluting strong lifeblood."
 
-/obj/item/reagent_containers/food/snacks/eoran_aril/pearlescent/apply_effects(mob/living/carbon/eater)
-	if(ishuman(eater))
-		var/mob/living/carbon/human/H = eater
-		H.apply_status_effect(/datum/status_effect/pearlescent_aril)
+/obj/item/reagent_containers/food/snacks/eoran_aril/pearlescent/attack(mob/living/M, mob/living/user, def_zone)
+	if(ishuman(M))
+		var/mob/living/carbon/human/eater = M
+		M.apply_status_effect(/datum/status_effect/pearlescent_aril)
+	qdel(src)
+	return
 
 /obj/item/reagent_containers/eoran_seed
 	name = "Satin aril"
