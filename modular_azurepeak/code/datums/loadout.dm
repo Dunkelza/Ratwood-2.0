@@ -1762,8 +1762,8 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	triumph_cost = 2
 
 /datum/loadout_item/tri_armorhood_hood
-	name = "Leather Padded Hood"
-	path = /obj/item/clothing/head/roguetown/helmet/leather/armorhood
+	name = "Studded Leather Hood"
+	path = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 	triumph_cost = 2
 
 /datum/loadout_item/tri_pontifex_hood
