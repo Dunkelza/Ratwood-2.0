@@ -199,6 +199,8 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
+	cold_protection = HEAD
+	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 	name = "studded leather hood"
@@ -209,6 +211,8 @@
 	//closer to metal helmet but still quite behind, same blunt resist of hardened leather helmet though.
 	armor = ARMOR_LEATHER_STUDDED
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH) //studded armor values with stab prot too
+	cold_protection = HEAD
+	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/AdjustClothes(mob/user)
 	if(loc == user)
