@@ -182,6 +182,7 @@
 	armor = list("blunt" = 70, "slash" = 80, "stab" = 65, "piercing" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	sewrepair = TRUE
+
 //Leather padded hood, ported from Scarlet Reach by RoachwithaRoach, from vide noir
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood
 	name = "padded leather hood"
@@ -200,14 +201,13 @@
 	toggle_icon_state = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
-
 	name = "studded leather hood"
 	desc = "A thick studded leather hood with buckles."
 	icon_state = "studhood" //make into new sprite
 	item_state = "studhood"
 	max_integrity = 280
 	//closer to metal helmet but still quite behind, same blunt resist of hardened leather helmet though.
-	armor = list("blunt" = 90, "slash" = 80, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)
+	armor = ARMOR_LEATHER_STUDDED
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH) //studded armor values with stab prot too
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/AdjustClothes(mob/user)
