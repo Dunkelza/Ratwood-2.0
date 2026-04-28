@@ -203,8 +203,6 @@ GLOBAL_LIST_EMPTY(quest_components)
 	no_outline = TRUE
 
 /datum/component/quest_object/mob_spawner/on_quest_deleted(datum/source)
-	SIGNAL_HANDLER
-
 	if(QDELETED(parent))
 		return
 
