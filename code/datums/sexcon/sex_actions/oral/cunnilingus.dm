@@ -39,7 +39,7 @@
 	user.sexcon.consume_oral_drips(target)
 	if(target.sexcon.check_active_ejaculation())
 		target.visible_message(span_love("[target] ejaculates into [user]'s mouth!"))
-		target.sexcon.cum_into(oral = TRUE)
+		target.sexcon.cum_into(oral = TRUE, splashed_user = user)
 
 	user.sexcon.suppress_moan = target.sexcon.suppress_moan = FALSE
 
