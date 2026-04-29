@@ -406,14 +406,27 @@
 		modular_record_collar_receive_event(splashed_user, user)
 		if(!oral)
 			var/obj/item/organ/testicles/testes = user.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(testes?.ball_size > DEFAULT_TESTICLES_SIZE)
-				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak/long, orifice)
-			else
-				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak, orifice)
+			apply_creampie_drip(splashed_user, orifice, use_long = testes?.ball_size > DEFAULT_TESTICLES_SIZE)
 	if(effective_target?.has_flaw(/datum/charflaw/addiction/lovefiend))
 		effective_target.sate_addiction(/datum/charflaw/addiction/lovefiend)
 	after_ejaculation()
 	after_intimate_climax(oral, splashed_user)
+
+/// Applies or accumulates a creampie drip status effect, correctly ORing new orifice flags onto an existing drip rather than silently dropping the second application.
+/proc/apply_creampie_drip(mob/living/carbon/human/target, orifice, use_long = FALSE)
+	var/long_drip = target.has_status_effect(/datum/status_effect/creampie_leak/long)
+	var/short_drip = target.has_status_effect(/datum/status_effect/creampie_leak)
+	var/datum/status_effect/creampie_leak/existing = long_drip || short_drip
+	if(existing)
+		if(!(existing.orifice & orifice)) // only message if a genuinely new orifice is involved
+			existing.orifice |= orifice
+			to_chat(target, span_love("I feel another warmth beginning to leak out of me."))
+		existing.duration = world.time + initial(existing.duration) // refresh timer
+		return
+	if(use_long)
+		target.apply_status_effect(/datum/status_effect/creampie_leak/long, orifice)
+	else
+		target.apply_status_effect(/datum/status_effect/creampie_leak, orifice)
 
 /datum/sex_controller/proc/apply_cum_consumed_buff(mob/living/carbon/human/consumer)
 	if(!consumer)

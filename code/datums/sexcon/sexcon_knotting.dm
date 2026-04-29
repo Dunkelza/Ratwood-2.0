@@ -374,10 +374,7 @@
 			if(!btm.has_status_effect(/datum/status_effect/knot_gaped))
 				var/obj/item/organ/testicles/testes = top.getorganslot(ORGAN_SLOT_TESTICLES)
 				var/knot_orifice = top.sexcon.knotted_part_partner & (SEX_PART_CUNT|SEX_PART_ANUS|SEX_PART_SLIT_SHEATH)
-				if(testes?.ball_size > DEFAULT_TESTICLES_SIZE)
-					btm.apply_status_effect(/datum/status_effect/creampie_leak/long, knot_orifice)
-				else
-					btm.apply_status_effect(/datum/status_effect/creampie_leak, knot_orifice)
+				apply_creampie_drip(btm, knot_orifice, use_long = testes?.ball_size > DEFAULT_TESTICLES_SIZE)
 		if(top.sexcon.knotted_part_partner&SEX_PART_JAWS)
 			var/datum/status_effect/facial/facial = btm.has_status_effect(/datum/status_effect/facial)
 			if(!facial)
