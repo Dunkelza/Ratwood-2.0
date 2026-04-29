@@ -369,7 +369,7 @@
 		target.sate_addiction(/datum/charflaw/addiction/lovefiend)
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null, datum/sex_action/knot_action = null, knot_swap_roles = FALSE, mob/living/carbon/human/knot_btm = null)
+/datum/sex_controller/proc/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null, datum/sex_action/knot_action = null, knot_swap_roles = FALSE, mob/living/carbon/human/knot_btm = null, orifice = SEX_PART_NULL)
 	log_combat(user, target, "Came inside the target")
 	werewolf_sex_infect_attempt(user, target)
 	deadite_sex_infect_attempt(user, target)
@@ -402,9 +402,9 @@
 		if(!oral)
 			var/obj/item/organ/testicles/testes = user.getorganslot(ORGAN_SLOT_TESTICLES)
 			if(testes?.ball_size > DEFAULT_TESTICLES_SIZE)
-				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak/long)
+				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak/long, orifice)
 			else
-				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak)
+				splashed_user.apply_status_effect(/datum/status_effect/creampie_leak, orifice)
 	if(target.has_flaw(/datum/charflaw/addiction/lovefiend))
 		target.sate_addiction(/datum/charflaw/addiction/lovefiend)
 	after_ejaculation()
@@ -467,6 +467,11 @@
 	tick_interval = 12 SECONDS
 	duration = 60 SECONDS
 	var/contents_to_drip = /datum/reagent/erpjuice/cum
+	var/orifice = SEX_PART_NULL
+
+/datum/status_effect/creampie_leak/on_creation(mob/living/new_owner, orifice_in = SEX_PART_NULL)
+	orifice = orifice_in
+	return ..(new_owner)
 
 /datum/status_effect/creampie_leak/long
 	id = "creampie_leak_long"

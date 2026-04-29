@@ -216,16 +216,21 @@
 		var/datum/status_effect/facial/facial = has_status_effect(/datum/status_effect/facial)
 		var/datum/status_effect/facial/external/external = has_status_effect(/datum/status_effect/facial/external)
 		var/datum/status_effect/facial/internal/creampie = null
+		var/datum/status_effect/creampie_leak/drip = null
 		if(observer_privilege || get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 			creampie = has_status_effect(/datum/status_effect/facial/internal)
+			drip = has_status_effect(/datum/status_effect/creampie_leak/long)
+			if(!drip)
+				drip = has_status_effect(/datum/status_effect/creampie_leak)
 		var/any_cum_effect = facial || external || creampie
-		if(any_cum_effect)
+		if(any_cum_effect || drip)
 			var/show_detail = (user == src) || observer_privilege
 			if(!show_detail && isliving(user))
 				var/mob/living/L = user
 				show_detail = (L.STAPER >= 8 && L.STAINT >= 5)
 			if(!show_detail)
-				. += span_warning("[m1] covered in something glossy!")
+				if(any_cum_effect)
+					. += span_warning("[m1] covered in something glossy!")
 			else
 				if(external)
 					. += span_aiprivradio("[m1] [!external.has_dried_up ? "covered in cum" : "covered in dried cum"]!")
@@ -233,6 +238,19 @@
 					. += span_aiprivradio("[m1] [!facial.has_dried_up ? "glazed with cum" : "plastered with dried cum"]!")
 				if(creampie)
 					. += span_aiprivradio("[m1] [!creampie.has_dried_up ? "dripping out cum" : "stained with dried cum"]!")
+				if(drip)
+					var/is_long = istype(drip, /datum/status_effect/creampie_leak/long)
+					switch(drip.orifice)
+						if(SEX_PART_CUNT)
+							. += span_aiprivradio("[m1] [is_long ? "gushing heavily from [p_their()] sex" : "trickling cum from [p_their()] sex"]!")
+						if(SEX_PART_ANUS)
+							. += span_aiprivradio("[m1] [is_long ? "leaking heavily from [p_their()] rear" : "leaking cum from [p_their()] rear"]!")
+						if(SEX_PART_SLIT_SHEATH)
+							. += span_aiprivradio("[m1] [is_long ? "gushing heavily from [p_their()] slit" : "trickling cum from [p_their()] slit"]!")
+						if(SEX_PART_CUNT|SEX_PART_ANUS)
+							. += span_aiprivradio("[m1] [is_long ? "leaking heavily from both [p_their()] holes" : "dripping cum from both [p_their()] holes"]!")
+						else
+							. += span_aiprivradio("[m1] [is_long ? "leaking a heavy load" : "dripping cum from [p_their()] nethers"]!")
 		var/list/modular_lines = human_modular_examine_lines(user, observer_privilege, m1, m2, m3)
 		if(length(modular_lines))
 			. += modular_lines
