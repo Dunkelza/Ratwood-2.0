@@ -365,7 +365,7 @@
 /atom/movable/screen/alert/status_effect/buff/cum_consumed
 	name = "Cumdrunk"
 	desc = "I've swallowed someone's load..."
-	icon_state = "foodbuff"
+	icon_state = "drunk"
 
 /atom/movable/screen/alert/status_effect/buff/vitae
 	name = "Invigorated"
