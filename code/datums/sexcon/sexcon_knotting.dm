@@ -321,9 +321,10 @@
 		return
 	btm.face_atom(top)
 
-/datum/sex_controller/proc/knot_remove(forceful_removal = FALSE, notify = TRUE, keep_top_status = FALSE, keep_btm_status = FALSE)
+/datum/sex_controller/proc/knot_remove(forceful_removal = FALSE, notify = TRUE, keep_top_status = FALSE, keep_btm_status = FALSE, mob/living/carbon/human/remover = null)
 	var/mob/living/carbon/human/top = knotted_owner
 	var/mob/living/carbon/human/btm = knotted_recipient
+	var/btm_removed = remover == btm && remover != top
 	if(ishuman(btm) && !QDELETED(btm) && ishuman(top) && !QDELETED(top))
 		if(forceful_removal)
 			var/damage = top.sexcon.knotted_part_partner&SEX_PART_JAWS ? 10 : 30 // base damage value
@@ -342,11 +343,17 @@
 			playsound(top, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 			btm.emote("paincrit", forced = TRUE)
 			if(notify)
-				top.visible_message(span_notice("[top] yanks their knot out of [btm]!"), span_notice("I yank my knot out from [btm]."))
+				if(btm_removed)
+					btm.visible_message(span_notice("[btm] yanks [btm.p_them()]self free from [top]'s knot!"), span_notice("I yank myself free from [top]'s knot!"))
+				else
+					top.visible_message(span_notice("[top] yanks their knot out of [btm]!"), span_notice("I yank my knot out from [btm]."))
 				btm.sexcon.try_do_pain_effect(PAIN_HIGH_EFFECT, FALSE)
 		else if(notify)
 			playsound(btm, 'sound/misc/mat/insert (1).ogg', 50, TRUE, -2, ignore_walls = FALSE)
-			top.visible_message(span_notice("[top] slips their knot out of [btm]!"), span_notice("I slip my knot out from [btm]."))
+			if(btm_removed)
+				btm.visible_message(span_notice("[btm] slips free from [top]'s knot!"), span_notice("I slip free from [top]'s knot."))
+			else
+				top.visible_message(span_notice("[top] slips their knot out of [btm]!"), span_notice("I slip my knot out from [btm]."))
 			btm.emote("painmoan", forced = TRUE)
 			btm.sexcon.try_do_pain_effect(PAIN_MILD_EFFECT, FALSE)
 		add_cum_floor(get_turf(btm))
@@ -517,7 +524,7 @@
 		var/mob/living/carbon/human/top = L.sexcon.knotted_owner
 		if(istype(top) && top.sexcon)
 			var/do_forceful_removal = L.cmode || L.sexcon.arousal > MAX_AROUSAL / 4 || L.sexcon.manual_arousal > SEX_MANUAL_AROUSAL_PARTIAL // bottom forced the knot, so bottom can wrench free
-			top.sexcon.knot_remove(forceful_removal = do_forceful_removal)
+			top.sexcon.knot_remove(forceful_removal = do_forceful_removal, remover = L)
 	else if(L.sexcon.knotted_status == KNOTTED_AS_BTM)
 		to_chat(L, span_warning("I can't pull free!"))
 	return FALSE
