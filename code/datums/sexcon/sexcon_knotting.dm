@@ -345,11 +345,11 @@
 			playsound(top, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 			btm.emote("paincrit", forced = TRUE)
 			if(notify)
-			var/knot_word_yank = top.sexcon.get_knot_synonym()
-			if(btm_removed)
-				btm.visible_message(span_notice("[btm] yanks [btm.p_them()]self free from [top]'s [knot_word_yank]!"), span_notice("I yank myself free from [top]'s [knot_word_yank]!"))
-			else
-				top.visible_message(span_notice("[top] yanks their [knot_word_yank] out of [btm]!"), span_notice("I yank my [knot_word_yank] out from [btm]."))
+				var/knot_word_yank = top.sexcon.get_knot_synonym()
+				if(btm_removed)
+					btm.visible_message(span_notice("[btm] yanks [btm.p_them()]self free from [top]'s [knot_word_yank]!"), span_notice("I yank myself free from [top]'s [knot_word_yank]!"))
+				else
+					top.visible_message(span_notice("[top] yanks their [knot_word_yank] out of [btm]!"), span_notice("I yank my [knot_word_yank] out from [btm]."))
 			btm.sexcon.try_do_pain_effect(PAIN_HIGH_EFFECT, FALSE)
 		else if(notify)
 			playsound(btm, 'sound/misc/mat/insert (1).ogg', 50, TRUE, -2, ignore_walls = FALSE)
