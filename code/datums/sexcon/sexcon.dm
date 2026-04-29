@@ -64,6 +64,7 @@
 	var/do_subtle_action = FALSE
 	/// Knot based variables
 	var/do_knot_action = FALSE
+	var/do_knot_action_as_bottom = FALSE
 	var/knotted_status = KNOTTED_NULL // knotted state and used to prevent multiple knottings when we do not handle that case
 	var/knotted_part = SEX_PART_NULL // which orifice was knotted (bitflag)
 	var/knotted_part_partner = SEX_PART_NULL // which orifice was knotted on partner (bitflag)
@@ -355,7 +356,7 @@
 		target.sate_addiction(/datum/charflaw/addiction/lovefiend)
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null)
+/datum/sex_controller/proc/cum_into(oral = FALSE, mob/living/carbon/human/splashed_user = null, datum/sex_action/knot_action = null, knot_swap_roles = FALSE, mob/living/carbon/human/knot_btm = null)
 	log_combat(user, target, "Came inside the target")
 	werewolf_sex_infect_attempt(user, target)
 	deadite_sex_infect_attempt(user, target)
@@ -363,8 +364,8 @@
 		playsound(user, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 	else
 		playsound(user, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
-	if(user != target && do_knot_action && !isnull(target) && istype(target))
-		knot_try()
+	if(user != target && !isnull(target) && istype(target))
+		knot_try(knot_action = knot_action, knot_swap_roles = knot_swap_roles, knot_btm = knot_btm)
 	if(splashed_user && !splashed_user.sexcon.knotted_status)
 		var/status_type = !oral ? /datum/status_effect/facial/internal : /datum/status_effect/facial
 		var/datum/status_effect/facial/splashed_type = splashed_user.has_status_effect(status_type)
@@ -913,11 +914,17 @@
 				dat += " | <a href='?src=[REF(src)];task=toggle_subtle'>DOING SUBTLY</a>"
 			else
 				dat += " | <a href='?src=[REF(src)];task=toggle_subtle'>DOING VISIBLY</a>"
-		else if(action.knot_on_finish && knot_penis_type())
-			if(do_knot_action)
-				dat += " | <a href='?src=[REF(src)];task=toggle_knot'><font color='#d146f5'>USING KNOT</font></a>"
-			else
-				dat += " | <a href='?src=[REF(src)];task=toggle_knot'><font color='#eac8de'>NOT USING KNOT</font></a>"
+		else if(action.knot_on_finish)
+			if((action.user_sex_part & SEX_PART_COCK) && knot_penis_type())
+				if(do_knot_action)
+					dat += " | <a href='?src=[REF(src)];task=toggle_knot'><font color='#d146f5'>USING KNOT</font></a>"
+				else
+					dat += " | <a href='?src=[REF(src)];task=toggle_knot'><font color='#eac8de'>NOT USING KNOT</font></a>"
+			else if((action.target_sex_part & SEX_PART_COCK) && target?.sexcon?.knot_penis_type())
+				if(do_knot_action_as_bottom)
+					dat += " | <a href='?src=[REF(src)];task=toggle_knot_bottom'><font color='#d146f5'>FORCING KNOT</font></a>"
+				else
+					dat += " | <a href='?src=[REF(src)];task=toggle_knot_bottom'><font color='#eac8de'>NOT FORCING KNOT</font></a>"
 	dat += "</center><center><a href='?src=[REF(src)];task=set_arousal'>SET AROUSAL</a> | <a href='?src=[REF(src)];task=freeze_arousal'>[arousal_frozen ? "UNFREEZE AROUSAL" : "FREEZE AROUSAL"]</a></center>"
 	if(target == user)
 		dat += "<center>Doing unto yourself</center>"
@@ -1014,6 +1021,8 @@
 			do_subtle_action = !do_subtle_action
 		if("toggle_knot")
 			do_knot_action = !do_knot_action
+		if("toggle_knot_bottom")
+			do_knot_action_as_bottom = !do_knot_action_as_bottom
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()

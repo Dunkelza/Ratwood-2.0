@@ -4,6 +4,7 @@
 	category = SEX_CATEGORY_PENETRATE
 	user_sex_part = SEX_PART_JAWS
 	target_sex_part = SEX_PART_COCK
+	knot_on_finish = TRUE
 
 /datum/sex_action/blowjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -27,7 +28,10 @@
 	user.visible_message(span_warning("[user] starts sucking [target]'s cock..."))
 
 /datum/sex_action/blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
+	if(!user.sexcon.do_knot_action_as_bottom)
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
+	else
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock, trying to force their knot."))
 	user.sexcon.oralcourse_noise(user)
 	user.sexcon.do_thrust_animate(target)
 
@@ -36,7 +40,7 @@
 		user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
 	if(target.sexcon.check_active_ejaculation())
 		target.visible_message(span_love("[target] cums into [user]'s mouth!"))
-		target.sexcon.cum_into(oral = TRUE)
+		target.sexcon.cum_into(oral = TRUE, knot_action = src, knot_swap_roles = TRUE, knot_btm = user)
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(span_warning("[user] stops sucking [target]'s cock ..."))
