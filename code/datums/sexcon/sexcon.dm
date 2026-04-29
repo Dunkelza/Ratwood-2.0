@@ -396,6 +396,7 @@
 				splashed_user.reagents.add_reagent(/datum/reagent/erpjuice/cum, testes?.ball_size > DEFAULT_TESTICLES_SIZE ? 6 : 3)
 			else
 				splashed_user.reagents.add_reagent(/datum/reagent/erpjuice/femcum, 2)
+			apply_cum_consumed_buff(splashed_user)
 		if(!oral && user?.dna?.species?.id == "gnoll")
 			splashed_user.has_gnoll_scent_this_round = TRUE
 		modular_record_collar_receive_event(splashed_user, user)
@@ -409,6 +410,12 @@
 		target.sate_addiction(/datum/charflaw/addiction/lovefiend)
 	after_ejaculation()
 	after_intimate_climax(oral)
+
+/datum/sex_controller/proc/apply_cum_consumed_buff(mob/living/carbon/human/consumer)
+	if(!consumer)
+		return FALSE
+	consumer.apply_status_effect(/datum/status_effect/buff/cum_consumed)
+	return TRUE
 
 /datum/sex_controller/proc/consume_oral_drips(mob/living/carbon/human/source)
 	if(!source || !user || !source.sexcon)
@@ -433,6 +440,7 @@
 	if(user.reagents)
 		var/drip_type = drip.contents_to_drip || /datum/reagent/erpjuice/cum
 		user.reagents.add_reagent(drip_type, 1)
+	apply_cum_consumed_buff(user)
 
 	user.visible_message(span_love("[user] laps up the fluids leaking from [source]!"), span_love("I lap up the fluids leaking from [source]!"))
 
