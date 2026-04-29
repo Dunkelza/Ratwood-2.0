@@ -49,13 +49,13 @@
 	if(!btm)
 		return
 
-	if(!user.sexcon.do_knot_action && !btm.sexcon.do_knot_action_as_bottom)
+	if(!user.sexcon.do_knot_action && !(knot_swap_roles && btm.sexcon.do_knot_action_as_bottom))
 		return
 	if(!user.sexcon.knot_penis_type()) // don't have that dog in 'em
 		return
 	if(!btm.client?.prefs?.sexable)
 		return
-	var/btm_forced = btm.sexcon.do_knot_action_as_bottom && !user.sexcon.do_knot_action
+	var/btm_forced = knot_swap_roles && btm.sexcon.do_knot_action_as_bottom && !user.sexcon.do_knot_action
 	if(user.sexcon.considered_limp())
 		if(!user.sexcon.knotted_status)
 			to_chat(user, span_notice("My [user.sexcon.get_knot_synonym()] was too soft to tie."))
