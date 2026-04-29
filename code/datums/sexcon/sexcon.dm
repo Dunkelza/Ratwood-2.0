@@ -377,7 +377,7 @@
 		playsound(user, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 	else
 		playsound(user, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
-	if(user != target && !isnull(target) && istype(target))
+	if(knot_btm || (user != target && !isnull(target) && istype(target)))
 		knot_try(knot_action = knot_action, knot_swap_roles = knot_swap_roles, knot_btm = knot_btm)
 	if(splashed_user && (oral || !splashed_user.sexcon.knotted_status))
 		var/status_type = !oral ? /datum/status_effect/facial/internal : /datum/status_effect/facial
