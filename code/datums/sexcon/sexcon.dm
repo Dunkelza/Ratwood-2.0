@@ -986,7 +986,7 @@
 				dat += " | <a href='?src=[REF(src)];task=toggle_subtle'>DOING SUBTLY</a>"
 			else
 				dat += " | <a href='?src=[REF(src)];task=toggle_subtle'>DOING VISIBLY</a>"
-		else if(action.knot_on_finish)
+		if(action.knot_on_finish)
 			if((action.user_sex_part & SEX_PART_COCK) && knot_penis_type())
 				if(do_knot_action)
 					dat += " | <a href='?src=[REF(src)];task=toggle_knot'><font color='#d146f5'>USING KNOT</font></a>"
