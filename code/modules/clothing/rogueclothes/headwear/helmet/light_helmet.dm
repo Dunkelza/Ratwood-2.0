@@ -212,13 +212,13 @@
 				icon_state = "[initial(icon_state)]_t"
 			flags_inv = null
 			body_parts_covered = NECK
+			block2add = null
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 				H.update_inv_neck()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv =	initial(flags_inv)
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
