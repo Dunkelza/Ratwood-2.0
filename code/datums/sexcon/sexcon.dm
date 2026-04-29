@@ -516,7 +516,7 @@
 		owner.remove_status_effect(src)
 
 /datum/status_effect/creampie_leak/on_apply()
-	to_chat(owner, span_love("I feel cum dripping out of me."))
+	to_chat(owner, span_love("I feel a warmth beginning to leak out of me."))
 	return ..()
 
 /datum/status_effect/creampie_leak/tick()
