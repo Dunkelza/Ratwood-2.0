@@ -356,7 +356,13 @@
 			else
 				facial.refresh_cum()
 		else
-			splashed_user.visible_message(span_love("[splashed_user] takes a load on their body!"), span_love("I take a load on my body!"))
+			var/datum/status_effect/facial/external/external = splashed_user.has_status_effect(/datum/status_effect/facial/external)
+			if(!external)
+				splashed_user.apply_status_effect(/datum/status_effect/facial/external)
+				if(splashed_user != user) // don't announce self-ejaculation (e.g. chastity overflow)
+					splashed_user.visible_message(span_love("[splashed_user] takes a load on their body!"), span_love("I take a load on my body!"))
+			else
+				external.refresh_cum()
 		modular_record_collar_receive_event(splashed_user, user)
 	if(target.has_flaw(/datum/charflaw/addiction/lovefiend))
 		target.sate_addiction(/datum/charflaw/addiction/lovefiend)
@@ -407,6 +413,11 @@
 	id = "creampie"
 	alert_type = null // don't show an alert on screen
 	tick_interval = 7 MINUTES // use this time as our dry count down
+
+/datum/status_effect/facial/external
+	id = "cumshot"
+	alert_type = null // don't show an alert on screen
+	tick_interval = 10 MINUTES // use this time as our dry count down
 
 /datum/status_effect/creampie_leak
 	id = "creampie_leak"
