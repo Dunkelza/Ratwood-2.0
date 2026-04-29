@@ -354,6 +354,7 @@
 			var/datum/status_effect/facial/internal/creampie = btm.has_status_effect(/datum/status_effect/facial/internal)
 			if(!creampie)
 				btm.apply_status_effect(/datum/status_effect/facial/internal)
+				btm.visible_message(span_love("[btm] takes a load on their body!"), span_love("I take a load on my body!"))
 			else
 				creampie.refresh_cum()
 			if(top?.dna?.species?.id == "gnoll")
@@ -369,6 +370,7 @@
 			var/datum/status_effect/facial/facial = btm.has_status_effect(/datum/status_effect/facial)
 			if(!facial)
 				btm.apply_status_effect(/datum/status_effect/facial)
+				btm.visible_message(span_love("[btm] takes a load in their mouth!"), span_love("I take a load in my mouth!"))
 			else
 				facial.refresh_cum()
 			modular_record_collar_receive_event(btm, top)

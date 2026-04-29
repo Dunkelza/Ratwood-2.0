@@ -350,6 +350,8 @@
 		var/datum/status_effect/facial/facial = splashed_user.has_status_effect(/datum/status_effect/facial)
 		if(!facial)
 			splashed_user.apply_status_effect(/datum/status_effect/facial)
+			if(splashed_user != user) // don't announce self-ejaculation (e.g. chastity overflow)
+				splashed_user.visible_message(span_love("[splashed_user] takes a load on their face!"), span_love("I take a load on my face!"))
 		else
 			facial.refresh_cum()
 		modular_record_collar_receive_event(splashed_user, user)
@@ -372,6 +374,10 @@
 		var/datum/status_effect/facial/splashed_type = splashed_user.has_status_effect(status_type)
 		if(!splashed_type)
 			splashed_user.apply_status_effect(status_type)
+			if(oral)
+				splashed_user.visible_message(span_love("[splashed_user] takes a load in their mouth!"), span_love("I take a load in my mouth!"))
+			else
+				splashed_user.visible_message(span_love("[splashed_user] takes a load on their body!"), span_love("I take a load on my body!"))
 		else
 			splashed_type.refresh_cum()
 		if(!oral && user?.dna?.species?.id == "gnoll")
@@ -435,6 +441,10 @@
 			to_chat(owner, span_notice("I feel much cleaner now!"))
 			owner.add_stress(/datum/stressevent/bathcleaned)
 		owner.remove_status_effect(src)
+
+/datum/status_effect/creampie_leak/on_apply()
+	to_chat(owner, span_love("I feel cum dripping out of me."))
+	return ..()
 
 /datum/status_effect/creampie_leak/tick()
 	if(!owner?.sexcon?.bottom_exposed && !get_location_accessible(owner, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
