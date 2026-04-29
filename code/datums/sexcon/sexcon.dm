@@ -379,7 +379,7 @@
 		playsound(user, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	if(user != target && !isnull(target) && istype(target))
 		knot_try(knot_action = knot_action, knot_swap_roles = knot_swap_roles, knot_btm = knot_btm)
-	if(splashed_user && !splashed_user.sexcon.knotted_status)
+	if(splashed_user && (oral || !splashed_user.sexcon.knotted_status))
 		var/status_type = !oral ? /datum/status_effect/facial/internal : /datum/status_effect/facial
 		var/datum/status_effect/facial/splashed_type = splashed_user.has_status_effect(status_type)
 		if(!splashed_type)
