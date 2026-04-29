@@ -88,11 +88,13 @@
 	user.sexcon.tugging_knot_blocked = FALSE
 	user.sexcon.knotted_part = top_knotted_part
 	user.sexcon.knotted_part_partner = bottom_knotted_part // we store the action bitflags so we can later apply damage based on area, and exclusive status unique to each orifice
+	user.sexcon.knotted_forced_by_bottom = FALSE
 	btm.sexcon.knotted_owner = user
 	btm.sexcon.knotted_recipient = btm
 	btm.sexcon.knotted_status = KNOTTED_AS_BTM
 	btm.sexcon.knotted_part = bottom_knotted_part|target_knotted_part // add existing knotted parts flags to new knotted orifice flags
 	btm.sexcon.knotted_part_partner = bottom_knotted_part // we store the receptive bitflags so we can apply area-specific effects later
+	btm.sexcon.knotted_forced_by_bottom = btm_forced
 	log_combat(user, btm, "Started knot tugging")
 
 	if(force > SEX_FORCE_MID) // if using force above default
@@ -384,6 +386,7 @@
 		top.sexcon.knotted_status = KNOTTED_NULL
 		top.sexcon.knotted_part = SEX_PART_NULL
 		top.sexcon.knotted_part_partner = SEX_PART_NULL
+		top.sexcon.knotted_forced_by_bottom = FALSE
 		log_combat(top, top, "Stopped knot tugging")
 	if(istype(btm) && btm.sexcon.knotted_status)
 		if(!keep_btm_status) // only keep the status if we're reapplying the knot
@@ -395,6 +398,7 @@
 		btm.sexcon.knotted_status = KNOTTED_NULL
 		btm.sexcon.knotted_part = SEX_PART_NULL
 		btm.sexcon.knotted_part_partner = SEX_PART_NULL
+		btm.sexcon.knotted_forced_by_bottom = FALSE
 		log_combat(btm, btm, "Stopped knot tugging")
 	if(knotted_status) // this should never trigger, but if it does clear up the invalid state
 		if(src.user)
@@ -406,6 +410,7 @@
 		knotted_status = KNOTTED_NULL
 		knotted_part = SEX_PART_NULL
 		knotted_part_partner = SEX_PART_NULL
+		knotted_forced_by_bottom = FALSE
 
 /mob/living/carbon/human/werewolf_transform() // needed to ensure that we safely remove the tie before transitioning
 	if(istype(sexcon) && sexcon.knotted_status)
