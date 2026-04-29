@@ -465,14 +465,14 @@
 	id = "creampie_leak"
 	alert_type = null // don't show an alert on screen
 	tick_interval = 12 SECONDS
-	duration = 30 SECONDS
+	duration = 60 SECONDS
 	var/contents_to_drip = /datum/reagent/erpjuice/cum
 
 /datum/status_effect/creampie_leak/long
 	id = "creampie_leak_long"
 	alert_type = null // don't show an alert on screen
 	tick_interval = 12 SECONDS
-	duration = 60 SECONDS
+	duration = 120 SECONDS
 
 /datum/status_effect/facial/on_apply()
 	RegisterSignal(owner, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_COMPONENT_CLEAN_FACE_ACT),PROC_REF(clean_up))
