@@ -1,0 +1,4 @@
+author: "EvenInDeathIStillServe"
+delete-after: True
+changes:
+  - rscadd: "Adds a crossbowman virtue that gives you +1 crossbow skill, along with a stashed crossbow and bolts."
