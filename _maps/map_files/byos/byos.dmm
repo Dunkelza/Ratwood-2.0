@@ -2544,7 +2544,7 @@
 	pixel_y = 18
 	},
 /obj/structure/rack/rogue/shelf,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/carpet/red,
 /area/rogue/under/cave/tribeden)
 "cTF" = (
 /obj/structure/curtain/red,
@@ -18516,7 +18516,7 @@
 "teE" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/item/clothing/cloak/lordcloak,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/under/cave/tribeden)
 "teF" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp{
@@ -85254,7 +85254,7 @@ dNc
 dNc
 dNc
 dNc
-hsi
+dNc
 kVL
 kVL
 lzU
@@ -85659,7 +85659,7 @@ dNc
 dNc
 kVL
 teE
-gtg
+qCt
 xZi
 gWJ
 tIT
@@ -86265,7 +86265,7 @@ dNc
 dNc
 tIT
 qOS
-qCt
+vuH
 hFU
 hFU
 tIT
@@ -87299,8 +87299,8 @@ mKt
 kVL
 dNc
 xui
-xui
-xui
+dNc
+dNc
 dNc
 dNc
 dNc
